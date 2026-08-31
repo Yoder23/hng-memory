@@ -1,0 +1,10 @@
+{
+  "live_turn_index": 5000,
+  "median_append_ms": 0.23140001576393843,
+  "p95_append_ms": 0.38372001145035034,
+  "recent_count": 8,
+  "restart_replay_ms": 137.3176000197418,
+  "restart_turn_index": 5000,
+  "turns": 5000,
+  "writes_per_second": 3047.9887541441954
+}

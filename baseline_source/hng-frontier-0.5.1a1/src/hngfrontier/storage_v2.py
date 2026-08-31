@@ -9,6 +9,7 @@ from typing import Iterable, Protocol, runtime_checkable
 
 from .governance import EvidenceKind, EvidenceProvenance, EvidenceRecordV2, TemporalValidity, utc_now_iso
 from .semantic import SemanticState
+from .working_v2 import DeterministicWorkingState
 
 
 @runtime_checkable
@@ -81,6 +82,8 @@ class SQLiteEvidenceStore:
               constraints_json TEXT NOT NULL DEFAULT '[]',
               updated_at TEXT NOT NULL
             );
+            CREATE TABLE IF NOT EXISTS deterministic_working_state(
+              conversation_id TEXT PRIMARY KEY,payload_json TEXT NOT NULL,revision INTEGER NOT NULL,updated_at TEXT NOT NULL);
             CREATE TABLE IF NOT EXISTS meta(key TEXT PRIMARY KEY,value TEXT NOT NULL);
             """
         )
@@ -97,6 +100,7 @@ class SQLiteEvidenceStore:
             self.con.execute("ALTER TABLE evidence ADD COLUMN verified INTEGER NOT NULL DEFAULT 0")
         self.con.execute("CREATE INDEX IF NOT EXISTS evidence_quality ON evidence(verified,trust_score,created_at)")
         self.con.execute("INSERT OR IGNORE INTO meta(key,value) VALUES('schema_version',?)", (str(self.SCHEMA_VERSION),))
+        self.con.execute("INSERT OR IGNORE INTO meta(key,value) VALUES('evidence_generation','0')")
         self.con.commit()
 
     @staticmethod
@@ -146,18 +150,26 @@ class SQLiteEvidenceStore:
                         "UPDATE evidence SET superseded_by=? WHERE experience_id=? AND superseded_by IS NULL",
                         [(record.experience_id, old_id) for old_id in record.supersedes],
                     )
+                self._bump_generation()
                 self.con.commit()
             except Exception:
                 self.con.rollback()
                 raise
         return record
 
+    def _safe_record(self, row: sqlite3.Row) -> EvidenceRecordV2 | None:
+        try:
+            return self._record(row)
+        except (ValueError, TypeError, KeyError, json.JSONDecodeError):
+            return None
+
     def get(self, experience_id: str) -> EvidenceRecordV2 | None:
         row = self.con.execute("SELECT * FROM evidence WHERE experience_id=?", (str(experience_id),)).fetchone()
-        return None if row is None else self._record(row)
+        return None if row is None else self._safe_record(row)
 
     def all(self) -> tuple[EvidenceRecordV2, ...]:
-        return tuple(self._record(row) for row in self.con.execute("SELECT * FROM evidence ORDER BY created_at,experience_id"))
+        return tuple(record for row in self.con.execute("SELECT * FROM evidence ORDER BY created_at,experience_id")
+                     if (record := self._safe_record(row)) is not None)
 
     def get_many(self, experience_ids: Iterable[str]) -> tuple[EvidenceRecordV2, ...]:
         ids = tuple(dict.fromkeys(str(value) for value in experience_ids))
@@ -168,8 +180,9 @@ class SQLiteEvidenceStore:
             chunk = ids[start:start + 900]
             marks = ",".join("?" for _ in chunk)
             for row in self.con.execute(f"SELECT * FROM evidence WHERE experience_id IN ({marks})", chunk):
-                record = self._record(row)
-                records[record.experience_id] = record
+                record = self._safe_record(row)
+                if record is not None:
+                    records[record.experience_id] = record
         return tuple(records[value] for value in ids if value in records)
 
     def eligible_ids(self, *, tenant_id: str = "", user_id: str = "",
@@ -237,6 +250,7 @@ class SQLiteEvidenceStore:
                 "UPDATE evidence SET superseded_by=? WHERE experience_id=? AND superseded_by IS NULL",
                 [(str(new_id), str(old_id)) for old_id in old_ids],
             )
+            self._bump_generation()
             self.con.commit()
 
     def invalidate(self, experience_id: str, *, at: str | None = None) -> None:
@@ -245,6 +259,7 @@ class SQLiteEvidenceStore:
                 "UPDATE evidence SET invalidated_at=COALESCE(invalidated_at,?) WHERE experience_id=?",
                 (at or utc_now_iso(), str(experience_id)),
             )
+            self._bump_generation()
             self.con.commit()
 
     def put_working_state(self, conversation_id: str, state: SemanticState, *,
@@ -264,6 +279,34 @@ class SQLiteEvidenceStore:
         if row is None:
             return SemanticState(), (), ()
         return SemanticState.from_storage(json.loads(row["state_json"])), tuple(json.loads(row["open_loops_json"])), tuple(json.loads(row["constraints_json"]))
+
+    def _bump_generation(self) -> None:
+        self.con.execute("UPDATE meta SET value=CAST(value AS INTEGER)+1 WHERE key='evidence_generation'")
+
+    def generation(self) -> int:
+        row = self.con.execute("SELECT value FROM meta WHERE key='evidence_generation'").fetchone()
+        return 0 if row is None else int(row[0])
+
+    def data_version(self) -> int:
+        return int(self.con.execute("PRAGMA data_version").fetchone()[0])
+
+    def put_deterministic_working(self, state: DeterministicWorkingState) -> None:
+        payload = json.dumps(state.as_dict(), sort_keys=True, separators=(",", ":"))
+        with self._lock:
+            self.con.execute("""INSERT INTO deterministic_working_state(conversation_id,payload_json,revision,updated_at)
+                VALUES(?,?,?,?) ON CONFLICT(conversation_id) DO UPDATE SET payload_json=excluded.payload_json,
+                revision=excluded.revision,updated_at=excluded.updated_at""",
+                (state.conversation_id,payload,state.revision,state.updated_at))
+            self.con.commit()
+
+    def deterministic_working(self, conversation_id: str) -> DeterministicWorkingState:
+        row = self.con.execute("SELECT payload_json FROM deterministic_working_state WHERE conversation_id=?",
+                               (str(conversation_id),)).fetchone()
+        if row is None:
+            legacy, loops, constraints = self.working_state(str(conversation_id))
+            return DeterministicWorkingState(str(conversation_id), prior_semantic_state=legacy,
+                                             open_loops=loops, constraints=constraints)
+        return DeterministicWorkingState.from_dict(json.loads(row[0]))
 
     def snapshot(self):
         return self.con

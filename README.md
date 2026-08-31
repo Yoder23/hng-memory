@@ -2,7 +2,7 @@
 
 HNG is an evidence-governed memory and control layer for intelligent assistants. It maintains durable working state and episodic experience, evaluates whether retrieved memories are current, independent, trustworthy, and actor-appropriate, and exposes structured evidence to HDC-native or LLM-based reasoning systems.
 
-Version: **0.6.0rc1**
+Version: **0.7.0rc1**
 
 The project no longer treats a custom ANN or document segmenter as its central contribution. FAISS, BM25, dense retrieval, and hybrid RAG are providers. HNG owns the control-plane decisions those systems do not make:
 
@@ -22,12 +22,12 @@ The project no longer treats a custom ANN or document segmenter as its central c
 
 The inherited 0.5.1 release remains preserved in the release artifacts and `research_eval/`. Its independent verdict was **C - Valuable specialized system**.
 
-The 0.6.0rc1 architecture addresses the principal failures:
+The 0.7.0rc1 architecture addresses the principal failures:
 
-| Check | 0.5.1 baseline | 0.6.0rc1 |
+| Check | 0.5.1 baseline | 0.7.0rc1 |
 |---|---:|---:|
 | Original source tests | 30/30 | 30/30 unchanged |
-| Full test suite | 30 | 72 passing |
+| Full test suite | 30 | 94 passing |
 | Canonical adversarial suite | 5/11 | 11/11 |
 | Missing sequence | unsafe support | `INSUFFICIENT_STATE` |
 | Duplicate amplification | unsafe support | one source event counts once |
@@ -37,7 +37,7 @@ The 0.6.0rc1 architecture addresses the principal failures:
 | Default production ANN | HNGIX | FAISS binary, reference fallback |
 | Windows restart/durability path | `fsync` failure | native tests and gauntlets pass |
 
-The 100K FAISS provider benchmark reached 100% exact top-1 agreement at 0.679 ms median. The synthetic end-to-end governed action harness reached 100% task success at 3.99 ms median. These are local Tier A results, not public end-to-end assistant claims.
+The final 100K provider evaluation reached 100% source top-1 for Flat, IVF, and MultiHash; IVF remained the scale default because MultiHash degraded from 0.19 ms to 25.07 ms p50 on correlated leading-bit geometry. The synthetic end-to-end governed action harness reached 100% task success at 3.99 ms median. These are local Tier A results, not public end-to-end assistant claims.
 
 ## Install
 
@@ -132,11 +132,18 @@ Hard gating requires an explicit opt-in. It is not enabled by constructing `HNGM
 
 ## Source layout
 
-The release-candidate package is under `baseline_source/hng-frontier-0.5.1a1/`; the directory name is retained only to preserve the frozen release extraction path. Package metadata and runtime version are 0.6.0rc1. Original source ZIP/wheel artifacts remain unchanged at repository root.
+The release-candidate package is under `baseline_source/hng-frontier-0.5.1a1/`; the directory name is retained only to preserve the frozen release extraction path. Package metadata and runtime version are 0.7.0rc1. Original source ZIP/wheel artifacts remain unchanged at repository root.
 
 `research_eval/` contains the independent baseline. `next_eval/` contains new scripts and raw outputs. Large corpora, vector slabs, runtime databases, and vendored binary dependencies are intentionally excluded from Git, not deleted locally.
 
 ## Evidence discipline
 
-Published prior-art numbers and systems not run locally remain literature evidence. The new architecture has not yet established state-of-the-art performance on LongMemEval-V2, PersonaMem-v2, full QMSum, GovReport, or a common-LLM behavioral benchmark. Those are release gates for a research-paper claim, not claims implied by this RC.
+Published prior-art numbers and systems not run locally remain literature evidence. The closure release executes a governed retrieval evaluation on the first 20 official QMSum test meetings (134 specific queries). BM25 remains stronger than the deterministic HDC hybrid. No LongMemEval-V2, PersonaMem-v2, GovReport, or common-LLM behavioral score is claimed; the release is publication-ready as a documented research system, not state of the art or a production hard gate.
 
+
+
+## 0.7 closure evidence
+
+The closure implementation adds production-provider experiments (FAISS MultiHash and USearch), revision-aware actor policy, complete deterministic working state, first-class belief and consolidation stores, pluggable provenance verification, coherent-generation retries, complete HDC/LLM/RAG/tool adapters, decision traces, component profiling, and process fault injection. See `CLOSURE_AUDIT.md` at the repository root for the requirement-by-requirement result and limitations.
+
+The default remains `faiss-auto` (Flat below 50K, IVF at larger scale). MultiHash and USearch are explicit modes because the measured distributions do not justify automatic selection. Hard action blocking remains opt-in.

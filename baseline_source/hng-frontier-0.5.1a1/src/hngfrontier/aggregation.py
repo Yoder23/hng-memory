@@ -8,6 +8,7 @@ from .governance import (
     AssessedEvidence, Decision, EvidenceAssessment, EvidenceKind, EvidenceRecordV2, ExcludedEvidence, utc_now_iso,
 )
 from .profiles import EffectiveProfile
+from .actor_policy import ActorPolicy, ProfileApplicability
 from .query_planner import QueryPlanV2
 from .semantic import SemanticKind, SemanticState
 
@@ -47,6 +48,7 @@ class TrustPolicy:
         EvidenceKind.ACTION: 0.70,
         EvidenceKind.BELIEF: 0.45,
         EvidenceKind.HYPOTHESIS: 0.25,
+        EvidenceKind.MODEL_INFERENCE: 0.30,
     })
 
     def trust(self, record: EvidenceRecordV2) -> float:
@@ -59,8 +61,9 @@ class TrustPolicy:
 class EvidenceAggregator:
     """Auditable, independence-aware evidence governance; no duplicate voting."""
 
-    def __init__(self, policy: TrustPolicy | None = None):
+    def __init__(self, policy: TrustPolicy | None = None, actor_policy: ActorPolicy | None = None):
         self.policy = policy or TrustPolicy()
+        self.actor_policy = actor_policy or ActorPolicy()
 
     @staticmethod
     def _structured_text(state: SemanticState, name: str) -> str:
@@ -89,6 +92,9 @@ class EvidenceAggregator:
                                           latency_ms=(time.perf_counter() - started) * 1000)
 
         at = now or utc_now_iso()
+        component_ms = {"temporal_governance": 0.0, "perspective_policy": 0.0,
+                        "vector_exact_verification": 0.0, "trust_evaluation": 0.0,
+                        "independence_grouping": 0.0, "evidence_aggregation": 0.0}
         environment = self._structured_text(query, "environment_version")
         policy_version = self._structured_text(query, "policy_version")
         excluded: list[ExcludedEvidence] = []
@@ -103,10 +109,31 @@ class EvidenceAggregator:
             if record.invalidated_at is not None:
                 excluded.append(ExcludedEvidence(record.experience_id, "invalidated"))
                 continue
+            phase = time.perf_counter()
             active, reason = record.validity.active(at=at, environment_version=environment, policy_version=policy_version)
+            component_ms["temporal_governance"] += (time.perf_counter() - phase) * 1000
             if not active:
-                excluded.append(ExcludedEvidence(record.experience_id, reason))
+                excluded.append(ExcludedEvidence(record.experience_id, reason, {"active": False, "reason": reason}))
                 continue
+            phase = time.perf_counter()
+            actor_result = self.actor_policy.evaluate(record, profile)
+            component_ms["perspective_policy"] += (time.perf_counter() - phase) * 1000
+            if actor_result.applicability in {ProfileApplicability.PERSPECTIVE_INCOMPATIBLE, ProfileApplicability.SUPERSEDED}:
+                actor_reason = actor_result.applicability.value
+                if actor_result.reasons and actor_result.reasons[0].startswith("role changed"):
+                    actor_reason = "actor_role_ineligible"
+                elif actor_result.reasons and actor_result.reasons[0].startswith("active authority"):
+                    actor_reason = "authority_ineligible"
+                elif actor_result.reasons and actor_result.reasons[0].startswith("missing permissions"):
+                    actor_reason = "permission_ineligible"
+                excluded.append(ExcludedEvidence(record.experience_id, actor_reason,
+                                                 {"applicability": actor_result.applicability.value,
+                                                  "reasons": list(actor_result.reasons),
+                                                  "fuzzy_scores": dict(actor_result.fuzzy_scores)}))
+                if actor_result.applicability is ProfileApplicability.SUPERSEDED:
+                    saw_superseded = True
+                continue
+            profile_factor = actor_result.confidence_factor
             if profile is not None:
                 if record.tenant_id and record.tenant_id != profile.tenant_id:
                     excluded.append(ExcludedEvidence(record.experience_id, "tenant_mismatch"))
@@ -122,6 +149,7 @@ class EvidenceAggregator:
                         continue
             scores: dict[str, float] = {}
             semantic_failure = None
+            phase = time.perf_counter()
             for head in plan.requirement.required_heads:
                 evidence_value = record.semantics.fields.get(head)
                 query_value = query.fields.get(head)
@@ -136,24 +164,39 @@ class EvidenceAggregator:
                 if score < floor:
                     semantic_failure = f"semantic_floor:{head}:{score:.4f}<{floor:.4f}"
                     break
+            component_ms["vector_exact_verification"] += (time.perf_counter() - phase) * 1000
             if semantic_failure:
-                excluded.append(ExcludedEvidence(record.experience_id, semantic_failure))
+                excluded.append(ExcludedEvidence(record.experience_id, semantic_failure, {"exact_scores": scores}))
                 continue
             for head in plan.requirement.optional_heads:
                 if head in record.semantics.fields and head in query.fields:
                     scores[head] = record.semantics.fields[head].exact_similarity(query.fields[head])
+            phase = time.perf_counter()
             trust = self.policy.trust(record)
             minimum = self.policy.minimum_verified_trust if record.provenance.verified else self.policy.minimum_trust
+            component_ms["trust_evaluation"] += (time.perf_counter() - phase) * 1000
             if trust < minimum:
                 saw_untrusted = True
-                excluded.append(ExcludedEvidence(record.experience_id, f"untrusted:{trust:.3f}<{minimum:.3f}"))
+                excluded.append(ExcludedEvidence(record.experience_id, f"untrusted:{trust:.3f}<{minimum:.3f}",
+                                                 {"trust": trust, "minimum": minimum,
+                                                  "source_type": record.provenance.source_type,
+                                                  "verified": record.provenance.verified,
+                                                  "verification_status": record.provenance.verification_status}))
                 continue
             semantic_quality = sum(scores.values()) / len(scores) if scores else 1.0
-            quality = trust * record.confidence * semantic_quality * min(1.0, abs(record.outcome_score) or 1.0)
+            quality = trust * record.confidence * semantic_quality * profile_factor * min(1.0, abs(record.outcome_score) or 1.0)
             stance = "support" if record.outcome_score > 0 else "challenge" if record.outcome_score < 0 else "neutral"
-            candidates.append(AssessedEvidence(record, scores, quality, stance, record.source_event_id))
+            factors = {"trust": trust, "minimum_trust": minimum, "confidence": record.confidence,
+                       "semantic_quality": semantic_quality, "profile_factor": profile_factor,
+                       "temporal_active": True, "independence_group": record.source_event_id,
+                       "perspective": actor_result.applicability.value,
+                       "perspective_reasons": list(actor_result.reasons),
+                       "fuzzy_scores": dict(actor_result.fuzzy_scores),
+                       "verification_status": record.provenance.verification_status}
+            candidates.append(AssessedEvidence(record, scores, quality, stance, record.source_event_id, factors))
 
         # One underlying source event contributes at most once, regardless of copied rows.
+        phase = time.perf_counter()
         independent: dict[str, AssessedEvidence] = {}
         for candidate in candidates:
             previous = independent.get(candidate.group_key)
@@ -161,6 +204,8 @@ class EvidenceAggregator:
                 independent[candidate.group_key] = candidate
             else:
                 excluded.append(ExcludedEvidence(candidate.record.experience_id, f"duplicate_event:{candidate.group_key}"))
+        component_ms["independence_grouping"] = (time.perf_counter() - phase) * 1000
+        phase = time.perf_counter()
         included = tuple(sorted(independent.values(), key=lambda item: (-item.quality, item.record.experience_id)))
         support = [item for item in included if item.stance == "support"]
         challenge = [item for item in included if item.stance == "challenge"]
@@ -193,7 +238,9 @@ class EvidenceAggregator:
                 category = item.reason.split(":", 1)[0]
                 counts[category] = counts.get(category, 0) + 1
             reasons.append("excluded evidence: " + ", ".join(f"{key}={value}" for key, value in sorted(counts.items())))
+        component_ms["evidence_aggregation"] = (time.perf_counter() - phase) * 1000
         return EvidenceAssessment(
             support_score, challenge_score, conflict_score, len(support), len(challenge), quality,
             decision, tuple(reasons), included, tuple(excluded), latency_ms=(time.perf_counter() - started) * 1000,
+            component_ms=component_ms,
         )

@@ -30,6 +30,7 @@ class EvidenceKind(str, Enum):
     CLAIM = "claim"
     HYPOTHESIS = "hypothesis"
     BELIEF = "belief"
+    MODEL_INFERENCE = "model_inference"
     ACTION = "action"
     OUTCOME = "outcome"
     PROCEDURE = "procedure"
@@ -50,6 +51,11 @@ class EvidenceProvenance:
     observed_at: str = field(default_factory=utc_now_iso)
     actor_id: str = ""
     signature: str = ""
+    verifier: str = ""
+    verification_status: str = "unverified"
+    identity: str = ""
+    signature_reference: str = ""
+    verified_at: str = ""
 
     def __post_init__(self):
         if not 0.0 <= self.trust_score <= 1.0:
@@ -64,6 +70,11 @@ class EvidenceProvenance:
             "observed_at": self.observed_at,
             "actor_id": self.actor_id,
             "signature": self.signature,
+            "verifier": self.verifier,
+            "verification_status": self.verification_status,
+            "identity": self.identity,
+            "signature_reference": self.signature_reference,
+            "verified_at": self.verified_at,
         }
 
 
@@ -138,6 +149,7 @@ class EvidenceRecordV2:
 class ExcludedEvidence:
     experience_id: str
     reason: str
+    factors: Mapping[str, object] = field(default_factory=dict)
 
 
 @dataclass(frozen=True, slots=True)
@@ -147,6 +159,7 @@ class AssessedEvidence:
     quality: float
     stance: str
     group_key: str
+    factors: Mapping[str, object] = field(default_factory=dict)
 
     def as_dict(self) -> dict[str, object]:
         return {
@@ -157,7 +170,19 @@ class AssessedEvidence:
             "semantic_scores": dict(self.semantic_scores),
             "source": self.record.provenance.as_dict(),
             "content": self.record.content,
+            "factors": dict(self.factors),
         }
+
+
+@dataclass(frozen=True, slots=True)
+class CandidateTrace:
+    experience_id: str
+    backend: str
+    approximate_score: float
+
+    def as_dict(self) -> dict[str, object]:
+        return {"experience_id": self.experience_id, "backend": self.backend,
+                "approximate_score": self.approximate_score}
 
 
 @dataclass(frozen=True, slots=True)
@@ -174,6 +199,8 @@ class EvidenceAssessment:
     excluded: tuple[ExcludedEvidence, ...] = ()
     missing_state: tuple[str, ...] = ()
     latency_ms: float = 0.0
+    original_candidates: tuple[CandidateTrace, ...] = ()
+    component_ms: Mapping[str, float] = field(default_factory=dict)
 
     def as_dict(self) -> dict[str, object]:
         return {
@@ -187,8 +214,11 @@ class EvidenceAssessment:
             "reasons": list(self.reasons),
             "missing_state": list(self.missing_state),
             "included": [item.as_dict() for item in self.included],
-            "excluded": [{"experience_id": item.experience_id, "reason": item.reason} for item in self.excluded],
+            "excluded": [{"experience_id": item.experience_id, "reason": item.reason,
+                          "factors": dict(item.factors)} for item in self.excluded],
             "latency_ms": self.latency_ms,
+            "original_candidates": [item.as_dict() for item in self.original_candidates],
+            "component_ms": dict(self.component_ms),
         }
 
 
@@ -203,6 +233,7 @@ class GovernedMemoryFrame:
     open_loops: tuple[str, ...] = ()
     constraints: tuple[str, ...] = ()
     retrieved_candidates: int = 0
+    working: Mapping[str, object] = field(default_factory=dict)
     generated_at: str = field(default_factory=utc_now_iso)
 
     def as_dict(self) -> dict[str, object]:
@@ -215,6 +246,7 @@ class GovernedMemoryFrame:
             "open_loops": list(self.open_loops),
             "constraints": list(self.constraints),
             "retrieved_candidates": self.retrieved_candidates,
+            "working": dict(self.working),
             "assessment": self.assessment.as_dict(),
             "generated_at": self.generated_at,
         }
@@ -222,28 +254,62 @@ class GovernedMemoryFrame:
     def to_json(self) -> str:
         return json.dumps(self.as_dict(), sort_keys=True, separators=(",", ":"))
 
-    def to_prompt_context(self, *, max_chars: int = 12_000) -> str:
-        lines = [
-            "HNG GOVERNED MEMORY FRAME",
-            f"DECISION: {self.assessment.decision.value}",
-            "REASONS:",
-            *(f"- {reason}" for reason in self.assessment.reasons),
-        ]
+    def to_prompt_context(self, *, max_chars: int = 12_000, max_tokens: int | None = None) -> str:
+        """Render bounded context in deterministic safety-first priority order."""
+        if max_tokens is not None:
+            max_chars = min(max_chars, max(64, int(max_tokens) * 4))
+        state = json.dumps(self.current_state.as_storage(), sort_keys=True, separators=(",", ":"))
+        working = dict(self.working)
+        goal = working.get("current_goal")
+        facts = tuple(working.get("current_facts") or ())
+        commitments = tuple(working.get("commitments") or ())
+        lines = ["HNG GOVERNED MEMORY FRAME", "GOVERNANCE DECISION",
+                 f"- decision: {self.assessment.decision.value}",
+                 *(f"- {reason}" for reason in self.assessment.reasons),
+                 "UNCERTAINTY",
+                 f"- conflict_score: {self.assessment.conflict_score:.6f}",
+                 f"- evidence_quality: {self.assessment.evidence_quality:.6f}",
+                 f"- missing_state: {','.join(self.assessment.missing_state) or 'none'}",
+                 "CURRENT STATE", state]
+        if goal is not None:
+            lines.extend(("ACTIVE GOAL", json.dumps(goal, sort_keys=True)))
+        if facts:
+            lines.extend(("CURRENT FACTS", *(f"- {value}" for value in facts)))
         if self.perspective:
-            lines.extend(("KNOWN USER PERSPECTIVE", json.dumps(dict(self.perspective), sort_keys=True)))
+            lines.extend(("EFFECTIVE USER PERSPECTIVE", json.dumps(dict(self.perspective), sort_keys=True)))
         if self.open_loops:
             lines.extend(("OPEN LOOPS", *(f"- {value}" for value in self.open_loops)))
+        if commitments:
+            lines.append("COMMITMENTS")
+            lines.extend(f"- {value.get('text','')} [{value.get('status','open')}]" if isinstance(value, dict)
+                         else f"- {value}" for value in commitments)
         if self.constraints:
             lines.extend(("CONSTRAINTS", *(f"- {value}" for value in self.constraints)))
         supporting = [item for item in self.assessment.included if item.stance == "support"]
         challenging = [item for item in self.assessment.included if item.stance == "challenge"]
         if supporting:
             lines.append("SUPPORTING HISTORICAL EVIDENCE")
-            lines.extend(f"- {item.record.content} [source={item.record.provenance.source_id}]" for item in supporting)
+            lines.extend(f"- {item.record.content} [evidence={item.record.experience_id}]" for item in supporting)
         if challenging:
             lines.append("CONTRADICTING HISTORICAL EVIDENCE")
-            lines.extend(f"- {item.record.content} [source={item.record.provenance.source_id}]" for item in challenging)
+            lines.extend(f"- {item.record.content} [evidence={item.record.experience_id}]" for item in challenging)
         if self.assessment.excluded:
             lines.append("EXCLUDED OR SUPERSEDED EVIDENCE")
             lines.extend(f"- {item.experience_id}: {item.reason}" for item in self.assessment.excluded[:20])
-        return "\n".join(lines)[:max_chars]
+        if self.assessment.included:
+            lines.append("SOURCE PROVENANCE")
+            lines.extend(
+                f"- {item.record.experience_id}: source={item.record.provenance.source_id}; "
+                f"identity={item.record.provenance.identity or 'unknown'}; "
+                f"verification={item.record.provenance.verification_status}; verifier={item.record.provenance.verifier or 'none'}"
+                for item in self.assessment.included
+            )
+        output: list[str] = []
+        used = 0
+        for line in lines:
+            addition = len(line) + (1 if output else 0)
+            if used + addition > max_chars:
+                break
+            output.append(line)
+            used += addition
+        return "\n".join(output)

@@ -1,0 +1,19 @@
+{
+  "ambiguous_followups": 128,
+  "bad_action_decision": "challenge",
+  "bad_action_exact_evidence": 6,
+  "good_action_decision": "support",
+  "good_action_exact_evidence": 6,
+  "historical_episodes": 256,
+  "history_ingest_seconds": 0.13992169999983162,
+  "hng_continuity_ambiguous_accuracy": 1.0,
+  "hng_continuity_median_ms": 3.5771500261034817,
+  "hng_continuity_p95_ms": 5.655509975622408,
+  "hv_dim": 4096,
+  "index_build_seconds": 0.04704380000475794,
+  "retrieval_only_ambiguous_accuracy": 0.0,
+  "retrieval_only_median_ms": 0.9475499973632395,
+  "unknown_action_decision": "insufficient_evidence",
+  "working_state_live_accuracy": 1.0,
+  "working_state_restart_accuracy": 1.0
+}

@@ -1,0 +1,107 @@
+{
+  "architecture": "HNG evidence-governed 0.6.0rc1",
+  "timestamp": "2026-08-31T20:25:41.034182+00:00",
+  "passed": 11,
+  "total": 11,
+  "cases": [
+    {
+      "case": "balanced_evidence",
+      "expected": [
+        "conflicted"
+      ],
+      "actual": "conflicted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "stale_majority",
+      "expected": [
+        "challenge"
+      ],
+      "actual": "challenge",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "poisoned_experiences",
+      "expected": [
+        "untrusted_evidence"
+      ],
+      "actual": "untrusted_evidence",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "duplicate_amplification",
+      "expected": [
+        "insufficient_evidence"
+      ],
+      "actual": "insufficient_evidence",
+      "passed": true,
+      "detail": "independent_support=1"
+    },
+    {
+      "case": "missing_sequence",
+      "expected": [
+        "insufficient_state"
+      ],
+      "actual": "insufficient_state",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "changed_sequence_supplied",
+      "expected": [
+        "insufficient_evidence"
+      ],
+      "actual": "insufficient_evidence",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "unseen_action",
+      "expected": [
+        "insufficient_evidence"
+      ],
+      "actual": "insufficient_evidence",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "close_wrong_action",
+      "expected": [
+        "insufficient_evidence"
+      ],
+      "actual": "insufficient_evidence",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "loose_action_floor",
+      "expected": [
+        "insufficient_evidence"
+      ],
+      "actual": "insufficient_evidence",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "incorrect_uncertain_profile",
+      "expected": [
+        "profile_uncertain"
+      ],
+      "actual": "profile_uncertain",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "authority_inappropriate_precedent",
+      "expected": [
+        "blocked"
+      ],
+      "actual": "blocked",
+      "passed": true,
+      "detail": ""
+    }
+  ]
+}

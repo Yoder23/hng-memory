@@ -1,3 +1,5 @@
+> **Closure note (0.7.0rc1):** This file preserves the 0.6 benchmark narrative. Final provider, public QMSum, assistant, fault, and profiling results are in [RETRIEVAL_PROVIDERS_FINAL.md](RETRIEVAL_PROVIDERS_FINAL.md), [PUBLIC_BENCHMARKS_FINAL.md](PUBLIC_BENCHMARKS_FINAL.md), [REAL_ASSISTANT_ABLATION.md](REAL_ASSISTANT_ABLATION.md), and [CLOSURE_AUDIT.md](CLOSURE_AUDIT.md).
+
 # HNG 0.6.0rc1 benchmarks
 
 All values are local Tier A unless identified as the previously reproduced QMSum Tier B subset. Hardware and dependencies are recorded in `research_eval/ENVIRONMENT.md`.

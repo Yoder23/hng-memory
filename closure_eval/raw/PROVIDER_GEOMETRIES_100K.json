@@ -1,0 +1,200 @@
+{
+  "config": {
+    "n": 100000,
+    "dim": 4096,
+    "queries": 80,
+    "query_noise": 0.02,
+    "threads": 1
+  },
+  "results": [
+    {
+      "geometry": "independent",
+      "mode": "faiss-flat",
+      "recall_source_at_1": 1.0,
+      "recall_source_at_10": 1.0,
+      "registration_seconds": 0.15482970001176,
+      "median_ms": 4.386599990539253,
+      "p95_ms": 5.106059997342527,
+      "p99_ms": 5.724634986836449,
+      "stdev_ms": 0.5097592718253952,
+      "provider": {
+        "provider": "faiss-binary",
+        "configured_mode": "faiss-flat",
+        "built_mode": "faiss-flat",
+        "vectors": 100000,
+        "indexed": 100000,
+        "tail": 0,
+        "build_ms": 100.22490000119433,
+        "queries": 80
+      }
+    },
+    {
+      "geometry": "independent",
+      "mode": "faiss-ivf",
+      "recall_source_at_1": 1.0,
+      "recall_source_at_10": 1.0,
+      "registration_seconds": 0.1680035999743268,
+      "median_ms": 0.5648999940603971,
+      "p95_ms": 0.7632749853655696,
+      "p99_ms": 1.8303580203791827,
+      "stdev_ms": 0.5016406822299523,
+      "provider": {
+        "provider": "faiss-binary",
+        "configured_mode": "faiss-ivf",
+        "built_mode": "faiss-ivf",
+        "vectors": 100000,
+        "indexed": 100000,
+        "tail": 0,
+        "build_ms": 9370.821799966507,
+        "queries": 80
+      }
+    },
+    {
+      "geometry": "independent",
+      "mode": "faiss-multihash",
+      "recall_source_at_1": 1.0,
+      "recall_source_at_10": 1.0,
+      "registration_seconds": 0.1572294000070542,
+      "median_ms": 0.1849499822128564,
+      "p95_ms": 0.2971799927763641,
+      "p99_ms": 1.2221340026007714,
+      "stdev_ms": 0.4661163217027501,
+      "provider": {
+        "provider": "faiss-binary",
+        "configured_mode": "faiss-multihash",
+        "built_mode": "faiss-multihash",
+        "vectors": 100000,
+        "indexed": 100000,
+        "tail": 0,
+        "build_ms": 358.8500999612734,
+        "queries": 80
+      }
+    },
+    {
+      "geometry": "clustered_hard_negatives",
+      "mode": "faiss-flat",
+      "recall_source_at_1": 1.0,
+      "recall_source_at_10": 1.0,
+      "registration_seconds": 0.16575000004377216,
+      "median_ms": 4.451999993762001,
+      "p95_ms": 5.329994953353889,
+      "p99_ms": 6.01690001494715,
+      "stdev_ms": 0.5971215950944735,
+      "provider": {
+        "provider": "faiss-binary",
+        "configured_mode": "faiss-flat",
+        "built_mode": "faiss-flat",
+        "vectors": 100000,
+        "indexed": 100000,
+        "tail": 0,
+        "build_ms": 99.03420001501217,
+        "queries": 80
+      }
+    },
+    {
+      "geometry": "clustered_hard_negatives",
+      "mode": "faiss-ivf",
+      "recall_source_at_1": 1.0,
+      "recall_source_at_10": 1.0,
+      "registration_seconds": 0.1548917000181973,
+      "median_ms": 0.5418499931693077,
+      "p95_ms": 0.7492550474125891,
+      "p99_ms": 1.6172819776693124,
+      "stdev_ms": 0.4560429031697228,
+      "provider": {
+        "provider": "faiss-binary",
+        "configured_mode": "faiss-ivf",
+        "built_mode": "faiss-ivf",
+        "vectors": 100000,
+        "indexed": 100000,
+        "tail": 0,
+        "build_ms": 6659.618899982888,
+        "queries": 80
+      }
+    },
+    {
+      "geometry": "clustered_hard_negatives",
+      "mode": "faiss-multihash",
+      "recall_source_at_1": 1.0,
+      "recall_source_at_10": 1.0,
+      "registration_seconds": 0.15592190000461414,
+      "median_ms": 0.1917000045068562,
+      "p95_ms": 0.2814500388922169,
+      "p99_ms": 1.1694899742724143,
+      "stdev_ms": 0.4334411298704165,
+      "provider": {
+        "provider": "faiss-binary",
+        "configured_mode": "faiss-multihash",
+        "built_mode": "faiss-multihash",
+        "vectors": 100000,
+        "indexed": 100000,
+        "tail": 0,
+        "build_ms": 281.46420000121,
+        "queries": 80
+      }
+    },
+    {
+      "geometry": "correlated",
+      "mode": "faiss-flat",
+      "recall_source_at_1": 1.0,
+      "recall_source_at_10": 1.0,
+      "registration_seconds": 0.14898749999701977,
+      "median_ms": 4.477649985346943,
+      "p95_ms": 5.311200034338981,
+      "p99_ms": 6.384171022800707,
+      "stdev_ms": 0.6568893675620455,
+      "provider": {
+        "provider": "faiss-binary",
+        "configured_mode": "faiss-flat",
+        "built_mode": "faiss-flat",
+        "vectors": 100000,
+        "indexed": 100000,
+        "tail": 0,
+        "build_ms": 97.14739996707067,
+        "queries": 80
+      }
+    },
+    {
+      "geometry": "correlated",
+      "mode": "faiss-ivf",
+      "recall_source_at_1": 1.0,
+      "recall_source_at_10": 1.0,
+      "registration_seconds": 0.1498484000330791,
+      "median_ms": 0.5973500083200634,
+      "p95_ms": 0.8586850133724511,
+      "p99_ms": 1.8028949998551749,
+      "stdev_ms": 0.4717777394396175,
+      "provider": {
+        "provider": "faiss-binary",
+        "configured_mode": "faiss-ivf",
+        "built_mode": "faiss-ivf",
+        "vectors": 100000,
+        "indexed": 100000,
+        "tail": 0,
+        "build_ms": 9328.58720002696,
+        "queries": 80
+      }
+    },
+    {
+      "geometry": "correlated",
+      "mode": "faiss-multihash",
+      "recall_source_at_1": 1.0,
+      "recall_source_at_10": 1.0,
+      "registration_seconds": 0.16198119998443872,
+      "median_ms": 25.072699994780123,
+      "p95_ms": 29.42922498623375,
+      "p99_ms": 33.6162779974984,
+      "stdev_ms": 2.015067332346034,
+      "provider": {
+        "provider": "faiss-binary",
+        "configured_mode": "faiss-multihash",
+        "built_mode": "faiss-multihash",
+        "vectors": 100000,
+        "indexed": 100000,
+        "tail": 0,
+        "build_ms": 110.58919999049976,
+        "queries": 80
+      }
+    }
+  ]
+}

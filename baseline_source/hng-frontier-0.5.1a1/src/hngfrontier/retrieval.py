@@ -75,12 +75,13 @@ class FaissBinaryRetriever:
 
     def __init__(self, *, mode: str = "auto", flat_max_records: int = 50_000,
                  nlist: int | None = None, nprobe: int | None = None, hnsw_m: int = 32,
+                 multihash_maps: int = 8, multihash_bits: int = 16, multihash_flips: int = 1,
                  exact_fallback: bool = True):
         try:
             import faiss  # type: ignore
         except ImportError as exc:
             raise ImportError("FAISS backend requires `pip install hng-frontier[faiss]`") from exc
-        if mode not in {"auto", "faiss-flat", "faiss-ivf", "faiss-hnsw"}:
+        if mode not in {"auto", "faiss-flat", "faiss-ivf", "faiss-hnsw", "faiss-multihash"}:
             raise ValueError("unsupported FAISS binary mode")
         self.faiss = faiss
         self.mode = mode
@@ -88,6 +89,9 @@ class FaissBinaryRetriever:
         self.nlist = nlist
         self.nprobe = nprobe
         self.hnsw_m = int(hnsw_m)
+        self.multihash_maps = int(multihash_maps)
+        self.multihash_bits = int(multihash_bits)
+        self.multihash_flips = int(multihash_flips)
         self.exact_fallback = bool(exact_fallback)
         self._vectors: dict[str, SemanticValue] = {}
         self._index = None
@@ -127,6 +131,10 @@ class FaissBinaryRetriever:
         elif mode == "faiss-hnsw":
             index = self.faiss.IndexBinaryHNSW(dimension, self.hnsw_m)
             index.hnsw.efSearch = 128
+        elif mode == "faiss-multihash":
+            index = self.faiss.IndexBinaryMultiHash(
+                dimension, self.multihash_maps, self.multihash_bits)
+            index.nflip = self.multihash_flips
         else:
             nlist = self.nlist or max(16, min(4096, int(round(math.sqrt(len(self._ids))))))
             quantizer = self.faiss.IndexBinaryFlat(dimension)
@@ -152,7 +160,7 @@ class FaissBinaryRetriever:
         self._queries += 1
         if self._index is None and self._vectors:
             self.rebuild()
-        allowed = set(self._vectors) if allowed_ids is None else allowed_ids
+        allowed = allowed_ids
         result: dict[str, RetrievalHit] = {}
         if self._index is not None and self._ids:
             query = np.ascontiguousarray(np.asarray(value.value, dtype=np.uint8).reshape(1, -1))
@@ -163,13 +171,15 @@ class FaissBinaryRetriever:
                 if position < 0:
                     continue
                 key = self._ids[int(position)]
-                if key in allowed:
+                if allowed is None or key in allowed:
                     result[key] = RetrievalHit(key, 1.0 - float(distance) / dimension, self._built_mode)
-        tail = set() if len(self._indexed) == len(self._vectors) else allowed - self._indexed
+        tail = set() if len(self._indexed) == len(self._vectors) else (
+            set(self._vectors) - self._indexed if allowed is None else allowed - self._indexed)
         for hit in self._exact(value, tail, top_k=top_k):
             result[hit.evidence_id] = hit
-        if self.exact_fallback and len(result) < min(top_k, len(allowed)):
-            for hit in self._exact(value, allowed, top_k=top_k):
+        allowed_count = len(self._vectors) if allowed is None else len(allowed)
+        if self.exact_fallback and len(result) < min(top_k, allowed_count):
+            for hit in self._exact(value, self._vectors if allowed is None else allowed, top_k=top_k):
                 result[hit.evidence_id] = hit
         ranked = sorted(result.values(), key=lambda hit: (-hit.score, hit.evidence_id))
         return tuple(ranked[:top_k])
@@ -273,3 +283,64 @@ class HybridRetriever:
 
     def stats(self) -> Mapping[str, object]:
         return {"provider": "hybrid-rrf", "rrf_k": self.rrf_k, "children": {name: child.stats() for name, child in self.providers.items()}}
+
+
+class USearchBinaryRetriever:
+    """Optional USearch b1/Hamming provider with exact access-safe fallback."""
+
+    def __init__(self, *, connectivity: int = 16, expansion_add: int = 128,
+                 expansion_search: int = 128, exact_fallback: bool = True):
+        try:
+            from usearch.index import Index
+        except ImportError as exc:
+            raise ImportError("USearch backend requires the hng-frontier usearch extra") from exc
+        self.Index = Index; self.connectivity = int(connectivity)
+        self.expansion_add = int(expansion_add); self.expansion_search = int(expansion_search)
+        self.exact_fallback = bool(exact_fallback); self._vectors: dict[str, SemanticValue] = {}
+        self._ids: list[str] = []; self._indexed: set[str] = set()
+        self._index = None; self._queries = 0; self._build_ms = 0.0
+
+    def add(self, evidence_id: str, value: SemanticValue) -> None:
+        if value.kind != SemanticKind.HDC_BINARY: raise TypeError("USearch binary retriever requires HDC_BINARY")
+        if self._vectors and next(iter(self._vectors.values())).dimension != value.dimension:
+            raise ValueError("HDC dimensions must match")
+        self._vectors[str(evidence_id)] = value
+
+    def rebuild(self) -> None:
+        start=time.perf_counter(); self._ids=sorted(self._vectors); self._indexed=set(self._ids)
+        if not self._ids: self._index=None; return
+        dim=int(self._vectors[self._ids[0]].dimension or 0)
+        index=self.Index(ndim=dim,metric="hamming",dtype="b1",connectivity=self.connectivity,
+                         expansion_add=self.expansion_add,expansion_search=self.expansion_search)
+        matrix=np.ascontiguousarray(np.vstack([np.asarray(self._vectors[key].value,dtype=np.uint8) for key in self._ids]))
+        index.add(np.arange(len(self._ids),dtype=np.uint64),matrix); self._index=index
+        self._build_ms=(time.perf_counter()-start)*1000
+
+    def _exact(self,value:SemanticValue,ids:Iterable[str],top_k:int)->list[RetrievalHit]:
+        pairs=sorted(((key,self._vectors[key].exact_similarity(value)) for key in ids if key in self._vectors),
+                     key=lambda pair:(-pair[1],pair[0]))
+        return [RetrievalHit(key,score,"usearch-exact-fallback") for key,score in pairs[:top_k]]
+
+    def search(self,value:SemanticValue,*,top_k:int=10,allowed_ids:set[str]|None=None)->tuple[RetrievalHit,...]:
+        if value.kind != SemanticKind.HDC_BINARY: raise TypeError("USearch binary retriever requires HDC_BINARY")
+        self._queries+=1
+        if self._index is None and self._vectors: self.rebuild()
+        allowed=allowed_ids; result={}
+        if self._index is not None:
+            query=np.ascontiguousarray(np.asarray(value.value,dtype=np.uint8))
+            matches=self._index.search(query,min(len(self._ids),max(64,top_k*8)))
+            for key,distance in zip(np.asarray(matches.keys).reshape(-1),np.asarray(matches.distances).reshape(-1)):
+                evidence_id=self._ids[int(key)]
+                if allowed is None or evidence_id in allowed:
+                    result[evidence_id]=RetrievalHit(evidence_id,1.0-float(distance)/float(value.dimension or 1),"usearch-hamming")
+        tail = set(self._vectors)-self._indexed if allowed is None else allowed-self._indexed
+        for hit in self._exact(value,tail,top_k): result[hit.evidence_id]=hit
+        allowed_count=len(self._vectors) if allowed is None else len(allowed)
+        if self.exact_fallback and len(result)<min(top_k,allowed_count):
+            for hit in self._exact(value,self._vectors if allowed is None else allowed,top_k): result[hit.evidence_id]=hit
+        return tuple(sorted(result.values(),key=lambda hit:(-hit.score,hit.evidence_id))[:top_k])
+
+    def stats(self)->Mapping[str,object]:
+        return {"provider":"usearch-hamming","vectors":len(self._vectors),"indexed":len(self._indexed),
+                "tail":len(self._vectors)-len(self._indexed),"build_ms":self._build_ms,
+                "queries":self._queries,"expansion_search":self.expansion_search}

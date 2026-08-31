@@ -1,4 +1,4 @@
-# HNG Frontier 0.6 architecture
+# HNG Frontier 0.7 closure architecture
 
 ## Thesis
 
@@ -52,7 +52,7 @@ Working state is a keyed SQLite snapshot. Native HDC state is stored exactly and
 
 ## Provider selection
 
-`semantic_backend="faiss-auto"` is the public default. `FaissBinaryRetriever` selects BinaryFlat below 50K records and BinaryIVF above it. Explicit modes are `faiss-flat`, `faiss-ivf`, and `faiss-hnsw`. New writes remain in an exact mutable tail until rebuild. `reference-hng` is the dependency-free exact fallback.
+`semantic_backend="faiss-auto"` is the public default. `FaissBinaryRetriever` selects BinaryFlat below 50K records and BinaryIVF above it. Explicit modes are `faiss-flat`, `faiss-ivf`, `faiss-hnsw`, and `faiss-multihash`; `usearch-hamming` is also available. MultiHash and USearch remain explicit because measured recall/build/distribution tradeoffs do not support an automatic default. New writes remain in an exact mutable tail until rebuild. `reference-hng` is the dependency-free exact fallback.
 
 FAISS proposes candidates only. `EvidenceAggregator` recomputes exact similarity against the original `SemanticValue` for every required head. The centrally configured action floor cannot be weakened by a caller.
 
@@ -104,7 +104,11 @@ Rollout uses `GovernedShadowEvaluator`: shadow, context augmentation, advisory c
 | `control.py` | small `HNGMemory` facade |
 | `integrations.py` | HDC, LLM, and RAG adapters |
 | `document_stack.py` | BM25-first hybrid document retrieval |
-| `consolidation.py` | reversible patterns retaining raw provenance |
+| `beliefs.py` | revisioned beliefs, contradiction, supersession, invalidation |
+| `consolidation_v2.py` | persisted reversible patterns retaining raw provenance |
+| `provenance.py` | external verifier protocol and persisted verification result |
+| `profiling.py` | component latency distributions |
+| `tool_agent.py` | shadow/advisory/opt-in hard-gate tool integration |
 | `shadow_v2.py` | safe staged deployment and behavior logs |
 
 The 0.5 modules remain intact as a compatibility surface. New applications should import `HNGMemory`; old gauntlets continue to use `AssistantMemory`.

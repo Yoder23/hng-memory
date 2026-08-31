@@ -5,6 +5,7 @@ import json
 from typing import Mapping
 
 from .governance import utc_now_iso
+from .semantic import SemanticValue
 
 
 @dataclass(frozen=True, slots=True)
@@ -27,7 +28,8 @@ class PerspectiveField:
 
     def as_dict(self) -> dict[str, object]:
         return {
-            "value": self.value, "confidence": self.confidence, "source": self.source,
+            "value": ({"__semantic_value__": self.value.as_storage()} if isinstance(self.value, SemanticValue) else self.value),
+            "confidence": self.confidence, "source": self.source,
             "user_confirmed": self.user_confirmed, "last_updated": self.last_updated,
             "revision": self.revision, "valid_from": self.valid_from,
         }
@@ -99,25 +101,34 @@ class GovernedProfileStore:
             CREATE TABLE IF NOT EXISTS governed_profile_overrides(
               conversation_id TEXT PRIMARY KEY, user_id TEXT NOT NULL,
               fields_json TEXT NOT NULL, reason TEXT NOT NULL, updated_at TEXT NOT NULL);
+            CREATE TABLE IF NOT EXISTS governed_profile_history(
+              user_id TEXT NOT NULL,revision INTEGER NOT NULL,tenant_id TEXT NOT NULL,
+              fields_json TEXT NOT NULL,updated_at TEXT NOT NULL,PRIMARY KEY(user_id,revision));
             """
         )
         self.con.commit()
 
     @staticmethod
     def _field(payload: Mapping[str, object]) -> PerspectiveField:
-        return PerspectiveField(**dict(payload))
+        values = dict(payload)
+        encoded = values.get("value")
+        if isinstance(encoded, dict) and "__semantic_value__" in encoded:
+            values["value"] = SemanticValue.from_storage(encoded["__semantic_value__"])
+        return PerspectiveField(**values)
 
     def set_profile(self, profile: GovernedProfile) -> GovernedProfile:
         previous = self.profile(profile.user_id)
         revision = 1 if previous is None else previous.revision + 1
         updated = GovernedProfile(profile.user_id, profile.tenant_id, dict(profile.fields), revision, utc_now_iso())
+        fields_json = json.dumps({name: value.as_dict() for name, value in updated.fields.items()}, sort_keys=True)
         self.con.execute(
             """INSERT INTO governed_profiles VALUES(?,?,?,?,?)
                ON CONFLICT(user_id) DO UPDATE SET tenant_id=excluded.tenant_id,revision=excluded.revision,
                fields_json=excluded.fields_json,updated_at=excluded.updated_at""",
-            (updated.user_id, updated.tenant_id, updated.revision,
-             json.dumps({name: value.as_dict() for name, value in updated.fields.items()}, sort_keys=True), updated.updated_at),
+            (updated.user_id, updated.tenant_id, updated.revision, fields_json, updated.updated_at),
         )
+        self.con.execute("INSERT INTO governed_profile_history VALUES(?,?,?,?,?)",
+                         (updated.user_id,updated.revision,updated.tenant_id,fields_json,updated.updated_at))
         self.con.commit()
         return updated
 
@@ -159,6 +170,12 @@ class GovernedProfileStore:
         fields = dict(base.fields)
         fields.update(overrides)
         return EffectiveProfile(base.user_id, base.tenant_id, fields, base.revision, tuple(sorted(overrides)))
+
+    def history(self, user_id: str) -> tuple[GovernedProfile, ...]:
+        rows = self.con.execute("SELECT * FROM governed_profile_history WHERE user_id=? ORDER BY revision", (str(user_id),))
+        return tuple(GovernedProfile(row["user_id"],row["tenant_id"],
+                     {name:self._field(value) for name,value in json.loads(row["fields_json"]).items()},
+                     int(row["revision"]),row["updated_at"]) for row in rows)
 
     def clear(self, conversation_id: str) -> None:
         self.con.execute("DELETE FROM governed_profile_overrides WHERE conversation_id=?", (str(conversation_id),))

@@ -1,10 +1,10 @@
-# Adversarial report: HNG 0.6.0rc1
+# Adversarial report: HNG 0.7.0rc1
 
 ## Result
 
-The canonical independent suite improves from **5/11 on 0.5.1** to **11/11 on 0.6.0rc1**. Expected outcomes were not weakened.
+The canonical independent suite improves from **5/11 on 0.5.1** to **11/11 on 0.7.0rc1**. Expected outcomes were not weakened.
 
-| Scenario | 0.5.1 | 0.6.0rc1 | Mechanism |
+| Scenario | 0.5.1 | 0.7.0rc1 | Mechanism |
 |---|---|---|---|
 | Balanced positive/negative | conflicted | conflicted | independent two-sided aggregation |
 | 100 stale successes, 3 current failures | support | challenge | environment-version prefilter |
@@ -22,7 +22,7 @@ Raw result: `next_eval/raw/ADVERSARIAL_11.json`.
 
 ## Expanded suite
 
-The package now has 72 passing tests: 30 inherited and 42 new governed-memory cases. The new cases cover more than 30 distinct adversarial/integration conditions, including:
+The package now has 94 passing tests: 30 inherited, 42 governed-memory cases, and 22 closure/integration cases. The explicit expanded adversarial selection is 64/64. The new cases cover more than 30 distinct adversarial/integration conditions, including:
 
 - hypotheses, beliefs, and claims repeated by a model;
 - poisoned documents;

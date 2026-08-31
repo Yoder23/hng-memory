@@ -1,0 +1,12 @@
+{
+  "commit": "e4ad55d647f140c136e574fa3e5e523dcb4ae35b",
+  "tag": "v0.6.0rc1",
+  "python": "3.10.0 (tags/v3.10.0:b494f59, Oct  4 2021, 19:00:18) [MSC v.1929 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "modules": {
+    "numpy": "2.2.6",
+    "pytest": "9.0.2",
+    "faiss": "unavailable:ModuleNotFoundError",
+    "usearch": "unavailable:ModuleNotFoundError"
+  }
+}

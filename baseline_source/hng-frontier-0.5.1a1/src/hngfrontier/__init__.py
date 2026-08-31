@@ -14,7 +14,7 @@ from .working import Correction, WorkingItem, WorkingItemSpec, WorkingMemory, Wo
 from .aggregation import EvidenceAggregator, TrustPolicy
 from .control import HNGMemory
 from .governance import (
-    AssessedEvidence, Decision, EvidenceAssessment, EvidenceKind, EvidenceProvenance,
+    AssessedEvidence, CandidateTrace, Decision, EvidenceAssessment, EvidenceKind, EvidenceProvenance,
     EvidenceRecordV2, ExcludedEvidence, GovernedMemoryFrame, TemporalValidity,
 )
 from .integrations import HDCAssistantAdapter, LLMAssistantAdapter, RAGEvidenceAdapter, RetrievedChunk
@@ -22,15 +22,22 @@ from .profiles import EffectiveProfile, GovernedProfile, GovernedProfileStore, P
 from .query_planner import QueryIntent, QueryPlanner, QueryPlanV2
 from .retrieval import (
     BM25Retriever, DenseRetriever, DocumentRetriever, FaissBinaryRetriever, HybridRetriever,
-    LexicalRetriever, ReferenceBinaryRetriever, RetrievalHit, SemanticRetriever,
+    LexicalRetriever, ReferenceBinaryRetriever, RetrievalHit, SemanticRetriever, USearchBinaryRetriever,
 )
 from .semantic import EvidenceRequirement, SemanticKind, SemanticState, SemanticValue
 from .storage_v2 import EvidenceStore, SQLiteEvidenceStore
 from .consolidation import ConsolidatedPattern, EvidenceConsolidator
 from .document_stack import DocumentChunk, DocumentSearchResult, HybridDocumentRetriever
 from .shadow_v2 import DeploymentDecision, DeploymentMode, GovernedShadowEvaluator
+from .actor_policy import ActorPolicy, ActorPolicyResult, ProfileApplicability
+from .beliefs import Belief, BeliefRevision, BeliefStore
+from .consolidation_v2 import PersistedConsolidator, RetentionPolicy
+from .profiling import ComponentProfiler
+from .provenance import CallableProvenanceVerifier, CallerAssertionVerifier, ProvenanceVerifier, StaticIdentityVerifier, VerificationResult
+from .tool_agent import ToolAction, ToolAgentAdapter, ToolAssessment
+from .working_v2 import Commitment, DeterministicWorkingState, ExactTurn, WorkingCorrection
 
-__version__ = "0.6.0rc1"
+__version__ = "0.7.0rc1"
 
 __all__ = [
     "ActionAssessment", "ActionRecommendation", "ActionExpectation", "ActionGateResult", "AssistantContext", "AssistantReadinessEvaluator", "CaseResult", "ContextExpectation", "ContinuityExpectation", "AssistantMemory", "AssistantSemanticAdapter",
@@ -55,4 +62,10 @@ __all__ = [
     "ConsolidatedPattern", "DeploymentDecision", "DeploymentMode", "DocumentChunk",
     "DocumentSearchResult", "EvidenceConsolidator", "GovernedShadowEvaluator",
     "HybridDocumentRetriever",
+    "ActorPolicy", "ActorPolicyResult", "Belief", "BeliefRevision", "BeliefStore",
+    "CallableProvenanceVerifier", "CallerAssertionVerifier", "CandidateTrace", "Commitment", "ComponentProfiler",
+    "DeterministicWorkingState", "ExactTurn", "PersistedConsolidator", "ProfileApplicability",
+    "ProvenanceVerifier", "RetentionPolicy", "StaticIdentityVerifier", "ToolAction",
+    "ToolAgentAdapter", "ToolAssessment", "USearchBinaryRetriever", "VerificationResult",
+    "WorkingCorrection",
 ]

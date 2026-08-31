@@ -121,7 +121,7 @@ def run():
         case("authority_inappropriate_precedent", "blocked", "blocked" if blocked else frame.assessment.decision)
 
     output = {
-        "architecture": "HNG evidence-governed 0.6.0rc1", "timestamp": datetime.now(timezone.utc).isoformat(),
+        "architecture": "HNG evidence-governed 0.7.0rc1", "timestamp": datetime.now(timezone.utc).isoformat(),
         "passed": sum(item["passed"] for item in results), "total": len(results), "cases": results,
     }
     raw = ROOT / "next_eval" / "raw"; raw.mkdir(parents=True, exist_ok=True)

@@ -1,0 +1,148 @@
+{
+  "release": "0.7.0rc1",
+  "gates": {
+    "pytest": {
+      "passed": 92,
+      "total": 92
+    },
+    "expanded_adversarial": {
+      "passed": 62,
+      "total": 62
+    },
+    "canonical_adversarial": {
+      "architecture": "HNG evidence-governed 0.7.0rc1",
+      "timestamp": "2026-08-31T21:44:44.775350+00:00",
+      "passed": 11,
+      "total": 11,
+      "cases": [
+        {
+          "case": "balanced_evidence",
+          "expected": [
+            "conflicted"
+          ],
+          "actual": "conflicted",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "case": "stale_majority",
+          "expected": [
+            "challenge"
+          ],
+          "actual": "challenge",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "case": "poisoned_experiences",
+          "expected": [
+            "untrusted_evidence"
+          ],
+          "actual": "untrusted_evidence",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "case": "duplicate_amplification",
+          "expected": [
+            "insufficient_evidence"
+          ],
+          "actual": "insufficient_evidence",
+          "passed": true,
+          "detail": "independent_support=1"
+        },
+        {
+          "case": "missing_sequence",
+          "expected": [
+            "insufficient_state"
+          ],
+          "actual": "insufficient_state",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "case": "changed_sequence_supplied",
+          "expected": [
+            "insufficient_evidence"
+          ],
+          "actual": "insufficient_evidence",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "case": "unseen_action",
+          "expected": [
+            "insufficient_evidence"
+          ],
+          "actual": "insufficient_evidence",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "case": "close_wrong_action",
+          "expected": [
+            "insufficient_evidence"
+          ],
+          "actual": "insufficient_evidence",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "case": "loose_action_floor",
+          "expected": [
+            "insufficient_evidence"
+          ],
+          "actual": "insufficient_evidence",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "case": "incorrect_uncertain_profile",
+          "expected": [
+            "profile_uncertain"
+          ],
+          "actual": "profile_uncertain",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "case": "authority_inappropriate_precedent",
+          "expected": [
+            "blocked"
+          ],
+          "actual": "blocked",
+          "passed": true,
+          "detail": ""
+        }
+      ]
+    },
+    "fault_injection": {
+      "passed": 10,
+      "total": 10,
+      "cases": {
+        "process_kill_before_commit": true,
+        "kill_after_semantic_vector_write": true,
+        "kill_after_evidence_commit": true,
+        "kill_during_index_rebuild": true,
+        "competing_writer_processes": true,
+        "multiple_reader_processes": true,
+        "profile_revision_during_query": true,
+        "supersession_during_query": true,
+        "invalidation_during_query": true,
+        "index_replacement_during_query": true
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "closure_eval/dist/hng_frontier-0.7.0rc1-py3-none-any.whl",
+      "bytes": 93800,
+      "sha256": "06682c753110565f728ac488e1216255ccc2bc3a7711b0215114794f1e1968a2"
+    },
+    {
+      "path": "closure_eval/dist/hng_frontier-0.7.0rc1.tar.gz",
+      "bytes": 95867,
+      "sha256": "9eea7813baa2a210cffd4e6ab63a1d9f7b6ddf03e77aa7411da6e62e554e274a"
+    }
+  ]
+}
