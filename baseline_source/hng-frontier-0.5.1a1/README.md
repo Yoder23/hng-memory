@@ -1,4 +1,4 @@
-+# HNG Frontier Memory
+# HNG Frontier Memory
 
 HNG is an evidence-governed memory and control layer for intelligent assistants. It maintains durable working state and episodic experience, evaluates whether retrieved memories are current, independent, trustworthy, and actor-appropriate, and exposes structured evidence to HDC-native or LLM-based reasoning systems.
 

@@ -6,6 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "hng-frontier"
 version = "0.6.0rc1"
 description = "Evidence-governed episodic memory and control for HDC, LLM, RAG, and tool-using assistants"
+readme = "README.md"
 requires-python = ">=3.10"
 dependencies = ["numpy>=2.0"]
 

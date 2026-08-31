@@ -4,11 +4,11 @@
   "artifacts": [
     {
       "path": "dist/0.6.0rc1/hng_frontier-0.6.0rc1-py3-none-any.whl",
-      "sha256": "60e1c01541c34c2dd1ac4dabc29c19e7c4bf0eb7bf31ad65ff8ac17f07b5c77e"
+      "sha256": "0fc99182d5883ae353decbce53006c866a5d96cf54bd596c99bbc50636a2db41"
     },
     {
       "path": "dist/0.6.0rc1/hng_frontier-0.6.0rc1.tar.gz",
-      "sha256": "78db302caf7ad91526ad3d13e844f10ac5b4c1c6671d835efb298bd2412efc91"
+      "sha256": "ad53d7d9451e125c44ccee6a0034ba59c0d3c403a896e5b3276374f6f9af8da1"
     }
   ],
   "validation": {
