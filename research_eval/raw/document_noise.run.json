@@ -1,0 +1,16 @@
+{
+  "name": "document_noise",
+  "source": "baseline_source\\hng-frontier-0.5.1a1\\benchmarks\\document_noise_stress.py",
+  "adapted_source": "research_eval\\scripts\\adapted_shipped\\benchmarks\\document_noise_stress.py",
+  "replacements": {
+    "Path('/mnt/data/hng_doc_breakthrough_full_v3')": "Path('C:\\\\Python310\\\\hng-frontier-0.5.1a1-release\\\\hng-frontier-0.5.1a1-release\\\\research_eval\\\\run_data\\\\document_breakthrough')",
+    "Path('/mnt/data/hng-frontier-0.4.0a1/benchmarks/DOCUMENT_NOISE.json')": "Path('C:\\\\Python310\\\\hng-frontier-0.5.1a1-release\\\\hng-frontier-0.5.1a1-release\\\\research_eval\\\\raw\\\\document_noise.results.json')"
+  },
+  "argv": [],
+  "command": [
+    "C:\\Python310\\python.exe",
+    "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\research_eval\\scripts\\adapted_shipped\\benchmarks\\document_noise_stress.py"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 2.700321674346924
+}

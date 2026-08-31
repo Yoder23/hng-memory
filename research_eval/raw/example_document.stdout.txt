@@ -1,0 +1,13 @@
+SEMANTIC SEGMENTS: 3
+SELECTED EVIDENCE: 7
+NATIVE HDC HEADS: ['claim', 'entity', 'evidence', 'role', 'topic']
+
+DOCUMENT MEMORY FRAME document=1
+units=10 semantic_segments=3 selected=7
+SUMMARY EVIDENCE:
+- segment 0: The memory store persists native HDC state.
+  - CAVEAT: A corrupted source state cannot be repaired from a derived index alone.
+- segment 1: Associative routing narrows the semantic candidate set.
+  - CAVEAT: An index may lag new writes while a fresh tail remains exactly searchable.
+- segment 2: Memory is evidence, not a complete safety policy.
+  - CONCLUSION: The system therefore acts as an external semantic evidence plane.

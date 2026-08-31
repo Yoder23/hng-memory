@@ -1,0 +1,453 @@
+{
+  "versions": {
+    "python": "3.10.0 (tags/v3.10.0:b494f59, Oct  4 2021, 19:00:18) [MSC v.1929 64 bit (AMD64)]",
+    "numpy": "2.2.6",
+    "faiss": "1.15.0"
+  },
+  "results": [
+    {
+      "config": {
+        "n": 1000,
+        "dim": 512,
+        "geometry": "independent",
+        "queries": 5,
+        "threads": 1,
+        "query_noise": 0.02
+      },
+      "data_generation_seconds": 0.00023849995341151953,
+      "raw_vector_bytes": 64000,
+      "rss_delta_bytes_end_minus_start": 4902912,
+      "faiss_binary_flat": {
+        "build_seconds": 3.270001616328955e-05,
+        "serialized_bytes": 64033,
+        "samples": 5,
+        "median_ms": 0.010199961252510548,
+        "p95_ms": 0.03281999379396438,
+        "p99_ms": 0.036403993144631386,
+        "recall_at_1": 1.0,
+        "exact_top1_agreement": 1.0
+      },
+      "hng": {
+        "build_seconds": 0.003846100007649511,
+        "index_bytes": 170608,
+        "samples": 5,
+        "median_ms": 0.29630004428327084,
+        "p95_ms": 0.5712400423362851,
+        "p99_ms": 0.6204080441966653,
+        "recall_at_1": 1.0,
+        "recall_at_10_overlap": 1.0,
+        "exact_top1_agreement": 1.0,
+        "median_exact_candidate_fraction": 0.043
+      },
+      "faiss_binary_ivf": {
+        "build_seconds": 0.02820369997061789,
+        "nlist": 256,
+        "serialized_bytes": 90547,
+        "runs": {
+          "1": {
+            "recall_at_1": 1.0,
+            "recall_at_10_overlap": 1.0,
+            "exact_top1_agreement": 1.0,
+            "samples": 5,
+            "median_ms": 0.005699985194951296,
+            "p95_ms": 0.03943996271118521,
+            "p99_ms": 0.04572795471176505,
+            "candidate_fraction_estimate": 0.00390625
+          },
+          "4": {
+            "recall_at_1": 1.0,
+            "recall_at_10_overlap": 1.0,
+            "exact_top1_agreement": 1.0,
+            "samples": 5,
+            "median_ms": 0.005900044925510883,
+            "p95_ms": 0.013180042151361702,
+            "p99_ms": 0.014476052019745111,
+            "candidate_fraction_estimate": 0.015625
+          },
+          "16": {
+            "recall_at_1": 1.0,
+            "recall_at_10_overlap": 1.0,
+            "exact_top1_agreement": 1.0,
+            "samples": 5,
+            "median_ms": 0.009700015652924776,
+            "p95_ms": 0.013400032185018063,
+            "p99_ms": 0.014120046980679035,
+            "candidate_fraction_estimate": 0.0625
+          },
+          "64": {
+            "recall_at_1": 1.0,
+            "recall_at_10_overlap": 1.0,
+            "exact_top1_agreement": 1.0,
+            "samples": 5,
+            "median_ms": 0.017700018361210823,
+            "p95_ms": 0.022519996855407953,
+            "p99_ms": 0.022984000388532877,
+            "candidate_fraction_estimate": 0.25
+          }
+        }
+      },
+      "faiss_binary_hnsw": {
+        "build_seconds": 0.0370948999770917,
+        "runs": {
+          "16": {
+            "recall_at_1": 1.0,
+            "recall_at_10_overlap": 1.0,
+            "exact_top1_agreement": 1.0,
+            "samples": 5,
+            "median_ms": 0.018400023691356182,
+            "p95_ms": 0.08599997963756321,
+            "p99_ms": 0.09919996839016676
+          },
+          "64": {
+            "recall_at_1": 1.0,
+            "recall_at_10_overlap": 1.0,
+            "exact_top1_agreement": 1.0,
+            "samples": 5,
+            "median_ms": 0.04050001734867692,
+            "p95_ms": 0.04955998156219721,
+            "p99_ms": 0.050871982239186764
+          },
+          "128": {
+            "recall_at_1": 1.0,
+            "recall_at_10_overlap": 1.0,
+            "exact_top1_agreement": 1.0,
+            "samples": 5,
+            "median_ms": 0.07139996159821749,
+            "p95_ms": 0.07637999951839447,
+            "p99_ms": 0.07695600390434265
+          }
+        },
+        "serialized_bytes": 335658
+      },
+      "usearch": {
+        "build_seconds": 0.011500699969474226,
+        "index_bytes": 212192,
+        "runs": {
+          "16": {
+            "recall_at_1": 1.0,
+            "recall_at_10_overlap": 1.0,
+            "exact_top1_agreement": 1.0,
+            "samples": 5,
+            "median_ms": 0.030099996365606785,
+            "p95_ms": 0.20767999812960622,
+            "p99_ms": 0.24177598766982555
+          },
+          "64": {
+            "recall_at_1": 1.0,
+            "recall_at_10_overlap": 1.0,
+            "exact_top1_agreement": 1.0,
+            "samples": 5,
+            "median_ms": 0.07559999357908964,
+            "p95_ms": 0.09830001508817077,
+            "p99_ms": 0.10118001839146018
+          },
+          "128": {
+            "recall_at_1": 1.0,
+            "recall_at_10_overlap": 1.0,
+            "exact_top1_agreement": 1.0,
+            "samples": 5,
+            "median_ms": 0.10499998461455107,
+            "p95_ms": 0.12906001647934318,
+            "p99_ms": 0.13301202794536948
+          }
+        }
+      }
+    },
+    {
+      "config": {
+        "n": 1000,
+        "dim": 512,
+        "geometry": "clustered_hard_negatives",
+        "queries": 5,
+        "threads": 1,
+        "query_noise": 0.02
+      },
+      "data_generation_seconds": 0.0023735000286251307,
+      "raw_vector_bytes": 64000,
+      "rss_delta_bytes_end_minus_start": 2248704,
+      "faiss_binary_flat": {
+        "build_seconds": 1.769996015354991e-05,
+        "serialized_bytes": 64033,
+        "samples": 5,
+        "median_ms": 0.007599999662488699,
+        "p95_ms": 0.01702002482488751,
+        "p99_ms": 0.018844029400497675,
+        "recall_at_1": 1.0,
+        "exact_top1_agreement": 1.0
+      },
+      "hng": {
+        "build_seconds": 0.0036190999671816826,
+        "index_bytes": 137512,
+        "samples": 5,
+        "median_ms": 0.4099999787285924,
+        "p95_ms": 0.5450400291010737,
+        "p99_ms": 0.5462080286815763,
+        "recall_at_1": 1.0,
+        "recall_at_10_overlap": 1.0,
+        "exact_top1_agreement": 1.0,
+        "median_exact_candidate_fraction": 0.044
+      },
+      "faiss_binary_ivf": {
+        "build_seconds": 0.04052949999459088,
+        "nlist": 256,
+        "serialized_bytes": 90547,
+        "runs": {
+          "1": {
+            "recall_at_1": 1.0,
+            "recall_at_10_overlap": 1.0,
+            "exact_top1_agreement": 1.0,
+            "samples": 5,
+            "median_ms": 0.004499976057559252,
+            "p95_ms": 0.020620017312467095,
+            "p99_ms": 0.02356401178985834,
+            "candidate_fraction_estimate": 0.00390625
+          },
+          "4": {
+            "recall_at_1": 1.0,
+            "recall_at_10_overlap": 1.0,
+            "exact_top1_agreement": 1.0,
+            "samples": 5,
+            "median_ms": 0.005799985956400633,
+            "p95_ms": 0.014940008986741303,
+            "p99_ms": 0.016588012222200632,
+            "candidate_fraction_estimate": 0.015625
+          },
+          "16": {
+            "recall_at_1": 1.0,
+            "recall_at_10_overlap": 1.0,
+            "exact_top1_agreement": 1.0,
+            "samples": 5,
+            "median_ms": 0.009000010322779417,
+            "p95_ms": 0.012719992082566023,
+            "p99_ms": 0.0131839863024652,
+            "candidate_fraction_estimate": 0.0625
+          },
+          "64": {
+            "recall_at_1": 1.0,
+            "recall_at_10_overlap": 1.0,
+            "exact_top1_agreement": 1.0,
+            "samples": 5,
+            "median_ms": 0.017200014553964138,
+            "p95_ms": 0.02148000057786703,
+            "p99_ms": 0.022215996868908405,
+            "candidate_fraction_estimate": 0.25
+          }
+        }
+      },
+      "faiss_binary_hnsw": {
+        "build_seconds": 0.02701250003883615,
+        "runs": {
+          "16": {
+            "recall_at_1": 1.0,
+            "recall_at_10_overlap": 1.0,
+            "exact_top1_agreement": 1.0,
+            "samples": 5,
+            "median_ms": 0.017300015315413475,
+            "p95_ms": 0.04748001229017972,
+            "p99_ms": 0.053176009096205235
+          },
+          "64": {
+            "recall_at_1": 1.0,
+            "recall_at_10_overlap": 1.0,
+            "exact_top1_agreement": 1.0,
+            "samples": 5,
+            "median_ms": 0.03920000744983554,
+            "p95_ms": 0.048760033678263426,
+            "p99_ms": 0.04999203374609351
+          },
+          "128": {
+            "recall_at_1": 1.0,
+            "recall_at_10_overlap": 1.0,
+            "exact_top1_agreement": 1.0,
+            "samples": 5,
+            "median_ms": 0.06399996345862746,
+            "p95_ms": 0.066620041616261,
+            "p99_ms": 0.06708404514938593
+          }
+        },
+        "serialized_bytes": 335658
+      },
+      "usearch": {
+        "build_seconds": 0.011588000052142888,
+        "index_bytes": 212192,
+        "runs": {
+          "16": {
+            "recall_at_1": 1.0,
+            "recall_at_10_overlap": 1.0,
+            "exact_top1_agreement": 1.0,
+            "samples": 5,
+            "median_ms": 0.028200040105730295,
+            "p95_ms": 0.07026001112535595,
+            "p99_ms": 0.07781202206388116
+          },
+          "64": {
+            "recall_at_1": 1.0,
+            "recall_at_10_overlap": 1.0,
+            "exact_top1_agreement": 1.0,
+            "samples": 5,
+            "median_ms": 0.062000006437301636,
+            "p95_ms": 0.10708001209422945,
+            "p99_ms": 0.11477601481601596
+          },
+          "128": {
+            "recall_at_1": 1.0,
+            "recall_at_10_overlap": 1.0,
+            "exact_top1_agreement": 1.0,
+            "samples": 5,
+            "median_ms": 0.08919998072087765,
+            "p95_ms": 0.09256000630557537,
+            "p99_ms": 0.09283200837671757
+          }
+        }
+      }
+    },
+    {
+      "config": {
+        "n": 1000,
+        "dim": 512,
+        "geometry": "correlated_families",
+        "queries": 5,
+        "threads": 1,
+        "query_noise": 0.02
+      },
+      "data_generation_seconds": 0.0024423000286333263,
+      "raw_vector_bytes": 64000,
+      "rss_delta_bytes_end_minus_start": 2101248,
+      "faiss_binary_flat": {
+        "build_seconds": 1.8799968529492617e-05,
+        "serialized_bytes": 64033,
+        "samples": 5,
+        "median_ms": 0.009100011084228754,
+        "p95_ms": 0.01858003670349717,
+        "p99_ms": 0.02019603969529271,
+        "recall_at_1": 1.0,
+        "exact_top1_agreement": 1.0
+      },
+      "hng": {
+        "build_seconds": 0.0040351999923586845,
+        "index_bytes": 165360,
+        "samples": 5,
+        "median_ms": 0.3353999927639961,
+        "p95_ms": 0.4529999801889062,
+        "p99_ms": 0.46011996921151876,
+        "recall_at_1": 1.0,
+        "recall_at_10_overlap": 1.0,
+        "exact_top1_agreement": 1.0,
+        "median_exact_candidate_fraction": 0.042
+      },
+      "faiss_binary_ivf": {
+        "build_seconds": 0.04441380000207573,
+        "nlist": 256,
+        "serialized_bytes": 90547,
+        "runs": {
+          "1": {
+            "recall_at_1": 1.0,
+            "recall_at_10_overlap": 1.0,
+            "exact_top1_agreement": 1.0,
+            "samples": 5,
+            "median_ms": 0.005100038833916187,
+            "p95_ms": 0.02959998091682791,
+            "p99_ms": 0.03423997899517417,
+            "candidate_fraction_estimate": 0.00390625
+          },
+          "4": {
+            "recall_at_1": 1.0,
+            "recall_at_10_overlap": 1.0,
+            "exact_top1_agreement": 1.0,
+            "samples": 5,
+            "median_ms": 0.005799985956400633,
+            "p95_ms": 0.011819985229521988,
+            "p99_ms": 0.012923984322696924,
+            "candidate_fraction_estimate": 0.015625
+          },
+          "16": {
+            "recall_at_1": 1.0,
+            "recall_at_10_overlap": 1.0,
+            "exact_top1_agreement": 1.0,
+            "samples": 5,
+            "median_ms": 0.009400013368576765,
+            "p95_ms": 0.012420036364346743,
+            "p99_ms": 0.012964040506631136,
+            "candidate_fraction_estimate": 0.0625
+          },
+          "64": {
+            "recall_at_1": 1.0,
+            "recall_at_10_overlap": 1.0,
+            "exact_top1_agreement": 1.0,
+            "samples": 5,
+            "median_ms": 0.016600009985268116,
+            "p95_ms": 0.021819991525262594,
+            "p99_ms": 0.022363995667546988,
+            "candidate_fraction_estimate": 0.25
+          }
+        }
+      },
+      "faiss_binary_hnsw": {
+        "build_seconds": 0.03274459997192025,
+        "runs": {
+          "16": {
+            "recall_at_1": 1.0,
+            "recall_at_10_overlap": 1.0,
+            "exact_top1_agreement": 1.0,
+            "samples": 5,
+            "median_ms": 0.03360002301633358,
+            "p95_ms": 0.08316000457853077,
+            "p99_ms": 0.0905520049855113
+          },
+          "64": {
+            "recall_at_1": 1.0,
+            "recall_at_10_overlap": 1.0,
+            "exact_top1_agreement": 1.0,
+            "samples": 5,
+            "median_ms": 0.037999998312443495,
+            "p95_ms": 0.04258003318682313,
+            "p99_ms": 0.04323603818193078
+          },
+          "128": {
+            "recall_at_1": 1.0,
+            "recall_at_10_overlap": 1.0,
+            "exact_top1_agreement": 1.0,
+            "samples": 5,
+            "median_ms": 0.0727999722585082,
+            "p95_ms": 0.08054003119468689,
+            "p99_ms": 0.08074803277850151
+          }
+        },
+        "serialized_bytes": 335658
+      },
+      "usearch": {
+        "build_seconds": 0.011207900010049343,
+        "index_bytes": 212192,
+        "runs": {
+          "16": {
+            "recall_at_1": 1.0,
+            "recall_at_10_overlap": 1.0,
+            "exact_top1_agreement": 1.0,
+            "samples": 5,
+            "median_ms": 0.038300000596791506,
+            "p95_ms": 0.06663998356088996,
+            "p99_ms": 0.0719679775647819
+          },
+          "64": {
+            "recall_at_1": 1.0,
+            "recall_at_10_overlap": 1.0,
+            "exact_top1_agreement": 1.0,
+            "samples": 5,
+            "median_ms": 0.07080001523718238,
+            "p95_ms": 0.08762000361457467,
+            "p99_ms": 0.09080399991944432
+          },
+          "128": {
+            "recall_at_1": 1.0,
+            "recall_at_10_overlap": 1.0,
+            "exact_top1_agreement": 1.0,
+            "samples": 5,
+            "median_ms": 0.09620003402233124,
+            "p95_ms": 0.1188999623991549,
+            "p99_ms": 0.1228999556042254
+          }
+        }
+      }
+    }
+  ]
+}

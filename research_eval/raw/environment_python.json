@@ -1,0 +1,28 @@
+{
+  "python": "3.10.0 (tags/v3.10.0:b494f59, Oct  4 2021, 19:00:18) [MSC v.1929 64 bit (AMD64)]",
+  "executable": "C:\\Python310\\python.exe",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "compiler": "MSC v.1929 64 bit (AMD64)",
+  "packages": {
+    "numpy": "2.2.6",
+    "pytest": "9.0.2",
+    "scikit-learn": "1.7.1",
+    "scipy": "1.15.3",
+    "pandas": "2.3.3",
+    "psutil": "7.0.0"
+  },
+  "isolated_vendor_packages": {
+    "faiss-cpu": "1.15.0",
+    "usearch": "2.26.1"
+  },
+  "thread_environment": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": null
+  },
+  "artifact_sha256": {
+    "source_zip": "BD01373215D08FE71D038A10110240C9EFB0BE6A1E127614FCBA0F5DAFC5E881",
+    "wheel": "5D86C06F25BAD6F4BD756D94F0B588BD59544A1A322D7C966B0F9D2EC145B61D"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "example_multichat",
+  "source": "baseline_source\\hng-frontier-0.5.1a1\\examples\\synthetic_multichat_demo.py",
+  "adapted_source": "research_eval\\scripts\\adapted_shipped\\examples\\synthetic_multichat_demo.py",
+  "replacements": {
+    "Path(\"/tmp/hng-frontier-multichat-demo\")": "Path('C:\\\\Python310\\\\hng-frontier-0.5.1a1-release\\\\hng-frontier-0.5.1a1-release\\\\research_eval\\\\run_data\\\\example_multichat')"
+  },
+  "argv": [],
+  "command": [
+    "C:\\Python310\\python.exe",
+    "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\research_eval\\scripts\\adapted_shipped\\examples\\synthetic_multichat_demo.py"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 0.40448451042175293
+}

@@ -1,0 +1,6 @@
+CURRENT GOAL: restore stable inference
+OPEN LOOP: determine whether GPU pressure explains latency
+RECALLED CHAT: Chat A: GPU OOM during concurrent inference.
+RECOMMENDED ACTION: reduce-micro-batch
+SAFE ACTION GATE: support
+BAD ACTION GATE: challenge

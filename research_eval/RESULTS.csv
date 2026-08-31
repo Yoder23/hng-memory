@@ -1,0 +1,71 @@
+tier,track,benchmark,method,metric,value,unit,status,note
+A,phase0,assistant_gauntlet_windows_nondurable,HNG,cross_chat_episode_recall,1.0,fraction,executed,Behavioral run with Windows fsync no-op; durability not validated.
+A,phase0,assistant_gauntlet_windows_nondurable,HNG,historical_action_top1,1.0,fraction,executed,Behavioral run with Windows fsync no-op; durability not validated.
+A,phase0,assistant_gauntlet_windows_nondurable,HNG,carried_state_accuracy,1.0,fraction,executed,Behavioral run with Windows fsync no-op; durability not validated.
+A,phase0,assistant_gauntlet_windows_nondurable,HNG,changed_sequence_accuracy,1.0,fraction,executed,Behavioral run with Windows fsync no-op; durability not validated.
+A,phase0,assistant_gauntlet_windows_nondurable,HNG,noise_15pct_accuracy,0.9895833333333334,fraction,executed,Behavioral run with Windows fsync no-op; durability not validated.
+A,phase0,assistant_gauntlet_windows_nondurable,HNG,restart_action_accuracy,1.0,fraction,executed,Behavioral run with Windows fsync no-op; durability not validated.
+A,B,shipped_perspective,HNG full,action_top1,1.0,fraction,executed,
+A,B,shipped_perspective,HNG full,role_violation_rate,0.0,fraction,executed,
+A,B,shipped_perspective,structured_full,action_top1,1.0,fraction,executed,
+A,B,shipped_perspective,hard_metadata_only,action_top1,0.5,fraction,executed,
+A,B,shipped_perspective,ordinary_dictionary,action_top1,1.0,fraction,executed,
+A,B,shipped_perspective,dense_float_multihead,action_top1,1.0,fraction,executed,
+A,C,100000_independent,HNG,top1_agreement,1.0,fraction,executed,
+A,C,100000_independent,HNG,median_latency,1.270200009457767,ms,executed,
+A,C,100000_independent,FAISS BinaryIVF nprobe=16,top1_agreement,1.0,fraction,executed,
+A,C,100000_independent,FAISS BinaryIVF nprobe=16,median_latency,0.29609998455271125,ms,executed,
+A,C,100000_clustered_hard_negatives,HNG,top1_agreement,1.0,fraction,executed,
+A,C,100000_clustered_hard_negatives,HNG,median_latency,1.3242999848444015,ms,executed,
+A,C,100000_clustered_hard_negatives,FAISS BinaryIVF nprobe=1,top1_agreement,1.0,fraction,executed,
+A,C,100000_clustered_hard_negatives,FAISS BinaryIVF nprobe=1,median_latency,0.03179998020641506,ms,executed,
+A,C,100000_correlated_families,HNG,top1_agreement,1.0,fraction,executed,
+A,C,100000_correlated_families,HNG,median_latency,1.4418000355362892,ms,executed,
+A,C,100000_correlated_families,FAISS BinaryIVF nprobe=1,top1_agreement,1.0,fraction,executed,
+A,C,100000_correlated_families,FAISS BinaryIVF nprobe=1,median_latency,0.031200004741549492,ms,executed,
+A,C,1000000_independent,HNG,top1_agreement,1.0,fraction,executed,
+A,C,1000000_independent,HNG,median_latency,6.743949983501807,ms,executed,
+A,C,1000000_independent,FAISS BinaryIVF nprobe=64,top1_agreement,1.0,fraction,executed,
+A,C,1000000_independent,FAISS BinaryIVF nprobe=64,median_latency,2.8577999910339713,ms,executed,
+B,D,QMSum_test_first20,lead,rouge1_f1,0.1328795929387786,fraction,executed,
+B,D,QMSum_test_first20,lead,rouge2_f1,0.024027895010723603,fraction,executed,
+B,D,QMSum_test_first20,lead,rougeL_f1,0.07690207675542494,fraction,executed,
+B,D,QMSum_test_first20,uniform,rouge1_f1,0.14712501701212485,fraction,executed,
+B,D,QMSum_test_first20,uniform,rouge2_f1,0.0274606918964668,fraction,executed,
+B,D,QMSum_test_first20,uniform,rougeL_f1,0.08344284754815436,fraction,executed,
+B,D,QMSum_test_first20,semantic_topk,rouge1_f1,0.1052467996455152,fraction,executed,
+B,D,QMSum_test_first20,semantic_topk,rouge2_f1,0.02898178155146617,fraction,executed,
+B,D,QMSum_test_first20,semantic_topk,rougeL_f1,0.06206281708078278,fraction,executed,
+B,D,QMSum_test_first20,mmr,rouge1_f1,0.13602979107298865,fraction,executed,
+B,D,QMSum_test_first20,mmr,rouge2_f1,0.030878983642438795,fraction,executed,
+B,D,QMSum_test_first20,mmr,rougeL_f1,0.0792327179767098,fraction,executed,
+B,D,QMSum_test_first20,bm25,rouge1_f1,0.11818528048888126,fraction,executed,
+B,D,QMSum_test_first20,bm25,rouge2_f1,0.030078272904815167,fraction,executed,
+B,D,QMSum_test_first20,bm25,rougeL_f1,0.0712257500395744,fraction,executed,
+B,D,QMSum_test_first20,hng,rouge1_f1,0.12158254680983664,fraction,executed,
+B,D,QMSum_test_first20,hng,rouge2_f1,0.02305880878281033,fraction,executed,
+B,D,QMSum_test_first20,hng,rougeL_f1,0.06962314970304626,fraction,executed,
+B,D,QMSum_test_first20,hng,specific_span_hit_at_5,0.417910447761194,fraction,executed,
+B,D,QMSum_test_first20,exact_topic,specific_span_hit_at_5,0.4253731343283582,fraction,executed,
+B,D,QMSum_test_first20,exact_multihead,specific_span_hit_at_5,0.417910447761194,fraction,executed,
+B,D,QMSum_test_first20,bm25,specific_span_hit_at_5,0.6567164179104478,fraction,executed,
+B,D,QMSum_test_first20,hybrid,specific_span_hit_at_5,0.6268656716417911,fraction,executed,
+A,adversarial,synthetic_adversaries,HNG,equal_positive_negative,1,pass_bool,executed,actual=conflicted; expected=conflicted
+A,adversarial,synthetic_adversaries,HNG,overwhelming_old_vs_sparse_recent,0,pass_bool,executed,actual=support; expected=conflicted
+A,adversarial,synthetic_adversaries,HNG,poisoned_experiences,0,pass_bool,executed,actual=support; expected=insufficient_evidence
+A,adversarial,synthetic_adversaries,HNG,duplicate_experience_amplification,0,pass_bool,executed,actual=support; expected=insufficient_evidence
+A,adversarial,synthetic_adversaries,HNG,missing_sequence_head,0,pass_bool,executed,actual=support; expected=insufficient_evidence
+A,adversarial,synthetic_adversaries,HNG,changed_sequence_supplied,1,pass_bool,executed,actual=insufficient_evidence; expected=insufficient_evidence
+A,adversarial,synthetic_adversaries,HNG,unseen_action,1,pass_bool,executed,actual=insufficient_evidence; expected=insufficient_evidence
+A,adversarial,synthetic_adversaries,HNG,close_wrong_action_strict_floor,1,pass_bool,executed,actual=insufficient_evidence; expected=insufficient_evidence
+A,adversarial,synthetic_adversaries,HNG,close_wrong_action_loose_floor,0,pass_bool,executed,actual=support; expected=insufficient_evidence
+A,adversarial,synthetic_adversaries,HNG,incorrect_authoritative_profile,0,pass_bool,executed,actual=support; expected=insufficient_evidence
+A,adversarial,synthetic_adversaries,HNG,authority_inappropriate_precedent,1,pass_bool,executed,actual=blocked; expected=blocked
+A,C,10000000_independent,HNG,top1_agreement,1.0,fraction,executed,
+A,C,10000000_independent,HNG,median_ms,45.882249978603795,ms,executed,
+A,C,10000000_independent,HNG,p95_ms,46.656990025076084,ms,executed,
+A,C,10000000_independent,HNG,p99_ms,46.7418780218577,ms,executed,
+A,C,10000000_independent,FAISS BinaryIVF nprobe=16,top1_agreement,1.0,fraction,executed,
+A,C,10000000_independent,FAISS BinaryIVF nprobe=16,median_ms,28.01420001196675,ms,executed,
+A,C,10000000_independent,FAISS BinaryIVF nprobe=16,p95_ms,28.972025014809333,ms,executed,
+A,C,10000000_independent,FAISS BinaryIVF nprobe=16,p99_ms,28.986965023796074,ms,executed,

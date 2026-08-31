@@ -1,0 +1,16 @@
+{
+  "name": "perspective_gauntlet",
+  "source": "baseline_source\\hng-frontier-0.5.1a1\\benchmarks\\perspective_gauntlet.py",
+  "adapted_source": "research_eval\\scripts\\adapted_shipped\\benchmarks\\perspective_gauntlet.py",
+  "replacements": {
+    "Path('/tmp/hng-perspective-gauntlet')": "Path('C:\\\\Python310\\\\hng-frontier-0.5.1a1-release\\\\hng-frontier-0.5.1a1-release\\\\research_eval\\\\run_data\\\\perspective_gauntlet')",
+    "Path(__file__).with_name('PERSPECTIVE_GAUNTLET.json')": "Path('C:\\\\Python310\\\\hng-frontier-0.5.1a1-release\\\\hng-frontier-0.5.1a1-release\\\\research_eval\\\\raw\\\\perspective_gauntlet.results.json')"
+  },
+  "argv": [],
+  "command": [
+    "C:\\Python310\\python.exe",
+    "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\research_eval\\scripts\\adapted_shipped\\benchmarks\\perspective_gauntlet.py"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 13.998461484909058
+}

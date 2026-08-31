@@ -1,0 +1,31 @@
+{
+  "config": {
+    "units": 8960,
+    "themes": 128,
+    "budget": 140,
+    "hv_dim": 2048
+  },
+  "ingest_seconds": 2.041283968999778,
+  "hng": {
+    "theme_coverage": 1.0,
+    "key_recall": 1.0,
+    "priority_recall": 1.0,
+    "selected": 140,
+    "ms": 440.397385000324,
+    "segments": 128
+  },
+  "rag_topk": {
+    "theme_coverage": 0.0234375,
+    "key_recall": 0.015625,
+    "priority_recall": 0.0,
+    "selected": 140,
+    "ms": 0.1683380000940815
+  },
+  "rag_mmr": {
+    "theme_coverage": 1.0,
+    "key_recall": 0.6171875,
+    "priority_recall": 1.0,
+    "selected": 140,
+    "ms": 96.23508699996819
+  }
+}

@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hng-frontier"
+version = "0.6.0rc1"
+description = "Evidence-governed episodic memory and control for HDC, LLM, RAG, and tool-using assistants"
+requires-python = ">=3.10"
+dependencies = ["numpy>=2.0"]
+
+[project.optional-dependencies]
+faiss = ["faiss-cpu>=1.8"]
+dev = ["pytest>=8", "build>=1.2"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

@@ -1,0 +1,109 @@
+{
+  "action_gate": {
+    "cases_per_class": 160,
+    "correct_action_support_rate": 1.0,
+    "known_bad_challenge_rate": 1.0,
+    "median_ms": 4.694300005212426,
+    "p95_ms": 13.681614981032908,
+    "unseen_action_insufficient_rate": 1.0
+  },
+  "build": {
+    "history_ingest_seconds": 12.695514299964998,
+    "history_records": 20480,
+    "index_build_seconds": 1.0815865999902599
+  },
+  "config": {
+    "action_library": 16384,
+    "actions_per_family": 16,
+    "contexts": 1024,
+    "heads": [
+      "state",
+      "goal",
+      "entity",
+      "sequence",
+      "action",
+      "next_state"
+    ],
+    "history_records_per_context": 20,
+    "hv_dim": 4096,
+    "index_options": {
+      "bits_per_table": 12,
+      "sketch_bits": 256,
+      "table_count": 12
+    },
+    "queries": 320
+  },
+  "cross_chat_and_action_routing": {
+    "action_library_size": 16384,
+    "cross_chat_episode_recall": 1.0,
+    "cross_chat_recall_median_ms": 3.7215000193100423,
+    "cross_chat_recall_p95_ms": 4.187869987799786,
+    "episode_scope_contamination_count": 0,
+    "full_library_hdc_top1": 0.053125,
+    "full_library_hdc_top16": 1.0,
+    "hng_action_median_ms": 3.62925001536496,
+    "hng_action_p95_ms": 4.152269984479063,
+    "hng_action_top1": 1.0,
+    "hng_action_top5": 1.0,
+    "hng_median_recommendations": 8.0,
+    "library_scan_median_ms": 14.614099985919893,
+    "median_exact_fraction": 0.0009765625
+  },
+  "long_chat": {
+    "last_1000_median_ms": 0.19940000493079424,
+    "median_append_ms": 0.19729998894035816,
+    "p95_append_ms": 0.3364000003784895,
+    "recent_context_records": 8,
+    "restart_replay_ms": 624.9817000352778,
+    "state_correct_after_restart": true,
+    "total_seconds": 7.708483999944292,
+    "turns": 20000,
+    "turns_per_second": 2594.5438817988775
+  },
+  "multi_turn": {
+    "ambiguous_retrieval_only_accuracy": 0.0,
+    "chats": 256,
+    "hng_ambiguous_median_ms": 59.69304998870939,
+    "hng_ambiguous_p95_ms": 67.96047501848079,
+    "hng_carried_state_accuracy": 1.0,
+    "retrieval_only_median_ms": 18.304600002011284,
+    "working_state_live_accuracy": 1.0
+  },
+  "noise_stress": {
+    "10pct": {
+      "accuracy": 1.0,
+      "median_ms": 3.59804998151958,
+      "p95_ms": 4.21820001793094
+    },
+    "15pct": {
+      "accuracy": 0.9895833333333334,
+      "median_ms": 3.7104499933775514,
+      "p95_ms": 4.270474993973039
+    },
+    "2pct": {
+      "accuracy": 1.0,
+      "median_ms": 3.730850003194064,
+      "p95_ms": 4.169025021838024
+    },
+    "5pct": {
+      "accuracy": 1.0,
+      "median_ms": 3.706000017700717,
+      "p95_ms": 4.206550001981668
+    }
+  },
+  "rebuild_after_tail_seconds": 1.1305276000057347,
+  "restart": {
+    "cross_chat_action_accuracy": 1.0,
+    "semantic_carry_available": 1.0,
+    "working_state_accuracy": 1.0
+  },
+  "stale_index_temporal_conflict": {
+    "median_exact_fraction_with_tail": 0.022354694485842028,
+    "queries": 96,
+    "sequence_aware_indexed_accuracy": 1.0,
+    "sequence_aware_new_action_accuracy": 1.0,
+    "stale_index_median_ms": 5.412500031525269,
+    "unindexed_tail_records": 992,
+    "without_sequence_obsolete_action_rate": 1.0
+  }
+}

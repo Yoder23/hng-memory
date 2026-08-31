@@ -1,0 +1,26 @@
+{
+  "2pct": {
+    "recall_at5": 1.0,
+    "median_ms": 2.093199989758432,
+    "p95_ms": 3.3858350070659067,
+    "median_exact_candidates": 10.0
+  },
+  "5pct": {
+    "recall_at5": 1.0,
+    "median_ms": 2.025499998126179,
+    "p95_ms": 3.2665100035956125,
+    "median_exact_candidates": 10.0
+  },
+  "10pct": {
+    "recall_at5": 1.0,
+    "median_ms": 2.0215000258758664,
+    "p95_ms": 3.5326600191183384,
+    "median_exact_candidates": 10.0
+  },
+  "15pct": {
+    "recall_at5": 1.0,
+    "median_ms": 1.9974499882664531,
+    "p95_ms": 4.290655002114361,
+    "median_exact_candidates": 10.0
+  }
+}

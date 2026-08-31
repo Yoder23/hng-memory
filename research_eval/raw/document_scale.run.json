@@ -1,0 +1,16 @@
+{
+  "name": "document_scale",
+  "source": "baseline_source\\hng-frontier-0.5.1a1\\benchmarks\\document_scale.py",
+  "adapted_source": "research_eval\\scripts\\adapted_shipped\\benchmarks\\document_scale.py",
+  "replacements": {
+    "Path('/mnt/data/hng_doc_scale')": "Path('C:\\\\Python310\\\\hng-frontier-0.5.1a1-release\\\\hng-frontier-0.5.1a1-release\\\\research_eval\\\\run_data\\\\document_scale')",
+    "Path('/mnt/data/hng-frontier-0.4.0a1/benchmarks/DOCUMENT_SCALE.json')": "Path('C:\\\\Python310\\\\hng-frontier-0.5.1a1-release\\\\hng-frontier-0.5.1a1-release\\\\research_eval\\\\raw\\\\document_scale.results.json')"
+  },
+  "argv": [],
+  "command": [
+    "C:\\Python310\\python.exe",
+    "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\research_eval\\scripts\\adapted_shipped\\benchmarks\\document_scale.py"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 7.248502254486084
+}

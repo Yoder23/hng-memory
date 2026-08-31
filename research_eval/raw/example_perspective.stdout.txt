@@ -1,0 +1,5 @@
+SAME QUERY: How should we address the database latency problem?
+ALEX / IC: profile-query-and-fix-index
+MORGAN / MANAGER: reprioritize-team-reliability-work
+ALEX / ACTING MANAGER: reprioritize-team-reliability-work
+ALEX PROFILE: {'user_id': 'alex', 'tenant_id': 'acme', 'role': 'engineering-manager', 'authority_level': 3, 'abstraction_level': 2, 'expertise': {'backend': 0.9}, 'responsibilities': ['acting team lead'], 'priorities': ['delivery'], 'profile_revision': 1, 'active_override': True, 'extra': {}}

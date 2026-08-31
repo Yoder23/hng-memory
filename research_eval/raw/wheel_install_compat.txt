@@ -1,0 +1,4 @@
+Command: C:\Python310\python.exe -m pip install --no-deps --ignore-requires-python --target research_eval\wheel_install_compat hng_frontier-0.5.1a1-py3-none-any.whl
+Exit: 0
+Installed version: 0.5.1a1
+Import path: research_eval\wheel_install_compat\hngfrontier\__init__.py

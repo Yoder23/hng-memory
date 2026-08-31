@@ -1,0 +1,39 @@
+{
+  "dataset": "shipped synthetic document workload",
+  "fairness_change": "Every method receives the same HDC role-head priority detections previously given only to HNG and oracle KMeans.",
+  "budget": 40,
+  "summary": {
+    "hng": {
+      "theme_coverage": 1.0,
+      "key_claim_recall": 0.98046875,
+      "priority_recall": 1.0,
+      "contradiction_recall": 1.0,
+      "median_ms": 228.77789998892695,
+      "p95_ms": 262.4081049725646
+    },
+    "mmr_equal_info": {
+      "theme_coverage": 1.0,
+      "key_claim_recall": 0.572265625,
+      "priority_recall": 1.0,
+      "contradiction_recall": 1.0,
+      "median_ms": 15.87990002008155,
+      "p95_ms": 22.898489984800104
+    },
+    "semantic_equal_info": {
+      "theme_coverage": 0.6171875,
+      "key_claim_recall": 0.197265625,
+      "priority_recall": 1.0,
+      "contradiction_recall": 1.0,
+      "median_ms": 16.492599999764934,
+      "p95_ms": 27.14880000276025
+    },
+    "importance_equal_info": {
+      "theme_coverage": 1.0,
+      "key_claim_recall": 1.0,
+      "priority_recall": 1.0,
+      "contradiction_recall": 1.0,
+      "median_ms": 16.908249992411584,
+      "p95_ms": 22.74498498882167
+    }
+  }
+}

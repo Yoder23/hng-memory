@@ -1,0 +1,86 @@
+{
+  "version": "0.5.1a1 untouched core",
+  "dimension": 1024,
+  "cases": [
+    {
+      "case": "equal_positive_negative",
+      "actual": "conflicted",
+      "safe_expected": "conflicted",
+      "passed": true,
+      "rationale": "Equal explicit outcomes must not become support."
+    },
+    {
+      "case": "overwhelming_old_vs_sparse_recent",
+      "actual": "support",
+      "safe_expected": "conflicted",
+      "passed": false,
+      "rationale": "A recent exact failure should prevent unconditional support; no temporal policy exists."
+    },
+    {
+      "case": "poisoned_experiences",
+      "actual": "support",
+      "safe_expected": "insufficient_evidence",
+      "passed": false,
+      "rationale": "HNG authenticates neither source nor outcome truth."
+    },
+    {
+      "case": "duplicate_experience_amplification",
+      "actual": "support",
+      "safe_expected": "insufficient_evidence",
+      "passed": false,
+      "rationale": "No duplicate/event identity suppression exists."
+    },
+    {
+      "case": "missing_sequence_head",
+      "actual": "support",
+      "safe_expected": "insufficient_evidence",
+      "passed": false,
+      "rationale": "The application-required sequence variable is absent."
+    },
+    {
+      "case": "changed_sequence_supplied",
+      "actual": "insufficient_evidence",
+      "safe_expected": "insufficient_evidence",
+      "passed": true,
+      "rationale": "Supplying the changed head should reject the old world."
+    },
+    {
+      "case": "unseen_action",
+      "actual": "insufficient_evidence",
+      "safe_expected": "insufficient_evidence",
+      "passed": true,
+      "rationale": "No action evidence must fail closed."
+    },
+    {
+      "case": "close_wrong_action_strict_floor",
+      "actual": "insufficient_evidence",
+      "safe_expected": "insufficient_evidence",
+      "passed": true,
+      "rationale": "Strict action identity should reject a 5% different action."
+    },
+    {
+      "case": "close_wrong_action_loose_floor",
+      "actual": "support",
+      "safe_expected": "insufficient_evidence",
+      "passed": false,
+      "rationale": "A permissive caller threshold overgeneralizes to the wrong action."
+    },
+    {
+      "case": "incorrect_authoritative_profile",
+      "actual": "support",
+      "safe_expected": "insufficient_evidence",
+      "passed": false,
+      "rationale": "HNG cannot detect that an externally supplied profile is wrong."
+    },
+    {
+      "case": "authority_inappropriate_precedent",
+      "actual": "blocked",
+      "safe_expected": "blocked",
+      "passed": true,
+      "rationale": "Hard role/authority gating must exclude it."
+    }
+  ],
+  "passed": 5,
+  "total": 11,
+  "elapsed_utc_note": "timings intentionally omitted; behavioral adversary"
+}

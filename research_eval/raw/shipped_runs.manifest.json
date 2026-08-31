@@ -1,0 +1,188 @@
+{
+  "runner_python": "3.10.0 (tags/v3.10.0:b494f59, Oct  4 2021, 19:00:18) [MSC v.1929 64 bit (AMD64)]",
+  "results": [
+    {
+      "name": "example_multichat",
+      "source": "baseline_source\\hng-frontier-0.5.1a1\\examples\\synthetic_multichat_demo.py",
+      "adapted_source": "research_eval\\scripts\\adapted_shipped\\examples\\synthetic_multichat_demo.py",
+      "replacements": {
+        "Path(\"/tmp/hng-frontier-multichat-demo\")": "Path('C:\\\\Python310\\\\hng-frontier-0.5.1a1-release\\\\hng-frontier-0.5.1a1-release\\\\research_eval\\\\run_data\\\\example_multichat')"
+      },
+      "argv": [],
+      "command": [
+        "C:\\Python310\\python.exe",
+        "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\research_eval\\scripts\\adapted_shipped\\examples\\synthetic_multichat_demo.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.40448451042175293
+    },
+    {
+      "name": "example_document",
+      "source": "baseline_source\\hng-frontier-0.5.1a1\\examples\\synthetic_document_demo.py",
+      "adapted_source": "research_eval\\scripts\\adapted_shipped\\examples\\synthetic_document_demo.py",
+      "replacements": {
+        "Path(\"/tmp/hng-frontier-document-demo\")": "Path('C:\\\\Python310\\\\hng-frontier-0.5.1a1-release\\\\hng-frontier-0.5.1a1-release\\\\research_eval\\\\run_data\\\\example_document')"
+      },
+      "argv": [],
+      "command": [
+        "C:\\Python310\\python.exe",
+        "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\research_eval\\scripts\\adapted_shipped\\examples\\synthetic_document_demo.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.3930337429046631
+    },
+    {
+      "name": "example_perspective",
+      "source": "baseline_source\\hng-frontier-0.5.1a1\\examples\\perspective_digital_twin_demo.py",
+      "adapted_source": "research_eval\\scripts\\adapted_shipped\\examples\\perspective_digital_twin_demo.py",
+      "replacements": {
+        "Path('/tmp/hng-perspective-demo')": "Path('C:\\\\Python310\\\\hng-frontier-0.5.1a1-release\\\\hng-frontier-0.5.1a1-release\\\\research_eval\\\\run_data\\\\example_perspective')"
+      },
+      "argv": [],
+      "command": [
+        "C:\\Python310\\python.exe",
+        "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\research_eval\\scripts\\adapted_shipped\\examples\\perspective_digital_twin_demo.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.46780848503112793
+    },
+    {
+      "name": "perspective_gauntlet",
+      "source": "baseline_source\\hng-frontier-0.5.1a1\\benchmarks\\perspective_gauntlet.py",
+      "adapted_source": "research_eval\\scripts\\adapted_shipped\\benchmarks\\perspective_gauntlet.py",
+      "replacements": {
+        "Path('/tmp/hng-perspective-gauntlet')": "Path('C:\\\\Python310\\\\hng-frontier-0.5.1a1-release\\\\hng-frontier-0.5.1a1-release\\\\research_eval\\\\run_data\\\\perspective_gauntlet')",
+        "Path(__file__).with_name('PERSPECTIVE_GAUNTLET.json')": "Path('C:\\\\Python310\\\\hng-frontier-0.5.1a1-release\\\\hng-frontier-0.5.1a1-release\\\\research_eval\\\\raw\\\\perspective_gauntlet.results.json')"
+      },
+      "argv": [],
+      "command": [
+        "C:\\Python310\\python.exe",
+        "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\research_eval\\scripts\\adapted_shipped\\benchmarks\\perspective_gauntlet.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 13.998461484909058
+    },
+    {
+      "name": "document_breakthrough",
+      "source": "baseline_source\\hng-frontier-0.5.1a1\\benchmarks\\document_breakthrough.py",
+      "adapted_source": "research_eval\\scripts\\adapted_shipped\\benchmarks\\document_breakthrough.py",
+      "replacements": {},
+      "argv": [
+        "--root",
+        "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\research_eval\\run_data\\document_breakthrough",
+        "--out",
+        "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\research_eval\\raw\\document_breakthrough.results.json"
+      ],
+      "command": [
+        "C:\\Python310\\python.exe",
+        "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\research_eval\\scripts\\adapted_shipped\\benchmarks\\document_breakthrough.py",
+        "--root",
+        "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\research_eval\\run_data\\document_breakthrough",
+        "--out",
+        "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\research_eval\\raw\\document_breakthrough.results.json"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 14.635818719863892
+    },
+    {
+      "name": "assistant_ablation",
+      "source": "baseline_source\\hng-frontier-0.5.1a1\\benchmarks\\assistant_breakthrough_ablation.py",
+      "adapted_source": "research_eval\\scripts\\adapted_shipped\\benchmarks\\assistant_breakthrough_ablation.py",
+      "replacements": {
+        "Path('/mnt/data/hng_assistant_ablation_04')": "Path('C:\\\\Python310\\\\hng-frontier-0.5.1a1-release\\\\hng-frontier-0.5.1a1-release\\\\research_eval\\\\run_data\\\\assistant_ablation')",
+        "Path('/mnt/data/hng-frontier-0.4.0a1/benchmarks/ASSISTANT_ABLATION.json')": "Path('C:\\\\Python310\\\\hng-frontier-0.5.1a1-release\\\\hng-frontier-0.5.1a1-release\\\\research_eval\\\\raw\\\\assistant_ablation.results.json')"
+      },
+      "argv": [],
+      "command": [
+        "C:\\Python310\\python.exe",
+        "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\research_eval\\scripts\\adapted_shipped\\benchmarks\\assistant_breakthrough_ablation.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 2.454555034637451
+    },
+    {
+      "name": "assistant_readiness",
+      "source": "baseline_source\\hng-frontier-0.5.1a1\\benchmarks\\assistant_readiness.py",
+      "adapted_source": "research_eval\\scripts\\adapted_shipped\\benchmarks\\assistant_readiness.py",
+      "replacements": {
+        "Path('/mnt/data/hng_frontier_03_bench')": "Path('C:\\\\Python310\\\\hng-frontier-0.5.1a1-release\\\\hng-frontier-0.5.1a1-release\\\\research_eval\\\\run_data\\\\assistant_readiness')",
+        "Path('/mnt/data/hng-frontier-0.3.0a1/benchmarks/ASSISTANT_READINESS.json')": "Path('C:\\\\Python310\\\\hng-frontier-0.5.1a1-release\\\\hng-frontier-0.5.1a1-release\\\\research_eval\\\\raw\\\\assistant_readiness.results.json')"
+      },
+      "argv": [],
+      "command": [
+        "C:\\Python310\\python.exe",
+        "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\research_eval\\scripts\\adapted_shipped\\benchmarks\\assistant_readiness.py"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 1.587052822113037
+    },
+    {
+      "name": "turn_stream",
+      "source": "baseline_source\\hng-frontier-0.5.1a1\\benchmarks\\turn_stream.py",
+      "adapted_source": "research_eval\\scripts\\adapted_shipped\\benchmarks\\turn_stream.py",
+      "replacements": {
+        "Path('/mnt/data/hng_frontier_03_stream')": "Path('C:\\\\Python310\\\\hng-frontier-0.5.1a1-release\\\\hng-frontier-0.5.1a1-release\\\\research_eval\\\\run_data\\\\turn_stream')",
+        "Path('/mnt/data/hng-frontier-0.3.0a1/benchmarks/TURN_STREAM.json')": "Path('C:\\\\Python310\\\\hng-frontier-0.5.1a1-release\\\\hng-frontier-0.5.1a1-release\\\\research_eval\\\\raw\\\\turn_stream.results.json')"
+      },
+      "argv": [],
+      "command": [
+        "C:\\Python310\\python.exe",
+        "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\research_eval\\scripts\\adapted_shipped\\benchmarks\\turn_stream.py"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 2.3299927711486816
+    },
+    {
+      "name": "document_noise",
+      "source": "baseline_source\\hng-frontier-0.5.1a1\\benchmarks\\document_noise_stress.py",
+      "adapted_source": "research_eval\\scripts\\adapted_shipped\\benchmarks\\document_noise_stress.py",
+      "replacements": {
+        "Path('/mnt/data/hng_doc_breakthrough_full_v3')": "Path('C:\\\\Python310\\\\hng-frontier-0.5.1a1-release\\\\hng-frontier-0.5.1a1-release\\\\research_eval\\\\run_data\\\\document_breakthrough')",
+        "Path('/mnt/data/hng-frontier-0.4.0a1/benchmarks/DOCUMENT_NOISE.json')": "Path('C:\\\\Python310\\\\hng-frontier-0.5.1a1-release\\\\hng-frontier-0.5.1a1-release\\\\research_eval\\\\raw\\\\document_noise.results.json')"
+      },
+      "argv": [],
+      "command": [
+        "C:\\Python310\\python.exe",
+        "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\research_eval\\scripts\\adapted_shipped\\benchmarks\\document_noise_stress.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 2.700321674346924
+    },
+    {
+      "name": "document_scale",
+      "source": "baseline_source\\hng-frontier-0.5.1a1\\benchmarks\\document_scale.py",
+      "adapted_source": "research_eval\\scripts\\adapted_shipped\\benchmarks\\document_scale.py",
+      "replacements": {
+        "Path('/mnt/data/hng_doc_scale')": "Path('C:\\\\Python310\\\\hng-frontier-0.5.1a1-release\\\\hng-frontier-0.5.1a1-release\\\\research_eval\\\\run_data\\\\document_scale')",
+        "Path('/mnt/data/hng-frontier-0.4.0a1/benchmarks/DOCUMENT_SCALE.json')": "Path('C:\\\\Python310\\\\hng-frontier-0.5.1a1-release\\\\hng-frontier-0.5.1a1-release\\\\research_eval\\\\raw\\\\document_scale.results.json')"
+      },
+      "argv": [],
+      "command": [
+        "C:\\Python310\\python.exe",
+        "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\research_eval\\scripts\\adapted_shipped\\benchmarks\\document_scale.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 7.248502254486084
+    },
+    {
+      "name": "assistant_gauntlet",
+      "source": "baseline_source\\hng-frontier-0.5.1a1\\benchmarks\\assistant_gauntlet.py",
+      "adapted_source": "research_eval\\scripts\\adapted_shipped\\benchmarks\\assistant_gauntlet.py",
+      "replacements": {
+        "Path('/mnt/data/hng-frontier-0.4.0a1/benchmarks')": "Path('C:\\\\Python310\\\\hng-frontier-0.5.1a1-release\\\\hng-frontier-0.5.1a1-release\\\\research_eval\\\\raw')"
+      },
+      "argv": [
+        "--root",
+        "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\research_eval\\run_data\\assistant_gauntlet"
+      ],
+      "command": [
+        "C:\\Python310\\python.exe",
+        "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\research_eval\\scripts\\adapted_shipped\\benchmarks\\assistant_gauntlet.py",
+        "--root",
+        "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\research_eval\\run_data\\assistant_gauntlet"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 18.789990186691284
+    }
+  ]
+}

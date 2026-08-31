@@ -1,0 +1,19 @@
+metric,v0.3.1,v0.5.1_candidate,delta_pct,direction
+Cross-chat episode recall,1.0,1.0,0.0,higher
+Cross-chat median ms,3.2206734999959963,3.2443495000507028,0.7351257448088396,lower
+Historical action top-1,1.0,1.0,0.0,higher
+Historical action median ms,3.1003864999945563,3.1155639999269624,0.48953573796146976,lower
+Ambiguous-turn carried-state accuracy,1.0,1.0,0.0,higher
+Ambiguous-turn median ms,17.96811100000184,18.703586500009806,4.093226605778924,lower
+Working-state live accuracy,1.0,1.0,0.0,higher
+Changed-world sequence-aware accuracy,1.0,1.0,0.0,higher
+Action gate support rate,1.0,1.0,0.0,higher
+Action gate challenge rate,1.0,1.0,0.0,higher
+Action gate unknown/abstain rate,1.0,1.0,0.0,higher
+Action gate median ms,3.8439764999935733,3.8873865000255137,1.1292993084638518,lower
+15% noise action accuracy,1.0,1.0,0.0,higher
+15% noise median ms,2.999243000004981,3.1934935000208498,6.476650942105937,lower
+Restart cross-chat action accuracy,1.0,1.0,0.0,higher
+20K turns/sec,3491.724698274221,3552.71876614847,1.7468177804623417,higher
+20K median append ms,0.17479799998909584,0.17392600000221137,-0.4988615355661231,lower
+20K restart replay ms,580.906954999989,580.6007400000226,-0.05271326110502845,lower

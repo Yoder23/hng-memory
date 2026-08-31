@@ -1,0 +1,4 @@
+Run with:
+  python examples/perspective_digital_twin_demo.py
+
+Expected behavior: the literal semantic problem is identical, but the IC receives an implementation-level action, the manager receives a team-level action, and the same IC user receives the manager action when the conversation explicitly activates an acting-manager perspective.

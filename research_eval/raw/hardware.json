@@ -1,0 +1,13 @@
+{
+  "cpu": "12th Gen Intel(R) Core(TM) i9-12900H",
+  "physical_cores": 14,
+  "logical_processors": 20,
+  "max_clock_mhz_reported": 2900,
+  "ram_bytes": 68473409536,
+  "manufacturer": "Micro-Star International Co., Ltd.",
+  "model": "Stealth GS66 12UH",
+  "os": "Microsoft Windows 11 Pro",
+  "os_version": "10.0.26200",
+  "os_build": "26200",
+  "architecture": "64-bit"
+}

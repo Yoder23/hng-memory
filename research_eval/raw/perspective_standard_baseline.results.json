@@ -1,0 +1,36 @@
+{
+  "dataset": "shipped perspective gauntlet geometry",
+  "same_information": true,
+  "note": "The structured baseline uses exact role/authority/abstraction filters plus exhaustive per-head Hamming floors; the dictionary uses the explicit context/profile fields that define ground truth.",
+  "results": {
+    "structured_full": {
+      "accuracy": 1.0,
+      "queries": 512,
+      "median_ms": 10.00250002834946,
+      "p95_ms": 14.756655029486865,
+      "p99_ms": 19.716687967302274
+    },
+    "hard_metadata_only": {
+      "accuracy": 0.5,
+      "queries": 512,
+      "median_ms": 5.679900001268834,
+      "p95_ms": 9.478879999369383,
+      "p99_ms": 12.071235992480068
+    },
+    "ordinary_dictionary": {
+      "accuracy": 1.0,
+      "queries": 512,
+      "median_ms": 0.002600019797682762,
+      "p95_ms": 0.003200024366378784,
+      "p99_ms": 0.008399999351240695
+    },
+    "dense_float_multihead": {
+      "accuracy": 1.0,
+      "queries": 128,
+      "median_ms": 7.182500005001202,
+      "p95_ms": 10.664015010115685,
+      "p99_ms": 12.454196011531169,
+      "note": "Exact cosine over float32 +/-1 versions of the same seven semantic heads."
+    }
+  }
+}

@@ -1,0 +1,6 @@
+Command: C:\Python310\python.exe -m pip install --no-deps --target research_eval\wheel_install_strict hng_frontier-0.5.1a1-py3-none-any.whl
+Exit: 1
+ERROR: Package 'hng-frontier' requires a different Python: 3.10.0 not in '>=3.11'
+
+Interpretation: environment incompatibility, not a package defect. A compliant
+Python 3.11+ interpreter was unavailable on the machine.

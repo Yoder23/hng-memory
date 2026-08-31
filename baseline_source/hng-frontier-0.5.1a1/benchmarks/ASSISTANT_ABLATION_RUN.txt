@@ -1,0 +1,20 @@
+{
+  "config": {
+    "contexts": 128,
+    "hv_dim": 2048,
+    "action_library": 4096,
+    "variants_per_family": 16
+  },
+  "history_ingest_seconds": 0.182845143999657,
+  "action_routing": {
+    "raw_hdc_top1": 0.078125,
+    "hng_history_top1": 1.0,
+    "hng_cross_chat_evidence_rate": 1.0,
+    "raw_action_scan_median_ms": 0.32799949985928833,
+    "hng_recommend_median_ms": 1.884127500034083
+  },
+  "turn_continuity": {
+    "ambiguous_current_turn_only": 0.0078125,
+    "hng_carried_state": 1.0
+  }
+}

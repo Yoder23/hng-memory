@@ -1,0 +1,246 @@
+{
+  "version": "0.6.0rc1",
+  "evidence_tier": "A - executed locally",
+  "rows": [
+    {
+      "tier": "A",
+      "benchmark": "canonical_adversarial",
+      "method": "HNG_0.6.0rc1",
+      "metric": "passed",
+      "value": 11,
+      "unit": "count"
+    },
+    {
+      "tier": "A",
+      "benchmark": "canonical_adversarial",
+      "method": "HNG_0.6.0rc1",
+      "metric": "total",
+      "value": 11,
+      "unit": "count"
+    },
+    {
+      "tier": "A",
+      "benchmark": "canonical_adversarial",
+      "method": "HNG_0.6.0rc1",
+      "metric": "balanced_evidence",
+      "value": 1,
+      "unit": "pass_bool"
+    },
+    {
+      "tier": "A",
+      "benchmark": "canonical_adversarial",
+      "method": "HNG_0.6.0rc1",
+      "metric": "stale_majority",
+      "value": 1,
+      "unit": "pass_bool"
+    },
+    {
+      "tier": "A",
+      "benchmark": "canonical_adversarial",
+      "method": "HNG_0.6.0rc1",
+      "metric": "poisoned_experiences",
+      "value": 1,
+      "unit": "pass_bool"
+    },
+    {
+      "tier": "A",
+      "benchmark": "canonical_adversarial",
+      "method": "HNG_0.6.0rc1",
+      "metric": "duplicate_amplification",
+      "value": 1,
+      "unit": "pass_bool"
+    },
+    {
+      "tier": "A",
+      "benchmark": "canonical_adversarial",
+      "method": "HNG_0.6.0rc1",
+      "metric": "missing_sequence",
+      "value": 1,
+      "unit": "pass_bool"
+    },
+    {
+      "tier": "A",
+      "benchmark": "canonical_adversarial",
+      "method": "HNG_0.6.0rc1",
+      "metric": "changed_sequence_supplied",
+      "value": 1,
+      "unit": "pass_bool"
+    },
+    {
+      "tier": "A",
+      "benchmark": "canonical_adversarial",
+      "method": "HNG_0.6.0rc1",
+      "metric": "unseen_action",
+      "value": 1,
+      "unit": "pass_bool"
+    },
+    {
+      "tier": "A",
+      "benchmark": "canonical_adversarial",
+      "method": "HNG_0.6.0rc1",
+      "metric": "close_wrong_action",
+      "value": 1,
+      "unit": "pass_bool"
+    },
+    {
+      "tier": "A",
+      "benchmark": "canonical_adversarial",
+      "method": "HNG_0.6.0rc1",
+      "metric": "loose_action_floor",
+      "value": 1,
+      "unit": "pass_bool"
+    },
+    {
+      "tier": "A",
+      "benchmark": "canonical_adversarial",
+      "method": "HNG_0.6.0rc1",
+      "metric": "incorrect_uncertain_profile",
+      "value": 1,
+      "unit": "pass_bool"
+    },
+    {
+      "tier": "A",
+      "benchmark": "canonical_adversarial",
+      "method": "HNG_0.6.0rc1",
+      "metric": "authority_inappropriate_precedent",
+      "value": 1,
+      "unit": "pass_bool"
+    },
+    {
+      "tier": "A",
+      "benchmark": "synthetic_poisoned_action_policy",
+      "method": "raw_topk_majority",
+      "metric": "task_success",
+      "value": 0.0,
+      "unit": "fraction"
+    },
+    {
+      "tier": "A",
+      "benchmark": "synthetic_poisoned_action_policy",
+      "method": "raw_topk_majority",
+      "metric": "stale_advice_rate",
+      "value": 1.0,
+      "unit": "fraction"
+    },
+    {
+      "tier": "A",
+      "benchmark": "synthetic_poisoned_action_policy",
+      "method": "HNG_governed",
+      "metric": "task_success",
+      "value": 1.0,
+      "unit": "fraction"
+    },
+    {
+      "tier": "A",
+      "benchmark": "synthetic_poisoned_action_policy",
+      "method": "HNG_governed",
+      "metric": "unsupported_recommendation_rate",
+      "value": 0.0,
+      "unit": "fraction"
+    },
+    {
+      "tier": "A",
+      "benchmark": "synthetic_poisoned_action_policy",
+      "method": "HNG_governed",
+      "metric": "provenance_complete",
+      "value": 1.0,
+      "unit": "fraction"
+    },
+    {
+      "tier": "A",
+      "benchmark": "synthetic_poisoned_action_policy",
+      "method": "HNG_governed",
+      "metric": "median_ms",
+      "value": 3.9866000006441027,
+      "unit": "ms"
+    },
+    {
+      "tier": "A",
+      "benchmark": "synthetic_poisoned_action_policy",
+      "method": "HNG_governed",
+      "metric": "p95_ms",
+      "value": 4.71506503818091,
+      "unit": "ms"
+    },
+    {
+      "tier": "A",
+      "benchmark": "synthetic_poisoned_action_policy",
+      "method": "HNG_governed",
+      "metric": "p99_ms",
+      "value": 5.409217003616505,
+      "unit": "ms"
+    },
+    {
+      "tier": "A",
+      "benchmark": "100K_4096bit_independent",
+      "method": "HNG_FAISS_provider",
+      "metric": "exact_top1_agreement",
+      "value": 1.0,
+      "unit": "fraction"
+    },
+    {
+      "tier": "A",
+      "benchmark": "100K_4096bit_independent",
+      "method": "HNG_FAISS_provider",
+      "metric": "median_ms",
+      "value": 0.6791999912820756,
+      "unit": "ms"
+    },
+    {
+      "tier": "A",
+      "benchmark": "100K_4096bit_independent",
+      "method": "HNG_FAISS_provider",
+      "metric": "p95_ms",
+      "value": 0.899804983055219,
+      "unit": "ms"
+    },
+    {
+      "tier": "A",
+      "benchmark": "100K_4096bit_independent",
+      "method": "HNG_FAISS_provider",
+      "metric": "p99_ms",
+      "value": 2.5195120059651837,
+      "unit": "ms"
+    },
+    {
+      "tier": "A",
+      "benchmark": "compat_assistant_gauntlet",
+      "method": "HNG_0.6.0rc1",
+      "metric": "cross_chat_recall",
+      "value": 1.0,
+      "unit": "fraction"
+    },
+    {
+      "tier": "A",
+      "benchmark": "compat_assistant_gauntlet",
+      "method": "HNG_0.6.0rc1",
+      "metric": "action_top1",
+      "value": 1.0,
+      "unit": "fraction"
+    },
+    {
+      "tier": "A",
+      "benchmark": "compat_assistant_gauntlet",
+      "method": "HNG_0.6.0rc1",
+      "metric": "carried_state_accuracy",
+      "value": 1.0,
+      "unit": "fraction"
+    },
+    {
+      "tier": "A",
+      "benchmark": "compat_assistant_gauntlet",
+      "method": "HNG_0.6.0rc1",
+      "metric": "noise_15pct_accuracy",
+      "value": 0.9895833333333334,
+      "unit": "fraction"
+    },
+    {
+      "tier": "A",
+      "benchmark": "compat_assistant_gauntlet",
+      "method": "HNG_0.6.0rc1",
+      "metric": "restart_accuracy",
+      "value": 1.0,
+      "unit": "fraction"
+    }
+  ]
+}

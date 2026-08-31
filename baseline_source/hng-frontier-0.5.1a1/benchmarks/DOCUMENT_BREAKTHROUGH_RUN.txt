@@ -1,0 +1,89 @@
+{
+  "config": {
+    "documents": 32,
+    "hv_dim": 2048,
+    "themes_per_document": 16,
+    "units_per_section": 10,
+    "summary_budget_units": 40,
+    "total_records": 8960
+  },
+  "ingest_seconds": 2.146162074000131,
+  "summary": {
+    "hng": {
+      "theme_coverage": 1.0,
+      "key_claim_recall": 0.98046875,
+      "priority_recall": 1.0,
+      "contradiction_recall": 1.0,
+      "redundancy_fraction": 0.6,
+      "median_ms": 23.563899000237143,
+      "p95_ms": 49.999442850366904
+    },
+    "lead": {
+      "theme_coverage": 0.19140625,
+      "key_claim_recall": 0.19140625,
+      "priority_recall": 0.18359375,
+      "contradiction_recall": 0.13020833333333331,
+      "redundancy_fraction": 0.9234374999999999,
+      "median_ms": 0.004632000127458014,
+      "p95_ms": 0.00614199998381082
+    },
+    "uniform": {
+      "theme_coverage": 1.0,
+      "key_claim_recall": 0.23046875,
+      "priority_recall": 0.1736111111111111,
+      "contradiction_recall": 0.11458333333333333,
+      "redundancy_fraction": 0.6,
+      "median_ms": 0.06948750024093897,
+      "p95_ms": 0.09711265070109219
+    },
+    "rag_topk": {
+      "theme_coverage": 0.216796875,
+      "key_claim_recall": 0.216796875,
+      "priority_recall": 0.1423611111111111,
+      "contradiction_recall": 0.15625,
+      "redundancy_fraction": 0.91328125,
+      "median_ms": 0.10321249965272727,
+      "p95_ms": 9.804409149955958
+    },
+    "rag_importance": {
+      "theme_coverage": 0.44140625,
+      "key_claim_recall": 0.25,
+      "priority_recall": 0.63671875,
+      "contradiction_recall": 0.6510416666666665,
+      "redundancy_fraction": 0.8234374999999999,
+      "median_ms": 0.05477599961523083,
+      "p95_ms": 0.11460899995654472
+    },
+    "rag_mmr": {
+      "theme_coverage": 1.0,
+      "key_claim_recall": 0.572265625,
+      "priority_recall": 0.9895833333333334,
+      "contradiction_recall": 1.0,
+      "redundancy_fraction": 0.6,
+      "median_ms": 1.4457219999712834,
+      "p95_ms": 1.7389083500802371
+    },
+    "oracle_kmeans": {
+      "theme_coverage": 1.0,
+      "key_claim_recall": 1.0,
+      "priority_recall": 1.0,
+      "contradiction_recall": 1.0,
+      "redundancy_fraction": 0.6,
+      "median_ms": 57.49080750001667,
+      "p95_ms": 85.42129730049054
+    }
+  },
+  "hng_structure_boundary_f1": 1.0,
+  "targeted_qa": {
+    "queries": 256,
+    "hng_multihead_recall_at5": 1.0,
+    "composite_exact_recall_at5": 1.0,
+    "hng_median_ms": 1.539360500373732,
+    "composite_median_ms": 1.654881999911595
+  },
+  "example": {
+    "hng_context": "DOCUMENT MEMORY FRAME document=1\nunits=280 semantic_segments=16 selected=40\nSUMMARY EVIDENCE:\n- segment 0: DOC 1 THEME 1 KEY_CLAIM physical_section=0 unit=0\n  - CAVEAT: DOC 1 THEME 1 CAVEAT physical_section=0 unit=8\n- segment 1: DOC 1 THEME 2 KEY_CLAIM physical_section=4 unit=0\n- segment 2: DOC 1 THEME 3 KEY_CLAIM physical_section=8 unit=0\n- segment 3: DOC 1 THEME 4 KEY_CLAIM physical_section=12 unit=0\n  - CAVEAT: DOC 1 THEME 4 CAVEAT physical_section=12 unit=8\n- segment 4: DOC 1 THEME 5 KEY_CLAIM physical_section=13 unit=0\n  - CONTRADICTION: DOC 1 THEME 5 CONTRADICTION physical_section=13 unit=9\n- segment 5: DOC 1 THEME 6 KEY_CLAIM physical_section=14 unit=0\n- segment 6: DOC 1 THEME 7 KEY_CLAIM physical_section=15 unit=0\n- segment 7: DOC 1 THEME 8 KEY_CLAIM physical_section=16 unit=0\n  - CONTRADICTION: DOC 1 THEME 8 CONTRADICTION physical_section=16 unit=9\n- segment 8: DOC 1 THEME 9 KEY_CLAIM physical_section=17 unit=0\n- segment 9: DOC 1 THEME 10 KEY_CLAIM physical_section=18 unit=0\n  - CONTRADICTION: DOC 1 THEME 10 CONTRADICTION physical_section=18 unit=9\n- segment 10: DOC 1 THEME 11 KEY_CLAIM physical_section=19 unit=0\n- segment 11: DOC 1 THEME 12 KEY_CLAIM physical_section=20 unit=0\n- segment 12: DOC 1 THEME 13 KEY_CLAIM physical_section=21 unit=0\n  - CAVEAT: DOC 1 THEME 13 CAVEAT physical_section=21 unit=8\n- segment 13: DOC 1 THEME 14 KEY_CLAIM physical_section=22 unit=0\n- segment 14: DOC 1 THEME 15 KEY_CLAIM physical_section=23 unit=0\n  - CAVEAT: DOC 1 THEME 15 CAVEAT physical_section=23 unit=8\n- segment 15: DOC 1 THEME 0 KEY_CLAIM physical_section=24 unit=0\n  - CAVEAT: DOC 1 THEME 0 CAVEAT physical_section=24 unit=8\n  - CONCLUSION: DOC 1 THEME 0 CONCLUSION physical_section=27 unit=9",
+    "segments": 16,
+    "threshold": 0.6943359375
+  }
+}

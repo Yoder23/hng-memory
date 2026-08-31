@@ -1,0 +1,4 @@
+Command: C:\Python310\python.exe -m pytest -q -p no:cacheprovider
+Exit: 0
+..............................                                           [100%]
+30 passed in 3.63s

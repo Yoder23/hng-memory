@@ -1,0 +1,10 @@
+WARNING: The directory '/home/oai/.cache/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+Processing /mnt/data/hng-frontier-0.5.1a1
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: hng-frontier
+  Building wheel for hng-frontier (pyproject.toml): started
+  Building wheel for hng-frontier (pyproject.toml): finished with status 'done'
+  Created wheel for hng-frontier: filename=hng_frontier-0.5.1a1-py3-none-any.whl size=47794 sha256=5d86c06f25bad6f4bd756d94f0b588bd59544a1a322d7c966b0f9d2ec145b61d
+  Stored in directory: /tmp/pip-ephem-wheel-cache-hn6_ixr7/wheels/b3/5d/38/b39cf99e77cebb7d08a6eda771711bfeb01d1334ceed8ab4ec
+Successfully built hng-frontier

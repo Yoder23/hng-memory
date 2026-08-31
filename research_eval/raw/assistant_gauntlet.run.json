@@ -1,0 +1,20 @@
+{
+  "name": "assistant_gauntlet",
+  "source": "baseline_source\\hng-frontier-0.5.1a1\\benchmarks\\assistant_gauntlet.py",
+  "adapted_source": "research_eval\\scripts\\adapted_shipped\\benchmarks\\assistant_gauntlet.py",
+  "replacements": {
+    "Path('/mnt/data/hng-frontier-0.4.0a1/benchmarks')": "Path('C:\\\\Python310\\\\hng-frontier-0.5.1a1-release\\\\hng-frontier-0.5.1a1-release\\\\research_eval\\\\raw')"
+  },
+  "argv": [
+    "--root",
+    "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\research_eval\\run_data\\assistant_gauntlet"
+  ],
+  "command": [
+    "C:\\Python310\\python.exe",
+    "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\research_eval\\scripts\\adapted_shipped\\benchmarks\\assistant_gauntlet.py",
+    "--root",
+    "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\research_eval\\run_data\\assistant_gauntlet"
+  ],
+  "exit_code": 1,
+  "elapsed_seconds": 18.789990186691284
+}

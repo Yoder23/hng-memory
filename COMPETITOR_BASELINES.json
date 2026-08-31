@@ -1,0 +1,27 @@
+{
+  "binaryflat_composite": {
+    "accuracy": 1.0,
+    "median_ms": 1.4847319999944375,
+    "p95_ms": 1.6826123000186042
+  },
+  "binaryflat_conjunctive_multivector": {
+    "accuracy": 1.0,
+    "median_eligible": 20.0,
+    "median_ms": 5.646377000005032,
+    "p95_ms": 5.821554950031782
+  },
+  "binaryflat_weighted_multivector": {
+    "accuracy": 1.0,
+    "median_ms": 6.098888499991517,
+    "p95_ms": 6.819156549971694
+  },
+  "hng_05": {
+    "accuracy": 1.0,
+    "median_ms": 3.108868999987635,
+    "p95_ms": 3.4465141999703515
+  },
+  "raw_hdc_action": {
+    "accuracy": 0.1015625,
+    "median_ms": 3.8010184999848207
+  }
+}

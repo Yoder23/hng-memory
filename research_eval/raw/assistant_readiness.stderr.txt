@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "C:\Python310\hng-frontier-0.5.1a1-release\hng-frontier-0.5.1a1-release\research_eval\scripts\adapted_shipped\benchmarks\assistant_readiness.py", line 172, in <module>
+    main()
+  File "C:\Python310\hng-frontier-0.5.1a1-release\hng-frontier-0.5.1a1-release\research_eval\scripts\adapted_shipped\benchmarks\assistant_readiness.py", line 116, in main
+    mem.sync()
+  File "C:\Python310\hng-frontier-0.5.1a1-release\hng-frontier-0.5.1a1-release\baseline_source\hng-frontier-0.5.1a1\src\hngfrontier\assistant.py", line 511, in sync
+    self.memory.sync()
+  File "C:\Python310\hng-frontier-0.5.1a1-release\hng-frontier-0.5.1a1-release\baseline_source\hng-frontier-0.5.1a1\src\hngfrontier\multihead.py", line 447, in sync
+    v.sync()
+  File "C:\Python310\hng-frontier-0.5.1a1-release\hng-frontier-0.5.1a1-release\baseline_source\hng-frontier-0.5.1a1\src\hngfrontier\vectors.py", line 209, in sync
+    try: os.fsync(fd)
+OSError: [Errno 9] Bad file descriptor
