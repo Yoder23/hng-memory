@@ -29,6 +29,10 @@ from .storage_v2 import EvidenceStore, SQLiteEvidenceStore
 from .consolidation import ConsolidatedPattern, EvidenceConsolidator
 from .document_stack import DocumentChunk, DocumentSearchResult, HybridDocumentRetriever
 from .shadow_v2 import DeploymentDecision, DeploymentMode, GovernedShadowEvaluator
+from .shadow_ab import (
+    ActualAssistantTurn, HDCShadowABRecorder, ShadowABEvaluator, ShadowObservation,
+    ShadowOutcome, TextCaptureMode,
+)
 from .actor_policy import ActorPolicy, ActorPolicyResult, ProfileApplicability
 from .beliefs import Belief, BeliefRevision, BeliefStore
 from .consolidation_v2 import PersistedConsolidator, RetentionPolicy
@@ -68,4 +72,6 @@ __all__ = [
     "ProvenanceVerifier", "RetentionPolicy", "StaticIdentityVerifier", "ToolAction",
     "ToolAgentAdapter", "ToolAssessment", "USearchBinaryRetriever", "VerificationResult",
     "WorkingCorrection",
+    "ActualAssistantTurn", "HDCShadowABRecorder", "ShadowABEvaluator",
+    "ShadowObservation", "ShadowOutcome", "TextCaptureMode",
 ]

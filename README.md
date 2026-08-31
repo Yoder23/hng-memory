@@ -27,7 +27,7 @@ The 0.7.0rc1 architecture addresses the principal failures:
 | Check | 0.5.1 baseline | 0.7.0rc1 |
 |---|---:|---:|
 | Original source tests | 30/30 | 30/30 unchanged |
-| Full test suite | 30 | 94 passing |
+| Full test suite | 30 | 99 passing |
 | Canonical adversarial suite | 5/11 | 11/11 |
 | Missing sequence | unsafe support | `INSUFFICIENT_STATE` |
 | Duplicate amplification | unsafe support | one source event counts once |
@@ -117,6 +117,12 @@ shadow -> context augmentation -> advisory challenge -> explicit hard gate
 
 Hard gating requires an explicit opt-in. It is not enabled by constructing `HNGMemory`.
 
+### Real HDC assistant evidence
+
+`HDCShadowABRecorder` observes actions only after the unchanged assistant has selected them. It records recalled state/evidence, recommendations, governance decisions, provenance, actual behavior, and later outcome labels in an append-only trace; it has no allow/block control surface and isolates HNG or logging failures. `ShadowABEvaluator` reports labeled denominators, paired action-routing judgments, continuity, repeated-failure, perspective, staleness, abstention, contradiction, provenance, task-success, regret, latency, and context-cost metrics.
+
+This is experiment infrastructure, not a claim that real-user improvement has already been measured. See the protocol before collecting production traces.
+
 ## Documentation
 
 - [Next architecture](NEXT_ARCHITECTURE.md)
@@ -127,6 +133,7 @@ Hard gating requires an explicit opt-in. It is not enabled by constructing `HNGM
 - [HDC assistant guide](ASSISTANT_HDC_GUIDE.md)
 - [LLM assistant guide](ASSISTANT_LLM_GUIDE.md)
 - [RAG integration](RAG_INTEGRATION.md)
+- [Real HDC shadow A/B protocol](baseline_source/hng-frontier-0.5.1a1/REAL_HDC_SHADOW_PROTOCOL.md)
 - [Independent baseline verdict](research_eval/EXECUTIVE_VERDICT.md)
 - [Final old-vs-new evaluation](next_eval/FINAL_EVALUATION.md)
 
