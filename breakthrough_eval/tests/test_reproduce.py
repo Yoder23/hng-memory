@@ -142,3 +142,15 @@ def test_handle_observer_diagnostic_v2_routes_exact_commit() -> None:
     assert command.argv[-2:] == ("--preregistered-commit", "observer456")
     assert command.name == "child_handle_observer_effect_diagnostic_v2"
     assert "attribution-only" in command.note
+
+
+def test_handle_observer_diagnostic_v3_routes_exact_commit() -> None:
+    command = reproduce.commands_for(argparse.Namespace(
+        command="handle-observer-diagnostic-v3",
+        prepare_only=False,
+        preregistered_commit="observer789",
+    ))[0]
+
+    assert command.argv[-2:] == ("--preregistered-commit", "observer789")
+    assert command.name == "child_handle_observer_effect_diagnostic_v3"
+    assert "attribution-only" in command.note

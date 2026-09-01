@@ -10,6 +10,7 @@ import pytest
 
 from breakthrough_eval.scripts import handle_observer_diagnostic as diagnostic
 from breakthrough_eval.scripts import handle_observer_diagnostic_v2 as diagnostic_v2
+from breakthrough_eval.scripts import handle_observer_diagnostic_v3 as diagnostic_v3
 
 
 def qualifying_args() -> argparse.Namespace:
@@ -100,6 +101,37 @@ def test_v2_timing_correction_has_distinct_frozen_outputs() -> None:
             "breakthrough_eval/reliability/handle_observer_diagnostic_v2/PROTOCOL.md",
             "breakthrough_eval/scripts/handle_observer_diagnostic.py",
             "breakthrough_eval/scripts/handle_observer_diagnostic_v2.py",
+        }
+    finally:
+        for name, value in original.items():
+            setattr(diagnostic, name, value)
+
+
+def test_v3_freezes_wider_external_window_and_distinct_outputs() -> None:
+    names = (
+        "OUTPUT_DIR", "PROTOCOL", "PREPARED", "RESULT", "EVENTS",
+        "PULSES", "STATE", "RUN_DATA", "WRAPPER", "V2_FAILURE",
+        "SOURCE_FILES",
+    )
+    original = {name: getattr(diagnostic, name) for name in names}
+    args = qualifying_args()
+    args.external_seconds = 180.0
+    try:
+        diagnostic_v3.configure()
+        payload = json.loads(
+            diagnostic_v3.PREPARED.read_text(encoding="utf-8")
+        )
+        diagnostic.verify_prepared(payload, args)
+        assert payload["config"]["external_seconds"] == 180.0
+        assert diagnostic.OUTPUT_DIR == diagnostic_v3.OUTPUT_DIR
+        assert diagnostic.OUTPUT_DIR not in {
+            original["OUTPUT_DIR"], diagnostic_v2.OUTPUT_DIR,
+        }
+        assert set(payload["source_sha256"]) == {
+            "breakthrough_eval/reliability/handle_observer_diagnostic_v2/RESULTS.json",
+            "breakthrough_eval/reliability/handle_observer_diagnostic_v3/PROTOCOL.md",
+            "breakthrough_eval/scripts/handle_observer_diagnostic.py",
+            "breakthrough_eval/scripts/handle_observer_diagnostic_v3.py",
         }
     finally:
         for name, value in original.items():

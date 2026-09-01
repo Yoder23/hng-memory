@@ -44,6 +44,8 @@ C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py handle-observer-d
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py handle-observer-diagnostic --preregistered-commit COMMIT
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py handle-observer-diagnostic-v2 --prepare-only
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py handle-observer-diagnostic-v2 --preregistered-commit COMMIT
+C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py handle-observer-diagnostic-v3 --prepare-only
+C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py handle-observer-diagnostic-v3 --preregistered-commit COMMIT
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py rag-governance --execute-llm
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py public-memory --execute-llm
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py belief-revision
@@ -161,7 +163,7 @@ pairs. A brand-new private-repository clone installed the wheel and used `hng-ev
 dependency-free tests, execute the isolated 250-case deterministic study, and recompile the result
 corpus. The four external LoCoMo test modules remain explicit exclusions from this dependency-free
 proof. The configured suite passed 94 tests at rc3 qualification and the breakthrough suite passes
-120 after adding sustained-reliability evidence and observer-diagnostic tests.
+122 after adding sustained-reliability evidence and observer-diagnostic tests.
 
 ## Current resource boundary
 

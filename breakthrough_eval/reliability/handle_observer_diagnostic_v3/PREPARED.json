@@ -1,0 +1,50 @@
+{
+  "claim_boundary": "Environment attribution diagnostic only. It cannot qualify HNG, storage, recovery, production reliability, or the failed v2 run.",
+  "commands": {
+    "main": [
+      "C:\\Python310\\python.exe",
+      "breakthrough_eval/scripts/handle_observer_diagnostic_v3.py",
+      "--preregistered-commit",
+      "COMMIT"
+    ],
+    "pulse": [
+      "C:\\Python310\\python.exe",
+      "breakthrough_eval/scripts/handle_observer_diagnostic_v3.py",
+      "--pulse-ordinal",
+      "N",
+      "--preregistered-commit",
+      "COMMIT"
+    ]
+  },
+  "config": {
+    "baseline_seconds": 120.0,
+    "expected_pulses": 20,
+    "external_seconds": 180.0,
+    "minimum_samples_per_phase": 100,
+    "multiprocessing_start_method": "spawn",
+    "recovery_seconds": 120.0,
+    "refute_maximum_external_net_handles": 20,
+    "refute_slope_tolerance_handles_per_minute": 5.0,
+    "sample_interval_seconds": 1.0,
+    "support_minimum_external_net_handles": 50,
+    "support_slope_margin_handles_per_minute": 20.0,
+    "variants": [
+      "idle",
+      "event_poll",
+      "sqlite_read",
+      "sqlite_write"
+    ],
+    "warmup_seconds": 30.0
+  },
+  "created_at": "2026-09-01T19:49:14.658165+00:00",
+  "hypothesis_status_before_execution": "UNPROVEN",
+  "motivation": "breakthrough_eval/reliability/handle_observer_diagnostic_v2/RESULTS.json",
+  "schema_version": 1,
+  "source_sha256": {
+    "breakthrough_eval/reliability/handle_observer_diagnostic_v2/RESULTS.json": "2cd3f103dbcf257ecc2c0df753e4d179f20206da1c20c1497feefcba5ee4a575",
+    "breakthrough_eval/reliability/handle_observer_diagnostic_v3/PROTOCOL.md": "ae71edb980b728e7072c4e5b51643c7c7bf4830e98815f661d259b9c10b7e691",
+    "breakthrough_eval/scripts/handle_observer_diagnostic.py": "4553011f3a8d2f4900b8e08b7f60cd5e0acb92eb4be31ed94fabad9a2af1c0ca",
+    "breakthrough_eval/scripts/handle_observer_diagnostic_v3.py": "e91448f17f0a306070617c8b39fb0f83289f940e856e102c5d50293796755589"
+  },
+  "status": "PREPARED_NOT_EXECUTED"
+}
