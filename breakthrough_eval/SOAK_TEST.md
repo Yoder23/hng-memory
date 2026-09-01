@@ -76,12 +76,34 @@ Machine evidence is reliability/MULTI_USER_100K_ISOLATION.json. The result is ex
 it assumes trusted tenant/user context on scoped queries, and raw get/get_many primitives are
 unscoped. It is neither an authentication test nor an hours-long load result.
 
+A preregistered high-volume probe at exact clean commit
+`bc18cf4f21869c92b98b26ad79219498e532358b` performs 1,000,000 individually durable appends
+against the shipped `SQLiteEvidenceStore`, with WAL and `synchronous=FULL`, across 100 tenants:
+
+| Measure | Result |
+|---|---:|
+| Total duration | 4,164.902 s (69.415 min) |
+| Append p50 / p95 / p99 | 3.772 / 4.728 / 13.336 ms |
+| Verified restarts | 9/9 |
+| Tenant counts | exactly 10,000 for each of 100 tenants |
+| Supersession/invalidation checks | 100/100 and 100/100 pass |
+| Pre/post-backup records | 1,000,000 / 1,000,000 |
+| Pre/post logical ledger SHA-256 | identical (`5c09c3...c75aba`) |
+| Generation pre/post backup | 1,000,101 / 1,000,101 |
+| Database / backup bytes | 1,242,869,760 / 1,242,869,760 |
+
+Machine evidence is `reliability/million_write/RESULTS.json`. Independent post-run SHA-256 checks
+exactly match both file hashes recorded there: database `562a4e...fe08f` and backup
+`d0af0e...1706e`. The runtime database and backup remain local and Git-ignored. This closes the
+previously absent million-write checkpoint only. It contains one graceful close/reopen every
+100,000 writes and one backup/restore cycle; it is not OS-crash, power-loss, disk-full,
+multi-process, or hours/days-long concurrent-load evidence.
+
 ## What is not a soak result
 
-Passing bounded fault tests and 10,000/100,000-write durability probes is not equivalent to an hours- or
-days-long production soak. The current evidence does not include:
+Passing bounded fault tests and durability probes through one million writes is not equivalent to
+an hours- or days-long production soak. The current evidence does not include:
 
-- millions of durable evidence writes;
 - repeated backup/restore cycles;
 - disk-full injection;
 - an operating-system crash during SQLite/fsync;

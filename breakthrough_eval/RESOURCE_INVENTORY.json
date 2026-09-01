@@ -22,6 +22,23 @@
     "fresh_clone_proof": "breakthrough_eval/fresh_clone_reproduction/RESULTS.json",
     "fresh_clone_core_passed": true
   },
+  "reliability_artifacts": {
+    "million_write": {
+      "status": "PASS_BOUNDED_LOCAL",
+      "result": "breakthrough_eval/reliability/million_write/RESULTS.json",
+      "preregistered_commit": "bc18cf4f21869c92b98b26ad79219498e532358b",
+      "records": 1000000,
+      "tenants": 100,
+      "restart_checks_passed": 9,
+      "restart_checks_total": 9,
+      "duration_seconds": 4164.902096999984,
+      "ledger_identical_after_backup_restore": true,
+      "database_sha256": "562a4ec338bf4671baa2b6ebf7581b231e1c3914cc948c01590fec18a05fe08f",
+      "backup_sha256": "d0af0e97695d0cb37687d007870c751129e02dd557c9dfde8816f1adb5b1706e",
+      "hashes_independently_verified": true,
+      "claim_boundary": "Bounded local probe; not OS-crash, disk-full, power-loss, repeated-backup, or hours/days-long concurrent soak evidence."
+    }
+  },
   "hardware": {
     "cpu": "Intel Core i9-12900H",
     "physical_cores": 14,

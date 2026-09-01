@@ -46,6 +46,11 @@ verified through fresh-clone source commit 27e4a8ee0012f7eef1a9b3655fb8d454aa14c
 - Intel Core i9-12900H (14 physical / 20 logical cores), 68,473,409,536 bytes RAM,
   NVIDIA RTX 3080 Laptop GPU 16 GB (driver 591.44), Windows build 26200,
   Python 3.10, NumPy 2.2.6/OpenBLAS 0.3.29.
+- Preregistered bounded million-write production-store result at commit
+  bc18cf4f21869c92b98b26ad79219498e532358b: 1,000,000 durable appends, 9/9 graceful
+  restart checks, exact 100-tenant isolation, lifecycle checks, and full-ledger backup/restore
+  identity pass. Runtime files are Git-ignored; their independently verified SHA-256 values and
+  byte sizes are retained in `reliability/million_write/RESULTS.json`.
 
 ## Unavailable or not yet installed
 

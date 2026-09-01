@@ -83,6 +83,8 @@ def main() -> int:
     personamem = load(personamem_path) if personamem_path.exists() else None
     reliability_path = EVAL / "reliability" / "STORAGE_PROBE.json"
     reliability = load(reliability_path) if reliability_path.exists() else None
+    million_write_path = EVAL / "reliability" / "million_write" / "RESULTS.json"
+    million_write = load(million_write_path) if million_write_path.exists() else None
     multitenant_path = EVAL / "reliability" / "MULTITENANT_100K_1K.json"
     multitenant = load(multitenant_path) if multitenant_path.exists() else None
     isolation_path = EVAL / "reliability" / "MULTI_USER_100K_ISOLATION.json"
@@ -366,6 +368,55 @@ def main() -> int:
                 reliability["status"],
                 "reliability/STORAGE_PROBE.json",
                 reliability["claim_boundary"],
+            ),
+        ])
+
+    if million_write is not None:
+        million_source = "reliability/million_write/RESULTS.json"
+        results.extend([
+            row(
+                "million_write_storage_reliability",
+                "sqlite_evidence_store",
+                "records_preserved_after_backup",
+                float(million_write["ledger"]["after_count"]),
+                "count",
+                "local",
+                million_write["status"],
+                million_source,
+                million_write["claim_boundary"],
+            ),
+            row(
+                "million_write_storage_reliability",
+                "sqlite_evidence_store",
+                "append_latency_p95",
+                float(million_write["append_latency_ms"]["p95"]),
+                "milliseconds",
+                "local",
+                million_write["status"],
+                million_source,
+                million_write["claim_boundary"],
+            ),
+            row(
+                "million_write_storage_reliability",
+                "sqlite_evidence_store",
+                "restart_checks_passed",
+                float(sum(1 for check in million_write["restart_checks"] if check["passed"])),
+                "count",
+                "local",
+                million_write["status"],
+                million_source,
+                "Nine frozen close/reopen checkpoints; not OS-crash or power-loss injection.",
+            ),
+            row(
+                "million_write_storage_reliability",
+                "sqlite_evidence_store",
+                "backup_ledger_identical",
+                1.0 if million_write["ledger"]["identical"] else 0.0,
+                "fraction",
+                "local",
+                million_write["status"],
+                million_source,
+                "Full logical-ledger SHA-256 equality after one SQLite backup/restore cycle.",
             ),
         ])
 
@@ -1003,6 +1054,22 @@ def main() -> int:
                     f"{reliability['ledger']['after_count']} records; backup ledger identical; "
                     f"p95 append {reliability['append_latency_ms']['p95']:.3f} ms. "
                     + reliability["claim_boundary"]
+                ),
+            }]),
+            *([] if million_write is None else [{
+                "area": "Bounded million-write storage reliability",
+                "hng": 1.0 if million_write["status"] == "PASS" else 0.0,
+                "baseline": None,
+                "delta": None,
+                "significance": None,
+                "evidence_class": "local",
+                "status": million_write["status"],
+                "notes": (
+                    f"{million_write['ledger']['after_count']} individually durable appends; "
+                    f"{sum(1 for check in million_write['restart_checks'] if check['passed'])}/"
+                    f"{len(million_write['restart_checks'])} restart checks; backup ledger identical; "
+                    f"p95 append {million_write['append_latency_ms']['p95']:.3f} ms. "
+                    + million_write["claim_boundary"]
                 ),
             }]),
             *([] if multitenant is None else [{

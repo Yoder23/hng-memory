@@ -1442,6 +1442,50 @@
       "value": 2.971215039724484
     },
     {
+      "area": "million_write_storage_reliability",
+      "evidence_class": "local",
+      "metric": "records_preserved_after_backup",
+      "notes": "bounded local probe, not an hours/days production soak",
+      "source": "reliability/million_write/RESULTS.json",
+      "status": "PASS",
+      "system": "sqlite_evidence_store",
+      "unit": "count",
+      "value": 1000000.0
+    },
+    {
+      "area": "million_write_storage_reliability",
+      "evidence_class": "local",
+      "metric": "append_latency_p95",
+      "notes": "bounded local probe, not an hours/days production soak",
+      "source": "reliability/million_write/RESULTS.json",
+      "status": "PASS",
+      "system": "sqlite_evidence_store",
+      "unit": "milliseconds",
+      "value": 4.727999970782548
+    },
+    {
+      "area": "million_write_storage_reliability",
+      "evidence_class": "local",
+      "metric": "restart_checks_passed",
+      "notes": "Nine frozen close/reopen checkpoints; not OS-crash or power-loss injection.",
+      "source": "reliability/million_write/RESULTS.json",
+      "status": "PASS",
+      "system": "sqlite_evidence_store",
+      "unit": "count",
+      "value": 9.0
+    },
+    {
+      "area": "million_write_storage_reliability",
+      "evidence_class": "local",
+      "metric": "backup_ledger_identical",
+      "notes": "Full logical-ledger SHA-256 equality after one SQLite backup/restore cycle.",
+      "source": "reliability/million_write/RESULTS.json",
+      "status": "PASS",
+      "system": "sqlite_evidence_store",
+      "unit": "fraction",
+      "value": 1.0
+    },
+    {
       "area": "bounded_multitenant_storage",
       "evidence_class": "local",
       "metric": "records_preserved_after_backup",

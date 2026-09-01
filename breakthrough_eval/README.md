@@ -116,6 +116,13 @@ HNG-specific attribution control.
 The scaled-isolation command creates ignored SQLite runtime files, takes about seven minutes on the
 recorded host, and refuses to overwrite an earlier preserved run.
 
+The preregistered million-write command completed from exact clean commit
+`bc18cf4f21869c92b98b26ad79219498e532358b`: 1,000,000 individually durable appends, 9/9
+graceful restart checks, exact 100-tenant counts, lifecycle checks, and full-ledger identity after
+backup/restore all pass. The database and backup SHA-256 values were independently recomputed and
+match the machine result. This remains a bounded 69.4-minute local probe, not OS-crash, disk-full,
+power-loss, repeated-backup, or hours/days-long concurrent-soak evidence.
+
 The current local release candidate is 0.7.0rc3 under `releases/0.7.0rc3/qualified_dist`. Its
 manifest distinguishes the qualifying exact-commit artifacts from two preserved earlier build
 pairs. A brand-new private-repository clone installed the wheel and used `hng-eval` to pass 58

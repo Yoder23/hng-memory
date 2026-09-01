@@ -349,3 +349,20 @@ streaming hash implementation returned the correct digest and no reliability exe
 Review also caught that free-space preflight targeted the intentionally absent runtime directory.
 The expected digest is corrected and disk capacity is now checked on the existing protocol
 directory before the probe creates runtime files.
+
+## Million-write execution monitoring setup failures
+
+Read-only progress probes encountered one inline-Python quoting `SyntaxError`, two orchestration
+JavaScript quoting `SyntaxError` failures, and transient shell-helper setup-refresh errors. None
+opened SQLite, changed a runtime file, restarted the benchmark, or altered its arguments. The
+original preregistered process handle completed once with exit code zero; its exclusive machine
+result and independently recomputed database/backup hashes are the admitted evidence.
+
+## Million-write result metadata limitation
+
+The successful million-write wrapper delegates execution to the bounded-probe engine and inherited
+that engine's generic `bounded_sqlite_evidence_store_reliability_probe` value in the `benchmark`
+field. The authoritative JSON was not rewritten. Its frozen protocol/preparation paths, exact
+preregistered commit, one-million-record configuration, command, source hashes, and exclusive
+artifact path identify the qualifying run. This label defect does not change a pass criterion, but
+it remains preserved rather than silently normalized.
