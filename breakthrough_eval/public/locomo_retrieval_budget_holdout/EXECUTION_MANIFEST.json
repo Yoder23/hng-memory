@@ -1,0 +1,23 @@
+{
+  "artifacts": {
+    "breakthrough_eval/BREAKTHROUGH_SCOREBOARD.md": "c35395de2c68d3c0bf371bce511313ff331bd6c58dd6987be03bbd11eda178d4",
+    "breakthrough_eval/BREAKTHROUGH_THESIS.md": "a39b57eae0d22376f103871d46a7ec7119f4d6d9c9a5df27475e89d0a0c4f2f1",
+    "breakthrough_eval/PROGRAM_AUDIT.md": "1f084dc714ae03783562a9ebd3fc51dfa7959aa0feacac43954dd6e369d2d1aa",
+    "breakthrough_eval/RESULTS.csv": "0457c7d95047d3783bc56b702950351d48cae1fafd6014caf8fb875e015f9852",
+    "breakthrough_eval/RESULTS.json": "5424d492f3653a571b529481407233af125deb14fafc3bc91e6d41e210e16020",
+    "breakthrough_eval/SCOREBOARD.json": "70b3dab349c351b04888c4e39f3e1eaaa6cc15476061786bb87c6fc2219fea31",
+    "breakthrough_eval/SCOREBOARD.md": "c35395de2c68d3c0bf371bce511313ff331bd6c58dd6987be03bbd11eda178d4",
+    "breakthrough_eval/STATISTICAL_ANALYSIS.md": "a3efbbc9a4b918f5b3a5f221a1be3f8ef324ee3e8e441c0a7206555acb8453a0",
+    "breakthrough_eval/public/locomo_retrieval_budget_holdout/RESULTS.json": "798ddf0b908abc4d1767ae6ccbc74d28a27880642be0beef50b7a14dcdfd5e59",
+    "breakthrough_eval/public/locomo_retrieval_budget_holdout/raw/events.jsonl": "7f4e2302b0a5bed91c97a9df16ea71c3781178dd75713b937735cd689dde0440",
+    "breakthrough_eval/scripts/compile_breakthrough.py": "1f92645c60c03dd3689e3f9e0e65cc2f1263408446e8063101aceca768166579"
+  },
+  "completed_at": "2026-09-01T08:58:47.6815356Z",
+  "event_count": 180,
+  "failure_count": 0,
+  "fixed_candidate_k64_invariants_pass": true,
+  "model_digest": "25b843619e944cd0ae6069f94ff4e5e26a16e109ccbc0a66a0f05979ed70098e",
+  "preregistered_commit": "afd405bd96ef0ef40f7c3c2045b66350ee486b92",
+  "schema_version": 1,
+  "status": "COMPLETE_NONCANONICAL"
+}

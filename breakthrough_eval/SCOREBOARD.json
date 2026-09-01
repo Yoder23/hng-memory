@@ -177,6 +177,24 @@
       "status": "EXECUTED_NONCANONICAL"
     },
     {
+      "area": "LoCoMo-Plus disjoint retrieval budget n=30",
+      "baseline": 0.36666666666666664,
+      "delta": 0.08333333333333337,
+      "evidence_class": "public_noncanonical",
+      "hng": 0.45,
+      "notes": "Primary retrieval comparison: BM25 k64 versus k16. HNG, Strong, and BM25 are exact ties at fixed k64.",
+      "significance": {
+        "mean_score_ci95": [
+          -0.03333333333333338,
+          0.21666666666666667
+        ],
+        "p": 0.375,
+        "paired_cases": 30,
+        "test": "McNemar exact; official judge score > 0.5"
+      },
+      "status": "EXECUTED_NONCANONICAL"
+    },
+    {
       "area": "PersonaMem-v2 seven-stratum pilot",
       "baseline": 0.5714285714285714,
       "delta": 0.0,

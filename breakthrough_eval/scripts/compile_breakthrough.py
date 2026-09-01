@@ -69,6 +69,8 @@ def main() -> int:
         else EVAL / "public" / "locomo_plus" / "RESULTS.json"
     )
     locomo = load(locomo_path) if locomo_path.exists() else None
+    budget_path = EVAL / "public" / "locomo_retrieval_budget_holdout" / "RESULTS.json"
+    budget = load(budget_path) if budget_path.exists() else None
     personamem_path = EVAL / "public" / "personamem_v2" / "RESULTS.json"
     personamem = load(personamem_path) if personamem_path.exists() else None
     reliability_path = EVAL / "reliability" / "STORAGE_PROBE.json"
@@ -196,6 +198,25 @@ def main() -> int:
                 "EXECUTED" if locomo["status"] == "complete" else "PARTIAL",
                 locomo_source,
             ))
+
+    if budget is not None:
+        for name, payload in budget["summaries"].items():
+            for metric, value, unit in (
+                ("judge_score_average", payload["average"], "fraction"),
+                ("prompt_tokens_total", payload["prompt_tokens"], "count"),
+                ("mean_selected_context_chars", payload["mean_selected_context_chars"], "count"),
+            ):
+                results.append(row(
+                    "locomo_plus_disjoint_retrieval_budget_n30",
+                    name,
+                    metric,
+                    None if value is None else float(value),
+                    unit,
+                    "public_noncanonical",
+                    "EXECUTED" if budget["status"] == "complete" else "PARTIAL",
+                    "public/locomo_retrieval_budget_holdout/RESULTS.json",
+                    "Preregistered disjoint holdout; retrieval budgets change candidates and do not isolate governance except at fixed k64.",
+                ))
 
     if personamem is not None:
         for name, payload in personamem["summaries"].items():
@@ -626,6 +647,26 @@ def main() -> int:
             "status": "IN_PROGRESS",
             "notes": pending["locomo_plus"],
         })
+    if budget is not None:
+        primary = budget["paired_statistics"]["bm25_k64_vs_bm25_k16_primary"]
+        public_scoreboard_rows.append({
+            "area": "LoCoMo-Plus disjoint retrieval budget n=30",
+            "hng": budget["summaries"]["bm25_k64"]["average"],
+            "baseline": budget["summaries"]["bm25_k16"]["average"],
+            "delta": primary["paired_bootstrap_mean_score"]["delta"],
+            "significance": {
+                "test": "McNemar exact; official judge score > 0.5",
+                "p": primary["mcnemar_judge_positive"]["exact_two_sided_p"],
+                "paired_cases": primary["paired_cases"],
+                "mean_score_ci95": [
+                    primary["paired_bootstrap_mean_score"]["ci95_low"],
+                    primary["paired_bootstrap_mean_score"]["ci95_high"],
+                ],
+            },
+            "evidence_class": "public_noncanonical",
+            "status": "EXECUTED_NONCANONICAL" if budget["status"] == "complete" else "PARTIAL",
+            "notes": "Primary retrieval comparison: BM25 k64 versus k16. HNG, Strong, and BM25 are exact ties at fixed k64.",
+        })
     if personamem is not None:
         pm_hng = personamem["summaries"]["hng"]["accuracy"]
         pm_strong = personamem["summaries"]["strong_structured"]["accuracy"]
@@ -840,10 +881,11 @@ def main() -> int:
             "llm_failed_events": llm["failed_events"],
             "github_status": "CONNECTED_VERIFIED_PRIVATE_YODER23_HNG_MEMORY",
             "public_candidate_invariants_verified": (
-                None if longmem is None and locomo is None and personamem is None else bool(
+                None if longmem is None and locomo is None and personamem is None and budget is None else bool(
                     (longmem is None or longmem["all_fixed_candidate_invariants_pass"])
                     and (locomo is None or locomo["all_fixed_candidate_invariants_pass"])
                     and (personamem is None or personamem["all_fixed_candidate_invariants_pass"])
+                    and (budget is None or budget["all_fixed_candidate_k64_invariants_pass"])
                 )
             ),
         },

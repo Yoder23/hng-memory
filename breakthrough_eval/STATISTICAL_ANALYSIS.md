@@ -106,6 +106,28 @@ StrongStructuredBaseline (CI [0.0154, 0.0175]). Mean per-run p99 is 2.292 ms for
 although both are negligible beside local 27B inference. These are synthetic single-host latency
 intervals, not deployment SLO evidence.
 
+## Preregistered disjoint LoCoMo-Plus retrieval-budget holdout
+
+The 30-sample holdout uses zero source-index overlap with the observed top-16 development slice.
+BM25 k16 scores 11/30 (36.7%), k32 scores 12/30 (40.0%), and k64 scores 13.5/30 (45.0%);
+full context scores 14/30 (46.7%). The primary k64-versus-k16 delta is +8.3 percentage points,
+with paired bootstrap 95% CI [-3.3, +21.7] and exact McNemar p=0.375 (4 k64-only versus 1
+k16-only positive). The interval includes zero, so wider lexical retrieval is promising but not a
+statistically established improvement on this holdout. K64 uses 116,800 prompt tokens versus
+680,824 for full context and trails it by 1.7 points (CI [-20.0, +16.7], p=1). HNG, Strong, and
+plain BM25 are exact fixed-candidate k64 ties: 13.5/30, delta 0, CI [0, 0], p=1.
+
+## Preregistered disjoint LoCoMo-Plus retrieval-budget holdout
+
+The 30-sample holdout uses zero source-index overlap with the observed top-16 development slice.
+BM25 k16 scores 11/30 (36.7%), k32 scores 12/30 (40.0%), and k64 scores 13.5/30 (45.0%);
+full context scores 14/30 (46.7%). The primary k64-versus-k16 delta is +8.3 percentage points,
+with paired bootstrap 95% CI [-3.3, +21.7] and exact McNemar p=0.375 (4 k64-only versus 1
+k16-only positive). The interval includes zero, so wider lexical retrieval is promising but not a
+statistically established improvement on this holdout. K64 uses 116,800 prompt tokens versus
+680,824 for full context and trails it by 1.7 points (CI [-20.0, +16.7], p=1). HNG, Strong, and
+plain BM25 are exact fixed-candidate k64 ties: 13.5/30, delta 0, CI [0, 0], p=1.
+
 ## Multiplicity and claims
 
 No family-level significance tests are used; the ten family breakdowns are diagnostic. This avoids

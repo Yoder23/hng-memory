@@ -15,6 +15,12 @@ fewer LLM prompt tokens. In the expanded 30-sample LoCoMo-Plus slice, HNG, Stron
 30.0% and all lose to full context at 61.7%; the HNG/full-context gap is statistically supported in
 this noncanonical local protocol. The result points to retrieval truncation rather than governance.
 
+A preregistered disjoint 30-sample follow-up supports the retrieval diagnosis only weakly: widening
+BM25 from 16 to 64 turns raises the mean judge score from 36.7% to 45.0%, but the paired 95%
+interval [-3.3, +21.7] points includes zero. K64 nearly matches full context at 45.0% versus 46.7%
+while using about 17% of its prompt tokens. HNG, Strong, and plain BM25 remain exact ties at fixed
+k64, so the follow-up improves the retrieval operating point without supplying an HNG-specific win.
+
 The stronger breakthrough claim remains unproven because:
 
 - no real HDC assistant is available for HNG-off/on testing;

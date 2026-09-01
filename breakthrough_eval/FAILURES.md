@@ -224,3 +224,8 @@ path plus intentionally uninstalled PersonaMem-v2 GPU/distributed dependencies s
 `flash_attn`, `vllm`, and `tensordict`. No retrieval-budget inference had started. The owned
 breakthrough suite passed 46/46, including the holdout's 13 focused tests; the production package
 suite is validated separately rather than silently excluding or modifying preserved external code.
+
+The first post-execution uniqueness-audit command escaped a PowerShell interpolation expression as
+a command and emitted diagnostic errors; it did not read scores incorrectly or change artifacts.
+The audit was rerun in Python and verified 180 events, 180 unique sample/arm keys, zero duplicates,
+zero event errors, and one preregistration commit across the complete log.
