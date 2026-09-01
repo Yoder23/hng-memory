@@ -1,0 +1,41 @@
+{
+  "claim_boundary": "Root-cause diagnostic only. It cannot qualify HNG, storage, recovery, production reliability, or the failed sustained run.",
+  "config": {
+    "condition_seconds": 90.0,
+    "conditions": [
+      "idle_12",
+      "isolated_sqlite_12",
+      "shared_sqlite_12_a",
+      "shared_sqlite_12_b"
+    ],
+    "control_maximum_slope_handles_per_minute": 5.0,
+    "minimum_samples_per_child": 80,
+    "multiprocessing_start_method": "spawn",
+    "process_count_support_slope_handles_per_minute": 20.0,
+    "reader_workers": 8,
+    "sample_interval_seconds": 1.0,
+    "seed_records": 1000,
+    "shared_replication_tolerance_handles_per_minute": 15.0,
+    "shared_support_slope_handles_per_minute": 20.0,
+    "tenants": 100,
+    "writer_workers": 4
+  },
+  "created_at": "2026-09-01T20:09:38.582198+00:00",
+  "observer_control": "breakthrough_eval/reliability/handle_observer_diagnostic_v3/RESULTS.json",
+  "predecessor_failure": "breakthrough_eval/reliability/sustained_2h_v2/FAILURE_ANALYSIS.json",
+  "qualifying_command": [
+    "C:\\Python310\\python.exe",
+    "breakthrough_eval/scripts/shared_sqlite_handle_diagnostic.py",
+    "--preregistered-commit",
+    "COMMIT"
+  ],
+  "schema_version": 1,
+  "source_sha256": {
+    "baseline_source/hng-frontier-0.5.1a1/src/hngfrontier/storage_v2.py": "1c1dca999d39276708c3bf1116f95f7d9f6faaa85ff696e04194ac4004c99f9f",
+    "breakthrough_eval/reliability/handle_observer_diagnostic_v3/RESULTS.json": "7e281cbe54727de6530303c66da866cb6f5afb09fb22abcbb95c4b58eaaf6552",
+    "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/PROTOCOL.md": "5b2aa235f7b887b826b6920694c242bb814a4920f20c5124f69689fab79f089b",
+    "breakthrough_eval/reliability/sustained_2h_v2/FAILURE_ANALYSIS.json": "8a2010c393d76bf31bde92a180af6af4a42d87ca9d38085b13fb309a0181072e",
+    "breakthrough_eval/scripts/shared_sqlite_handle_diagnostic.py": "eb607c2d30e4f9ed0ed6852d3b412ff012b0e8c5c2ab02530620cc22a42c3ed3"
+  },
+  "status": "PREPARED_NOT_EXECUTED"
+}

@@ -154,3 +154,15 @@ def test_handle_observer_diagnostic_v3_routes_exact_commit() -> None:
     assert command.argv[-2:] == ("--preregistered-commit", "observer789")
     assert command.name == "child_handle_observer_effect_diagnostic_v3"
     assert "attribution-only" in command.note
+
+
+def test_shared_sqlite_handle_diagnostic_routes_exact_commit() -> None:
+    command = reproduce.commands_for(argparse.Namespace(
+        command="shared-sqlite-handle-diagnostic",
+        prepare_only=False,
+        preregistered_commit="shared123",
+    ))[0]
+
+    assert command.argv[-2:] == ("--preregistered-commit", "shared123")
+    assert command.name == "shared_sqlite_child_handle_root_cause_matrix"
+    assert "root-cause matrix" in command.note

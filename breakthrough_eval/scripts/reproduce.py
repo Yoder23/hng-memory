@@ -215,6 +215,27 @@ def commands_for(args: argparse.Namespace) -> list[Command]:
             tuple(argv),
             "Timing-robust attribution-only diagnostic; no HNG claim.",
         )]
+    if args.command == "shared-sqlite-handle-diagnostic":
+        argv = [
+            sys.executable,
+            str(SCRIPTS / "shared_sqlite_handle_diagnostic.py"),
+        ]
+        if args.prepare_only:
+            argv.append("--prepare-only")
+        else:
+            if not args.preregistered_commit:
+                raise ValueError(
+                    "shared-sqlite-handle-diagnostic execution requires "
+                    "--preregistered-commit"
+                )
+            argv.extend([
+                "--preregistered-commit", args.preregistered_commit,
+            ])
+        return [Command(
+            "shared_sqlite_child_handle_root_cause_matrix",
+            tuple(argv),
+            "Four-condition root-cause matrix; no HNG or reliability claim.",
+        )]
     if args.command == "rag-governance":
         result = [deterministic]
         if args.execute_llm:
@@ -446,6 +467,12 @@ def parse_args() -> argparse.Namespace:
     )
     handle_observer_v3.add_argument("--prepare-only", action="store_true")
     handle_observer_v3.add_argument("--preregistered-commit")
+    shared_handle = subparsers.add_parser(
+        "shared-sqlite-handle-diagnostic",
+        help="Prepare or run the shared-SQLite handle root-cause matrix.",
+    )
+    shared_handle.add_argument("--prepare-only", action="store_true")
+    shared_handle.add_argument("--preregistered-commit")
     rag = subparsers.add_parser("rag-governance", help="Reproduce fixed-candidate governance results.")
     rag.add_argument("--execute-llm", action="store_true", help="Run the costly local 27B holdout.")
     rag.add_argument("--llm-limit", type=int, default=30)
