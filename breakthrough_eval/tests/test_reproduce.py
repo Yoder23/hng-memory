@@ -120,6 +120,26 @@ def test_sustained_v2_routes_exact_commit() -> None:
     assert command.name == "sustained_write_quiesced_recovery_v2"
 
 
+def test_sustained_v3_execution_requires_preregistered_commit() -> None:
+    with __import__("pytest").raises(ValueError, match="preregistered-commit"):
+        reproduce.commands_for(argparse.Namespace(
+            command="sustained-reliability-v3",
+            prepare_only=False,
+            preregistered_commit=None,
+        ))
+
+
+def test_sustained_v3_routes_exact_commit() -> None:
+    command = reproduce.commands_for(argparse.Namespace(
+        command="sustained-reliability-v3",
+        prepare_only=False,
+        preregistered_commit="v3commit",
+    ))[0]
+
+    assert command.argv[-2:] == ("--preregistered-commit", "v3commit")
+    assert command.name == "sustained_checkpoint_bounded_recovery_v3"
+
+
 def test_handle_observer_diagnostic_routes_exact_commit() -> None:
     command = reproduce.commands_for(argparse.Namespace(
         command="handle-observer-diagnostic",

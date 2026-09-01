@@ -149,6 +149,31 @@ def commands_for(args: argparse.Namespace) -> list[Command]:
                 "and hard resource/disk/time limits."
             ),
         )]
+    if args.command == "sustained-reliability-v3":
+        argv = [
+            sys.executable,
+            str(SCRIPTS / "sustained_reliability_v3.py"),
+        ]
+        if args.prepare_only:
+            argv.append("--prepare-only")
+        else:
+            if not args.preregistered_commit:
+                raise ValueError(
+                    "sustained-reliability-v3 execution requires "
+                    "--preregistered-commit"
+                )
+            argv.extend([
+                "--preregistered-commit", args.preregistered_commit,
+            ])
+        return [Command(
+            "sustained_checkpoint_bounded_recovery_v3",
+            tuple(argv),
+            (
+                "Two-hour recovery run with 30-second complete connection "
+                "rotation, fully quiescent TRUNCATE checkpoints, monitored "
+                "backups, and hard resource/disk/time limits."
+            ),
+        )]
     if args.command == "handle-observer-diagnostic":
         argv = [
             sys.executable,
@@ -575,6 +600,12 @@ def parse_args() -> argparse.Namespace:
     )
     sustained_v2.add_argument("--prepare-only", action="store_true")
     sustained_v2.add_argument("--preregistered-commit")
+    sustained_v3 = subparsers.add_parser(
+        "sustained-reliability-v3",
+        help="Prepare or run checkpoint-bounded two-hour recovery v3.",
+    )
+    sustained_v3.add_argument("--prepare-only", action="store_true")
+    sustained_v3.add_argument("--preregistered-commit")
     handle_observer = subparsers.add_parser(
         "handle-observer-diagnostic",
         help="Prepare or run the attribution-only child-handle diagnostic.",

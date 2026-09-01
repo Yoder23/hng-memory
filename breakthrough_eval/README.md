@@ -40,6 +40,8 @@ C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py sustained-reliabi
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py sustained-reliability --preregistered-commit COMMIT
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py sustained-reliability-v2 --prepare-only
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py sustained-reliability-v2 --preregistered-commit COMMIT
+C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py sustained-reliability-v3 --prepare-only
+C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py sustained-reliability-v3 --preregistered-commit COMMIT
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py handle-observer-diagnostic --prepare-only
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py handle-observer-diagnostic --preregistered-commit COMMIT
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py handle-observer-diagnostic-v2 --prepare-only
@@ -225,6 +227,14 @@ per-epoch Section growth stayed at 21 and 25, exact database identity passed,
 and throughput was 128.3% and 113.4% of baseline. The frozen outcome
 `SUPPORTS_ROTATE_CHECKPOINT_WAL_BOUNDING` justifies integrating this treatment
 into a new sustained protocol; it is not itself two-hour qualification.
+
+The separately versioned sustained-reliability-v3 protocol integrates that
+exact treatment into v2's workload: all worker connections rotate every 30
+seconds, a fully quiescent TRUNCATE checkpoint follows every epoch, and the
+writer-paused/read-live monitored backups continue every ten minutes. It keeps
+the original 1,024-handle cap and adds conjunctive checkpoint/WAL criteria.
+Preparation, exact-commit execution, and any terminal result remain separate;
+the protocol is not evidence before its sole qualifying run completes.
 
 The current local release candidate is 0.7.0rc3 under `releases/0.7.0rc3/qualified_dist`. Its
 manifest distinguishes the qualifying exact-commit artifacts from two preserved earlier build

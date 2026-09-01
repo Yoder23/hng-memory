@@ -148,17 +148,29 @@ events and ignored runtime files are content-addressed in
 duration was not reached, and no soak pass is claimed. This protocol must not
 be retried or overwritten.
 
-## Failure-driven v2 prepared, not executed
+## Failure-driven v2 terminal failure
 
-V2 is frozen separately under
-`reliability/sustained_2h_v2/PROTOCOL.md` and `PREPARED.json`. It tests the
+V2 was frozen separately under
+`reliability/sustained_2h_v2/PROTOCOL.md` and `PREPARED.json`. It tested the
 general recovery correction suggested by v1: writers acknowledge a pause only
 after their current transaction, scoped readers stay live, backup/restore runs
 in a dedicated child with a 180-second timeout, and the parent continues
 resource and disk-floor checks. All writer resumes must also be acknowledged.
 
-The eight-process development smoke passes multiple pause/backup/restore
-cycles and final logical identity. Status remains `PREPARED_NOT_EXECUTED`;
-the smoke validates the harness but is not two-hour reliability evidence. A
-future v2 pass would establish only write-quiesced/read-live recovery and would
-not erase the uninterrupted-write v1 failure.
+The exact run terminated at 4,020.09 seconds when observed child-process
+handles reached 1,059 and crossed the frozen 1,024 cap. Before termination,
+six backup/restore cycles and four worker epochs passed, with 908,830 reported
+writes, 802,305 reads, and zero missing or malformed reads. The result is a
+preserved safety-cap failure, not a partial pass.
+
+## Checkpoint-bounded v3 protocol
+
+Subsequent preregistered diagnostics localized the growth to per-client Windows
+`Section` mappings of expanding shared WAL-index units. A separate intervention
+then passed two treatment replications using four 30-second fresh-connection
+epochs and fully quiescent TRUNCATE checkpoints. V3 integrates that exact
+treatment into the v2 workload while retaining the hard resource limits and
+monitored writer-paused/read-live backups. It requires at least 216 successful
+worker/checkpoint epochs, at least 12 backups, and at least 7,200 seconds. A
+prepared v3 protocol is not a result; only its sole exact-clean-commit run can
+pass or fail the bounded two-hour gate.

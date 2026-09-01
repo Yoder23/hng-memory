@@ -59,11 +59,14 @@ verified through fresh-clone source commit 27e4a8ee0012f7eef1a9b3655fb8d454aa14c
   completed, the 15-minute rotation was missed, and safety interruption
   stopped all workers. Machine postmortem:
   `reliability/sustained_2h/INTERRUPTED.json`.
-- Failure-driven v2 recovery protocol is frozen but not executed under
-  `reliability/sustained_2h_v2/PROTOCOL.md` and `PREPARED.json`. It tests
-  transaction-boundary writer quiescence, live readers, a timeout-bounded
-  backup child, and continuous parent resource/disk monitoring; preparation
-  is not behavioral evidence.
+- The exact failure-driven v2 recovery run terminated at 4,020.09 seconds when
+  the frozen 1,024-handle cap was crossed. Six completed backup/restore cycles
+  and four worker epochs passed before termination; the two-hour gate failed.
+- Follow-up diagnostics identified shared WAL-index `Section` mappings as the
+  handle-growth mechanism. Two treatment replications support 30-second fresh
+  connections plus fully quiescent TRUNCATE checkpoints as a bounding
+  intervention. The separately versioned v3 protocol integrates that treatment
+  into the two-hour workload; preparation alone is not behavioral evidence.
 
 ## Unavailable or not yet installed
 
