@@ -44,24 +44,24 @@ substitute is permitted; `NOT_RUN` means no qualifying evidence yet exists.
 | 30 | StrongStructuredBaseline challenge | PASS | Independent typed/filter/dedup baseline ties HNG 90% and is faster; the HNG loss is explicitly preserved. |
 | 31 | Strong structured competitors | NOT_RUN | Unavailable property-graph/learned managers remain undefeated. |
 | 32 | Full HNG ablation matrix | PARTIAL | Eight one-at-a-time counterfactual removals run on all 250 frozen scenarios. Outcome, perspective, provenance/trust, exact floors/contracts, temporal validity, supersession, and independence are ranked. Deterministic state carry and profile uncertainty are not isolatable here; consolidation and belief revision are separate component probes. |
-| 33 | Evidence-led iteration loop | PARTIAL | The untouched tool adapter loss is frozen; missing temporal/access outcome context is isolated, fixed generally, covered by a production regression, and rerun on an identical 108-episode stream. HNG recovers from 29.6% to 63.9% but only ties Strong. Broader loss/holdout iteration remains. |
+| 33 | Evidence-led iteration loop | PARTIAL | The untouched tool-adapter loss led to a general fix and matched rerun. A 960-case unlabeled policy differential then found 236 action-relevant Strong/HNG contrasts, all with HNG more conservative, but no external labels; inference was correctly withheld. Broader labeled holdout iteration remains. |
 | 34 | Statistical standard | PARTIAL | Paired bootstrap/exact McNemar and Bonferroni-adjusted reader-family rules cover the pushed disjoint Qwen/Mistral holdout; all six arm orders are balanced. Multiple inference seeds and canonical public/real units remain missing. |
 | 35 | Automatic scoreboard | PARTIAL | Compiler produces Markdown/JSON scoreboard and machine rows for release and identifiability checks; required scientific rows remain incomplete until tracks run. |
 | 36 | Capability radar | PARTIAL | A complete machine-readable evidence-maturity radar covers every requested axis without converting maturity into subjective capability scores. No axis has canonical public or real paired evidence. |
 | 37 | Six minimum breakthrough gates | FAIL_OPEN | Gates 1, 2, 5, and 6 are unmet; Gate 3 passes only synthetically; Gate 4 passes frozen suites. |
 | 38 | Stretch gates | NOT_RUN | No stretch gate is currently proven. |
 | 39 | Failure-first development | PASS | New work is evaluation/harness/provenance work; no speculative HNG feature was added. |
-| 40 | Public reproduction commands | PASS | The small `reproduce.py` surface covers all owned tracks, and a wheel-installed `hng-eval` ran `fresh-clone-core` from exact pushed commit `27e4a8e`: 58/58 dependency-free tests, isolated deterministic 250, and compiler completion. Four external LoCoMo modules are explicitly excluded only from the dependency-free clone proof; all run in the configured 85-test suite. Four observed failures are preserved rather than hidden. |
+| 40 | Public reproduction commands | PASS | The small `reproduce.py` surface covers all owned tracks, and a wheel-installed `hng-eval` ran `fresh-clone-core` from exact pushed commit `27e4a8e`: 58/58 dependency-free tests, isolated deterministic 250, and compiler completion. Four external LoCoMo modules are explicitly excluded only from the dependency-free clone proof; all run in the configured 88-test suite. Four observed failures are preserved rather than hidden. |
 | 41 | Release artifacts | PASS | The backward-compatible 0.7.0rc3 reproducibility correction ships as an exact-commit, fresh-clone-tested wheel and sdist with SHA-256 manifest, changelog, migration guide, installed console entry, and machine proof. Two earlier artifact pairs are preserved and excluded from qualification. |
 | 42 | Required research documents | PARTIAL | 18 of 19 named narrative documents and all four core machine-readable outputs exist. `FINAL_BREAKTHROUGH_VERDICT.md` is intentionally withheld until active public runs and the completion audit finish. |
 | 43 | Final paper question | NOT_RUN | Paper claim cannot be supported before real/public gates. |
 | 44 | Ten explicit final-report questions | NOT_RUN | Must be answered in final verdict after evidence closure. |
-| 45 | Most-important same-retrieval A/B | PARTIAL | A disjoint, counterbalanced Qwen/Mistral holdout passes the joint HNG-versus-ordinary rule (+33.3/+60.0 points; both adjusted p<0.025), but HNG ties Strong exactly in both readers. All 154 public Strong/HNG pairs reuse exact prompts and are therefore non-identifying. A real long-running task remains missing. |
+| 45 | Most-important same-retrieval A/B | PARTIAL | A disjoint, counterbalanced Qwen/Mistral holdout passes HNG-versus-ordinary, but HNG ties Strong exactly. All 154 public Strong/HNG pairs reuse exact prompts. An unlabeled grid finds conservative policy contrasts but supplies no defensible outcome labels, so a new reader holdout is not admitted. A real long-running task remains missing. |
 | 46 | Second-most-important real HDC A/B | BLOCKED_EXTERNAL | Same resource absence as Section 7. |
 | 47 | Combined-system success target | NOT_RUN | No evidence yet proves the full system-level claim. |
 | 48 | Architectural freedom from evidence | PASS | No result has been protected ideologically; simple baseline tie and BM25 QMSum win are preserved. |
 | 49 | No universal-dominance substitution | PASS | Retrieval, governance, and reasoning claims/results are kept separate. |
-| 50 | Hostile-reviewer standard | IN_PROGRESS | Candidate/prompt/model invariants and provenance are explicit. A machine audit now prevents 154 exact public prompt pairs from being misread as independent HNG evidence; public/real generality is still not defensible. |
+| 50 | Hostile-reviewer standard | IN_PROGRESS | Candidate/prompt/model invariants and provenance are explicit. Exact public prompt reuse is not misreported, and 596 unlabeled policy differences are not converted into wins. Public/real generality is still not defensible. |
 
 ## Minimum-gate ledger
 
@@ -72,7 +72,7 @@ substitute is permitted; `NOT_RUN` means no qualifying evidence yet exists.
 | 3: fixed-candidate governance | On a disjoint balanced-order window, Qwen is +33.3 points and Mistral +60.0 over ordinary; both CIs exclude zero and adjusted p<0.025. HNG exactly ties Strong in both. | PARTIAL |
 | 4: robustness | 94/94, 64/64, 11/11, and 10/10 frozen suites pass; losses elsewhere are preserved. | MET |
 | 5: HDC and LLM model independence | Pinned Qwen/Mistral readers now replicate on both original and disjoint generated cases; real HDC evidence remains absent. | UNMET overall (LLM-family subrequirement met) |
-| 6: strong simple baseline | StrongStructuredBaseline ties HNG and is faster/cheaper. Synthetic reader inputs differ on 24/30 units per study and still tie; public reader inputs are identical on all 154 pairs. | UNMET (HNG does not beat/extend it) |
+| 6: strong simple baseline | Strong ties HNG and is faster/cheaper. Synthetic reader inputs differ and still tie; public inputs are identical. A 960-case unlabeled grid finds HNG-only conservatism, but no external labels establish that abstention is correct. | UNMET (HNG does not beat/extend it) |
 
 The ledger forbids an S or A claim on current evidence. It does not pre-commit the final verdict;
 remaining public and operational experiments must still be completed where feasible.

@@ -105,6 +105,8 @@ def main() -> int:
     release = load(release_path) if release_path.exists() else None
     identifiability_path = EVAL / "identifiability" / "RESULTS.json"
     identifiability = load(identifiability_path) if identifiability_path.exists() else None
+    policy_differential_path = EVAL / "policy_differential" / "DEVELOPMENT_RESULTS.json"
+    policy_differential = load(policy_differential_path) if policy_differential_path.exists() else None
     real_hdc_path = EVAL / "real_hdc" / "READINESS.json"
     real_hdc = load(real_hdc_path) if real_hdc_path.exists() else None
     latency_path = EVAL / "latency" / "RESULTS.json"
@@ -579,6 +581,26 @@ def main() -> int:
                 identifiability["status"],
                 "identifiability/RESULTS.json",
                 "Hash audit of preserved candidate selections and reader inputs; no answer rescoring.",
+            ))
+
+    if policy_differential is not None:
+        summary = policy_differential["summary"]
+        for metric in (
+            "case_count",
+            "decision_difference_count",
+            "strong_decisive_hng_nondecisive_count",
+            "hng_decisive_strong_nondecisive_count",
+        ):
+            results.append(row(
+                "policy_differential_development",
+                "hng_vs_strong",
+                metric,
+                float(summary[metric]),
+                "cases",
+                "synthetic_development",
+                policy_differential["status"],
+                "policy_differential/DEVELOPMENT_RESULTS.json",
+                "Unlabeled bounded policy grid; not holdout, reader, public, or superiority evidence.",
             ))
 
     if belief is not None:

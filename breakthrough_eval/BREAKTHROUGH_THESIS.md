@@ -64,6 +64,12 @@ than the score tables alone suggested. At the policy level, HNG and the independ
 also emit identical decisions and support/challenge scores on all 250 deterministic scenarios. A
 further reader run over the same regime would repeat a treatment with no policy-level contrast.
 
+A broader unlabeled development grid does find policy contrasts: 596/960 decision labels differ,
+including 236 cases where Strong acts and HNG abstains. HNG is never uniquely decisive. These cases
+cross evidence kinds and source types and assign synthetic outcome stances; they have no external
+correctness labels. They expose HNG's extra conservatism but do not prove it is beneficial, so no
+reader holdout is admitted from the grid.
+
 The stronger breakthrough claim remains unproven because:
 
 - no real HDC assistant is available for HNG-off/on testing;

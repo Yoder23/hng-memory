@@ -80,6 +80,15 @@ def commands_for(args: argparse.Namespace) -> list[Command]:
             ),
             compile_results,
         ]
+    if args.command == "policy-differential":
+        return [
+            Command(
+                "hng_strong_policy_differential_development",
+                py(str(SCRIPTS / "policy_differential_search.py")),
+                "Unlabeled bounded development grid; does not run a reader or create holdout evidence.",
+            ),
+            compile_results,
+        ]
     if args.command == "rag-governance":
         result = [deterministic]
         if args.execute_llm:
@@ -277,6 +286,7 @@ def parse_args() -> argparse.Namespace:
     subparsers.add_parser("adversarial", help="Run the 250-scenario suite, tests, and compile results.")
     subparsers.add_parser("fresh-clone-core", help="Run the dependency-free owned core from a clean checkout.")
     subparsers.add_parser("identifiability", help="Audit whether preserved Strong/HNG reader pairs had distinct inputs.")
+    subparsers.add_parser("policy-differential", help="Run the unlabeled HNG/Strong development policy grid.")
     rag = subparsers.add_parser("rag-governance", help="Reproduce fixed-candidate governance results.")
     rag.add_argument("--execute-llm", action="store_true", help="Run the costly local 27B holdout.")
     rag.add_argument("--llm-limit", type=int, default=30)

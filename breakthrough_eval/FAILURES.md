@@ -334,3 +334,10 @@ The first two unit fixtures failed because the audit attempted to render every i
 to the repository evidence directory, while pytest correctly created fixtures in the operating
 system temporary directory. No preserved evidence was read incorrectly and the main audit still
 completed. Path display now falls back to an absolute fixture path; comparison logic is unchanged.
+
+## Policy-differential development setup failure
+
+The first direct policy-search invocation failed before generating a result because Python placed
+the script directory, rather than the repository root, on its module path. The import-based unit
+tests passed, which exposed the entry-point-specific gap. The script now inserts its resolved
+repository root explicitly before importing the shared benchmark policy code.

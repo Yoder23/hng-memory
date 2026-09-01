@@ -47,3 +47,15 @@ def test_identifiability_command_runs_audit_then_compiler() -> None:
         "compile_results",
     ]
     assert commands[0].argv[-1].endswith("identifiability_audit.py")
+
+
+def test_policy_differential_command_does_not_invoke_reader() -> None:
+    commands = reproduce.commands_for(
+        argparse.Namespace(command="policy-differential")
+    )
+
+    assert [command.name for command in commands] == [
+        "hng_strong_policy_differential_development",
+        "compile_results",
+    ]
+    assert commands[0].argv[-1].endswith("policy_differential_search.py")

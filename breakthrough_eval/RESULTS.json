@@ -2223,6 +2223,50 @@
       "value": 0.0
     },
     {
+      "area": "policy_differential_development",
+      "evidence_class": "synthetic_development",
+      "metric": "case_count",
+      "notes": "Unlabeled bounded policy grid; not holdout, reader, public, or superiority evidence.",
+      "source": "policy_differential/DEVELOPMENT_RESULTS.json",
+      "status": "DEVELOPMENT_ONLY_COMPLETE",
+      "system": "hng_vs_strong",
+      "unit": "cases",
+      "value": 960.0
+    },
+    {
+      "area": "policy_differential_development",
+      "evidence_class": "synthetic_development",
+      "metric": "decision_difference_count",
+      "notes": "Unlabeled bounded policy grid; not holdout, reader, public, or superiority evidence.",
+      "source": "policy_differential/DEVELOPMENT_RESULTS.json",
+      "status": "DEVELOPMENT_ONLY_COMPLETE",
+      "system": "hng_vs_strong",
+      "unit": "cases",
+      "value": 596.0
+    },
+    {
+      "area": "policy_differential_development",
+      "evidence_class": "synthetic_development",
+      "metric": "strong_decisive_hng_nondecisive_count",
+      "notes": "Unlabeled bounded policy grid; not holdout, reader, public, or superiority evidence.",
+      "source": "policy_differential/DEVELOPMENT_RESULTS.json",
+      "status": "DEVELOPMENT_ONLY_COMPLETE",
+      "system": "hng_vs_strong",
+      "unit": "cases",
+      "value": 236.0
+    },
+    {
+      "area": "policy_differential_development",
+      "evidence_class": "synthetic_development",
+      "metric": "hng_decisive_strong_nondecisive_count",
+      "notes": "Unlabeled bounded policy grid; not holdout, reader, public, or superiority evidence.",
+      "source": "policy_differential/DEVELOPMENT_RESULTS.json",
+      "status": "DEVELOPMENT_ONLY_COMPLETE",
+      "system": "hng_vs_strong",
+      "unit": "cases",
+      "value": 0.0
+    },
+    {
       "area": "synthetic_belief_revision",
       "evidence_class": "synthetic",
       "metric": "current_belief_accuracy",

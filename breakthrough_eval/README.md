@@ -33,6 +33,7 @@ C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py core
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py adversarial
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py fresh-clone-core
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py identifiability
+C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py policy-differential
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py rag-governance --execute-llm
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py public-memory --execute-llm
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py belief-revision
@@ -64,6 +65,11 @@ Across all seven public-data studies, all 154 paired reader prompts are exact ma
 public HNG/Strong ties are policy no-op checks rather than independent HNG comparisons. The four
 synthetic reader studies have distinct inputs on 24/30 units each and still produce exact ties.
 See `EXPERIMENT_IDENTIFIABILITY.md` and `identifiability/RESULTS.json`.
+
+The policy-differential command runs an unlabeled 960-case development grid without a reader. It
+finds 236 action-relevant differences, all with HNG more conservative, but no externally grounded
+labels. No reader holdout is admitted from those differences. See
+`POLICY_DIFFERENTIAL_DEVELOPMENT.md`.
 
 The real-HDC command is a fail-closed readiness gate, not a synthetic substitute and not an
 assistant evaluation. Without a manifest it records the exact missing contract. With a manifest it
@@ -113,7 +119,7 @@ manifest distinguishes the qualifying exact-commit artifacts from two preserved 
 pairs. A brand-new private-repository clone installed the wheel and used `hng-eval` to pass 58
 dependency-free tests, execute the isolated 250-case deterministic study, and recompile the result
 corpus. The four external LoCoMo test modules remain explicit exclusions from this dependency-free
-proof and continue to run in the configured 85-test breakthrough suite.
+proof and continue to run in the configured 88-test breakthrough suite.
 
 ## Current resource boundary
 
