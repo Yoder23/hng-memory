@@ -72,6 +72,40 @@
       "status": "WIN_STRUCTURED_CONTEXT_SYNTHETIC"
     },
     {
+      "area": "Disjoint fixed-LLM cross-reader holdout (mistral)",
+      "baseline": 0.3,
+      "delta": 0.6000000000000001,
+      "evidence_class": "synthetic",
+      "hng": 0.9,
+      "notes": "Joint two-reader rule reported across both rows; HNG-specific attribution supported=False. Disjoint generated cases only.",
+      "significance": {
+        "ci95": [
+          0.43333333333333335,
+          0.7666666666666667
+        ],
+        "p": 7.62939453125e-06,
+        "test": "McNemar exact plus paired bootstrap; per-reader alpha=0.025"
+      },
+      "status": "WIN_STRUCTURED_CONTEXT_SYNTHETIC"
+    },
+    {
+      "area": "Disjoint fixed-LLM cross-reader holdout (qwen)",
+      "baseline": 0.5666666666666667,
+      "delta": 0.33333333333333337,
+      "evidence_class": "synthetic",
+      "hng": 0.9,
+      "notes": "Joint two-reader rule reported across both rows; HNG-specific attribution supported=False. Disjoint generated cases only.",
+      "significance": {
+        "ci95": [
+          0.16666666666666674,
+          0.5
+        ],
+        "p": 0.001953125,
+        "test": "McNemar exact plus paired bootstrap; per-reader alpha=0.025"
+      },
+      "status": "WIN_STRUCTURED_CONTEXT_SYNTHETIC"
+    },
+    {
       "area": "Bounded storage reliability",
       "baseline": null,
       "delta": null,

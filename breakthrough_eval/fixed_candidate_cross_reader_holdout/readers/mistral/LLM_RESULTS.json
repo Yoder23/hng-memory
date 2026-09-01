@@ -1,0 +1,238 @@
+{
+  "benchmark": "fixed_candidate_llm_holdout",
+  "candidate_pool_identity_verified": true,
+  "counterbalanced_system_order": true,
+  "evidence_class": "synthetic",
+  "failed_events": 0,
+  "model": "mistral-small3.1:24b-instruct-2503-q4_K_M",
+  "model_digest": "b9aaf0c2586a8ed8105feab808c0f034bd4d346203822f048e2366165a13f4ea",
+  "paired_statistics": {
+    "hng_vs_ordinary_rag": {
+      "mcnemar": {
+        "discordant": 18,
+        "exact_two_sided_p": 7.62939453125e-06,
+        "left_correct_right_wrong": 18,
+        "right_correct_left_wrong": 0
+      },
+      "paired_bootstrap_accuracy": {
+        "ci95_high": 0.7666666666666667,
+        "ci95_low": 0.43333333333333335,
+        "delta": 0.6000000000000001
+      },
+      "paired_cases": 30
+    },
+    "hng_vs_strong_structured": {
+      "mcnemar": {
+        "discordant": 0,
+        "exact_two_sided_p": 1.0,
+        "left_correct_right_wrong": 0,
+        "right_correct_left_wrong": 0
+      },
+      "paired_bootstrap_accuracy": {
+        "ci95_high": 0.0,
+        "ci95_low": 0.0,
+        "delta": 0.0
+      },
+      "paired_cases": 30
+    }
+  },
+  "preregistered_commit": "9a47a3e412d643f640dafcab93ecdbdecf5c72e4",
+  "protocol": "fixed_candidate_disjoint_cross_reader_holdout",
+  "raw_event_log": "raw/llm_events.jsonl",
+  "requested_cases": 30,
+  "schema_version": 1,
+  "systems": {
+    "hng": {
+      "accuracy": 0.9,
+      "by_family": {
+        "authority_mismatch": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "duplicate_attack": {
+          "accuracy": 0,
+          "correct": 0,
+          "total": 3
+        },
+        "irrelevant_state": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "sparse_verified": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "stale_environment": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "superseded": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "true_conflict": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "untrusted_poison": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "wrong_role": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "wrong_tenant": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        }
+      },
+      "correct": 27,
+      "generation_tokens_total": 246,
+      "latency_seconds": {
+        "p50": 1.7168033000198193,
+        "p95": 2.744268820009893,
+        "p99": 2.7474575070186984
+      },
+      "prompt_tokens_total": 18261,
+      "total": 30
+    },
+    "ordinary_rag": {
+      "accuracy": 0.3,
+      "by_family": {
+        "authority_mismatch": {
+          "accuracy": 0,
+          "correct": 0,
+          "total": 3
+        },
+        "duplicate_attack": {
+          "accuracy": 0,
+          "correct": 0,
+          "total": 3
+        },
+        "irrelevant_state": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "sparse_verified": {
+          "accuracy": 0.3333333333333333,
+          "correct": 1,
+          "total": 3
+        },
+        "stale_environment": {
+          "accuracy": 0.6666666666666666,
+          "correct": 2,
+          "total": 3
+        },
+        "superseded": {
+          "accuracy": 0,
+          "correct": 0,
+          "total": 3
+        },
+        "true_conflict": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "untrusted_poison": {
+          "accuracy": 0,
+          "correct": 0,
+          "total": 3
+        },
+        "wrong_role": {
+          "accuracy": 0,
+          "correct": 0,
+          "total": 3
+        },
+        "wrong_tenant": {
+          "accuracy": 0,
+          "correct": 0,
+          "total": 3
+        }
+      },
+      "correct": 9,
+      "generation_tokens_total": 269,
+      "latency_seconds": {
+        "p50": 3.721126999997068,
+        "p95": 4.878065574972424,
+        "p99": 5.049255798945669
+      },
+      "prompt_tokens_total": 43785,
+      "total": 30
+    },
+    "strong_structured": {
+      "accuracy": 0.9,
+      "by_family": {
+        "authority_mismatch": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "duplicate_attack": {
+          "accuracy": 0,
+          "correct": 0,
+          "total": 3
+        },
+        "irrelevant_state": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "sparse_verified": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "stale_environment": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "superseded": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "true_conflict": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "untrusted_poison": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "wrong_role": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "wrong_tenant": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        }
+      },
+      "correct": 27,
+      "generation_tokens_total": 246,
+      "latency_seconds": {
+        "p50": 1.6558851500158198,
+        "p95": 2.7786973400245185,
+        "p99": 9.514862689024893
+      },
+      "prompt_tokens_total": 17358,
+      "total": 30
+    }
+  }
+}

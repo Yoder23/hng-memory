@@ -296,3 +296,13 @@ assistant claim.
    preparation artifact still contained the old family label. No case, candidate, context, order,
    or model event changed. The single metadata field and its protocol file hash were updated
    explicitly before preregistration rather than bypassing the immutability check.
+
+## Disjoint cross-reader holdout surviving failure
+
+The pushed 180-event holdout passes its Bonferroni-adjusted joint HNG-versus-ordinary rule in both
+Qwen and Mistral, on cases untouched by the earlier reader study and with exact six-order balance.
+It again fails the architectural attribution control: HNG and StrongStructuredBaseline are exact
+27/30 ties in both readers (CI [0,0], p=1), and both miss every duplicate-attack case. HNG also
+uses more prompt tokens than Strong in both readers (17,103 vs 16,215 for Qwen; 18,261 vs 17,358
+for Mistral). The surviving result is structured/governed-context evidence, not HNG-specific,
+public, canonical, or real-assistant evidence.

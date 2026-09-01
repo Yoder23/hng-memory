@@ -45,6 +45,15 @@ both fail every duplicate-attack case. This strengthens reader-family robustness
 the simpler-baseline attribution failure; it is fixed-case synthetic replication, not independent
 public or real evidence.
 
+The next pushed preregistration removes that case-reuse weakness. On 30 untouched variants with
+all six arm orders exactly balanced, Qwen again gives HNG/Strong 27/30 versus ordinary at 17/30
+(+33.3 points, CI [+16.7, +50.0], p=0.001953), while Mistral gives HNG/Strong 27/30 versus
+ordinary at 9/30 (+60.0 points, CI [+43.3, +76.7], p=7.63e-6). The Bonferroni-adjusted joint
+two-reader rule passes with 180/180 events and zero failures. Both HNG/Strong controls remain exact
+ties and both systems again fail every duplicate-attack case. Thus structured/governed context now
+replicates across both reader families and an independent generated-case window, but HNG-specific,
+public, and real-assistant claims remain unsupported.
+
 The stronger breakthrough claim remains unproven because:
 
 - no real HDC assistant is available for HNG-off/on testing;

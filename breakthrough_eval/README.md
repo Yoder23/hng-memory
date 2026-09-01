@@ -87,6 +87,10 @@ The cross-reader-holdout command uses the next 30 untouched generated cases (var
 each family), pinned Qwen and Mistral readers, and 180 expected events. Each reader uses every one
 of the six ordinary/Strong/HNG execution orders exactly five times. Its joint Bonferroni-adjusted
 rule and separate HNG/Strong attribution control are frozen in the protocol.
+The completed run has 180/180 events and zero failures. The adjusted joint HNG/ordinary rule passes
+for Qwen (+33.3 points) and Mistral (+60.0 points), while HNG and Strong remain exact 27/30 ties in
+both readers. The scoreboard therefore records a structured-context synthetic result and a failed
+HNG-specific attribution control.
 
 The scaled-isolation command creates ignored SQLite runtime files, takes about seven minutes on the
 recorded host, and refuses to overwrite an earlier preserved run.

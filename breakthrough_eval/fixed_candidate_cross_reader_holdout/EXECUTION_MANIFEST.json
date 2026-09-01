@@ -1,0 +1,73 @@
+{
+  "all_invariants_pass": true,
+  "artifact_sha256": {
+    "breakthrough_eval/BREAKTHROUGH_SCOREBOARD.md": "888ed2d0eb67a6bb8b421d974f43ab0a060a97f0676d78937ec21c37989f712f",
+    "breakthrough_eval/BREAKTHROUGH_THESIS.md": "e116d39bd54248d0e73b16fbcc49b4fa96b070ef1fe14277607bbc2198f00f1a",
+    "breakthrough_eval/FAILURES.md": "d1740ac1e40241755129f9fb11aa3b6ae6b67e687778f5986ea92f491c3ab4e0",
+    "breakthrough_eval/PROGRAM_AUDIT.md": "27b156a641cf9acd5900361100fbe3093e399e5db518feef157e457a16ddd797",
+    "breakthrough_eval/RESOURCE_INVENTORY.json": "23690c5e8ccbf2c2f32e2740ec381617508afd033ebc802e6c4ee8093df263c0",
+    "breakthrough_eval/RESULTS.json": "30f4f2297a0890c7295b92654fa93a46c031cb449229382f6ff4621651c82f11",
+    "breakthrough_eval/SCOREBOARD.json": "cbf9ac54b4ab5ee1c264703605952ad1de077931bf14b734d22aee60ce4a9126",
+    "breakthrough_eval/STATISTICAL_ANALYSIS.md": "f3e0db5d9c53e1534abe9f29be1dd7586b6875458ec1219f2d5b71d4dc5d148e",
+    "breakthrough_eval/fixed_candidate_cross_reader_holdout/MANIFEST.json": "42074f412872974435951b7d8743d112a6735d8057dccbe2b51d959d43bcd39b",
+    "breakthrough_eval/fixed_candidate_cross_reader_holdout/PREPARED.json": "6af5cd25a5f08b1254cbc447c3a16783f5276116aea42a1adecab52121104094",
+    "breakthrough_eval/fixed_candidate_cross_reader_holdout/PROTOCOL.md": "d0f2d44092b9fc018d8828512ad1389dc9d49e67939f9b7f1a1a385a7d894276",
+    "breakthrough_eval/fixed_candidate_cross_reader_holdout/RESULTS.json": "25836df5cf334ec8f4a38ff68c8dbf172cef246322d138bbf850e109daa0ea30",
+    "breakthrough_eval/fixed_candidate_cross_reader_holdout/readers/mistral/LLM_RESULTS.json": "383cb962961d589caac18b2b9acac34c1022a0ed7de8bcb72acf7c6752c0ac3c",
+    "breakthrough_eval/fixed_candidate_cross_reader_holdout/readers/mistral/raw/llm_events.jsonl": "adf9e93c67df55929edcfe8cb0c560ae26bbba254c695bb08f24aadc77a3974b",
+    "breakthrough_eval/fixed_candidate_cross_reader_holdout/readers/qwen/LLM_RESULTS.json": "62a2e7bd36782ea25857403e390d43c93a95217e6aeb8c520d93211e17313e1d",
+    "breakthrough_eval/fixed_candidate_cross_reader_holdout/readers/qwen/raw/llm_events.jsonl": "b056de282bc908fa4d1e43d10bc112c0590030452dd1c8e8cb1e83f9eacbad58",
+    "breakthrough_eval/scripts/compile_breakthrough.py": "f4f32c1366a1417ee6a0dc827a09789d9429e078a862d6f49ae46ff368b0f0bb"
+  },
+  "completed_events": 180,
+  "complexity_control": {
+    "mistral": {
+      "bootstrap_ci95": [0.0, 0.0],
+      "delta": 0.0,
+      "exact_mcnemar_p": 1.0,
+      "passed": false
+    },
+    "qwen": {
+      "bootstrap_ci95": [0.0, 0.0],
+      "delta": 0.0,
+      "exact_mcnemar_p": 1.0,
+      "passed": false
+    }
+  },
+  "evidence_class": "synthetic",
+  "historical_failed_events": 0,
+  "hng_specific_familywise_supported": false,
+  "order_balance_verified": true,
+  "preregistered_commit": "9a47a3e412d643f640dafcab93ecdbdecf5c72e4",
+  "primary_comparison": {
+    "mistral": {
+      "bootstrap_ci95": [0.43333333333333335, 0.7666666666666667],
+      "delta": 0.6000000000000001,
+      "exact_mcnemar_p": 0.00000762939453125,
+      "passed": true
+    },
+    "qwen": {
+      "bootstrap_ci95": [0.16666666666666674, 0.5],
+      "delta": 0.33333333333333337,
+      "exact_mcnemar_p": 0.001953125,
+      "passed": true
+    }
+  },
+  "protocol": "fixed_candidate_disjoint_cross_reader_holdout",
+  "schema_version": 1,
+  "status": "COMPLETE",
+  "structured_context_familywise_supported": true,
+  "system_accuracy": {
+    "mistral": {
+      "hng": 0.9,
+      "ordinary_rag": 0.3,
+      "strong_structured": 0.9
+    },
+    "qwen": {
+      "hng": 0.9,
+      "ordinary_rag": 0.5666666666666667,
+      "strong_structured": 0.9
+    }
+  },
+  "unique_reader_case_system_keys": 180
+}

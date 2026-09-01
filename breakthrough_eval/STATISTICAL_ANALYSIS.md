@@ -165,6 +165,26 @@ discordant pairs, p=1. Both systems miss all three duplicate-attack cases. Accor
 does not attribute the gain specifically to HNG. It reuses previously evaluated synthetic cases,
 so it is a model-family replication rather than an independent confirmatory sample.
 
+## Preregistered disjoint cross-reader holdout
+
+The next 30 untouched generated holdout cases (variants 08-10 in each of ten families) have zero
+overlap with the prior reader-family window. Within each pinned reader, all six system execution
+orders occur exactly five times. The single pushed preregistration applies per-reader alpha 0.025
+and requires both reader-specific HNG-versus-ordinary tests to have positive deltas, bootstrap 95%
+lower bounds above zero, and exact two-sided McNemar p below 0.025.
+
+Qwen HNG and Strong each score 27/30 (90.0%) versus ordinary at 17/30 (56.7%). HNG-minus-ordinary
+is +33.3 points, CI [+16.7, +50.0], with all ten discordant pairs favoring HNG and p=0.001953.
+Mistral HNG and Strong each score 27/30 versus ordinary at 9/30 (30.0%). Its delta is +60.0
+points, CI [+43.3, +76.7], with all 18 discordant pairs favoring HNG and p=0.0000076294. The joint
+structured-context rule passes.
+
+For both readers, HNG versus Strong is an exact tie: delta 0, CI [0,0], zero discordant pairs,
+p=1. The HNG-specific joint control therefore fails. Both systems miss all three duplicate-attack
+cases in both readers. All 180 events complete with zero failures, one preregistration commit,
+exact model digests, exact prepared inputs/orders, and the frozen prompt-template hash. The unit is
+still a generated synthetic case, not a public or real-assistant task.
+
 ## Multiplicity and claims
 
 No family-level significance tests are used; the ten family breakdowns are diagnostic. This avoids
@@ -173,8 +193,8 @@ local statistical comparison.
 
 ## Remaining statistical requirements
 
-- Repeat the cross-family result on independently sampled cases with order randomization or
-  counterbalancing and multiple inference seeds where stochasticity is enabled.
+- Add multiple inference seeds where stochasticity is enabled; the disjoint cross-reader window
+  now supplies independent generated cases and exact order counterbalancing.
 - Use public benchmark bootstrap units defined by official examples/users, not generated variants.
 - Extend repeated-run confidence intervals beyond the synthetic tool-agent decision path to every
   component and end-to-end deployment path.
