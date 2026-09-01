@@ -1,0 +1,75 @@
+
+=================================== ERRORS ====================================
+____________ ERROR collecting tests/test_assistant_integration.py _____________
+ImportError while importing test module 'C:\tmp\hng-breakthrough-baseline-e57\baseline_source\hng-frontier-0.5.1a1\tests\test_assistant_integration.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Python310\lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+baseline_source\hng-frontier-0.5.1a1\tests\test_assistant_integration.py:8: in <module>
+    from hngfrontier import (
+E   ModuleNotFoundError: No module named 'hngfrontier'
+___________________ ERROR collecting tests/test_closure.py ____________________
+ImportError while importing test module 'C:\tmp\hng-breakthrough-baseline-e57\baseline_source\hng-frontier-0.5.1a1\tests\test_closure.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Python310\lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+baseline_source\hng-frontier-0.5.1a1\tests\test_closure.py:9: in <module>
+    from hngfrontier import (
+E   ModuleNotFoundError: No module named 'hngfrontier'
+___________ ERROR collecting tests/test_document_closure_restart.py ___________
+ImportError while importing test module 'C:\tmp\hng-breakthrough-baseline-e57\baseline_source\hng-frontier-0.5.1a1\tests\test_document_closure_restart.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Python310\lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+baseline_source\hng-frontier-0.5.1a1\tests\test_document_closure_restart.py:5: in <module>
+    from hngfrontier import (DocumentChunk, EvidenceProvenance, ReferenceBinaryRetriever,
+E   ModuleNotFoundError: No module named 'hngfrontier'
+_______________ ERROR collecting tests/test_document_memory.py ________________
+ImportError while importing test module 'C:\tmp\hng-breakthrough-baseline-e57\baseline_source\hng-frontier-0.5.1a1\tests\test_document_memory.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Python310\lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+baseline_source\hng-frontier-0.5.1a1\tests\test_document_memory.py:3: in <module>
+    from hngfrontier import HDCDocumentMemory
+E   ModuleNotFoundError: No module named 'hngfrontier'
+_______________ ERROR collecting tests/test_governed_memory.py ________________
+ImportError while importing test module 'C:\tmp\hng-breakthrough-baseline-e57\baseline_source\hng-frontier-0.5.1a1\tests\test_governed_memory.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Python310\lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+baseline_source\hng-frontier-0.5.1a1\tests\test_governed_memory.py:9: in <module>
+    from hngfrontier import (
+E   ModuleNotFoundError: No module named 'hngfrontier'
+______________ ERROR collecting tests/test_perspective_memory.py ______________
+ImportError while importing test module 'C:\tmp\hng-breakthrough-baseline-e57\baseline_source\hng-frontier-0.5.1a1\tests\test_perspective_memory.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Python310\lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+baseline_source\hng-frontier-0.5.1a1\tests\test_perspective_memory.py:6: in <module>
+    from hngfrontier import (
+E   ModuleNotFoundError: No module named 'hngfrontier'
+___________ ERROR collecting tests/test_profile_closure_explicit.py ___________
+ImportError while importing test module 'C:\tmp\hng-breakthrough-baseline-e57\baseline_source\hng-frontier-0.5.1a1\tests\test_profile_closure_explicit.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Python310\lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+baseline_source\hng-frontier-0.5.1a1\tests\test_profile_closure_explicit.py:6: in <module>
+    from hngfrontier import (Decision, EvidenceProvenance, GovernedProfile, HNGMemory,
+E   ModuleNotFoundError: No module named 'hngfrontier'
+=========================== short test summary info ===========================
+ERROR baseline_source\hng-frontier-0.5.1a1\tests\test_assistant_integration.py
+ERROR baseline_source\hng-frontier-0.5.1a1\tests\test_closure.py
+ERROR baseline_source\hng-frontier-0.5.1a1\tests\test_document_closure_restart.py
+ERROR baseline_source\hng-frontier-0.5.1a1\tests\test_document_memory.py
+ERROR baseline_source\hng-frontier-0.5.1a1\tests\test_governed_memory.py
+ERROR baseline_source\hng-frontier-0.5.1a1\tests\test_perspective_memory.py
+ERROR baseline_source\hng-frontier-0.5.1a1\tests\test_profile_closure_explicit.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 7 errors during collection !!!!!!!!!!!!!!!!!!!
+7 errors in 0.54s

@@ -1,0 +1,17 @@
+{
+  "cases": 32,
+  "same_decision_rule_except_memory": true,
+  "raw_topk_majority": {
+    "task_success": 0.0,
+    "stale_advice_rate": 1.0
+  },
+  "hng_governed": {
+    "task_success": 1.0,
+    "unsupported_recommendation_rate": 0.0,
+    "provenance_complete": 1.0,
+    "median_ms": 7.821050006896257,
+    "p95_ms": 9.309485025005415,
+    "p99_ms": 9.542489009327255
+  },
+  "limitations": "Synthetic action-policy harness; no LLM call. It isolates governance under identical retrieved semantic states."
+}

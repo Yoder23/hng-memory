@@ -1,0 +1,24 @@
+{
+  "command": [
+    "C:\\Python310\\python.exe",
+    "C:\\tmp\\hng-breakthrough-baseline-e57\\closure_eval\\scripts\\provider_closure_benchmark.py",
+    "--n",
+    "1000000",
+    "--dim",
+    "4096",
+    "--queries",
+    "30",
+    "--modes",
+    "faiss-flat",
+    "faiss-ivf",
+    "faiss-multihash",
+    "--output",
+    "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\breakthrough_eval\\baseline_070\\raw\\PROVIDERS_1M.json"
+  ],
+  "duration_seconds": 157.16247710003518,
+  "finished_at": "2026-09-01T01:47:19.152269+00:00",
+  "returncode": 0,
+  "started_at": "2026-09-01T01:44:41.990221+00:00",
+  "stderr_path": "raw/providers_1m.run.stderr.txt",
+  "stdout_path": "raw/providers_1m.run.stdout.txt"
+}

@@ -1,0 +1,104 @@
+{
+  "main": {
+    "action_library": 8192,
+    "conditioned_median_ms": 5.379949987400323,
+    "conditioned_p95_ms": 8.796159987105057,
+    "contexts": 64,
+    "historical_records": 1536,
+    "index_seconds": 0.13104040001053363,
+    "ingest_seconds": 1.0325143999652937,
+    "personas": 8,
+    "perspective_conditioned_top1": 1.0,
+    "perspective_role_violation_rate": 0.0,
+    "queries": 512,
+    "raw_action_top1": 0.072265625,
+    "raw_action_top16": 1.0,
+    "samples": [
+      {
+        "conditioned": "action-0000-v00",
+        "context": 0,
+        "persona": "ic-delivery",
+        "semantic_only": "action-0000-v00",
+        "soft": "action-0000-v00",
+        "target": "action-0000-v00"
+      },
+      {
+        "conditioned": "action-0000-v04",
+        "context": 0,
+        "persona": "manager-delivery",
+        "semantic_only": "action-0000-v00",
+        "soft": "action-0000-v04",
+        "target": "action-0000-v04"
+      },
+      {
+        "conditioned": "action-0000-v06",
+        "context": 0,
+        "persona": "exec-growth",
+        "semantic_only": "action-0000-v00",
+        "soft": "action-0000-v06",
+        "target": "action-0000-v06"
+      },
+      {
+        "conditioned": "action-0001-v00",
+        "context": 1,
+        "persona": "ic-delivery",
+        "semantic_only": "action-0001-v00",
+        "soft": "action-0001-v00",
+        "target": "action-0001-v00"
+      },
+      {
+        "conditioned": "action-0001-v04",
+        "context": 1,
+        "persona": "manager-delivery",
+        "semantic_only": "action-0001-v00",
+        "soft": "action-0001-v04",
+        "target": "action-0001-v04"
+      },
+      {
+        "conditioned": "action-0001-v06",
+        "context": 1,
+        "persona": "exec-growth",
+        "semantic_only": "action-0001-v00",
+        "soft": "action-0001-v06",
+        "target": "action-0001-v06"
+      },
+      {
+        "conditioned": "action-0002-v00",
+        "context": 2,
+        "persona": "ic-delivery",
+        "semantic_only": "action-0002-v00",
+        "soft": "action-0002-v00",
+        "target": "action-0002-v00"
+      },
+      {
+        "conditioned": "action-0002-v04",
+        "context": 2,
+        "persona": "manager-delivery",
+        "semantic_only": "action-0002-v00",
+        "soft": "action-0002-v04",
+        "target": "action-0002-v04"
+      }
+    ],
+    "semantic_median_ms": 3.6482499563135207,
+    "semantic_only_role_violation_rate": 0.75,
+    "semantic_only_top1": 0.125,
+    "soft_median_ms": 5.33755001379177,
+    "soft_perspective_top1_sample": 1.0
+  },
+  "privacy": {
+    "checks": 2,
+    "leakage": 0,
+    "passed": 2
+  },
+  "profile_update": {
+    "after": "action-0005-v01",
+    "before": "action-0005-v00",
+    "expected_after": "action-0005-v01",
+    "expected_before": "action-0005-v00",
+    "passed": true
+  },
+  "role_switch": {
+    "accuracy": 1.0,
+    "queries": 64
+  }
+}

@@ -17,6 +17,8 @@ research_eval/run_data/
 research_eval/wheel_install_compat/
 next_eval/run_data/
 next_eval/wheel_install/
+breakthrough_eval/external/
+breakthrough_eval/.venv*/
 
 # Runtime persistence and vector-index files.
 *.sqlite

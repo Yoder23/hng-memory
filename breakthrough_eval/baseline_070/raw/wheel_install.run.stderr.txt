@@ -1,0 +1,2 @@
+WARNING: You are using pip version 21.2.3; however, version 26.2.1 is available.
+You should consider upgrading via the 'C:\Users\samyo\AppData\Local\Temp\hng-baseline-wheel-ukiupeqd\Scripts\python.exe -m pip install --upgrade pip' command.

@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Python310\\python.exe",
+    "C:\\tmp\\hng-breakthrough-baseline-e57\\next_eval\\scripts\\run_compat_gauntlet.py",
+    "perspective_gauntlet"
+  ],
+  "duration_seconds": 12.493091400014237,
+  "finished_at": "2026-09-01T01:38:42.795057+00:00",
+  "returncode": 0,
+  "started_at": "2026-09-01T01:38:30.302030+00:00",
+  "stderr_path": "raw/compat_perspective_gauntlet.run.stderr.txt",
+  "stdout_path": "raw/compat_perspective_gauntlet.run.stdout.txt"
+}

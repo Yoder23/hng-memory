@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-08-31",
+  "baseline_commit": "e57db1b1e92329e9b8f2b173be9a506d2b898da8",
+  "github": {
+    "status": "DISCONNECTED_PENDING_USER_ACCOUNT",
+    "account": null,
+    "repository": null,
+    "note": "The Yoder23 credential and remote were rejected by the user as belonging to Tao Yu and removed. No push destination is configured."
+  },
+  "hardware": {
+    "cpu": "Intel Core i9-12900H",
+    "physical_cores": 14,
+    "logical_cores": 20,
+    "ram_bytes": 68473409536,
+    "gpu": "NVIDIA GeForce RTX 3080 Laptop GPU",
+    "gpu_memory_gb": 16,
+    "gpu_driver": "591.44",
+    "os": "Windows build 26200",
+    "python": "3.10",
+    "numpy": "2.2.6",
+    "blas": "OpenBLAS 0.3.29"
+  },
+  "models": [
+    {
+      "runtime": "ollama",
+      "name": "qwen3.8:27b-q4_K_M",
+      "digest": "25b843619e944cd0ae6069f94ff4e5e26a16e109ccbc0a66a0f05979ed70098e",
+      "parameters": "27.3B",
+      "quantization": "Q4_K_M",
+      "declared_context_tokens": 262144,
+      "status": "AVAILABLE_FIXED_LLM"
+    },
+    {
+      "runtime": "ollama",
+      "name": "qwen3-coder:latest",
+      "digest_prefix": "06c109",
+      "parameters": "30.5B",
+      "quantization": "Q4_K_M",
+      "declared_context_tokens": 262144,
+      "status": "AVAILABLE_SAME_FAMILY_SECONDARY"
+    }
+  ],
+  "datasets": [
+    {"name": "QMSum", "status": "AVAILABLE_OFFICIAL_PINNED_CHECKOUT"},
+    {"name": "LongMemEval-V2", "status": "NOT_INSTALLED"},
+    {"name": "LoCoMo-Plus", "status": "NOT_INSTALLED"},
+    {"name": "PersonaMem-v2", "status": "NOT_INSTALLED"},
+    {"name": "PersonaMem", "status": "NOT_INSTALLED"},
+    {"name": "LaMP", "status": "NOT_INSTALLED"},
+    {"name": "GovReport", "status": "NOT_INSTALLED"},
+    {"name": "BillSum", "status": "NOT_INSTALLED"}
+  ],
+  "real_hdc": {
+    "status": "BLOCKED_EXTERNAL",
+    "production_hng_integrated_assistant": false,
+    "trained_interpreter_checkpoint": false,
+    "real_trace_corpus": false,
+    "prototype_code_found": "C:/Python310/trainslm",
+    "rule": "Do not substitute synthetic vectors or an untrained model."
+  },
+  "competitors": {
+    "installed_end_to_end": [],
+    "rule": "Unavailable systems remain undefeated."
+  }
+}

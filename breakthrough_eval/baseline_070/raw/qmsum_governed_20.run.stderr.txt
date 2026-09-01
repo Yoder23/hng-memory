@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "C:\tmp\hng-breakthrough-baseline-e57\baseline_source\hng-frontier-0.5.1a1\src\hngfrontier\retrieval.py", line 81, in __init__
+    import faiss  # type: ignore
+ModuleNotFoundError: No module named 'faiss'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\tmp\hng-breakthrough-baseline-e57\closure_eval\scripts\qmsum_governed_eval.py", line 101, in <module>
+    main()
+  File "C:\tmp\hng-breakthrough-baseline-e57\closure_eval\scripts\qmsum_governed_eval.py", line 44, in main
+    semantic_provider = FaissBinaryRetriever(mode="faiss-flat", exact_fallback=False)
+  File "C:\tmp\hng-breakthrough-baseline-e57\baseline_source\hng-frontier-0.5.1a1\src\hngfrontier\retrieval.py", line 83, in __init__
+    raise ImportError("FAISS backend requires `pip install hng-frontier[faiss]`") from exc
+ImportError: FAISS backend requires `pip install hng-frontier[faiss]`

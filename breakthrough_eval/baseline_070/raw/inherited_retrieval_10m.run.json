@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Python310\\python.exe",
+    "C:\\tmp\\hng-breakthrough-baseline-e57\\research_eval\\scripts\\retrieval_10m_attempt.py"
+  ],
+  "duration_seconds": 210.09635840001283,
+  "finished_at": "2026-09-01T01:51:48.674391+00:00",
+  "returncode": 0,
+  "started_at": "2026-09-01T01:48:18.578404+00:00",
+  "stderr_path": "raw/inherited_retrieval_10m.run.stderr.txt",
+  "stdout_path": "raw/inherited_retrieval_10m.run.stdout.txt"
+}

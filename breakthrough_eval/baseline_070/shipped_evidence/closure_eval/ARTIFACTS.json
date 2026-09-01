@@ -1,0 +1,14 @@
+{
+  "artifacts": [
+    {
+      "path": "closure_eval/dist/hng_frontier-0.7.0rc1-py3-none-any.whl",
+      "bytes": 94209,
+      "sha256": "db53ea851db2fcb83f8580016af5176129271f941d2258187192e20a449e8016"
+    },
+    {
+      "path": "closure_eval/dist/hng_frontier-0.7.0rc1.tar.gz",
+      "bytes": 96898,
+      "sha256": "ceb0ea943eacb6f54835cf432bac22eaa09807fa907d6f52cf2c14d52c3824c4"
+    }
+  ]
+}

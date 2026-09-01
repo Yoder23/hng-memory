@@ -1,0 +1,92 @@
+{
+  "config": {
+    "records": 1000,
+    "queries": 300,
+    "dim": 2048,
+    "output": "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\breakthrough_eval\\baseline_070\\raw\\PERFORMANCE_PROFILE.json"
+  },
+  "components": {
+    "evidence_aggregation": {
+      "count": 300,
+      "median_ms": 0.10904998634941876,
+      "p95_ms": 0.17274997662752872,
+      "p99_ms": 0.21751796826720235,
+      "stdev_ms": 0.0273063072413882
+    },
+    "frame_rendering": {
+      "count": 300,
+      "median_ms": 0.19109999993816018,
+      "p95_ms": 0.29063500114716595,
+      "p99_ms": 0.37668595730792725,
+      "stdev_ms": 0.04725524934640153
+    },
+    "independence_grouping": {
+      "count": 300,
+      "median_ms": 0.03789999755099416,
+      "p95_ms": 0.05870998138561845,
+      "p99_ms": 0.10549598780926309,
+      "stdev_ms": 0.012878725241339699
+    },
+    "perspective_policy": {
+      "count": 300,
+      "median_ms": 0.2279495820403099,
+      "p95_ms": 0.3773850708967077,
+      "p99_ms": 0.7535395532613618,
+      "stdev_ms": 0.09591923587789722
+    },
+    "retrieval": {
+      "count": 300,
+      "median_ms": 13.834150013281032,
+      "p95_ms": 18.719359970418743,
+      "p99_ms": 21.47582599369343,
+      "stdev_ms": 1.9116329455476588
+    },
+    "storage_access": {
+      "count": 300,
+      "median_ms": 0.1107999705709517,
+      "p95_ms": 0.17795995518099525,
+      "p99_ms": 0.23645393433980602,
+      "stdev_ms": 0.054969339621937154
+    },
+    "structured_eligibility": {
+      "count": 300,
+      "median_ms": 0.025500019546598196,
+      "p95_ms": 0.03755505022127183,
+      "p99_ms": 0.10492903937119961,
+      "stdev_ms": 0.045188609977804356
+    },
+    "temporal_governance": {
+      "count": 300,
+      "median_ms": 0.1158499508164823,
+      "p95_ms": 0.22320507559925337,
+      "p99_ms": 0.7119738339679312,
+      "stdev_ms": 0.11050604918879767
+    },
+    "trust_evaluation": {
+      "count": 300,
+      "median_ms": 0.17359989578835666,
+      "p95_ms": 0.24504495377186689,
+      "p99_ms": 0.37722524895798415,
+      "stdev_ms": 0.03966833839109768
+    },
+    "vector_exact_verification": {
+      "count": 300,
+      "median_ms": 0.03604998346418142,
+      "p95_ms": 0.05822509701829404,
+      "p99_ms": 0.07835107215214515,
+      "stdev_ms": 0.011128362237052837
+    }
+  },
+  "provider": {
+    "topic": {
+      "provider": "faiss-binary",
+      "configured_mode": "faiss-flat",
+      "built_mode": "faiss-flat",
+      "vectors": 1000,
+      "indexed": 1000,
+      "tail": 0,
+      "build_ms": 1.2024000170640647,
+      "queries": 300
+    }
+  }
+}

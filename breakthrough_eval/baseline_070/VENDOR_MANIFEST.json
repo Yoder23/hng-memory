@@ -1,0 +1,447 @@
+{
+  "faiss_cpu": "1.15.0",
+  "files": [
+    {
+      "bytes": 6057,
+      "path": "faiss/array_conversions.py",
+      "sha256": "cfada4d0850de4a4645a563557abde4bd37d9680330b121266393e8dccde332d"
+    },
+    {
+      "bytes": 56980,
+      "path": "faiss/class_wrappers.py",
+      "sha256": "2d931d75a33f0208d362df2b1d398392ad3fd2571ea427f3e8d53621acc400e9"
+    },
+    {
+      "bytes": 24351,
+      "path": "faiss/extra_wrappers.py",
+      "sha256": "ce5beb543177b1727a4e2f0ce48ebba55d32bfbb397c4239cc04b52474acad09"
+    },
+    {
+      "bytes": 7428608,
+      "path": "faiss/faiss.dll",
+      "sha256": "ee46a94dd1aac967c10091a2385d93340611a89cee2c7e28e581858762b73943"
+    },
+    {
+      "bytes": 9563,
+      "path": "faiss/gpu_wrappers.py",
+      "sha256": "0d0bfea0edef6c7eb742141efa589364e76e367ce1f0c40abfaa004f17767bf8"
+    },
+    {
+      "bytes": 8632,
+      "path": "faiss/loader.py",
+      "sha256": "a3ef564d11f3d0e904bff593cbdf5392196361a45fbd26419c139bb98412a5c9"
+    },
+    {
+      "bytes": 0,
+      "path": "faiss/py.typed",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 671346,
+      "path": "faiss/swigfaiss.py",
+      "sha256": "abf2ca3acbe130fbca8f9e6ed7d1d177c7ec092c67132098ed7fa0b0e3ad4061"
+    },
+    {
+      "bytes": 5585920,
+      "path": "faiss/_swigfaiss.pyd",
+      "sha256": "63696e976bb360a01b01b7475b3ed410f6933169e2d83072257a5728dab5c120"
+    },
+    {
+      "bytes": 21606,
+      "path": "faiss/__init__.py",
+      "sha256": "c19ae417b7e4e876beb73fa572e59d20bf7994f27941d8392270356486f6f320"
+    },
+    {
+      "bytes": 153231,
+      "path": "faiss/__init__.pyi",
+      "sha256": "2ca6a32404f531cd62563d99e0d7badc7c18ffd005174131bdb7d63b153c7ec6"
+    },
+    {
+      "bytes": 18657,
+      "path": "faiss/contrib/big_batch_search.py",
+      "sha256": "81f37809d25d0b32dbf59736dc0f57b57be5f45056c9550999e44a3efe105058"
+    },
+    {
+      "bytes": 2776,
+      "path": "faiss/contrib/client_server.py",
+      "sha256": "c8b83970206ca321ab0f86b786ed934e9f0bff8e3206749ed802ed2eb8caea6a"
+    },
+    {
+      "bytes": 16451,
+      "path": "faiss/contrib/clustering.py",
+      "sha256": "dce3bbc7c02b3f15525b73ea8d38ad656dec0d077c9da86594a373094590be6c"
+    },
+    {
+      "bytes": 17865,
+      "path": "faiss/contrib/datasets.py",
+      "sha256": "5ee0ef2313e408265e5409eda336950441d568de16d3c69b42a1946fa08f1dd6"
+    },
+    {
+      "bytes": 15433,
+      "path": "faiss/contrib/evaluation.py",
+      "sha256": "b1edfec2efc5bb4f479876ffe0bc78c7ea53a4f8892ee1e75c105588db35bd6a"
+    },
+    {
+      "bytes": 12899,
+      "path": "faiss/contrib/exhaustive_search.py",
+      "sha256": "48b6bb5233e5a63271b88aab0d92c9776eee779cbb3754d54851cbcaa048a6c1"
+    },
+    {
+      "bytes": 7054,
+      "path": "faiss/contrib/factory_tools.py",
+      "sha256": "c684141fa081fdae0c018bc2907eb4b5f0e0e3597faf6760029ca52fbdbf68d9"
+    },
+    {
+      "bytes": 3787,
+      "path": "faiss/contrib/inspect_tools.py",
+      "sha256": "db2d355216f8fb0e3fefb55d049babff32bf041a88905f6f43bb4c2ed44c4124"
+    },
+    {
+      "bytes": 4986,
+      "path": "faiss/contrib/ivf_tools.py",
+      "sha256": "36b60aaffb05bf89a009568d48522acef35bec70278b1a75a4cd88baf81600b5"
+    },
+    {
+      "bytes": 2160,
+      "path": "faiss/contrib/ondisk.py",
+      "sha256": "d1b8ab44eed3360b42e3fd6f60114c221a03aa5bfaa89ddb0ba969c1421fcb2f"
+    },
+    {
+      "bytes": 7647,
+      "path": "faiss/contrib/rpc.py",
+      "sha256": "f53874ecb60a3bc76e13e9ad00e8b4d18d1460edfdb726186cd12a1e65d7f89a"
+    },
+    {
+      "bytes": 29739,
+      "path": "faiss/contrib/torch_utils.py",
+      "sha256": "1679163c4fd88e86ad915474abe742a660b68950c198ab33094f871326c5e9d7"
+    },
+    {
+      "bytes": 5697,
+      "path": "faiss/contrib/vecs_io.py",
+      "sha256": "80608642fb9a1e0f75d8bcd6255154a6cc4070e891e3c7b4867319d2c24c3d9f"
+    },
+    {
+      "bytes": 0,
+      "path": "faiss/contrib/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 1735,
+      "path": "faiss/contrib/torch/clustering.py",
+      "sha256": "74e0ead4e7b895bc9c35b5c65ad677fde70207879daaac23ab7f7e1426d8309c"
+    },
+    {
+      "bytes": 2893,
+      "path": "faiss/contrib/torch/quantization.py",
+      "sha256": "ec9ab3fc6bd201708f40800522dc6e55c67306ef228a04d60c3f735b6f7c974d"
+    },
+    {
+      "bytes": 218,
+      "path": "faiss/contrib/torch/README.md",
+      "sha256": "bc5e3db92f47f6919e0de7c72be62b30ce60991b37beaa38565576c65351259c"
+    },
+    {
+      "bytes": 0,
+      "path": "faiss/contrib/torch/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 2263,
+      "path": "faiss/contrib/torch/__pycache__/clustering.cpython-310.pyc",
+      "sha256": "adda89e494c5154e195f41d1e915d930b61b8d0f27b06f7c40c384458130e857"
+    },
+    {
+      "bytes": 3760,
+      "path": "faiss/contrib/torch/__pycache__/quantization.cpython-310.pyc",
+      "sha256": "87a0639e7e51a6efbf0d5450c77cca7f2265bf38dcb7bb3c3c04f363883e63fe"
+    },
+    {
+      "bytes": 189,
+      "path": "faiss/contrib/torch/__pycache__/__init__.cpython-310.pyc",
+      "sha256": "af80c47844cb462eefa3302f30e48d37e5cab5857c8586c6e8025a983045472f"
+    },
+    {
+      "bytes": 13770,
+      "path": "faiss/contrib/__pycache__/big_batch_search.cpython-310.pyc",
+      "sha256": "d0cfac1934f069613fed19b4575bdecfb9a02c65a071ba10738f4d3da91a96b9"
+    },
+    {
+      "bytes": 3759,
+      "path": "faiss/contrib/__pycache__/client_server.cpython-310.pyc",
+      "sha256": "60c14332c9b9c14bb3fde7bc377b8079725dcc0f4d542b692f2ffeeba877d882"
+    },
+    {
+      "bytes": 13846,
+      "path": "faiss/contrib/__pycache__/clustering.cpython-310.pyc",
+      "sha256": "b010321c07b6584bf2b094f17db44146e97347dce4ffe10bd6151103c70ce5df"
+    },
+    {
+      "bytes": 17345,
+      "path": "faiss/contrib/__pycache__/datasets.cpython-310.pyc",
+      "sha256": "0298e7882aaf6addbea0c72ef6d062836946d9ee7e700125f120e25879dc01d9"
+    },
+    {
+      "bytes": 15273,
+      "path": "faiss/contrib/__pycache__/evaluation.cpython-310.pyc",
+      "sha256": "361f4bf98665807e138c558ef835a74ac8233b1d3278f55467cd5777036ad885"
+    },
+    {
+      "bytes": 9493,
+      "path": "faiss/contrib/__pycache__/exhaustive_search.cpython-310.pyc",
+      "sha256": "c2173d027ce0ebfd1f5af34e2b30ffa71207c3204f0e3afec8f500a6a6553460"
+    },
+    {
+      "bytes": 4397,
+      "path": "faiss/contrib/__pycache__/factory_tools.cpython-310.pyc",
+      "sha256": "b259ceee8954e0073aa46ebcb0f2fee8740bea3decd2bf094265a88695ee2167"
+    },
+    {
+      "bytes": 4032,
+      "path": "faiss/contrib/__pycache__/inspect_tools.cpython-310.pyc",
+      "sha256": "bbc52db2d6ef3132b52f38c4733137a329ccce026443529384a0f00a336b9ae0"
+    },
+    {
+      "bytes": 3698,
+      "path": "faiss/contrib/__pycache__/ivf_tools.cpython-310.pyc",
+      "sha256": "8f21d24844227e86996194b2c6a350d280d7ba418fa019ed7d24a6a683b86e87"
+    },
+    {
+      "bytes": 1402,
+      "path": "faiss/contrib/__pycache__/ondisk.cpython-310.pyc",
+      "sha256": "579c489ce9c1504fb17c04a2e2825b2e8cf9b20371156417cfdff3e9df751b25"
+    },
+    {
+      "bytes": 7686,
+      "path": "faiss/contrib/__pycache__/rpc.cpython-310.pyc",
+      "sha256": "cb925b02da2167bed62a1b9067a493df3a6ad1835f0220a578bdaabe4f096985"
+    },
+    {
+      "bytes": 17452,
+      "path": "faiss/contrib/__pycache__/torch_utils.cpython-310.pyc",
+      "sha256": "4517f4b87ea95f29ccfaf6d571c299f343fa71d8bdfc5a354de1f74b4311861a"
+    },
+    {
+      "bytes": 4492,
+      "path": "faiss/contrib/__pycache__/vecs_io.cpython-310.pyc",
+      "sha256": "0ed6c93cc66d450ec2110b9a29ea6f16ccb13db1fc5df270fa433828e8f730ed"
+    },
+    {
+      "bytes": 183,
+      "path": "faiss/contrib/__pycache__/__init__.cpython-310.pyc",
+      "sha256": "3e4e7992f088f9cfd0436e9ddf4d84bff38dbe9bb6c45819786e2a59e857f863"
+    },
+    {
+      "bytes": 4573,
+      "path": "faiss/__pycache__/array_conversions.cpython-310.pyc",
+      "sha256": "0e6d62d68e408fbc5567bc37f5d445911633e96eb9c6aa876438b6b85f822254"
+    },
+    {
+      "bytes": 47735,
+      "path": "faiss/__pycache__/class_wrappers.cpython-310.pyc",
+      "sha256": "e350a695a7d1c6cd1f7e0dc3b84b8c04d0d26be16d2efe2bfdfb5e3422721b47"
+    },
+    {
+      "bytes": 21471,
+      "path": "faiss/__pycache__/extra_wrappers.cpython-310.pyc",
+      "sha256": "e1c71f6ab0a35bf061ff5df2e8b53d99d4982e89cf7e19bccedf1c1d8280180a"
+    },
+    {
+      "bytes": 7078,
+      "path": "faiss/__pycache__/gpu_wrappers.cpython-310.pyc",
+      "sha256": "a732764cb85943238deec2ca039d1ce12225e1cbb4ae19e8f6f04124310821a9"
+    },
+    {
+      "bytes": 5868,
+      "path": "faiss/__pycache__/loader.cpython-310.pyc",
+      "sha256": "f1ea6090e17f9938080931f286f32561e2982d9b450ca9b2b9c2cebdf04e6e82"
+    },
+    {
+      "bytes": 715095,
+      "path": "faiss/__pycache__/swigfaiss.cpython-310.pyc",
+      "sha256": "a770fe0b6d52069be82125af9f78fdfdec2ee0dd36d8b2c77763a547abf14ee7"
+    },
+    {
+      "bytes": 15247,
+      "path": "faiss/__pycache__/__init__.cpython-310.pyc",
+      "sha256": "de2a7a3563bd1976e8f813f09bb18e0050fe54ed8a36a7287f2983026462c892"
+    },
+    {
+      "bytes": 457,
+      "path": "faiss_cpu-1.15.0.dist-info/DELVEWHEEL",
+      "sha256": "b969084e579abeb45fe3652f164a562da112606dddb8281954e89a6c79ed62b7"
+    },
+    {
+      "bytes": 4,
+      "path": "faiss_cpu-1.15.0.dist-info/INSTALLER",
+      "sha256": "ceebae7b8927a3227e5303cf5e0f1f7b34bb542ad7250ac03fbcde36ec2f1508"
+    },
+    {
+      "bytes": 7785,
+      "path": "faiss_cpu-1.15.0.dist-info/METADATA",
+      "sha256": "30590c25e66c1d8c76bf633bf586fef188354fb22ae24b10bde6a3f53a6accdc"
+    },
+    {
+      "bytes": 4707,
+      "path": "faiss_cpu-1.15.0.dist-info/RECORD",
+      "sha256": "5d59cd9f9321b13a0e831162bdc17d43cd993d0606c7e8e0b4bff5a9423ef593"
+    },
+    {
+      "bytes": 0,
+      "path": "faiss_cpu-1.15.0.dist-info/REQUESTED",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 105,
+      "path": "faiss_cpu-1.15.0.dist-info/WHEEL",
+      "sha256": "74bb2a9cbaa86b4dd7f8a291bc865eb497ab13ea407d94fd53fc333bbcc53a04"
+    },
+    {
+      "bytes": 1107,
+      "path": "faiss_cpu-1.15.0.dist-info/licenses/LICENSE",
+      "sha256": "f08a94bfb0bdc1d7f1cb59badaf0f8c551b10db871185622dbf1fd036affa9cb"
+    },
+    {
+      "bytes": 22241,
+      "path": "faiss_cpu-1.15.0.dist-info/licenses/THIRD_PARTY_NOTICES",
+      "sha256": "c594d026e9be864c12483f7d163f65b000f23909d33b329cdfefd5a9cf53d5f6"
+    },
+    {
+      "bytes": 51076488,
+      "path": "faiss_cpu.libs/libopenblas.dll",
+      "sha256": "e824cf9fc22e5949807ce995a32e413a345fb97e63e6d10cfbf41aa86382193c"
+    },
+    {
+      "bytes": 575056,
+      "path": "faiss_cpu.libs/msvcp140.dll",
+      "sha256": "a4c2229bdc2a2a630acdc095b4d86008e5c3e3bc7773174354f3da4f5beb9cde"
+    },
+    {
+      "bytes": 213072,
+      "path": "faiss_cpu.libs/vcomp140.dll",
+      "sha256": "f96f3a14d88d8846f31f3ab38a490304ce7d6e4f70fae4304c63e59c7aea2d30"
+    },
+    {
+      "bytes": 4204,
+      "path": "usearch/client.py",
+      "sha256": "a5e358f0fae9ddce2443a2da1ab998b1c22fbe795a22356a595f8b41a200af26"
+    },
+    {
+      "bytes": 790528,
+      "path": "usearch/compiled.cp310-win_amd64.pyd",
+      "sha256": "20f41343301ddc6b0055ed69a4daf848f43b872d5212ffb7bc2c8893362a6fa3"
+    },
+    {
+      "bytes": 10005,
+      "path": "usearch/compiled.pyi",
+      "sha256": "5ce1c4585529c36a7f431671d4d025b8c7eb62485d336bdfe0f32f2d68a246e2"
+    },
+    {
+      "bytes": 20323,
+      "path": "usearch/eval.py",
+      "sha256": "24a2fccf3177a0d37a1a3942cacc9daa1c91291e5af245cb2083db1f6522f79e"
+    },
+    {
+      "bytes": 64499,
+      "path": "usearch/index.py",
+      "sha256": "6b8e88b8c7068f763a50a1a4b321e6650ef4fbf8719f951a8133547f1b2156b1"
+    },
+    {
+      "bytes": 4379,
+      "path": "usearch/io.py",
+      "sha256": "8a1419c7b90aeb248c11c8cfd3cd5948b337eb8825e0871d651017a459e2e226"
+    },
+    {
+      "bytes": 4030,
+      "path": "usearch/numba.py",
+      "sha256": "404e26bd23bd4ce60730a0e3021af6ec993254b584d228c326b385cee3521419"
+    },
+    {
+      "bytes": 0,
+      "path": "usearch/py.typed",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 3762,
+      "path": "usearch/server.py",
+      "sha256": "19a2caf71afa87b493dba9ec305a50b117116f46e979d52637950b92446e1ff3"
+    },
+    {
+      "bytes": 6610,
+      "path": "usearch/__init__.py",
+      "sha256": "92a4033c3ca5b5346fa32c3c90fa9922366517baf0a831c978be6542063da230"
+    },
+    {
+      "bytes": 4362,
+      "path": "usearch/__pycache__/client.cpython-310.pyc",
+      "sha256": "3605167440e5291081b177ff0fe3a21c2e6f2d8dc2d48d5f4c074f4e4638cb8a"
+    },
+    {
+      "bytes": 17300,
+      "path": "usearch/__pycache__/eval.cpython-310.pyc",
+      "sha256": "093b912976a4ae41d42fe810ea7e6f7096273d2a2498d487bde6e5b40e09d9b7"
+    },
+    {
+      "bytes": 56132,
+      "path": "usearch/__pycache__/index.cpython-310.pyc",
+      "sha256": "0af75b5d2fea225c27bc21aa87ed998acd94907991df2d018efae32545b005c7"
+    },
+    {
+      "bytes": 3393,
+      "path": "usearch/__pycache__/io.cpython-310.pyc",
+      "sha256": "eebcf72f46c352d5321c24ad65322f1a9428a2ba940ace434f46f73172deae83"
+    },
+    {
+      "bytes": 2854,
+      "path": "usearch/__pycache__/numba.cpython-310.pyc",
+      "sha256": "3cbdd4a174160d9d6b12f56563497cdeabeec2c92a30f2b08d494f5656db675e"
+    },
+    {
+      "bytes": 4300,
+      "path": "usearch/__pycache__/server.cpython-310.pyc",
+      "sha256": "1a3eb0ad81407e45c995176b0062042d76890e49e31f2a0d63c9c25a43c0fe31"
+    },
+    {
+      "bytes": 4443,
+      "path": "usearch/__pycache__/__init__.cpython-310.pyc",
+      "sha256": "0df6c9cb3ef4f532b6b13ef923f18f9d323d71fe86cd6608b347ff41ba57efa1"
+    },
+    {
+      "bytes": 4,
+      "path": "usearch-2.26.1.dist-info/INSTALLER",
+      "sha256": "ceebae7b8927a3227e5303cf5e0f1f7b34bb542ad7250ac03fbcde36ec2f1508"
+    },
+    {
+      "bytes": 33749,
+      "path": "usearch-2.26.1.dist-info/METADATA",
+      "sha256": "80871bdb9d87ac14a48bc4d318a31a5a458e4f5a84727b0c33cf37f63f1cac33"
+    },
+    {
+      "bytes": 1668,
+      "path": "usearch-2.26.1.dist-info/RECORD",
+      "sha256": "9fdf65fb17d633cf2301268bd564a4eeb89f37e3d72c2ca260876d7515676197"
+    },
+    {
+      "bytes": 0,
+      "path": "usearch-2.26.1.dist-info/REQUESTED",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 8,
+      "path": "usearch-2.26.1.dist-info/top_level.txt",
+      "sha256": "cc56e27754a642393c46c6c4829a85eed4e3816745bc4db3d1ed4b43684a74f8"
+    },
+    {
+      "bytes": 101,
+      "path": "usearch-2.26.1.dist-info/WHEEL",
+      "sha256": "6a325e0caffc116d685650873e4bd5513c03efd9e65f5a9c75c04b606505c8b9"
+    },
+    {
+      "bytes": 11558,
+      "path": "usearch-2.26.1.dist-info/licenses/LICENSE",
+      "sha256": "1eb85fc97224598dad1852b5d6483bbcf0aa8608790dcc657a5a2a761ae9c8c6"
+    }
+  ],
+  "source": "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\research_eval\\vendor",
+  "usearch": "2.26.1"
+}

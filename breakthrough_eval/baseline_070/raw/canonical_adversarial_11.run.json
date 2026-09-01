@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Python310\\python.exe",
+    "C:\\tmp\\hng-breakthrough-baseline-e57\\next_eval\\scripts\\governed_adversarial.py"
+  ],
+  "duration_seconds": 1.3157451000297442,
+  "finished_at": "2026-09-01T01:37:00.636254+00:00",
+  "returncode": 0,
+  "started_at": "2026-09-01T01:36:59.319812+00:00",
+  "stderr_path": "raw/canonical_adversarial_11.run.stderr.txt",
+  "stdout_path": "raw/canonical_adversarial_11.run.stdout.txt"
+}

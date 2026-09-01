@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Python310\\python.exe",
+    "C:\\tmp\\hng-breakthrough-baseline-e57\\closure_eval\\scripts\\performance_profile.py",
+    "--records",
+    "1000",
+    "--queries",
+    "300",
+    "--dim",
+    "2048",
+    "--output",
+    "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\breakthrough_eval\\baseline_070\\raw\\PERFORMANCE_PROFILE.json"
+  ],
+  "duration_seconds": 8.267032100004144,
+  "finished_at": "2026-09-01T01:41:01.109303+00:00",
+  "returncode": 0,
+  "started_at": "2026-09-01T01:40:52.842920+00:00",
+  "stderr_path": "raw/performance_profile.20260901T014052Z.run.stderr.txt",
+  "stdout_path": "raw/performance_profile.20260901T014052Z.run.stdout.txt"
+}

@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Python310\\python.exe",
+    "-m",
+    "pytest",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--rootdir",
+    "C:\\tmp\\hng-breakthrough-baseline-e57\\baseline_source\\hng-frontier-0.5.1a1",
+    "--junitxml",
+    "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\breakthrough_eval\\baseline_070\\raw\\PYTEST_94.xml"
+  ],
+  "duration_seconds": 1.6896104000043124,
+  "finished_at": "2026-09-01T01:36:51.815135+00:00",
+  "returncode": 2,
+  "started_at": "2026-09-01T01:36:50.125918+00:00",
+  "stderr_path": "raw/pytest_94.run.stderr.txt",
+  "stdout_path": "raw/pytest_94.run.stdout.txt"
+}

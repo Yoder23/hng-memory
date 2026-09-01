@@ -1,0 +1,74 @@
+{
+  "config": {
+    "n": 10000000,
+    "dim": 4096,
+    "queries": 10,
+    "geometry": "independent",
+    "threads": 1
+  },
+  "steps": [
+    {
+      "step": "generate",
+      "seconds": 5.900004299997818,
+      "rss": 5163675648
+    },
+    {
+      "step": "faiss_flat_add",
+      "seconds": 0.9895474999793805,
+      "rss": 10283884544
+    },
+    {
+      "step": "hng_build",
+      "seconds": 81.77622049994534,
+      "rss": 11084857344
+    },
+    {
+      "step": "faiss_ivf_train_add",
+      "seconds": 98.61911420000251,
+      "rss": 16363048960
+    }
+  ],
+  "raw_vector_bytes": 5120000000,
+  "faiss_flat": {
+    "median_ms": 485.90830000466667,
+    "p95_ms": 546.8884250032715,
+    "p99_ms": 556.3900849758647,
+    "total_bytes": 5120000033
+  },
+  "hng": {
+    "top1_agreement": 1.0,
+    "median_ms": 50.56494998279959,
+    "p95_ms": 56.25844000896904,
+    "p99_ms": 57.51728801813442,
+    "index_bytes": 800394920,
+    "total_bytes_including_raw": 5920394920,
+    "median_exact_fraction": 2.56e-05
+  },
+  "faiss_ivf": {
+    "total_bytes": 5200133235,
+    "runs": {
+      "16": {
+        "top1_agreement": 1.0,
+        "median_ms": 27.354100020602345,
+        "p95_ms": 33.076315009384416,
+        "p99_ms": 33.58582301239949
+      },
+      "64": {
+        "top1_agreement": 1.0,
+        "median_ms": 120.52120000589639,
+        "p95_ms": 144.10226000181862,
+        "p99_ms": 151.82829201163258
+      },
+      "256": {
+        "top1_agreement": 1.0,
+        "median_ms": 469.6416000369936,
+        "p95_ms": 495.0161199521972,
+        "p99_ms": 498.44850395747926
+      }
+    }
+  },
+  "usearch": {
+    "status": "not_run",
+    "reason": "1M build took 374 s and failed to reach matched recall by expansion_search=128; linear projection exceeds one hour at 10M."
+  }
+}

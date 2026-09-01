@@ -1,0 +1,79 @@
+{
+  "benchmark": "fixed_candidate_llm_holdout",
+  "candidate_pool_identity_verified": true,
+  "evidence_class": "synthetic",
+  "failed_events": 0,
+  "model": "qwen3.8:27b-q4_K_M",
+  "model_digest": "25b843619e944cd0ae6069f94ff4e5e26a16e109ccbc0a66a0f05979ed70098e",
+  "paired_statistics": {
+    "hng_vs_ordinary_rag": {
+      "mcnemar": {
+        "discordant": 10,
+        "exact_two_sided_p": 0.001953125,
+        "left_correct_right_wrong": 10,
+        "right_correct_left_wrong": 0
+      },
+      "paired_bootstrap_accuracy": {
+        "ci95_high": 0.5,
+        "ci95_low": 0.16666666666666674,
+        "delta": 0.33333333333333337
+      },
+      "paired_cases": 30
+    },
+    "hng_vs_strong_structured": {
+      "mcnemar": {
+        "discordant": 0,
+        "exact_two_sided_p": 1.0,
+        "left_correct_right_wrong": 0,
+        "right_correct_left_wrong": 0
+      },
+      "paired_bootstrap_accuracy": {
+        "ci95_high": 0.0,
+        "ci95_low": 0.0,
+        "delta": 0.0
+      },
+      "paired_cases": 30
+    }
+  },
+  "raw_event_log": "raw/llm_events.jsonl",
+  "requested_cases": 30,
+  "schema_version": 1,
+  "systems": {
+    "hng": {
+      "accuracy": 0.9,
+      "correct": 27,
+      "generation_tokens_total": 345,
+      "latency_seconds": {
+        "p50": 3.7410810999863315,
+        "p95": 5.483260340019478,
+        "p99": 5.600082849998143
+      },
+      "prompt_tokens_total": 17103,
+      "total": 30
+    },
+    "ordinary_rag": {
+      "accuracy": 0.5666666666666667,
+      "correct": 17,
+      "generation_tokens_total": 391,
+      "latency_seconds": {
+        "p50": 6.78519850000157,
+        "p95": 8.824659219977912,
+        "p99": 21.353230266984916
+      },
+      "prompt_tokens_total": 41046,
+      "total": 30
+    },
+    "strong_structured": {
+      "accuracy": 0.9,
+      "correct": 27,
+      "generation_tokens_total": 339,
+      "latency_seconds": {
+        "p50": 3.975929450010881,
+        "p95": 5.6735751599888316,
+        "p99": 5.897988928985433
+      },
+      "prompt_tokens_total": 16215,
+      "total": 30
+    }
+  }
+}

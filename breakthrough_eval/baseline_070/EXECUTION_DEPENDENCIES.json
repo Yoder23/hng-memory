@@ -1,0 +1,6 @@
+{
+  "faiss_cpu": "1.15.0",
+  "pythonpath_vendor": "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\research_eval\\vendor",
+  "reason": "binary dependencies are intentionally untracked and absent from the detached Git worktree",
+  "usearch": "2.26.1"
+}

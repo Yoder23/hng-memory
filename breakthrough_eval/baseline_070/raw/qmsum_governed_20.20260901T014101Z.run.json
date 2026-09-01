@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Python310\\python.exe",
+    "C:\\tmp\\hng-breakthrough-baseline-e57\\closure_eval\\scripts\\qmsum_governed_eval.py",
+    "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\research_eval\\external\\QMSum\\data\\ALL\\jsonl\\test.jsonl",
+    "--limit",
+    "20",
+    "--dim",
+    "4096",
+    "--top-k",
+    "5",
+    "--output",
+    "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\breakthrough_eval\\baseline_070\\raw\\QMSUM_GOVERNED_20.json"
+  ],
+  "duration_seconds": 41.89788999996381,
+  "finished_at": "2026-09-01T01:41:43.009484+00:00",
+  "returncode": 0,
+  "started_at": "2026-09-01T01:41:01.111465+00:00",
+  "stderr_path": "raw/qmsum_governed_20.20260901T014101Z.run.stderr.txt",
+  "stdout_path": "raw/qmsum_governed_20.20260901T014101Z.run.stdout.txt"
+}

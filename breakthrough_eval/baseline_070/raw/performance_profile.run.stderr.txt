@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "C:\tmp\hng-breakthrough-baseline-e57\baseline_source\hng-frontier-0.5.1a1\src\hngfrontier\retrieval.py", line 81, in __init__
+    import faiss  # type: ignore
+ModuleNotFoundError: No module named 'faiss'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\tmp\hng-breakthrough-baseline-e57\closure_eval\scripts\performance_profile.py", line 53, in <module>
+    main()
+  File "C:\tmp\hng-breakthrough-baseline-e57\closure_eval\scripts\performance_profile.py", line 33, in main
+    memory.ingest_evidence(content=f"profile record {i}", semantics=SemanticState({"topic": value(row, args.dim)}),
+  File "C:\tmp\hng-breakthrough-baseline-e57\baseline_source\hng-frontier-0.5.1a1\src\hngfrontier\control.py", line 246, in ingest_evidence
+    self._index_record(record)
+  File "C:\tmp\hng-breakthrough-baseline-e57\baseline_source\hng-frontier-0.5.1a1\src\hngfrontier\control.py", line 104, in _index_record
+    provider = self._provider(head, value)
+  File "C:\tmp\hng-breakthrough-baseline-e57\baseline_source\hng-frontier-0.5.1a1\src\hngfrontier\control.py", line 93, in _provider
+    provider = self._binary_provider()
+  File "C:\tmp\hng-breakthrough-baseline-e57\baseline_source\hng-frontier-0.5.1a1\src\hngfrontier\control.py", line 82, in _binary_provider
+    return FaissBinaryRetriever(mode=mode)
+  File "C:\tmp\hng-breakthrough-baseline-e57\baseline_source\hng-frontier-0.5.1a1\src\hngfrontier\retrieval.py", line 83, in __init__
+    raise ImportError("FAISS backend requires `pip install hng-frontier[faiss]`") from exc
+ImportError: FAISS backend requires `pip install hng-frontier[faiss]`

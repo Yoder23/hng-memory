@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Python310\\python.exe",
+    "C:\\tmp\\hng-breakthrough-baseline-e57\\next_eval\\scripts\\run_compat_gauntlet.py",
+    "assistant_gauntlet"
+  ],
+  "duration_seconds": 73.68482419999782,
+  "finished_at": "2026-09-01T01:39:58.777441+00:00",
+  "returncode": 0,
+  "started_at": "2026-09-01T01:38:45.091697+00:00",
+  "stderr_path": "raw/compat_assistant_gauntlet.run.stderr.txt",
+  "stdout_path": "raw/compat_assistant_gauntlet.run.stdout.txt"
+}

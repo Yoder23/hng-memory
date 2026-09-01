@@ -1,0 +1,6 @@
+metric,passed,total,evidence_class
+pytest,94,94,local_reproduction
+expanded_adversarial,64,64,local_reproduction
+canonical_adversarial,11,11,local_reproduction
+fault_concurrency,10,10,local_reproduction
+wheel_smoke,1,1,local_reproduction

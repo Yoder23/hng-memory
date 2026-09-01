@@ -1,0 +1,16 @@
+{
+  "passed": 10,
+  "total": 10,
+  "cases": {
+    "process_kill_before_commit": true,
+    "kill_after_semantic_vector_write": true,
+    "kill_after_evidence_commit": true,
+    "kill_during_index_rebuild": true,
+    "competing_writer_processes": true,
+    "multiple_reader_processes": true,
+    "profile_revision_during_query": true,
+    "supersession_during_query": true,
+    "invalidation_during_query": true,
+    "index_replacement_during_query": true
+  }
+}

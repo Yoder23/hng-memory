@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Python310\\python.exe",
+    "C:\\tmp\\hng-breakthrough-baseline-e57\\closure_eval\\scripts\\fault_injection.py",
+    "--output",
+    "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\breakthrough_eval\\baseline_070\\raw\\FAULT_INJECTION_10.json"
+  ],
+  "duration_seconds": 3.380410799989477,
+  "finished_at": "2026-09-01T01:37:04.026342+00:00",
+  "returncode": 0,
+  "started_at": "2026-09-01T01:37:00.646283+00:00",
+  "stderr_path": "raw/fault_concurrency_10.run.stderr.txt",
+  "stdout_path": "raw/fault_concurrency_10.run.stdout.txt"
+}

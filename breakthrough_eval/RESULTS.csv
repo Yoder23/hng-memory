@@ -1,0 +1,36 @@
+area,system,metric,value,unit,evidence_class,status,source,notes
+fixed_candidate_deterministic,hng,decision_accuracy,0.9,fraction,synthetic,EXECUTED,fixed_candidate/DETERMINISTIC_RESULTS.json,"Same ordered candidate pool and metadata; policy decision, not downstream behavior."
+fixed_candidate_deterministic,hng,governance_latency_p50,0.09635000606067479,milliseconds,local_synthetic,EXECUTED,fixed_candidate/DETERMINISTIC_RESULTS.json,
+fixed_candidate_deterministic,hng,governance_latency_p95,0.17850002041086552,milliseconds,local_synthetic,EXECUTED,fixed_candidate/DETERMINISTIC_RESULTS.json,
+fixed_candidate_deterministic,hng,governance_latency_p99,0.47609201399609413,milliseconds,local_synthetic,EXECUTED,fixed_candidate/DETERMINISTIC_RESULTS.json,
+fixed_candidate_deterministic,ordinary_raw_majority,decision_accuracy,0.1,fraction,synthetic,EXECUTED,fixed_candidate/DETERMINISTIC_RESULTS.json,"Same ordered candidate pool and metadata; policy decision, not downstream behavior."
+fixed_candidate_deterministic,ordinary_raw_majority,governance_latency_p50,0.009199953638017178,milliseconds,local_synthetic,EXECUTED,fixed_candidate/DETERMINISTIC_RESULTS.json,
+fixed_candidate_deterministic,ordinary_raw_majority,governance_latency_p95,0.01135500206146389,milliseconds,local_synthetic,EXECUTED,fixed_candidate/DETERMINISTIC_RESULTS.json,
+fixed_candidate_deterministic,ordinary_raw_majority,governance_latency_p99,0.019216000218875692,milliseconds,local_synthetic,EXECUTED,fixed_candidate/DETERMINISTIC_RESULTS.json,
+fixed_candidate_deterministic,strong_structured,decision_accuracy,0.9,fraction,synthetic,EXECUTED,fixed_candidate/DETERMINISTIC_RESULTS.json,"Same ordered candidate pool and metadata; policy decision, not downstream behavior."
+fixed_candidate_deterministic,strong_structured,governance_latency_p50,0.02269999822601676,milliseconds,local_synthetic,EXECUTED,fixed_candidate/DETERMINISTIC_RESULTS.json,
+fixed_candidate_deterministic,strong_structured,governance_latency_p95,0.03453999815974383,milliseconds,local_synthetic,EXECUTED,fixed_candidate/DETERMINISTIC_RESULTS.json,
+fixed_candidate_deterministic,strong_structured,governance_latency_p99,0.08017099986318497,milliseconds,local_synthetic,EXECUTED,fixed_candidate/DETERMINISTIC_RESULTS.json,
+fixed_candidate_llm_holdout,hng,answer_accuracy,0.9,fraction,synthetic,EXECUTED,fixed_candidate/LLM_RESULTS.json,Frozen qwen3.8:27b-q4_K_M digest 25b843619e944cd0ae6069f94ff4e5e26a16e109ccbc0a66a0f05979ed70098e; 30 paired holdout cases.
+fixed_candidate_llm_holdout,hng,prompt_tokens_total,17103.0,count,synthetic,EXECUTED,fixed_candidate/LLM_RESULTS.json,
+fixed_candidate_llm_holdout,hng,end_to_end_latency_p50,3.7410810999863315,seconds,local_synthetic,EXECUTED,fixed_candidate/LLM_RESULTS.json,
+fixed_candidate_llm_holdout,hng,end_to_end_latency_p95,5.483260340019478,seconds,local_synthetic,EXECUTED,fixed_candidate/LLM_RESULTS.json,
+fixed_candidate_llm_holdout,hng,end_to_end_latency_p99,5.600082849998143,seconds,local_synthetic,EXECUTED,fixed_candidate/LLM_RESULTS.json,
+fixed_candidate_llm_holdout,ordinary_rag,answer_accuracy,0.5666666666666667,fraction,synthetic,EXECUTED,fixed_candidate/LLM_RESULTS.json,Frozen qwen3.8:27b-q4_K_M digest 25b843619e944cd0ae6069f94ff4e5e26a16e109ccbc0a66a0f05979ed70098e; 30 paired holdout cases.
+fixed_candidate_llm_holdout,ordinary_rag,prompt_tokens_total,41046.0,count,synthetic,EXECUTED,fixed_candidate/LLM_RESULTS.json,
+fixed_candidate_llm_holdout,ordinary_rag,end_to_end_latency_p50,6.78519850000157,seconds,local_synthetic,EXECUTED,fixed_candidate/LLM_RESULTS.json,
+fixed_candidate_llm_holdout,ordinary_rag,end_to_end_latency_p95,8.824659219977912,seconds,local_synthetic,EXECUTED,fixed_candidate/LLM_RESULTS.json,
+fixed_candidate_llm_holdout,ordinary_rag,end_to_end_latency_p99,21.353230266984916,seconds,local_synthetic,EXECUTED,fixed_candidate/LLM_RESULTS.json,
+fixed_candidate_llm_holdout,strong_structured,answer_accuracy,0.9,fraction,synthetic,EXECUTED,fixed_candidate/LLM_RESULTS.json,Frozen qwen3.8:27b-q4_K_M digest 25b843619e944cd0ae6069f94ff4e5e26a16e109ccbc0a66a0f05979ed70098e; 30 paired holdout cases.
+fixed_candidate_llm_holdout,strong_structured,prompt_tokens_total,16215.0,count,synthetic,EXECUTED,fixed_candidate/LLM_RESULTS.json,
+fixed_candidate_llm_holdout,strong_structured,end_to_end_latency_p50,3.975929450010881,seconds,local_synthetic,EXECUTED,fixed_candidate/LLM_RESULTS.json,
+fixed_candidate_llm_holdout,strong_structured,end_to_end_latency_p95,5.6735751599888316,seconds,local_synthetic,EXECUTED,fixed_candidate/LLM_RESULTS.json,
+fixed_candidate_llm_holdout,strong_structured,end_to_end_latency_p99,5.897988928985433,seconds,local_synthetic,EXECUTED,fixed_candidate/LLM_RESULTS.json,
+release_pytest,hng_0.7.0rc1,passed,94.0,count,local,EXECUTED,baseline_070/BASELINE_STATUS.json,Exact frozen commit e57db1b1e92329e9b8f2b173be9a506d2b898da8.
+expanded_adversarial,hng_0.7.0rc1,passed,64.0,count,local,EXECUTED,baseline_070/BASELINE_STATUS.json,Exact frozen commit e57db1b1e92329e9b8f2b173be9a506d2b898da8.
+canonical_adversarial,hng_0.7.0rc1,passed,11.0,count,local,EXECUTED,baseline_070/BASELINE_STATUS.json,Exact frozen commit e57db1b1e92329e9b8f2b173be9a506d2b898da8.
+fault_concurrency,hng_0.7.0rc1,passed,10.0,count,local,EXECUTED,baseline_070/BASELINE_STATUS.json,Exact frozen commit e57db1b1e92329e9b8f2b173be9a506d2b898da8.
+real_hdc_task_success,hng,primary_metric,,fraction,real,BLOCKED_EXTERNAL,RESOURCE_INVENTORY.json,Production HDC interpreter/checkpoint and real traces absent.
+longmemeval_v2,hng,primary_metric,,fraction,public,BLOCKED_EXTERNAL,RESOURCE_INVENTORY.json,Official dataset/harness not installed; canonical model/judge resources unresolved.
+locomo_plus,hng,primary_metric,,fraction,public,BLOCKED_EXTERNAL,RESOURCE_INVENTORY.json,Official dataset/harness not installed.
+personamem_v2,hng,primary_metric,,fraction,public,BLOCKED_EXTERNAL,RESOURCE_INVENTORY.json,Official dataset/harness not installed.

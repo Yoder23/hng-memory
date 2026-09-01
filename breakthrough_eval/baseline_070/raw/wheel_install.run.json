@@ -1,0 +1,16 @@
+{
+  "command": [
+    "C:\\Users\\samyo\\AppData\\Local\\Temp\\hng-baseline-wheel-ukiupeqd\\Scripts\\python.exe",
+    "-m",
+    "pip",
+    "install",
+    "--no-deps",
+    "C:\\tmp\\hng-breakthrough-baseline-e57\\closure_eval\\dist\\hng_frontier-0.7.0rc1-py3-none-any.whl"
+  ],
+  "duration_seconds": 1.4831030999775976,
+  "finished_at": "2026-09-01T01:37:16.810776+00:00",
+  "returncode": 0,
+  "started_at": "2026-09-01T01:37:15.327249+00:00",
+  "stderr_path": "raw/wheel_install.run.stderr.txt",
+  "stdout_path": "raw/wheel_install.run.stdout.txt"
+}

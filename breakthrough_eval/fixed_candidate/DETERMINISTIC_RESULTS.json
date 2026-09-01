@@ -1,0 +1,218 @@
+{
+  "benchmark": "fixed_candidate_governance_250",
+  "candidate_pool_identity_verified": true,
+  "evidence_class": "synthetic",
+  "paired_statistics": {
+    "hng_vs_ordinary_raw_majority": {
+      "mcnemar": {
+        "discordant": 200,
+        "exact_two_sided_p": 1.2446030555722283e-60,
+        "left_correct_right_wrong": 200,
+        "right_correct_left_wrong": 0
+      },
+      "paired_bootstrap_accuracy": {
+        "ci95_high": 0.8480000000000001,
+        "ci95_low": 0.748,
+        "delta": 0.8
+      }
+    },
+    "hng_vs_strong_structured": {
+      "mcnemar": {
+        "discordant": 0,
+        "exact_two_sided_p": 1.0,
+        "left_correct_right_wrong": 0,
+        "right_correct_left_wrong": 0
+      },
+      "paired_bootstrap_accuracy": {
+        "ci95_high": 0.0,
+        "ci95_low": 0.0,
+        "delta": 0.0
+      }
+    }
+  },
+  "raw_event_log": "raw/deterministic_events.jsonl",
+  "scenario_count": 250,
+  "schema_version": 1,
+  "systems": {
+    "hng": {
+      "accuracy": 0.9,
+      "by_family": {
+        "authority_mismatch": 1,
+        "duplicate_attack": 0,
+        "irrelevant_state": 1,
+        "sparse_verified": 1,
+        "stale_environment": 1,
+        "superseded": 1,
+        "true_conflict": 1,
+        "untrusted_poison": 1,
+        "wrong_role": 1,
+        "wrong_tenant": 1
+      },
+      "calibration": [
+        {
+          "accuracy": 1,
+          "count": 50,
+          "mean_confidence": 0.0,
+          "range": [
+            0.0,
+            0.25
+          ]
+        },
+        {
+          "accuracy": 0,
+          "count": 25,
+          "mean_confidence": 0.3333333333333333,
+          "range": [
+            0.25,
+            0.5
+          ]
+        },
+        {
+          "accuracy": null,
+          "count": 0,
+          "mean_confidence": null,
+          "range": [
+            0.5,
+            0.75
+          ]
+        },
+        {
+          "accuracy": 1,
+          "count": 175,
+          "mean_confidence": 1.0,
+          "range": [
+            0.75,
+            1.0
+          ]
+        }
+      ],
+      "correct": 225,
+      "latency_ms": {
+        "p50": 0.09635000606067479,
+        "p95": 0.17850002041086552,
+        "p99": 0.47609201399609413
+      },
+      "total": 250
+    },
+    "ordinary_raw_majority": {
+      "accuracy": 0.1,
+      "by_family": {
+        "authority_mismatch": 0,
+        "duplicate_attack": 0,
+        "irrelevant_state": 0,
+        "sparse_verified": 0,
+        "stale_environment": 0,
+        "superseded": 0,
+        "true_conflict": 1,
+        "untrusted_poison": 0,
+        "wrong_role": 0,
+        "wrong_tenant": 0
+      },
+      "calibration": [
+        {
+          "accuracy": 1,
+          "count": 25,
+          "mean_confidence": 0.0,
+          "range": [
+            0.0,
+            0.25
+          ]
+        },
+        {
+          "accuracy": null,
+          "count": 0,
+          "mean_confidence": null,
+          "range": [
+            0.25,
+            0.5
+          ]
+        },
+        {
+          "accuracy": 0,
+          "count": 200,
+          "mean_confidence": 0.6577380952380952,
+          "range": [
+            0.5,
+            0.75
+          ]
+        },
+        {
+          "accuracy": 0,
+          "count": 25,
+          "mean_confidence": 1.0,
+          "range": [
+            0.75,
+            1.0
+          ]
+        }
+      ],
+      "correct": 25,
+      "latency_ms": {
+        "p50": 0.009199953638017178,
+        "p95": 0.01135500206146389,
+        "p99": 0.019216000218875692
+      },
+      "total": 250
+    },
+    "strong_structured": {
+      "accuracy": 0.9,
+      "by_family": {
+        "authority_mismatch": 1,
+        "duplicate_attack": 0,
+        "irrelevant_state": 1,
+        "sparse_verified": 1,
+        "stale_environment": 1,
+        "superseded": 1,
+        "true_conflict": 1,
+        "untrusted_poison": 1,
+        "wrong_role": 1,
+        "wrong_tenant": 1
+      },
+      "calibration": [
+        {
+          "accuracy": 1,
+          "count": 50,
+          "mean_confidence": 0.0,
+          "range": [
+            0.0,
+            0.25
+          ]
+        },
+        {
+          "accuracy": 0,
+          "count": 25,
+          "mean_confidence": 0.3333333333333333,
+          "range": [
+            0.25,
+            0.5
+          ]
+        },
+        {
+          "accuracy": null,
+          "count": 0,
+          "mean_confidence": null,
+          "range": [
+            0.5,
+            0.75
+          ]
+        },
+        {
+          "accuracy": 1,
+          "count": 175,
+          "mean_confidence": 1.0,
+          "range": [
+            0.75,
+            1.0
+          ]
+        }
+      ],
+      "correct": 225,
+      "latency_ms": {
+        "p50": 0.02269999822601676,
+        "p95": 0.03453999815974383,
+        "p99": 0.08017099986318497
+      },
+      "total": 250
+    }
+  }
+}

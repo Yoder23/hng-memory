@@ -1,0 +1,22 @@
+{
+  "command": [
+    "C:\\Python310\\python.exe",
+    "-m",
+    "pytest",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "C:\\tmp\\hng-breakthrough-baseline-e57\\baseline_source\\hng-frontier-0.5.1a1\\tests\\test_governed_memory.py",
+    "C:\\tmp\\hng-breakthrough-baseline-e57\\baseline_source\\hng-frontier-0.5.1a1\\tests\\test_closure.py",
+    "C:\\tmp\\hng-breakthrough-baseline-e57\\baseline_source\\hng-frontier-0.5.1a1\\tests\\test_profile_closure_explicit.py",
+    "C:\\tmp\\hng-breakthrough-baseline-e57\\baseline_source\\hng-frontier-0.5.1a1\\tests\\test_document_closure_restart.py",
+    "--junitxml",
+    "C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\breakthrough_eval\\baseline_070\\raw\\EXPANDED_ADVERSARIAL_64.xml"
+  ],
+  "duration_seconds": 7.491409200010821,
+  "finished_at": "2026-09-01T01:36:59.318806+00:00",
+  "returncode": 0,
+  "started_at": "2026-09-01T01:36:51.827334+00:00",
+  "stderr_path": "raw/expanded_adversarial_64.run.stderr.txt",
+  "stdout_path": "raw/expanded_adversarial_64.run.stdout.txt"
+}

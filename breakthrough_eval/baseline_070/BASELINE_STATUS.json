@@ -1,0 +1,142 @@
+{
+  "attempts": {
+    "canonical_adversarial_11": [
+      {
+        "path": "raw/canonical_adversarial_11.run.json",
+        "returncode": 0,
+        "status": "PASSED"
+      }
+    ],
+    "compat_assistant_gauntlet": [
+      {
+        "path": "raw/compat_assistant_gauntlet.run.json",
+        "returncode": 0,
+        "status": "PASSED"
+      }
+    ],
+    "compat_assistant_readiness": [
+      {
+        "path": "raw/compat_assistant_readiness.run.json",
+        "returncode": 0,
+        "status": "PASSED"
+      }
+    ],
+    "compat_perspective_gauntlet": [
+      {
+        "path": "raw/compat_perspective_gauntlet.run.json",
+        "returncode": 0,
+        "status": "PASSED"
+      }
+    ],
+    "compat_turn_stream": [
+      {
+        "path": "raw/compat_turn_stream.run.json",
+        "returncode": 0,
+        "status": "PASSED"
+      }
+    ],
+    "expanded_adversarial_64": [
+      {
+        "path": "raw/expanded_adversarial_64.run.json",
+        "returncode": 0,
+        "status": "PASSED"
+      }
+    ],
+    "fault_concurrency_10": [
+      {
+        "path": "raw/fault_concurrency_10.run.json",
+        "returncode": 0,
+        "status": "PASSED"
+      }
+    ],
+    "inherited_retrieval_10m": [
+      {
+        "path": "raw/inherited_retrieval_10m.run.json",
+        "returncode": 0,
+        "status": "PASSED"
+      }
+    ],
+    "performance_profile": [
+      {
+        "path": "raw/performance_profile.20260901T014052Z.run.json",
+        "returncode": 0,
+        "status": "PASSED"
+      },
+      {
+        "path": "raw/performance_profile.run.json",
+        "returncode": 1,
+        "status": "FAILED"
+      }
+    ],
+    "provider_geometries_100k": [
+      {
+        "path": "raw/provider_geometries_100k.run.json",
+        "returncode": 0,
+        "status": "PASSED"
+      }
+    ],
+    "providers_100k": [
+      {
+        "path": "raw/providers_100k.run.json",
+        "returncode": 0,
+        "status": "PASSED"
+      }
+    ],
+    "providers_1m": [
+      {
+        "path": "raw/providers_1m.run.json",
+        "returncode": 0,
+        "status": "PASSED"
+      }
+    ],
+    "pytest_94": [
+      {
+        "path": "raw/pytest_94.20260901T013811Z.run.json",
+        "returncode": 0,
+        "status": "PASSED"
+      },
+      {
+        "path": "raw/pytest_94.run.json",
+        "returncode": 2,
+        "status": "FAILED"
+      }
+    ],
+    "qmsum_governed_20": [
+      {
+        "path": "raw/qmsum_governed_20.20260901T014101Z.run.json",
+        "returncode": 0,
+        "status": "PASSED"
+      },
+      {
+        "path": "raw/qmsum_governed_20.run.json",
+        "returncode": 1,
+        "status": "FAILED"
+      }
+    ],
+    "wheel_install": [
+      {
+        "path": "raw/wheel_install.run.json",
+        "returncode": 0,
+        "status": "PASSED"
+      }
+    ],
+    "wheel_smoke": [
+      {
+        "path": "raw/wheel_smoke.run.json",
+        "returncode": 0,
+        "status": "PASSED"
+      }
+    ],
+    "wheel_venv": [
+      {
+        "path": "raw/wheel_venv.run.json",
+        "returncode": 0,
+        "status": "PASSED"
+      }
+    ]
+  },
+  "baseline_commit": "e57db1b1e92329e9b8f2b173be9a506d2b898da8",
+  "failures_or_blocks": [],
+  "last_batch": "10m",
+  "updated_at": "2026-09-01T01:53:23.573986+00:00"
+}

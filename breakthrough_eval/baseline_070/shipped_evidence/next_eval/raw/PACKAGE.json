@@ -1,0 +1,20 @@
+{
+  "release": "0.6.0rc1",
+  "python_requires": ">=3.10",
+  "artifacts": [
+    {
+      "path": "dist/0.6.0rc1/hng_frontier-0.6.0rc1-py3-none-any.whl",
+      "sha256": "0fc99182d5883ae353decbce53006c866a5d96cf54bd596c99bbc50636a2db41"
+    },
+    {
+      "path": "dist/0.6.0rc1/hng_frontier-0.6.0rc1.tar.gz",
+      "sha256": "ad53d7d9451e125c44ccee6a0034ba59c0d3c403a896e5b3276374f6f9af8da1"
+    }
+  ],
+  "validation": {
+    "isolated_wheel_import": true,
+    "reported_version": "0.6.0rc1",
+    "tests_passed": 72,
+    "tests_failed": 0
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "dataset": "official QMSum test split",
+  "dataset_repository": "Yale-LILY/QMSum",
+  "documents": 20,
+  "transcript_units": 11674,
+  "specific_queries": 134,
+  "encoder": "deterministic non-neural bag-of-token HDC",
+  "dim": 4096,
+  "top_k": 5,
+  "methods": {
+    "bm25": {
+      "queries": 134,
+      "span_hit_at_5": 0.6492537313432836,
+      "median_ms": 5.975350009975955,
+      "p95_ms": 11.71773499518167,
+      "p99_ms": 16.08109396998769,
+      "stdev_ms": 2.862997578740833
+    },
+    "hybrid_document": {
+      "queries": 134,
+      "span_hit_at_5": 0.5522388059701493,
+      "median_ms": 5.7850499579217285,
+      "p95_ms": 11.527655032114122,
+      "p99_ms": 17.61270403978412,
+      "stdev_ms": 3.340523500385164
+    },
+    "governed_memory": {
+      "queries": 134,
+      "span_hit_at_5": 0.5597014925373134,
+      "median_ms": 18.407649971777573,
+      "p95_ms": 30.666669982019812,
+      "p99_ms": 32.60133402072823,
+      "stdev_ms": 5.480863884850986
+    }
+  },
+  "governance": {
+    "excluded_candidates": 0,
+    "verified_included_evidence": 27391
+  },
+  "limitations": [
+    "This evaluates retrieval of annotated relevant spans, not generated-summary quality.",
+    "The deterministic encoder is a reproducible integration probe, not a learned production encoder."
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "config": {
+    "records": 1000,
+    "queries": 300,
+    "dim": 2048,
+    "output": "closure_eval\\raw\\PERFORMANCE_PROFILE.json"
+  },
+  "components": {
+    "evidence_aggregation": {
+      "count": 300,
+      "median_ms": 0.159549992531538,
+      "p95_ms": 0.19180495000910014,
+      "p99_ms": 0.20711800490971655,
+      "stdev_ms": 0.01582186728222876
+    },
+    "frame_rendering": {
+      "count": 300,
+      "median_ms": 0.26214998797513545,
+      "p95_ms": 0.31461500911973417,
+      "p99_ms": 0.34146603604312964,
+      "stdev_ms": 0.028567798202435737
+    },
+    "independence_grouping": {
+      "count": 300,
+      "median_ms": 0.054500007536262274,
+      "p95_ms": 0.06980500766076148,
+      "p99_ms": 0.07463898626156149,
+      "stdev_ms": 0.006872640828125424
+    },
+    "perspective_policy": {
+      "count": 300,
+      "median_ms": 0.3535997529979795,
+      "p95_ms": 0.469679874368012,
+      "p99_ms": 0.9615883935475721,
+      "stdev_ms": 0.10390654832282195
+    },
+    "retrieval": {
+      "count": 300,
+      "median_ms": 19.88310003071092,
+      "p95_ms": 23.799420005525462,
+      "p99_ms": 27.438496983959332,
+      "stdev_ms": 2.0072673476942016
+    },
+    "storage_access": {
+      "count": 300,
+      "median_ms": 0.13879998004995286,
+      "p95_ms": 0.17111996712628752,
+      "p99_ms": 0.18334299791604278,
+      "stdev_ms": 0.03838777815743775
+    },
+    "structured_eligibility": {
+      "count": 300,
+      "median_ms": 0.03060000017285347,
+      "p95_ms": 0.03709999145939946,
+      "p99_ms": 0.042963977321051,
+      "stdev_ms": 0.03573140926666731
+    },
+    "temporal_governance": {
+      "count": 300,
+      "median_ms": 0.17349989502690732,
+      "p95_ms": 0.24555005074944347,
+      "p99_ms": 0.809042464243247,
+      "stdev_ms": 0.12419382196792925
+    },
+    "trust_evaluation": {
+      "count": 300,
+      "median_ms": 0.2494501241017133,
+      "p95_ms": 0.37058519083075225,
+      "p99_ms": 0.3948037512600422,
+      "stdev_ms": 0.05183483035510883
+    },
+    "vector_exact_verification": {
+      "count": 300,
+      "median_ms": 0.05069994949735701,
+      "p95_ms": 0.06751015316694975,
+      "p99_ms": 0.07130184676498175,
+      "stdev_ms": 0.007193285554531862
+    }
+  },
+  "provider": {
+    "topic": {
+      "provider": "faiss-binary",
+      "configured_mode": "faiss-flat",
+      "built_mode": "faiss-flat",
+      "vectors": 1000,
+      "indexed": 1000,
+      "tail": 0,
+      "build_ms": 1.056700013577938,
+      "queries": 300
+    }
+  }
+}

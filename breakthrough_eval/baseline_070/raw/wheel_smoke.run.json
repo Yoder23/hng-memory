@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Users\\samyo\\AppData\\Local\\Temp\\hng-baseline-wheel-ukiupeqd\\Scripts\\python.exe",
+    "C:\\tmp\\hng-breakthrough-baseline-e57\\closure_eval\\scripts\\wheel_smoke.py"
+  ],
+  "duration_seconds": 0.32414280000375584,
+  "finished_at": "2026-09-01T01:37:17.135935+00:00",
+  "returncode": 0,
+  "started_at": "2026-09-01T01:37:16.812781+00:00",
+  "stderr_path": "raw/wheel_smoke.run.stderr.txt",
+  "stdout_path": "raw/wheel_smoke.run.stdout.txt"
+}
