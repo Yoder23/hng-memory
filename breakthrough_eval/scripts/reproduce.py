@@ -278,6 +278,27 @@ def commands_for(args: argparse.Namespace) -> list[Command]:
             tuple(argv),
             "Windows handle-type mechanism diagnostic; no qualification claim.",
         )]
+    if args.command == "shared-sqlite-handle-type-diagnostic-v2":
+        argv = [
+            sys.executable,
+            str(SCRIPTS / "shared_sqlite_handle_type_diagnostic_v2.py"),
+        ]
+        if args.prepare_only:
+            argv.append("--prepare-only")
+        else:
+            if not args.preregistered_commit:
+                raise ValueError(
+                    "shared-sqlite-handle-type-diagnostic-v2 execution "
+                    "requires --preregistered-commit"
+                )
+            argv.extend([
+                "--preregistered-commit", args.preregistered_commit,
+            ])
+        return [Command(
+            "shared_sqlite_child_handle_type_diagnostic_v2",
+            tuple(argv),
+            "Corrected handle-type mechanism diagnostic; no qualification claim.",
+        )]
     if args.command == "rag-governance":
         result = [deterministic]
         if args.execute_llm:
@@ -527,6 +548,12 @@ def parse_args() -> argparse.Namespace:
     )
     shared_handle_type.add_argument("--prepare-only", action="store_true")
     shared_handle_type.add_argument("--preregistered-commit")
+    shared_handle_type_v2 = subparsers.add_parser(
+        "shared-sqlite-handle-type-diagnostic-v2",
+        help="Prepare or run the corrected Windows handle-type diagnostic.",
+    )
+    shared_handle_type_v2.add_argument("--prepare-only", action="store_true")
+    shared_handle_type_v2.add_argument("--preregistered-commit")
     rag = subparsers.add_parser("rag-governance", help="Reproduce fixed-candidate governance results.")
     rag.add_argument("--execute-llm", action="store_true", help="Run the costly local 27B holdout.")
     rag.add_argument("--llm-limit", type=int, default=30)

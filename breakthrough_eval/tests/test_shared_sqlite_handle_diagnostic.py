@@ -9,6 +9,7 @@ import pytest
 
 from breakthrough_eval.scripts import shared_sqlite_handle_diagnostic as matrix
 from breakthrough_eval.scripts import shared_sqlite_handle_type_diagnostic as typed
+from breakthrough_eval.scripts import shared_sqlite_handle_type_diagnostic_v2 as typed_v2
 from breakthrough_eval.scripts import shared_sqlite_handle_diagnostic_v2 as matrix_v2
 from breakthrough_eval.scripts import windows_handle_snapshot
 
@@ -109,6 +110,34 @@ def test_typed_preparation_freezes_handle_enumerator_and_thresholds() -> None:
             "breakthrough_eval/scripts/shared_sqlite_handle_type_diagnostic.py",
             "breakthrough_eval/scripts/windows_handle_snapshot.py",
         }
+    finally:
+        for name, value in original.items():
+            setattr(matrix, name, value)
+
+
+def test_typed_v2_preparation_pins_preserved_preflight_failure() -> None:
+    names = (
+        "OUTPUT_DIR", "PROTOCOL", "PREPARED", "RESULT", "EVENTS",
+        "RUN_DATA", "WRAPPER", "V2_FAILURE", "OBSERVER_RESULT",
+        "SOURCE_FILES", "frozen_config", "matrix_worker", "run_condition",
+        "classify", "run_matrix",
+    )
+    original = {name: getattr(matrix, name) for name in names}
+    args = qualifying_args()
+    args.condition_seconds = 60.0
+    args.minimum_samples_per_child = 50
+    args.shared_support_slope_handles_per_minute = 10.0
+    try:
+        typed_v2.configure()
+        payload = json.loads(typed_v2.PREPARED.read_text(encoding="utf-8"))
+        matrix.verify_prepared(payload, args)
+        assert payload["source_sha256"][
+            "breakthrough_eval/reliability/shared_sqlite_handle_type_diagnostic/RESULTS.json"
+        ] == "aacd71337084dfe198873ed164c7d6588f95a75f2da04d2e15931d409b7ffd2b"
+        assert (
+            "breakthrough_eval/scripts/shared_sqlite_handle_type_diagnostic_v2.py"
+            in payload["source_sha256"]
+        )
     finally:
         for name, value in original.items():
             setattr(matrix, name, value)

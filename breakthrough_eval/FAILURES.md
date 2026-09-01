@@ -536,3 +536,13 @@ identify the leaking Windows handle type or allocating call path, and it does
 not reverse sustained v2's failed qualification. A new sustained protocol is
 not justified until a bounded mechanism diagnostic identifies what is being
 allocated and an intervention can be tested directly.
+
+## Handle-type diagnostic preflight transcription failure
+
+The first handle-type invocation supplied commit
+`7364134c3be2311f4ba73f85a284977d4c13c2aa`, not the actual preregistered `HEAD`
+`7364134bc8536d3497a9b77113b3e1b310e25c5e`. The exact-commit preflight failed
+closed, wrote `status=ERROR`, and exited 1 before creating an event ledger,
+worker processes, or run data. It provides no mechanism evidence. The artifact
+and output namespace are preserved; a separately versioned v2 protocol is
+required for the corrected full-hash invocation.

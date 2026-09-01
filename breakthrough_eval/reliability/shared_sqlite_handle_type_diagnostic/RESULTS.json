@@ -1,0 +1,9 @@
+{
+  "benchmark": "shared_sqlite_child_handle_root_cause_matrix",
+  "created_at": "2026-09-01T20:53:42.513337+00:00",
+  "error": "RuntimeError: HEAD does not match preregistered commit",
+  "preregistered_commit": "7364134c3be2311f4ba73f85a284977d4c13c2aa",
+  "schema_version": 1,
+  "status": "ERROR",
+  "traceback": "Traceback (most recent call last):\n  File \"C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\breakthrough_eval\\scripts\\shared_sqlite_handle_diagnostic.py\", line 581, in main\n    result = execute(args)\n  File \"C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\breakthrough_eval\\scripts\\shared_sqlite_handle_diagnostic.py\", line 506, in execute\n    raise RuntimeError(\"HEAD does not match preregistered commit\")\nRuntimeError: HEAD does not match preregistered commit\n"
+}

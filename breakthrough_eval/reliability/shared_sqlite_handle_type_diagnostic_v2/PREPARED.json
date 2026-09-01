@@ -1,0 +1,47 @@
+{
+  "claim_boundary": "Root-cause diagnostic only. It cannot qualify HNG, storage, recovery, production reliability, or the failed sustained run.",
+  "config": {
+    "condition_seconds": 60.0,
+    "conditions": [
+      "idle_12",
+      "isolated_sqlite_12",
+      "shared_sqlite_12_a",
+      "shared_sqlite_12_b"
+    ],
+    "control_maximum_slope_handles_per_minute": 5.0,
+    "control_maximum_type_delta": 2,
+    "handle_type_snapshot_method": "NtQuerySystemInformation(SystemExtendedHandleInformation) plus NtQueryObject(ObjectTypeInformation)",
+    "minimum_dominance_fraction": 0.8,
+    "minimum_dominant_type_delta": 10.0,
+    "minimum_samples_per_child": 50,
+    "multiprocessing_start_method": "spawn",
+    "process_count_support_slope_handles_per_minute": 20.0,
+    "reader_workers": 8,
+    "sample_interval_seconds": 1.0,
+    "seed_records": 1000,
+    "shared_replication_tolerance_handles_per_minute": 15.0,
+    "shared_support_slope_handles_per_minute": 10.0,
+    "tenants": 100,
+    "writer_workers": 4
+  },
+  "created_at": "2026-09-01T20:55:35.022939+00:00",
+  "observer_control": "breakthrough_eval/reliability/shared_sqlite_handle_type_diagnostic/RESULTS.json",
+  "predecessor_failure": "breakthrough_eval/reliability/shared_sqlite_handle_type_diagnostic/RESULTS.json",
+  "qualifying_command": [
+    "C:\\Python310\\python.exe",
+    "breakthrough_eval/scripts/shared_sqlite_handle_type_diagnostic_v2.py",
+    "--preregistered-commit",
+    "COMMIT"
+  ],
+  "schema_version": 1,
+  "source_sha256": {
+    "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic_v2/RESULTS.json": "d8d061fd4e2807565fb595714d76e342347925b565b26e4351e7f630934f5e1d",
+    "breakthrough_eval/reliability/shared_sqlite_handle_type_diagnostic/RESULTS.json": "aacd71337084dfe198873ed164c7d6588f95a75f2da04d2e15931d409b7ffd2b",
+    "breakthrough_eval/reliability/shared_sqlite_handle_type_diagnostic_v2/PROTOCOL.md": "80f7ef24040bfeab8812c2bf53147f7e2f1aa79e8193b4e16ab905b552bde319",
+    "breakthrough_eval/scripts/shared_sqlite_handle_diagnostic.py": "eb607c2d30e4f9ed0ed6852d3b412ff012b0e8c5c2ab02530620cc22a42c3ed3",
+    "breakthrough_eval/scripts/shared_sqlite_handle_type_diagnostic.py": "4ed645cf27af8abfc53e771e852029c0229d0ed08fc97d559b68b9475ad9a319",
+    "breakthrough_eval/scripts/shared_sqlite_handle_type_diagnostic_v2.py": "a55e42fd5a99c2ae9ccdc5d2e6052aba00dd9b474628fd3d6bc0998bb8dcf1f9",
+    "breakthrough_eval/scripts/windows_handle_snapshot.py": "8b45dce4d90b3070f556ddeb14a1ddc272f5528b0fa6a367279d525ad052fae0"
+  },
+  "status": "PREPARED_NOT_EXECUTED"
+}
