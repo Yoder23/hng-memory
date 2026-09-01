@@ -603,3 +603,25 @@ This explains the synchronized per-process growth and the sustained safety-cap
 failure. It does not itself prove an intervention; sustained v2 remains failed
 until a separately preregistered WAL-bounding treatment and full reliability
 run pass.
+
+## Rotation/TRUNCATE treatment passes bounded intervention gate
+
+The exact treatment run from commit
+`55c25f1a2416a3848b0f47527099a6d59361363f` first reproduced the failure
+mechanism over 120 untreated seconds: maximum process handles reached 329, all
+children gained 99 Sections, the WAL-index reached 100 units, and the WAL
+reached 1,681,635,712 bytes.
+
+Two independent treatments then ran four 30-second fresh-connection epochs
+each. Every one of eight fully quiescent TRUNCATE checkpoints returned
+`busy=0`, left a zero-byte WAL, and completed in 0.029-0.041 seconds. Treatment
+maxima were 252 and 256 handles and 21 and 25 Section handles per epoch, while
+aggregate throughput was 128.3% and 113.4% of the untreated baseline. All
+workers, reader checks, `quick_check`, row counts, and evidence generations
+passed exactly. The frozen outcome is
+`SUPPORTS_ROTATE_CHECKPOINT_WAL_BOUNDING`.
+
+This supports the intervention but does not reclassify sustained v2. A distinct
+two-hour protocol must now combine short connection epochs, quiescent TRUNCATE
+checkpoints, v2's monitored recovery, and the original fail-closed resource
+limits.

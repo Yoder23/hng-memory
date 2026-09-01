@@ -216,13 +216,23 @@ WAL/WAL-index growth and per-client mapping of each new unit as the handle-cap
 mechanism. A WAL-bounding intervention remains to be proven before another
 sustained qualification run.
 
+The preregistered intervention then passed. An untreated 120-second baseline
+reached 329 handles, 99 Section mappings, a 100-unit WAL-index, and a 1.682-GB
+WAL. Two treatments used four 30-second fresh-connection epochs with a fully
+quiescent TRUNCATE checkpoint after each epoch. All eight checkpoints returned
+`busy=0` and left zero-byte WALs; maximum handles stayed at 252 and 256, maximum
+per-epoch Section growth stayed at 21 and 25, exact database identity passed,
+and throughput was 128.3% and 113.4% of baseline. The frozen outcome
+`SUPPORTS_ROTATE_CHECKPOINT_WAL_BOUNDING` justifies integrating this treatment
+into a new sustained protocol; it is not itself two-hour qualification.
+
 The current local release candidate is 0.7.0rc3 under `releases/0.7.0rc3/qualified_dist`. Its
 manifest distinguishes the qualifying exact-commit artifacts from two preserved earlier build
 pairs. A brand-new private-repository clone installed the wheel and used `hng-eval` to pass 58
 dependency-free tests, execute the isolated 250-case deterministic study, and recompile the result
 corpus. The four external LoCoMo test modules remain explicit exclusions from this dependency-free
 proof. The configured suite passed 94 tests at rc3 qualification and the breakthrough suite passes
-153 after adding sustained-reliability evidence and root-cause diagnostic tests.
+154 after adding sustained-reliability evidence and root-cause diagnostic tests.
 
 ## Current resource boundary
 

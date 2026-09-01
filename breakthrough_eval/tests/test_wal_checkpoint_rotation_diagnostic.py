@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from pathlib import Path
 
@@ -98,4 +99,44 @@ def test_short_rotation_checkpoint_smoke(
     assert all(
         epoch["checkpoint"]["file_state"]["wal_bytes"] <= 32768
         for epoch in treatment["epochs"]
+    )
+
+
+def test_terminal_rotation_result_is_content_addressed_and_bounded() -> None:
+    result_path = rotation.RESULT
+    events_path = rotation.EVENTS
+    result = json.loads(result_path.read_text(encoding="utf-8"))
+
+    assert hashlib.sha256(result_path.read_bytes()).hexdigest() == (
+        "2a36539c6e27140c6d9246c2055f468127bc1161c5f48ad8862feb45f726186b"
+    )
+    assert hashlib.sha256(events_path.read_bytes()).hexdigest() == (
+        "cf74b802e6ae8333bbb8a7703f3e3b0a2edc348d9e5ae568f7359f65cd5c3d30"
+    )
+    assert result["status"] == "PASS"
+    assert result["outcome"] == "SUPPORTS_ROTATE_CHECKPOINT_WAL_BOUNDING"
+    baseline = result["baseline"]
+    assert baseline["summary"]["maximum_process_handles"] == 329
+    assert baseline["summary"]["maximum_section_delta"] == 99
+    assert baseline["summary"]["median_shm_unit_delta"] == 99.0
+    assert baseline["identity"]["passed"]
+    assert [
+        max(epoch["summary"]["maximum_process_handles"] for epoch in treatment["epochs"])
+        for treatment in result["treatments"]
+    ] == [252, 256]
+    assert [
+        max(epoch["summary"]["maximum_section_delta"] for epoch in treatment["epochs"])
+        for treatment in result["treatments"]
+    ] == [21, 25]
+    assert all(
+        treatment["identity"]["passed"]
+        and treatment["throughput_operations_per_second"]
+        >= baseline["throughput_operations_per_second"]
+        and all(
+            epoch["checkpoint"]["passed"]
+            and epoch["checkpoint"]["busy"] == 0
+            and epoch["checkpoint"]["file_state"]["wal_bytes"] == 0
+            for epoch in treatment["epochs"]
+        )
+        for treatment in result["treatments"]
     )

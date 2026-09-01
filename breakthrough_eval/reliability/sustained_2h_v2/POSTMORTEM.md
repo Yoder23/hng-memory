@@ -91,5 +91,15 @@ WAL/WAL-index growth under shared concurrency, multiplied across clients as
 one memory-mapping Section per new WAL-index unit. A safe WAL-bounding treatment
 still requires separate evidence before sustained qualification is attempted.
 
+That bounded intervention subsequently passed. The untreated 120-second control
+reached 329 handles and 99 Section mappings. Two replications of four 30-second
+fresh-connection epochs plus fully quiescent TRUNCATE checkpoints held maximum
+handles to 252 and 256 and maximum per-epoch Section growth to 21 and 25. All
+eight checkpoints returned `busy=0`, left zero-byte WALs, preserved exact
+database identity, and retained more throughput than the untreated control.
+This validates the treatment at bounded duration. V2 remains failed until a new
+two-hour protocol passes the same recovery and resource gates with the treatment
+integrated.
+
 The authoritative machine postmortem is `FAILURE_ANALYSIS.json`; the original
 `RESULTS.json` and fsynced `events.jsonl` are unchanged.
