@@ -306,3 +306,14 @@ It again fails the architectural attribution control: HNG and StrongStructuredBa
 uses more prompt tokens than Strong in both readers (17,103 vs 16,215 for Qwen; 18,261 vs 17,358
 for Mistral). The surviving result is structured/governed-context evidence, not HNG-specific,
 public, canonical, or real-assistant evidence.
+
+## Fresh-clone reproduction failures
+
+1. A new clone at result commit `a2475fab953192c4539595738ae8b3006e5dd14c` installed rc2 and
+   NumPy successfully in a new virtual environment, but `hng-eval.exe` did not exist. This directly
+   reproduced the Section 40 packaging gap; no authoritative evidence file changed in the clone.
+2. The first rc3 wheel created `hng-eval.exe`, reported `hng-eval 0.7.0rc3`, and forwarded the core
+   dry-run correctly. Actual core collection then failed in four LoCoMo tests because the fresh
+   clone intentionally lacks the uncommitted external `task_eval` checkout. The failure is
+   preserved in `fresh_clone_reproduction/BEFORE.json`. A separate dependency-free command now
+   declares those four exclusions while the configured-environment suite continues to run them.

@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "checkout_commit": "a2475fab953192c4539595738ae8b3006e5dd14c",
+  "checkout_path": "C:/tmp/hng-fresh-proof-a2475fa",
+  "environment": "new isolated venv",
+  "rc2_install": {
+    "package_version": "0.7.0rc2",
+    "install_succeeded": true,
+    "hng_eval_entry_exists": false,
+    "status": "FAILED_MISSING_ENTRY_POINT"
+  },
+  "rc3_initial_wheel": {
+    "package_version": "0.7.0rc3",
+    "hng_eval_entry_exists": true,
+    "hng_eval_version": "hng-eval 0.7.0rc3",
+    "dry_run_core_succeeded": true,
+    "actual_core_returncode": 2,
+    "status": "FAILED_EXTERNAL_TEST_DEPENDENCY",
+    "collection_errors": 4,
+    "missing_module": "task_eval",
+    "affected_tests": [
+      "test_locomo_hybrid_holdout.py",
+      "test_locomo_plus_pilot.py",
+      "test_locomo_reranker_holdout.py",
+      "test_locomo_retrieval_budget_holdout.py"
+    ]
+  },
+  "claim_boundary": "The external LoCoMo-Plus task_eval checkout is intentionally not committed. This failure does not imply production-package or fixed-candidate test failure."
+}

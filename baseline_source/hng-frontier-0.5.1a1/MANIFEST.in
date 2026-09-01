@@ -1,3 +1,4 @@
 include README.md
 include CHANGELOG.md
 include MIGRATION_070RC2.md
+include MIGRATION_070RC3.md

@@ -46,10 +46,23 @@ def commands_for(args: argparse.Namespace) -> list[Command]:
         py(str(SCRIPTS / "compile_breakthrough.py")),
         "Regenerate RESULTS.json/csv and SCOREBOARD.json/md from machine evidence.",
     )
+    fresh_clone_tests = Command(
+        "breakthrough_tests_dependency_free",
+        py(
+            "-m", "pytest", "-q", "breakthrough_eval/tests",
+            "--ignore=breakthrough_eval/tests/test_locomo_hybrid_holdout.py",
+            "--ignore=breakthrough_eval/tests/test_locomo_plus_pilot.py",
+            "--ignore=breakthrough_eval/tests/test_locomo_reranker_holdout.py",
+            "--ignore=breakthrough_eval/tests/test_locomo_retrieval_budget_holdout.py",
+        ),
+        "Owned tests available without the intentionally uncommitted external LoCoMo task_eval checkout; four exact exclusions are explicit.",
+    )
     if args.command == "core":
         return [tests, deterministic, compile_results]
     if args.command == "adversarial":
         return [deterministic, tests, compile_results]
+    if args.command == "fresh-clone-core":
+        return [fresh_clone_tests, deterministic, compile_results]
     if args.command == "rag-governance":
         result = [deterministic]
         if args.execute_llm:
@@ -245,6 +258,7 @@ def parse_args() -> argparse.Namespace:
     subparsers = parser.add_subparsers(dest="command", required=True)
     subparsers.add_parser("core", help="Run breakthrough tests, deterministic 250, and compile results.")
     subparsers.add_parser("adversarial", help="Run the 250-scenario suite, tests, and compile results.")
+    subparsers.add_parser("fresh-clone-core", help="Run the dependency-free owned core from a clean checkout.")
     rag = subparsers.add_parser("rag-governance", help="Reproduce fixed-candidate governance results.")
     rag.add_argument("--execute-llm", action="store_true", help="Run the costly local 27B holdout.")
     rag.add_argument("--llm-limit", type=int, default=30)

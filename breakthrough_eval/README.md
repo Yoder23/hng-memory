@@ -31,6 +31,7 @@ The breakthrough experiments have one small command surface:
 ```powershell
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py core
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py adversarial
+C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py fresh-clone-core
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py rag-governance --execute-llm
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py public-memory --execute-llm
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py belief-revision
@@ -51,6 +52,11 @@ C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py cross-reader-hold
 Omit `--execute-llm` to prepare and verify expensive experiments without invoking the local 27B
 model. Add `--dry-run` before the subcommand to print the exact commands. Public-memory execution
 requires the pinned external datasets described in `PUBLIC_RESOURCES.json`; they are ignored by Git.
+
+The fresh-clone-core command explicitly excludes the four LoCoMo test modules that require the
+intentionally uncommitted official `task_eval` checkout. It runs the remaining owned suite, the
+250-case deterministic benchmark, and the compiler. The full configured-environment suite still
+runs all tests; the exclusions are a fresh-clone dependency boundary, not a hidden pass.
 
 The real-HDC command is a fail-closed readiness gate, not a synthetic substitute and not an
 assistant evaluation. Without a manifest it records the exact missing contract. With a manifest it
