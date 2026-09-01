@@ -1,0 +1,21 @@
+{
+  "base_commit": "85a5f5f90f54e3c66cd649029cbc77c41aaca336",
+  "created_at": "2026-09-01T09:26:13.6903993Z",
+  "execution_started": false,
+  "files": {
+    "breakthrough_eval/ENVIRONMENT.json": "aa318e3e147792798ee20c7a8c0b922757ff03a37bc40934ef3c53c244995d87",
+    "breakthrough_eval/FAILURES.md": "8e0c5926c3ab3fddf43c34d861e7c2c2eade3ddd1a5bde37c1718e409fc646a9",
+    "breakthrough_eval/README.md": "161a35aefa6bf70ba7f87d7171931a8d0039455e55e84366d8a1030728004113",
+    "breakthrough_eval/RESOURCE_INVENTORY.json": "e7152f936ae6b2c857b222d046199e2a8f319f243de76761248bd1a31bcf0ae9",
+    "breakthrough_eval/public/locomo_hybrid_holdout/PREPARED.json": "001503947246e60f8139db1ca6fa0cfcaf72a2ec5123ac8d72ae35a58088b436",
+    "breakthrough_eval/public/locomo_hybrid_holdout/PROTOCOL.md": "91002ae0fec8023e856e4d913ea8f03a9fcbb720134d80a9aa894e9f5503093e",
+    "breakthrough_eval/scripts/locomo_hybrid_holdout.py": "f6c22debdd06d08994ab49d80a82880cfe651e2b17efbb47f3b0e49baaa088b5",
+    "breakthrough_eval/scripts/reproduce.py": "95888cee189477a7258a422f6b7354e2e2b293bbf94d30b60db83ceab842cc1e",
+    "breakthrough_eval/tests/test_locomo_hybrid_holdout.py": "31d8f52ab0a8c628ac78a0c44c468cb2dc05a492be9bbbbea3fe4b5e86ffb49a"
+  },
+  "protocol": "LoCoMo-Plus disjoint dense/hybrid retrieval holdout; NONCANONICAL",
+  "reader_model_digest": "25b843619e944cd0ae6069f94ff4e5e26a16e109ccbc0a66a0f05979ed70098e",
+  "retrieval_model_digest": "ac6da0dfba84a81fdbfbaf330198c33cd77c4cdfc53e8bc50eb581914a15621d",
+  "schema_version": 1,
+  "status": "FROZEN_BEFORE_EXECUTION"
+}

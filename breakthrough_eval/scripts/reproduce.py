@@ -156,6 +156,18 @@ def commands_for(args: argparse.Namespace) -> list[Command]:
             ),
             compile_results,
         ]
+    if args.command == "hybrid-holdout":
+        argv = [sys.executable, str(SCRIPTS / "locomo_hybrid_holdout.py")]
+        if not args.execute_llm:
+            argv.append("--prepare-only")
+        return [
+            Command(
+                "locomo_disjoint_dense_hybrid_holdout",
+                tuple(argv),
+                "Disjoint public-data BM25/dense/RRF hybrid retrieval and fixed-candidate governance study.",
+            ),
+            compile_results,
+        ]
     raise AssertionError(f"unknown command: {args.command}")
 
 
@@ -204,6 +216,8 @@ def parse_args() -> argparse.Namespace:
     latency.add_argument("--repeats", type=int, default=20)
     budget = subparsers.add_parser("retrieval-budget", help="Prepare or run the disjoint LoCoMo retrieval-budget holdout.")
     budget.add_argument("--execute-llm", action="store_true", help="Run the costly local reader/judge calls.")
+    hybrid = subparsers.add_parser("hybrid-holdout", help="Prepare or run the disjoint LoCoMo dense/hybrid holdout.")
+    hybrid.add_argument("--execute-llm", action="store_true", help="Run the costly local reader/judge calls.")
     return parser.parse_args()
 
 

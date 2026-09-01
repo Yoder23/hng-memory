@@ -30,6 +30,16 @@
       "quantization": "Q4_K_M",
       "runtime": "ollama",
       "status": "AVAILABLE_SAME_FAMILY_SECONDARY"
+    },
+    {
+      "declared_context_tokens": 32768,
+      "digest": "ac6da0dfba84a81fdbfbaf330198c33cd77c4cdfc53e8bc50eb581914a15621d",
+      "embedding_dimensions": 1024,
+      "name": "qwen3-embedding:0.6b",
+      "parameters": "595.78M",
+      "quantization": "Q8_0",
+      "runtime": "ollama",
+      "status": "AVAILABLE_FIXED_DENSE_RETRIEVER"
     }
   ],
   "current_release_artifacts": {

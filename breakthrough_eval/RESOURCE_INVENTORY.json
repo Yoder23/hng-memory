@@ -50,6 +50,16 @@
       "quantization": "Q4_K_M",
       "declared_context_tokens": 262144,
       "status": "AVAILABLE_SAME_FAMILY_SECONDARY"
+    },
+    {
+      "runtime": "ollama",
+      "name": "qwen3-embedding:0.6b",
+      "digest": "ac6da0dfba84a81fdbfbaf330198c33cd77c4cdfc53e8bc50eb581914a15621d",
+      "parameters": "595.78M",
+      "quantization": "Q8_0",
+      "declared_context_tokens": 32768,
+      "embedding_dimensions": 1024,
+      "status": "AVAILABLE_FIXED_DENSE_RETRIEVER"
     }
   ],
   "datasets": [

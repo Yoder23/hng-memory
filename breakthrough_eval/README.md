@@ -40,6 +40,7 @@ C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py tool-agent
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py real-hdc --manifest PATH
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py latency --repeats 20
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py retrieval-budget --execute-llm
+C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py hybrid-holdout --execute-llm
 ```
 
 Omit `--execute-llm` to prepare and verify expensive experiments without invoking the local 27B
@@ -59,6 +60,10 @@ existing evidence.
 The retrieval-budget command uses a separately frozen LoCoMo-Plus holdout: the next five
 SHA-ranked samples per category after the observed n=30 development slice. Omit `--execute-llm`
 to verify and preserve its preparation without invoking the local model.
+
+The hybrid-holdout command uses a third disjoint LoCoMo-Plus window and a pinned Qwen3 embedding
+model to compare BM25, dense, and reciprocal-rank-fused k64 retrieval. Its Strong/HNG arms receive
+the identical frozen hybrid candidates and prompt.
 
 The scaled-isolation command creates ignored SQLite runtime files, takes about seven minutes on the
 recorded host, and refuses to overwrite an earlier preserved run.

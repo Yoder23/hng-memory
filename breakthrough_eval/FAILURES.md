@@ -229,3 +229,13 @@ The first post-execution uniqueness-audit command escaped a PowerShell interpola
 a command and emitted diagnostic errors; it did not read scores incorrectly or change artifacts.
 The audit was rerun in Python and verified 180 events, 180 unique sample/arm keys, zero duplicates,
 zero event errors, and one preregistration commit across the complete log.
+
+## Dense/hybrid holdout setup failures
+
+1. The first structured sample inspection printed an entire public conversation and then hit a
+   Windows cp1252 `UnicodeEncodeError` on an emoji. It changed no file or model state. Subsequent
+   inspection used ASCII-safe metadata summaries only.
+2. The first cross-manifest overlap audit expected a `development_indices` field in the older
+   development manifest and raised `KeyError`. The byte-stable prepared manifest was unchanged.
+   The corrected audit derived indices from its sample rows and verified zero overlap with all 60
+   earlier samples and exact equality between the excluded set and those prior windows.
