@@ -40,6 +40,8 @@ C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py sustained-reliabi
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py sustained-reliability --preregistered-commit COMMIT
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py sustained-reliability-v2 --prepare-only
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py sustained-reliability-v2 --preregistered-commit COMMIT
+C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py handle-observer-diagnostic --prepare-only
+C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py handle-observer-diagnostic --preregistered-commit COMMIT
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py rag-governance --execute-llm
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py public-memory --execute-llm
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py belief-revision
@@ -157,7 +159,7 @@ pairs. A brand-new private-repository clone installed the wheel and used `hng-ev
 dependency-free tests, execute the isolated 250-case deterministic study, and recompile the result
 corpus. The four external LoCoMo test modules remain explicit exclusions from this dependency-free
 proof. The configured suite passed 94 tests at rc3 qualification and the breakthrough suite passes
-111 after adding the sustained-reliability protocol and terminal-evidence tests.
+118 after adding sustained-reliability evidence and observer-diagnostic tests.
 
 ## Current resource boundary
 

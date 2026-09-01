@@ -149,6 +149,30 @@ def commands_for(args: argparse.Namespace) -> list[Command]:
                 "and hard resource/disk/time limits."
             ),
         )]
+    if args.command == "handle-observer-diagnostic":
+        argv = [
+            sys.executable,
+            str(SCRIPTS / "handle_observer_diagnostic.py"),
+        ]
+        if args.prepare_only:
+            argv.append("--prepare-only")
+        else:
+            if not args.preregistered_commit:
+                raise ValueError(
+                    "handle-observer-diagnostic execution requires "
+                    "--preregistered-commit"
+                )
+            argv.extend([
+                "--preregistered-commit", args.preregistered_commit,
+            ])
+        return [Command(
+            "child_handle_observer_effect_diagnostic",
+            tuple(argv),
+            (
+                "Attribution-only quiet/external/quiet child self-sampling "
+                "diagnostic; it cannot qualify HNG or reliability."
+            ),
+        )]
     if args.command == "rag-governance":
         result = [deterministic]
         if args.execute_llm:
@@ -362,6 +386,12 @@ def parse_args() -> argparse.Namespace:
     )
     sustained_v2.add_argument("--prepare-only", action="store_true")
     sustained_v2.add_argument("--preregistered-commit")
+    handle_observer = subparsers.add_parser(
+        "handle-observer-diagnostic",
+        help="Prepare or run the attribution-only child-handle diagnostic.",
+    )
+    handle_observer.add_argument("--prepare-only", action="store_true")
+    handle_observer.add_argument("--preregistered-commit")
     rag = subparsers.add_parser("rag-governance", help="Reproduce fixed-candidate governance results.")
     rag.add_argument("--execute-llm", action="store_true", help="Run the costly local 27B holdout.")
     rag.add_argument("--llm-limit", type=int, default=30)
