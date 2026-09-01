@@ -30,6 +30,28 @@ longmemeval_v2_text_pilot,bm25,answer_accuracy,0.19047619047619047,fraction,publ
 longmemeval_v2_text_pilot,hng,answer_accuracy,0.19047619047619047,fraction,public_noncanonical,EXECUTED,public/longmemeval_v2/RESULTS.json,"Official public data; stratified text-only pilot with local reader/judge, not a leaderboard score."
 longmemeval_v2_text_pilot,no_retrieval,answer_accuracy,0.0,fraction,public_noncanonical,EXECUTED,public/longmemeval_v2/RESULTS.json,"Official public data; stratified text-only pilot with local reader/judge, not a leaderboard score."
 longmemeval_v2_text_pilot,strong_structured,answer_accuracy,0.19047619047619047,fraction,public_noncanonical,EXECUTED,public/longmemeval_v2/RESULTS.json,"Official public data; stratified text-only pilot with local reader/judge, not a leaderboard score."
+locomo_plus_six_category_pilot,bm25,judge_score_average,0.3333333333333333,fraction,public_noncanonical,EXECUTED,public/locomo_plus/RESULTS.json,"Official public data/templates; six-sample local reader/judge pilot, not a leaderboard score."
+locomo_plus_six_category_pilot,bm25,prompt_tokens_total,5920.0,count,public_noncanonical,EXECUTED,public/locomo_plus/RESULTS.json,
+locomo_plus_six_category_pilot,full_context,judge_score_average,0.5,fraction,public_noncanonical,EXECUTED,public/locomo_plus/RESULTS.json,"Official public data/templates; six-sample local reader/judge pilot, not a leaderboard score."
+locomo_plus_six_category_pilot,full_context,prompt_tokens_total,149139.0,count,public_noncanonical,EXECUTED,public/locomo_plus/RESULTS.json,
+locomo_plus_six_category_pilot,hng,judge_score_average,0.3333333333333333,fraction,public_noncanonical,EXECUTED,public/locomo_plus/RESULTS.json,"Official public data/templates; six-sample local reader/judge pilot, not a leaderboard score."
+locomo_plus_six_category_pilot,hng,prompt_tokens_total,5920.0,count,public_noncanonical,EXECUTED,public/locomo_plus/RESULTS.json,
+locomo_plus_six_category_pilot,strong_structured,judge_score_average,0.3333333333333333,fraction,public_noncanonical,EXECUTED,public/locomo_plus/RESULTS.json,"Official public data/templates; six-sample local reader/judge pilot, not a leaderboard score."
+locomo_plus_six_category_pilot,strong_structured,prompt_tokens_total,5920.0,count,public_noncanonical,EXECUTED,public/locomo_plus/RESULTS.json,
+personamem_v2_seven_stratum_pilot,bm25,mcq_accuracy,0.5714285714285714,fraction,public_noncanonical,EXECUTED,public/personamem_v2/RESULTS.json,Seven-row local pilot; not comparable to official benchmark scores.
+personamem_v2_seven_stratum_pilot,bm25,prompt_tokens_total,30970.0,count,public_noncanonical,EXECUTED,public/personamem_v2/RESULTS.json,
+personamem_v2_seven_stratum_pilot,expanded_profile,mcq_accuracy,0.42857142857142855,fraction,public_noncanonical,EXECUTED,public/personamem_v2/RESULTS.json,Seven-row local pilot; not comparable to official benchmark scores.
+personamem_v2_seven_stratum_pilot,expanded_profile,prompt_tokens_total,9173.0,count,public_noncanonical,EXECUTED,public/personamem_v2/RESULTS.json,
+personamem_v2_seven_stratum_pilot,full_history,mcq_accuracy,0.5714285714285714,fraction,public_noncanonical,EXECUTED,public/personamem_v2/RESULTS.json,Seven-row local pilot; not comparable to official benchmark scores.
+personamem_v2_seven_stratum_pilot,full_history,prompt_tokens_total,222934.0,count,public_noncanonical,EXECUTED,public/personamem_v2/RESULTS.json,
+personamem_v2_seven_stratum_pilot,hng,mcq_accuracy,0.5714285714285714,fraction,public_noncanonical,EXECUTED,public/personamem_v2/RESULTS.json,Seven-row local pilot; not comparable to official benchmark scores.
+personamem_v2_seven_stratum_pilot,hng,prompt_tokens_total,30970.0,count,public_noncanonical,EXECUTED,public/personamem_v2/RESULTS.json,
+personamem_v2_seven_stratum_pilot,no_memory,mcq_accuracy,0.14285714285714285,fraction,public_noncanonical,EXECUTED,public/personamem_v2/RESULTS.json,Seven-row local pilot; not comparable to official benchmark scores.
+personamem_v2_seven_stratum_pilot,no_memory,prompt_tokens_total,2713.0,count,public_noncanonical,EXECUTED,public/personamem_v2/RESULTS.json,
+personamem_v2_seven_stratum_pilot,short_profile,mcq_accuracy,0.2857142857142857,fraction,public_noncanonical,EXECUTED,public/personamem_v2/RESULTS.json,Seven-row local pilot; not comparable to official benchmark scores.
+personamem_v2_seven_stratum_pilot,short_profile,prompt_tokens_total,2781.0,count,public_noncanonical,EXECUTED,public/personamem_v2/RESULTS.json,
+personamem_v2_seven_stratum_pilot,strong_structured,mcq_accuracy,0.5714285714285714,fraction,public_noncanonical,EXECUTED,public/personamem_v2/RESULTS.json,Seven-row local pilot; not comparable to official benchmark scores.
+personamem_v2_seven_stratum_pilot,strong_structured,prompt_tokens_total,30970.0,count,public_noncanonical,EXECUTED,public/personamem_v2/RESULTS.json,
 bounded_storage_reliability,sqlite_evidence_store,records_preserved_after_backup,10000.0,count,local,PASS,reliability/STORAGE_PROBE.json,"bounded local probe, not an hours/days production soak"
 bounded_storage_reliability,sqlite_evidence_store,append_latency_p95,2.971215039724484,milliseconds,local,PASS,reliability/STORAGE_PROBE.json,"bounded local probe, not an hours/days production soak"
 bounded_multitenant_storage,sqlite_evidence_store,records_preserved_after_backup,100000.0,count,local,PASS,reliability/MULTITENANT_100K_1K.json,"1,000 tenants with 100 records each; not a 100,000-user concurrency test or soak."
@@ -58,10 +80,19 @@ synthetic_action_experience,structured_database,action_success_rate,0.68,fractio
 synthetic_action_experience,structured_database,action_regret,32.0,count,synthetic,PASS,action_experience/RESULTS.json,Failures relative to the deterministic oracle action.
 synthetic_action_experience,weighted_multi_vector,action_success_rate,0.68,fraction,synthetic,PASS,action_experience/RESULTS.json,"deterministic synthetic action simulator with synthetic binary vectors; production HNG store/evaluator; not a public benchmark, real assistant, or real-HDC result"
 synthetic_action_experience,weighted_multi_vector,action_regret,32.0,count,synthetic,PASS,action_experience/RESULTS.json,Failures relative to the deterministic oracle action.
+synthetic_consolidation,raw_plus_consolidation,logical_size_ratio,0.08861297471236453,ratio,synthetic,PASS,consolidation/RESULTS.json,synthetic production-component probe; patterns-only has no action-evaluation consumer in this release
+synthetic_consolidation,raw_plus_consolidation,action_quality_changed,0.0,fraction,synthetic,PASS,consolidation/RESULTS.json,Patterns are persisted but not consumed by evaluate_action.
+synthetic_hng_component_ablation,full_hng,decision_accuracy,0.9,fraction,synthetic,complete,ablation_matrix/RESULTS.json,One-at-a-time counterfactual transformation; not a production feature flag or public task.
+synthetic_hng_component_ablation,minus_evidence_independence,decision_accuracy,0.9,fraction,synthetic,complete,ablation_matrix/RESULTS.json,One-at-a-time counterfactual transformation; not a production feature flag or public task.
+synthetic_hng_component_ablation,minus_exact_semantic_floors,decision_accuracy,0.8,fraction,synthetic,complete,ablation_matrix/RESULTS.json,One-at-a-time counterfactual transformation; not a production feature flag or public task.
+synthetic_hng_component_ablation,minus_outcome_memory,decision_accuracy,0.1,fraction,synthetic,complete,ablation_matrix/RESULTS.json,One-at-a-time counterfactual transformation; not a production feature flag or public task.
+synthetic_hng_component_ablation,minus_perspective,decision_accuracy,0.6,fraction,synthetic,complete,ablation_matrix/RESULTS.json,One-at-a-time counterfactual transformation; not a production feature flag or public task.
+synthetic_hng_component_ablation,minus_provenance_and_trust,decision_accuracy,0.7,fraction,synthetic,complete,ablation_matrix/RESULTS.json,One-at-a-time counterfactual transformation; not a production feature flag or public task.
+synthetic_hng_component_ablation,minus_required_state_contracts,decision_accuracy,0.8,fraction,synthetic,complete,ablation_matrix/RESULTS.json,One-at-a-time counterfactual transformation; not a production feature flag or public task.
+synthetic_hng_component_ablation,minus_supersession,decision_accuracy,0.8,fraction,synthetic,complete,ablation_matrix/RESULTS.json,One-at-a-time counterfactual transformation; not a production feature flag or public task.
+synthetic_hng_component_ablation,minus_temporal_validity,decision_accuracy,0.8,fraction,synthetic,complete,ablation_matrix/RESULTS.json,One-at-a-time counterfactual transformation; not a production feature flag or public task.
 release_pytest,hng_0.7.0rc1,passed,94.0,count,local,EXECUTED,baseline_070/BASELINE_STATUS.json,Exact frozen commit e57db1b1e92329e9b8f2b173be9a506d2b898da8.
 expanded_adversarial,hng_0.7.0rc1,passed,64.0,count,local,EXECUTED,baseline_070/BASELINE_STATUS.json,Exact frozen commit e57db1b1e92329e9b8f2b173be9a506d2b898da8.
 canonical_adversarial,hng_0.7.0rc1,passed,11.0,count,local,EXECUTED,baseline_070/BASELINE_STATUS.json,Exact frozen commit e57db1b1e92329e9b8f2b173be9a506d2b898da8.
 fault_concurrency,hng_0.7.0rc1,passed,10.0,count,local,EXECUTED,baseline_070/BASELINE_STATUS.json,Exact frozen commit e57db1b1e92329e9b8f2b173be9a506d2b898da8.
 real_hdc_task_success,hng,primary_metric,,fraction,real,BLOCKED_EXTERNAL,RESOURCE_INVENTORY.json,Production HDC interpreter/checkpoint and real traces absent.
-personamem_v2,hng,primary_metric,,fraction,public,BLOCKED_EXTERNAL,RESOURCE_INVENTORY.json,Official dataset/harness not installed.
-locomo_plus,hng,primary_metric,,fraction,public,IN_PROGRESS,PUBLIC_RESOURCES.json,Official data and six-category candidate pools are prepared; reader/judge execution is not complete.

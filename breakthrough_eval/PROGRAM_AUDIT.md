@@ -21,8 +21,8 @@ substitute is permitted; `NOT_RUN` means no qualifying evidence yet exists.
 | 7 | Real HDC assistant HNG off/on | BLOCKED_EXTERNAL | No trained production interpreter, frozen action library, real trace corpus, or integrated assistant is present. |
 | 8 | Fixed LLM memory comparison | PARTIAL | Same frozen 27B model and same candidates run for ordinary/Strong/HNG; recent/full/summary/dense arms not all run. |
 | 9 | Official LongMemEval-V2 | PARTIAL | Official pinned small text tier is validated and the 21-question noncanonical pilot completed 84/84 evaluations with zero failures. HNG, StrongStructuredBaseline, and BM25 tie at 4/21; visual/full official stack and contemporary-system comparison are absent. |
-| 10 | Official LoCoMo/LoCoMo-Plus | PARTIAL | Official data and upstream 2,387-sample unified input are pinned/prepared; reader/judge run not yet executed. |
-| 11 | Public personalization | NOT_RUN | PersonaMem/PersonaMem-v2/LaMP are not installed. |
+| 10 | Official LoCoMo/LoCoMo-Plus | PARTIAL | The official 2,387-sample input is pinned and a six-category noncanonical pilot completed 24/24 evaluations with zero failures. HNG, Strong, and BM25 tie at 2/6 and trail full context at 3/6; the full official run and contemporary comparison remain absent. |
+| 11 | Public personalization | PARTIAL | Official PersonaMem-v2 text data are pinned and validated: 5,000 rows, all 1,998 32K files, 200 referenced histories, zero missing. The seven-stratum local pilot completes 49/49 qualified evaluations; HNG, BM25, Strong, and full history tie at 4/7. Dense and agentic baselines are absent. |
 | 12 | Strong RAG plus HNG | PARTIAL | Synthetic fixed-candidate corruption study exists; realistic public hybrid/dense/reranked corpus study is missing. |
 | 13 | Public document knowledge | PARTIAL | QMSum loss is preserved; GovReport/BillSum and post-retrieval governance tasks are missing. |
 | 14 | Public-quality action experience | PARTIAL | A packaged 100-attempt synthetic executing simulator reports success, regret, repeated failure, abstention, adaptation, and seven arms using production HNG evaluation. HNG ties structured/graph/Strong and loses to nearest experience (68% vs 75%); no public tool environment is run. |
@@ -37,17 +37,17 @@ substitute is permitted; `NOT_RUN` means no qualifying evidence yet exists.
 | 23 | Persistent operational perspective | PARTIAL | Frozen perspective gauntlet passes; public profile drift/uncertainty study is missing. |
 | 24 | Automated memory poisoning | PARTIAL | Poison/duplicate/tenant/role attacks exist in synthetic 250; CI-scale realistic document attacks are missing. |
 | 25 | Provenance behavioral ablation | PARTIAL | On 25 frozen poison cases, no-provenance and display-only arms score 0%, while provenance used in governance scores 100%. HNG exactly ties StrongStructuredBaseline, and the result is synthetic deterministic behavior rather than a public downstream task. |
-| 26 | Consolidation ablation | NOT_RUN | No raw/consolidated/raw+consolidated behavioral comparison. |
+| 26 | Consolidation ablation | PARTIAL | A 240-record production-component probe compares raw with raw+consolidation: behavior is identical, patterns are 8.9% of raw logical JSON size, copies collapse, rare evidence/provenance/reversibility pass. Patterns-only action evaluation is unsupported, so no downstream gain is shown. |
 | 27 | Cost/token efficiency | PARTIAL | Fixed 27B arm prompt tokens and latency are recorded; preprocessing/API cost and public workloads remain. |
 | 28 | Component latency p50/p95/p99/CI | PARTIAL | HNG component timing and overall p50/p95 exist; p99 and confidence intervals are incomplete. |
 | 29 | Long-run reliability soak | PARTIAL | Restart/fault/concurrency/20K-turn tests pass; bounded 10K and 100K production-store probes pass restart and backup/restore checks. Million-write, OS-crash, disk-full, and hours-long soak evidence remain absent. |
 | 30 | StrongStructuredBaseline challenge | PASS | Independent typed/filter/dedup baseline ties HNG 90% and is faster; the HNG loss is explicitly preserved. |
 | 31 | Strong structured competitors | NOT_RUN | Unavailable property-graph/learned managers remain undefeated. |
-| 32 | Full HNG ablation matrix | NOT_RUN | Requested component-by-component downstream ablations are incomplete. |
+| 32 | Full HNG ablation matrix | PARTIAL | Eight one-at-a-time counterfactual removals run on all 250 frozen scenarios. Outcome, perspective, provenance/trust, exact floors/contracts, temporal validity, supersession, and independence are ranked. Deterministic state carry and profile uncertainty are not isolatable here; consolidation and belief revision are separate component probes. |
 | 33 | Evidence-led iteration loop | PARTIAL | Duplicate-boundary loss is identified and preserved; no fix was made without holdout evidence. Broader loop remains. |
 | 34 | Statistical standard | PARTIAL | Paired bootstrap, McNemar, confidence intervals, and effect sizes are present for fixed-candidate studies; multiple seeds are missing. |
 | 35 | Automatic scoreboard | PARTIAL | Compiler produces Markdown/JSON scoreboard; required rows are incomplete until tracks run. |
-| 36 | Capability radar | NOT_RUN | No complete independently scored radar artifact. |
+| 36 | Capability radar | PARTIAL | A complete machine-readable evidence-maturity radar covers every requested axis without converting maturity into subjective capability scores. No axis has canonical public or real paired evidence. |
 | 37 | Six minimum breakthrough gates | FAIL_OPEN | Gates 1, 2, 5, and 6 are unmet; Gate 3 passes only synthetically; Gate 4 passes frozen suites. |
 | 38 | Stretch gates | NOT_RUN | No stretch gate is currently proven. |
 | 39 | Failure-first development | PASS | New work is evaluation/harness/provenance work; no speculative HNG feature was added. |
@@ -56,7 +56,7 @@ substitute is permitted; `NOT_RUN` means no qualifying evidence yet exists.
 | 42 | Required research documents | PARTIAL | 18 of 19 named narrative documents and all four core machine-readable outputs exist. `FINAL_BREAKTHROUGH_VERDICT.md` is intentionally withheld until active public runs and the completion audit finish. |
 | 43 | Final paper question | NOT_RUN | Paper claim cannot be supported before real/public gates. |
 | 44 | Ten explicit final-report questions | NOT_RUN | Must be answered in final verdict after evidence closure. |
-| 45 | Most-important same-retrieval A/B | PARTIAL | Controlled frozen LLM study is complete on synthetic evidence; a public-data LongMemEval-V2 pilot also preserves identical candidates/prompts and yields an HNG/Strong/BM25 tie. A real long-running task remains missing. |
+| 45 | Most-important same-retrieval A/B | PARTIAL | Controlled frozen LLM study is complete on synthetic evidence; LongMemEval-V2, LoCoMo-Plus, and PersonaMem-v2 public-data pilots preserve identical retrieval candidates/prompts and yield HNG/Strong/BM25 ties. A real long-running task remains missing. |
 | 46 | Second-most-important real HDC A/B | BLOCKED_EXTERNAL | Same resource absence as Section 7. |
 | 47 | Combined-system success target | NOT_RUN | No evidence yet proves the full system-level claim. |
 | 48 | Architectural freedom from evidence | PASS | No result has been protected ideologically; simple baseline tie and BM25 QMSum win are preserved. |
@@ -68,7 +68,7 @@ substitute is permitted; `NOT_RUN` means no qualifying evidence yet exists.
 | Gate | Current evidence | Result |
 |---|---|---|
 | 1: real behavioral improvement | No real HDC or other real assistant A/B is available. | UNMET |
-| 2: public external validation | LongMemEval-V2 public-data pilot is complete but noncanonical, low-scoring, tied with BM25/Strong, and lacks a contemporary-system comparison. LoCoMo-Plus is still running. | UNMET |
+| 2: public external validation | LongMemEval-V2, LoCoMo-Plus, and PersonaMem-v2 pilots are complete but noncanonical, low-powered, tied with BM25/Strong, and lack contemporary-system comparisons. | UNMET |
 | 3: fixed-candidate governance | +33.3 percentage points over ordinary context on 30 frozen local-LLM cases, but exact tie with StrongStructuredBaseline. | PARTIAL |
 | 4: robustness | 94/94, 64/64, 11/11, and 10/10 frozen suites pass; losses elsewhere are preserved. | MET |
 | 5: HDC and LLM model independence | LLM evidence exists; real HDC evidence does not. | UNMET |

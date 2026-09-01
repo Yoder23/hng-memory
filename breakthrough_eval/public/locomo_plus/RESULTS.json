@@ -1,0 +1,289 @@
+{
+  "all_fixed_candidate_invariants_pass": true,
+  "by_category": [
+    {
+      "arm": "full_context",
+      "average": 1.0,
+      "category": "single-hop",
+      "count": 1
+    },
+    {
+      "arm": "full_context",
+      "average": 1.0,
+      "category": "multi-hop",
+      "count": 1
+    },
+    {
+      "arm": "full_context",
+      "average": 1.0,
+      "category": "temporal",
+      "count": 1
+    },
+    {
+      "arm": "full_context",
+      "average": 0.0,
+      "category": "common-sense",
+      "count": 1
+    },
+    {
+      "arm": "full_context",
+      "average": 0.0,
+      "category": "adversarial",
+      "count": 1
+    },
+    {
+      "arm": "full_context",
+      "average": 0.0,
+      "category": "Cognitive",
+      "count": 1
+    },
+    {
+      "arm": "bm25",
+      "average": 1.0,
+      "category": "single-hop",
+      "count": 1
+    },
+    {
+      "arm": "bm25",
+      "average": 0.0,
+      "category": "multi-hop",
+      "count": 1
+    },
+    {
+      "arm": "bm25",
+      "average": 0.0,
+      "category": "temporal",
+      "count": 1
+    },
+    {
+      "arm": "bm25",
+      "average": 0.0,
+      "category": "common-sense",
+      "count": 1
+    },
+    {
+      "arm": "bm25",
+      "average": 1.0,
+      "category": "adversarial",
+      "count": 1
+    },
+    {
+      "arm": "bm25",
+      "average": 0.0,
+      "category": "Cognitive",
+      "count": 1
+    },
+    {
+      "arm": "strong_structured",
+      "average": 1.0,
+      "category": "single-hop",
+      "count": 1
+    },
+    {
+      "arm": "strong_structured",
+      "average": 0.0,
+      "category": "multi-hop",
+      "count": 1
+    },
+    {
+      "arm": "strong_structured",
+      "average": 0.0,
+      "category": "temporal",
+      "count": 1
+    },
+    {
+      "arm": "strong_structured",
+      "average": 0.0,
+      "category": "common-sense",
+      "count": 1
+    },
+    {
+      "arm": "strong_structured",
+      "average": 1.0,
+      "category": "adversarial",
+      "count": 1
+    },
+    {
+      "arm": "strong_structured",
+      "average": 0.0,
+      "category": "Cognitive",
+      "count": 1
+    },
+    {
+      "arm": "hng",
+      "average": 1.0,
+      "category": "single-hop",
+      "count": 1
+    },
+    {
+      "arm": "hng",
+      "average": 0.0,
+      "category": "multi-hop",
+      "count": 1
+    },
+    {
+      "arm": "hng",
+      "average": 0.0,
+      "category": "temporal",
+      "count": 1
+    },
+    {
+      "arm": "hng",
+      "average": 0.0,
+      "category": "common-sense",
+      "count": 1
+    },
+    {
+      "arm": "hng",
+      "average": 1.0,
+      "category": "adversarial",
+      "count": 1
+    },
+    {
+      "arm": "hng",
+      "average": 0.0,
+      "category": "Cognitive",
+      "count": 1
+    }
+  ],
+  "created_at": "2026-09-01T04:35:12.776470+00:00",
+  "excluded_event_count": 6,
+  "excluded_events": [
+    {
+      "arm": "hng",
+      "created_at": "2026-09-01T03:45:47.289717+00:00",
+      "prompt_sha256": "b03fc4c642150873e4f38c4e8ad4594a46adea28917ec30b716c76b2317b24b7",
+      "reason": "mislabeled_hng_source_identity",
+      "source_index": 364
+    },
+    {
+      "arm": "hng",
+      "created_at": "2026-09-01T03:49:51.257019+00:00",
+      "prompt_sha256": "16d4a93288766f530c67cd6946e568bd35fb20f22f99d2f7e1430db7ce6bac28",
+      "reason": "mislabeled_hng_source_identity",
+      "source_index": 810
+    },
+    {
+      "arm": "hng",
+      "created_at": "2026-09-01T03:52:47.749353+00:00",
+      "prompt_sha256": "7dc7c95ab7dfc98e37aa8ac82c1462e81c036c60faa0d20c3d99f82b8f6aebd0",
+      "reason": "mislabeled_hng_source_identity",
+      "source_index": 1113
+    },
+    {
+      "arm": "hng",
+      "created_at": "2026-09-01T03:56:08.069404+00:00",
+      "prompt_sha256": "08286e6571d0444d04b189ac146fcaa7f6d8347793475c362bb95f12a3119a15",
+      "reason": "mislabeled_hng_source_identity",
+      "source_index": 1323
+    },
+    {
+      "arm": "hng",
+      "created_at": "2026-09-01T03:59:53.115022+00:00",
+      "prompt_sha256": "502a6685546014fffd768b853c66b572daec8e6548bfed5be0b5110d0ed92357",
+      "reason": "mislabeled_hng_source_identity",
+      "source_index": 1825
+    },
+    {
+      "arm": "hng",
+      "created_at": "2026-09-01T04:03:40.619599+00:00",
+      "prompt_sha256": "5926fbb2eaf2d31c6e87ece5e541c8bc77df61a7b59e6496c43ef34c2cbc3cbd",
+      "reason": "mislabeled_hng_source_identity",
+      "source_index": 2212
+    }
+  ],
+  "failure_count": 0,
+  "failures": [],
+  "fixed_candidate_invariants": [
+    {
+      "candidate_pool_identical": true,
+      "model_digest_identical": true,
+      "prompt_identical": true,
+      "selected_candidates_identical": true,
+      "source_index": 364
+    },
+    {
+      "candidate_pool_identical": true,
+      "model_digest_identical": true,
+      "prompt_identical": true,
+      "selected_candidates_identical": true,
+      "source_index": 810
+    },
+    {
+      "candidate_pool_identical": true,
+      "model_digest_identical": true,
+      "prompt_identical": true,
+      "selected_candidates_identical": true,
+      "source_index": 1113
+    },
+    {
+      "candidate_pool_identical": true,
+      "model_digest_identical": true,
+      "prompt_identical": true,
+      "selected_candidates_identical": true,
+      "source_index": 1323
+    },
+    {
+      "candidate_pool_identical": true,
+      "model_digest_identical": true,
+      "prompt_identical": true,
+      "selected_candidates_identical": true,
+      "source_index": 1825
+    },
+    {
+      "candidate_pool_identical": true,
+      "model_digest_identical": true,
+      "prompt_identical": true,
+      "selected_candidates_identical": true,
+      "source_index": 2212
+    }
+  ],
+  "limitations": [
+    "six-category stratified subset rather than all 2,387 samples",
+    "same local frozen 27B model used as reader and judge",
+    "BM25 dialogue-turn retrieval is not an official LoCoMo-Plus baseline",
+    "HNG receives only clean public dialogue turns with no trust/tenant/version distinctions"
+  ],
+  "model": "qwen3.8:27b-q4_K_M",
+  "model_digest": "25b843619e944cd0ae6069f94ff4e5e26a16e109ccbc0a66a0f05979ed70098e",
+  "protocol": "LoCoMo-Plus six-category local pilot; NONCANONICAL",
+  "raw_log": "breakthrough_eval/public/locomo_plus/raw/events.jsonl",
+  "sample_count": 6,
+  "schema_version": 1,
+  "seed": 20260831,
+  "status": "complete",
+  "summaries": {
+    "bm25": {
+      "average": 0.3333333333333333,
+      "count": 6,
+      "latency_seconds_p50": 26.622323800023878,
+      "latency_seconds_p95": 31.09948092501145,
+      "prompt_tokens": 5920,
+      "score": 2.0
+    },
+    "full_context": {
+      "average": 0.5,
+      "count": 6,
+      "latency_seconds_p50": 91.83620475002681,
+      "latency_seconds_p95": 104.07958412500739,
+      "prompt_tokens": 149139,
+      "score": 3.0
+    },
+    "hng": {
+      "average": 0.3333333333333333,
+      "count": 6,
+      "latency_seconds_p50": 24.81236314997659,
+      "latency_seconds_p95": 28.963419175008312,
+      "prompt_tokens": 5920,
+      "score": 2.0
+    },
+    "strong_structured": {
+      "average": 0.3333333333333333,
+      "count": 6,
+      "latency_seconds_p50": 23.96032759998343,
+      "latency_seconds_p95": 27.717248750006547,
+      "prompt_tokens": 5920,
+      "score": 2.0
+    }
+  }
+}

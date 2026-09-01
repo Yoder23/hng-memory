@@ -1,0 +1,40 @@
+{
+  "action_quality_changed": false,
+  "benchmark": "synthetic_reversible_consolidation_probe",
+  "claim_boundary": "synthetic production-component probe; patterns-only has no action-evaluation consumer in this release",
+  "config": {
+    "copies_per_event": 4,
+    "groups": 12,
+    "independent_events_per_group": 5
+  },
+  "duplicate_resistance_passed": true,
+  "logical_size_ratio_patterns_to_raw": 0.08861297471236453,
+  "pattern_invalidation_preserves_raw": true,
+  "pattern_logical_bytes": 11676,
+  "patterns": 12,
+  "patterns_only": {
+    "reason": "Persisted consolidated patterns are not indexed as governed evidence or consumed by evaluate_action.",
+    "status": "NOT_EXECUTABLE"
+  },
+  "provenance_reversible": true,
+  "rare_event_preserved": true,
+  "raw_evidence_deleted": false,
+  "raw_logical_bytes": 131764,
+  "raw_only": {
+    "challenge_score": 1.0,
+    "decision": "support",
+    "independent_challenge_count": 1,
+    "independent_support_count": 15,
+    "support_score": 15.0
+  },
+  "raw_plus_consolidation": {
+    "challenge_score": 1.0,
+    "decision": "support",
+    "independent_challenge_count": 1,
+    "independent_support_count": 15,
+    "support_score": 15.0
+  },
+  "raw_records": 240,
+  "schema_version": 1,
+  "status": "PASS"
+}

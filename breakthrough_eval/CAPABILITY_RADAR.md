@@ -11,25 +11,25 @@ subjective performance scores to unrun tracks.
 | Capability | Maturity | Current evidence |
 |---|---:|---|
 | working-state continuity | 1 | frozen local gauntlets |
-| long-term factual memory | 0 | not run |
-| dynamic-state tracking | 1 | public pilot in progress; no score yet |
-| temporal reasoning | 1 | synthetic fixed candidates |
-| episodic recall | 1 | frozen local gauntlets |
-| action/outcome experience | 1 | synthetic only |
-| workflow knowledge | 1 | public pilot in progress |
-| environment gotchas | 1 | public pilot in progress |
+| long-term factual memory | 2 | LongMemEval-V2 and LoCoMo-Plus noncanonical negative results |
+| dynamic-state tracking | 2 | completed LongMemEval-V2 pilot; all retrieval arms 0/6 |
+| temporal reasoning | 2 | completed public noncanonical pilots |
+| episodic recall | 2 | completed LoCoMo-Plus public-data pilot |
+| action/outcome experience | 1 | synthetic executing probe; HNG loses to nearest experience |
+| workflow knowledge | 2 | completed LongMemEval-V2 pilot; retrieval arms 1/6 |
+| environment gotchas | 2 | completed LongMemEval-V2 pilot; retrieval arms 2/3 |
 | contradiction | 1 | synthetic fixed candidates |
-| belief revision | 0 | not run |
+| belief revision | 1 | synthetic component probe; HNG ties strong authority policy |
 | abstention | 1 | synthetic fixed candidates |
-| personalization | 1 | synthetic perspective only |
+| personalization | 2 | PersonaMem-v2 public-data pilot; HNG ties BM25/Strong/full history |
 | authority awareness | 1 | synthetic fixed candidates |
 | document QA | 2 | official QMSum data, noncanonical retrieval probe |
 | global corpus understanding | 0 | not run |
-| RAG governance | 1 | synthetic fixed-candidate LLM study |
-| provenance | 0 | no behavioral ablation |
+| RAG governance | 2 | public-data fixed-candidate pilots; HNG ties Strong/BM25 |
+| provenance | 1 | synthetic behavioral ablation; HNG ties Strong |
 | poison resistance | 1 | synthetic fixed candidates |
-| multi-user isolation | 1 | synthetic small scale |
+| multi-user isolation | 1 | local 100K-record / 1K-tenant bounded probe |
 | tool-agent assistance | 0 | not run |
-| efficiency | 1 | frozen local component profile |
+| efficiency | 2 | public-pilot token and latency measurements |
 
 No axis currently reaches level 3. The machine-readable source is `CAPABILITY_RADAR.json`.

@@ -15,12 +15,39 @@ no-provenance and display-only policies are correct on 0. The paired exact McNem
 `1e-7`. HNG and StrongStructuredBaseline are identical on all 25, giving exact McNemar p=1.0 and a
 zero effect. The study is synthetic and family-specific.
 
+## Deterministic component ablations
+
+Across all 250 frozen scenarios, full HNG scores 90%. One-at-a-time counterfactual removals change
+accuracy by -80 points for outcome memory, -30 for perspective, -20 for provenance/trust, and -10
+each for exact floors, required-state contracts, temporal validity, and supersession. Removing
+evidence independence changes 25 decisions but has zero accuracy effect because both the full and
+ablated decisions miss the duplicate-family expected label. These are deterministic full-suite
+descriptives, so confidence intervals or p-values would not add sampling information. The 25
+variants per family share templates; the deltas do not estimate natural-task prevalence.
+
 ## LongMemEval-V2 public-data pilot
 
 HNG, StrongStructuredBaseline, and BM25 each score 4/21 on the noncanonical text pilot, with the
 same per-ability counts and identical fixed prompts. The observed effect is 0 percentage points.
 No significance or competitiveness claim is made at n=21, and no leaderboard comparison is valid
 because the reader, retriever, judge, and subset differ from the official stack.
+
+## LoCoMo-Plus public-data pilot
+
+HNG, StrongStructuredBaseline, and BM25 each score 2/6 (33.3%) on the six-category noncanonical
+pilot; full context scores 3/6 (50.0%). The fixed retrieval arms have identical candidate sets and
+prompts. At one example per category, the 16.7-point observed full-context advantage is descriptive
+only: no significance test or competitiveness claim is justified. The same local model served as
+reader and judge, and the subset/retriever differ from official evaluation.
+
+## PersonaMem-v2 public-data pilot
+
+HNG, StrongStructuredBaseline, BM25, and full history each score 4/7 (57.1%) on the noncanonical
+seven-stratum MCQ pilot. Expanded profile scores 3/7, short profile 2/7, and no memory 1/7. The
+fixed retrieval arms have identical candidates, prompts, and reader digest. At one example per
+preference type, no inferential or competitiveness claim is justified; official dense/agentic
+baselines and multiple reader families are absent. Runtime order/cache effects also preclude a
+latency comparison.
 
 ## Deterministic Adversarial-250
 

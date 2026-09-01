@@ -305,7 +305,12 @@ def strong_structured_govern(candidates: Sequence[Candidate]) -> tuple[list[Cand
     return included, {"included": [item.candidate_id for item in included], "excluded": excluded}
 
 
-def hng_govern(candidates: Sequence[Candidate]) -> tuple[list[Candidate], dict[str, object]]:
+def hng_govern(
+    candidates: Sequence[Candidate],
+    *,
+    source_identity: str = "LongMemEval-V2",
+    source_id_prefix: str = "longmemeval-v2",
+) -> tuple[list[Candidate], dict[str, object]]:
     records = []
     for item in candidates:
         records.append(EvidenceRecordV2(
@@ -319,14 +324,14 @@ def hng_govern(candidates: Sequence[Candidate]) -> tuple[list[Candidate], dict[s
             semantics=SemanticState({}),
             provenance=EvidenceProvenance(
                 "external_document",
-                f"longmemeval-v2:{item.candidate_id}",
+                f"{source_id_prefix}:{item.candidate_id}",
                 0.75,
                 True,
                 NOW,
                 "official-dataset",
                 verifier="sha256-pinned-dataset",
                 verification_status="verified",
-                identity="LongMemEval-V2",
+                identity=source_identity,
             ),
             validity=TemporalValidity(valid_from="2026-01-01T00:00:00+00:00"),
             outcome_score=0.0,
@@ -365,6 +370,7 @@ def ollama_chat(
     timeout: float,
     num_predict: int,
     json_format: bool = False,
+    num_ctx: int = 32768,
 ) -> tuple[str, dict[str, object]]:
     request: dict[str, object] = {
         "model": model,
@@ -375,7 +381,7 @@ def ollama_chat(
             "temperature": 0,
             "seed": SEED,
             "num_predict": num_predict,
-            "num_ctx": 32768,
+            "num_ctx": num_ctx,
         },
         "keep_alive": "30m",
     }

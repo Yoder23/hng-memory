@@ -99,3 +99,56 @@ The earlier inventory incorrectly conflated the old repository author Tao Yu wit
 GitHub username. The user confirmed `Yoder23` is their account. A fresh private repository now
 exists at `https://github.com/Yoder23/hng-memory`; API ownership/ADMIN permission and matching
 local/origin/GitHub commit hashes were verified before any new work was pushed.
+
+## LoCoMo-Plus preserved loss
+
+The completed six-category public-data pilot is a negative result. Full context scores 3/6 (50.0%),
+while BM25, StrongStructuredBaseline, and HNG each score 2/6 (33.3%) with identical fixed retrieval
+prompts. HNG produces no governance gain on clean dialogue turns and trails the full-context arm.
+The result is noncanonical and too small for a leaderboard or significance claim.
+
+## PersonaMem-v2 setup failures
+
+1. The first full upstream Git clone ran for more than three minutes without completing. The partial
+   target was verified before removal; a shallow clone then succeeded at commit
+   `dd52429f83ced4394be46c3849186a423942b2a5`.
+2. Two Hugging Face CLI attempts under the long workspace path failed with Windows cache
+   `FileNotFoundError` path-length errors. Downloading to the short external path `C:\tmp\pmv2`
+   succeeded without modifying the dataset.
+3. The first eight-worker 32K-history download reached 92% before repeated HTTP 429 responses
+   exhausted retries. A one-worker resume initially encountered the same rate limit, then completed
+   all 1,998 files from cache. No completed file was deleted.
+4. The first pilot test collection exposed a generated path-normalization syntax error before any
+   benchmark call ran. The path now uses `Path.as_posix()`; all four pilot tests and preparation pass.
+5. The first three PersonaMem-v2 reader attempts used a 192-token output budget and reached the cap
+   before consistently emitting the required final MCQ letter. They remain in the append-only log
+   but are excluded from scoring. The fail-closed rerun requires an explicit final letter and a
+   non-length stop reason.
+6. The official full-history harness places MCQ options in a trailing system message. On the local
+   Ollama/Qwen path, five of seven responses ignored or outgrew that instruction and were rejected;
+   two happened to emit parseable letters. Prompt protocol revision 2 moves the same MCQ task into
+   the final user turn and reruns all seven full-history arms for a consistent local protocol. Every
+   revision-1 full-history event remains preserved and excluded.
+
+## Public-adapter provenance-label correction
+
+The shared clean-document HNG adapter initially hard-coded `LongMemEval-V2` as the provenance
+identity. LoCoMo-Plus and the first PersonaMem-v2 HNG event therefore carried the wrong dataset name
+inside their governance traces, although candidates, policy decisions, prompts, and scores were
+unchanged. Those raw events are preserved and excluded by identity validation. The adapter now
+requires the actual source identity/prefix, regression tests assert them, and only the affected HNG
+arms are rerun.
+
+These are setup/transport failures, not result evidence. The official benchmark validates at 5,000
+rows, 200 uniquely referenced 32K histories, and zero missing history references.
+
+## HNG-ablation harness corrections
+
+1. The first matrix invocation imported `EvidenceAggregator` from the governance convenience module,
+   but the frozen release exposes it from `hngfrontier.aggregation`. No event was emitted.
+2. The next invocation treated `Scenario.candidate_pool_sha256` as a method instead of a property.
+   No event was emitted.
+3. Protocol revision 1 completed but its provenance/trust ablation used the unrecognized source type
+   `telemetry`; the production trust map therefore assigned a low default and excluded nearly all
+   evidence. All 2,250 revision-1 events remain in the append-only log but are excluded. Revision 2
+   uses `system_telemetry`, reruns all decisions, and is the sole reported matrix result.

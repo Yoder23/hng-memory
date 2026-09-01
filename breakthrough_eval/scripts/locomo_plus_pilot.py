@@ -229,7 +229,8 @@ def completed_keys(raw_path: Path) -> set[tuple[int, str]]:
         for line in handle:
             if line.strip():
                 row = json.loads(line)
-                if row.get("event") == "prediction" and not row.get("error"):
+                identity_valid = row.get("arm") != "hng" or row.get("source_identity") == "LoCoMo-Plus"
+                if row.get("event") == "prediction" and not row.get("error") and identity_valid:
                     result.add((int(row["source_index"]), str(row["arm"])))
     return result
 
@@ -247,7 +248,11 @@ def run(
         category = str(sample["category"])
         base = candidates_by_index[index]
         strong, strong_trace = strong_structured_govern(base)
-        hng, hng_trace = hng_govern(base)
+        hng, hng_trace = hng_govern(
+            base,
+            source_identity="LoCoMo-Plus",
+            source_id_prefix="locomo-plus",
+        )
         candidate_hash = stable_hash([item.payload() for item in base])
         for arm in arms:
             if (index, arm) in completed:
@@ -282,6 +287,7 @@ def run(
                 "arm": arm,
                 "model": args.model,
                 "model_digest": args.model_digest,
+                "source_identity": "LoCoMo-Plus" if arm == "hng" else None,
                 "candidate_pool_sha256": pool_hash,
                 "selected_candidate_ids": [item.candidate_id for item in candidates],
                 "governance_trace": trace,
@@ -334,13 +340,23 @@ def compile_results(
 ) -> dict[str, object]:
     latest: dict[tuple[int, str], dict[str, Any]] = {}
     failures = []
+    excluded_events = []
     with raw_path.open(encoding="utf-8") as handle:
         for line in handle:
             if not line.strip():
                 continue
             row = json.loads(line)
+            identity_valid = row.get("arm") != "hng" or row.get("source_identity") == "LoCoMo-Plus"
             if row.get("error"):
                 failures.append(row)
+            elif not identity_valid:
+                excluded_events.append({
+                    "source_index": row.get("source_index"),
+                    "arm": row.get("arm"),
+                    "created_at": row.get("created_at"),
+                    "prompt_sha256": row.get("prompt_sha256"),
+                    "reason": "mislabeled_hng_source_identity",
+                })
             else:
                 latest[(int(row["source_index"]), str(row["arm"]))] = row
     arms = ("full_context", "bm25", "strong_structured", "hng")
@@ -403,6 +419,8 @@ def compile_results(
         ),
         "failure_count": len(failures),
         "failures": failures,
+        "excluded_event_count": len(excluded_events),
+        "excluded_events": excluded_events,
         "raw_log": str(raw_path.relative_to(ROOT)).replace("\\", "/"),
     }
     write_json(args.output / "RESULTS.json", result)

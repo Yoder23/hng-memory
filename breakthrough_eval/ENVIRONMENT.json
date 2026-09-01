@@ -167,7 +167,7 @@
     "remote": "https://github.com/Yoder23/hng-memory.git",
     "repository": "https://github.com/Yoder23/hng-memory",
     "status": "CONNECTED_VERIFIED_PRIVATE",
-    "verified_commit": "c089b1b93bfaffc9d87bca0861dafe44942e9553",
+    "verified_commit": "ca3a262a975b1d5eac44fe09758e99d85f6e9343",
     "viewer_permission": "ADMIN"
   },
   "public_resources": {
@@ -252,7 +252,62 @@
         "trajectory_screenshot_check": false
       }
     },
-    "recorded_at": "2026-08-31",
+    "personamem_v2": {
+      "canonical_blockers": [
+        "full 5,000-row run exceeds the current local inference budget",
+        "official frontier-model configuration unavailable locally",
+        "official dense RAG and agentic-profile systems are not installed"
+      ],
+      "canonical_protocol_available": false,
+      "dataset_download_revision": "0622e56d1cc6f1bc990a5100a6ec4022a60e66a6",
+      "dataset_repository": "bowen-upenn/PersonaMem-v2",
+      "files": {
+        "benchmark/text/benchmark.csv": {
+          "bytes": 42426457,
+          "sha256": "95f2a8a324aab7baf2af937feae12731369e2abf7cad5ab3e170594cb25a3e52"
+        }
+      },
+      "local_pilot": {
+        "accuracy": {
+          "bm25": 0.5714285714285714,
+          "expanded_profile": 0.42857142857142855,
+          "full_history": 0.5714285714285714,
+          "hng": 0.5714285714285714,
+          "no_memory": 0.14285714285714285,
+          "short_profile": 0.2857142857142857,
+          "strong_structured": 0.5714285714285714
+        },
+        "all_fixed_candidate_invariants_pass": true,
+        "answer_leakage_control": "pref_type defines strata only; selection and retrieval exclude correct/incorrect answers, profile/preference text, and oracle snippets",
+        "excluded_historical_events": 11,
+        "prepared_manifest": "public/personamem_v2/PREPARED.json",
+        "protocol": "one deterministic row per preference type; seven rows and seven arms; NONCANONICAL",
+        "qualified_evaluations": 49,
+        "status": "COMPLETE_NONCANONICAL",
+        "unresolved_failures": 0
+      },
+      "repository": "https://github.com/bowen-upenn/PersonaMem-v2",
+      "repository_commit": "dd52429f83ced4394be46c3849186a423942b2a5",
+      "validation": {
+        "benchmark_rows": 5000,
+        "downloaded_32k_history_files": 1998,
+        "missing_benchmark_history_references": 0,
+        "preference_type_counts": {
+          "anti_stereotypical_pref": 855,
+          "ask_to_forget": 1048,
+          "health_and_medical_conditions": 568,
+          "neutral_preferences": 858,
+          "sensitive_info": 511,
+          "stereotypical_pref": 533,
+          "therapy_background": 627
+        },
+        "status": "PASS",
+        "unique_benchmark_referenced_32k_histories": 200,
+        "updated_false": 3953,
+        "updated_true": 1047
+      }
+    },
+    "recorded_at": "2026-09-01",
     "schema_version": 1,
     "storage_policy": "External repositories and datasets are ignored by Git; revisions and hashes are versioned here."
   },

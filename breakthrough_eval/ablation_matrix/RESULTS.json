@@ -1,0 +1,590 @@
+{
+  "candidate_scenario_manifest_sha256": "f7a5f808f0138cbda358f2f6488ca2b326c1ddc81ea0565344cf9baaa89a7eaf",
+  "created_at": "2026-09-01T05:02:30.984037+00:00",
+  "executed_ranking_most_harmful_removal_first": [
+    {
+      "ablation": "minus_outcome_memory",
+      "accuracy_delta_vs_full": -0.8
+    },
+    {
+      "ablation": "minus_perspective",
+      "accuracy_delta_vs_full": -0.3
+    },
+    {
+      "ablation": "minus_provenance_and_trust",
+      "accuracy_delta_vs_full": -0.2
+    },
+    {
+      "ablation": "minus_exact_semantic_floors",
+      "accuracy_delta_vs_full": -0.1
+    },
+    {
+      "ablation": "minus_temporal_validity",
+      "accuracy_delta_vs_full": -0.1
+    },
+    {
+      "ablation": "minus_supersession",
+      "accuracy_delta_vs_full": -0.1
+    },
+    {
+      "ablation": "minus_required_state_contracts",
+      "accuracy_delta_vs_full": -0.1
+    },
+    {
+      "ablation": "minus_evidence_independence",
+      "accuracy_delta_vs_full": 0.0
+    }
+  ],
+  "failure_count": 0,
+  "failures": [],
+  "limitations": [
+    "counterfactual record/plan transformations, not internal production feature flags",
+    "synthetic governance decisions rather than public or real assistant behavior",
+    "provenance and trust are jointly removed because the frozen policy couples them",
+    "component interactions are not identified by one-at-a-time ablations"
+  ],
+  "not_isolated": {
+    "belief_graph": "Measured separately in belief_revision/RESULTS.json; HNG ties the strong authority policy.",
+    "consolidation": "Measured separately in consolidation/RESULTS.json; raw+patterns does not change action behavior.",
+    "deterministic_state_carry": "No multi-turn state-carry intervention exists in Adversarial-250.",
+    "profile_uncertainty": "The frozen actor profiles have no varied uncertainty field."
+  },
+  "protocol": "counterfactual component ablations on frozen Adversarial-250; synthetic",
+  "protocol_revision": 2,
+  "raw_log": "breakthrough_eval/ablation_matrix/raw/events.jsonl",
+  "scenario_count": 250,
+  "schema_version": 1,
+  "status": "complete",
+  "summaries": {
+    "full_hng": {
+      "accuracy": 0.9,
+      "by_family": {
+        "authority_mismatch": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "duplicate_attack": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 25
+        },
+        "irrelevant_state": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "sparse_verified": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "stale_environment": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "superseded": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "true_conflict": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "untrusted_poison": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "wrong_role": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "wrong_tenant": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        }
+      },
+      "correct": 225,
+      "count": 250,
+      "decision_changes_from_full": null
+    },
+    "minus_evidence_independence": {
+      "accuracy": 0.9,
+      "accuracy_delta_vs_full": 0.0,
+      "by_family": {
+        "authority_mismatch": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "duplicate_attack": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 25
+        },
+        "irrelevant_state": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "sparse_verified": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "stale_environment": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "superseded": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "true_conflict": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "untrusted_poison": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "wrong_role": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "wrong_tenant": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        }
+      },
+      "correct": 225,
+      "count": 250,
+      "decision_changes_from_full": 25
+    },
+    "minus_exact_semantic_floors": {
+      "accuracy": 0.8,
+      "accuracy_delta_vs_full": -0.1,
+      "by_family": {
+        "authority_mismatch": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "duplicate_attack": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 25
+        },
+        "irrelevant_state": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 25
+        },
+        "sparse_verified": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "stale_environment": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "superseded": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "true_conflict": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "untrusted_poison": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "wrong_role": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "wrong_tenant": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        }
+      },
+      "correct": 200,
+      "count": 250,
+      "decision_changes_from_full": 25
+    },
+    "minus_outcome_memory": {
+      "accuracy": 0.1,
+      "accuracy_delta_vs_full": -0.8,
+      "by_family": {
+        "authority_mismatch": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 25
+        },
+        "duplicate_attack": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 25
+        },
+        "irrelevant_state": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "sparse_verified": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 25
+        },
+        "stale_environment": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 25
+        },
+        "superseded": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 25
+        },
+        "true_conflict": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 25
+        },
+        "untrusted_poison": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 25
+        },
+        "wrong_role": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 25
+        },
+        "wrong_tenant": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 25
+        }
+      },
+      "correct": 25,
+      "count": 250,
+      "decision_changes_from_full": 225
+    },
+    "minus_perspective": {
+      "accuracy": 0.6,
+      "accuracy_delta_vs_full": -0.3,
+      "by_family": {
+        "authority_mismatch": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 25
+        },
+        "duplicate_attack": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 25
+        },
+        "irrelevant_state": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "sparse_verified": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "stale_environment": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "superseded": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "true_conflict": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "untrusted_poison": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "wrong_role": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 25
+        },
+        "wrong_tenant": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 25
+        }
+      },
+      "correct": 150,
+      "count": 250,
+      "decision_changes_from_full": 75
+    },
+    "minus_provenance_and_trust": {
+      "accuracy": 0.7,
+      "accuracy_delta_vs_full": -0.2,
+      "by_family": {
+        "authority_mismatch": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "duplicate_attack": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 25
+        },
+        "irrelevant_state": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "sparse_verified": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 25
+        },
+        "stale_environment": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "superseded": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "true_conflict": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "untrusted_poison": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 25
+        },
+        "wrong_role": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "wrong_tenant": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        }
+      },
+      "correct": 175,
+      "count": 250,
+      "decision_changes_from_full": 50
+    },
+    "minus_required_state_contracts": {
+      "accuracy": 0.8,
+      "accuracy_delta_vs_full": -0.1,
+      "by_family": {
+        "authority_mismatch": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "duplicate_attack": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 25
+        },
+        "irrelevant_state": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 25
+        },
+        "sparse_verified": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "stale_environment": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "superseded": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "true_conflict": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "untrusted_poison": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "wrong_role": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "wrong_tenant": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        }
+      },
+      "correct": 200,
+      "count": 250,
+      "decision_changes_from_full": 25
+    },
+    "minus_supersession": {
+      "accuracy": 0.8,
+      "accuracy_delta_vs_full": -0.1,
+      "by_family": {
+        "authority_mismatch": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "duplicate_attack": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 25
+        },
+        "irrelevant_state": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "sparse_verified": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "stale_environment": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "superseded": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 25
+        },
+        "true_conflict": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "untrusted_poison": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "wrong_role": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "wrong_tenant": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        }
+      },
+      "correct": 200,
+      "count": 250,
+      "decision_changes_from_full": 25
+    },
+    "minus_temporal_validity": {
+      "accuracy": 0.8,
+      "accuracy_delta_vs_full": -0.1,
+      "by_family": {
+        "authority_mismatch": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "duplicate_attack": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 25
+        },
+        "irrelevant_state": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "sparse_verified": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "stale_environment": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "count": 25
+        },
+        "superseded": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "true_conflict": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "untrusted_poison": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "wrong_role": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        },
+        "wrong_tenant": {
+          "accuracy": 1.0,
+          "correct": 25,
+          "count": 25
+        }
+      },
+      "correct": 200,
+      "count": 250,
+      "decision_changes_from_full": 25
+    }
+  }
+}

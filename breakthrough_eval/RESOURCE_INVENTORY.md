@@ -1,10 +1,10 @@
 # Breakthrough resource inventory
 
-Audit date: 2026-08-31. Machine-readable source: RESOURCE_INVENTORY.json.
+Audit date: 2026-09-01. Machine-readable source: RESOURCE_INVENTORY.json.
 
 GitHub is connected to the user-confirmed account Yoder23. The only remote is the private
 repository at https://github.com/Yoder23/hng-memory.git; local main, origin/main, and GitHub were
-verified at commit c089b1b93bfaffc9d87bca0861dafe44942e9553 on 2026-08-31.
+verified at commit ca3a262a975b1d5eac44fe09758e99d85f6e9343 on 2026-09-01.
 
 ## Available
 
@@ -24,6 +24,10 @@ verified at commit c089b1b93bfaffc9d87bca0861dafe44942e9553 on 2026-08-31.
   2cc8c540bdb87fe6761629b585e727e1c4704520; the 451-question small text tier, 1,870
   trajectories, 451 haystack mappings, and question screenshots pass the upstream validator
   with trajectory screenshot checking disabled.
+- Official PersonaMem-v2 repository at commit
+  dd52429f83ced4394be46c3849186a423942b2a5 and dataset revision
+  0622e56d1cc6f1bc990a5100a6ec4022a60e66a6; the 5,000-row text benchmark and all 1,998
+  released 32K histories are present, and all 200 uniquely referenced histories resolve.
 - FAISS CPU 1.15.0 and USearch 2.26.1 vendor environments.
 - Intel Core i9-12900H (14 physical / 20 logical cores), 68,473,409,536 bytes RAM,
   NVIDIA RTX 3080 Laptop GPU 16 GB (driver 591.44), Windows build 26200,
@@ -36,15 +40,16 @@ verified at commit c089b1b93bfaffc9d87bca0861dafe44942e9553 on 2026-08-31.
   C:\\Python310\\trainslm contains prototype integration code but no usable trained model.
   This gate is BLOCKED_EXTERNAL; synthetic semantics are forbidden as a substitute.
 - LongMemEval-V2 trajectory screenshots are not installed (the text path and question images are
-  present). PersonaMem-v2, PersonaMem, LaMP, GovReport, and BillSum are not installed locally.
+  present). PersonaMem, LaMP, GovReport, and BillSum are not installed locally. PersonaMem-v2's
+  official dense and agentic systems are also not installed.
 - No paid hosted-judge credential or spend authorization is assumed.
 - Hindsight, MAGMA, Mem0, Zep, Letta, APEX-MEM, and Memory-R1 are not locally installed
   end-to-end. They remain undefeated.
 
-## Active public experiment
+## Completed public pilots
 
-The pinned LongMemEval-V2 small-tier text pilot is running locally. It is explicitly noncanonical:
-the reader is the frozen local 27B model, trajectory screenshots are omitted, BM25 selects text
-state slices, and judge-dependent items use the same local model as judge. Its fixed-candidate arms
-freeze candidate order, prompt hash, model digest, generation options, and seed. Official answers
-are used only after generation by the official evaluator functions.
+LongMemEval-V2, LoCoMo-Plus, and PersonaMem-v2 noncanonical pilots are complete, with all losses
+preserved. PersonaMem-v2 freezes the reader digest and fixed retrieval candidates; `pref_type`
+defines strata only, while row selection and retrieval exclude answer options, preference/profile
+text, and oracle snippets. Official answers are loaded only after sample selection and retrieval.
+HNG ties the strongest local controls in all three public-data pilots.

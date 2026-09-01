@@ -105,6 +105,16 @@
       "status": "LOSS"
     },
     {
+      "area": "Synthetic consolidation behavior",
+      "baseline": 1.0,
+      "delta": 0.0,
+      "evidence_class": "synthetic",
+      "hng": 1.0,
+      "notes": "Raw+consolidation exactly preserves raw action behavior; patterns-only action evaluation is unsupported.",
+      "significance": null,
+      "status": "LOSS_TIE"
+    },
+    {
       "area": "LongMemEval-V2 text pilot",
       "baseline": 0.19047619047619047,
       "delta": 0.0,
@@ -115,24 +125,24 @@
       "status": "EXECUTED_NONCANONICAL"
     },
     {
-      "area": "LoCoMo-Plus",
-      "baseline": null,
-      "delta": null,
-      "evidence_class": "public",
-      "hng": null,
-      "notes": "Official data and six-category candidate pools are prepared; reader/judge execution is not complete.",
+      "area": "LoCoMo-Plus six-category pilot",
+      "baseline": 0.3333333333333333,
+      "delta": 0.0,
+      "evidence_class": "public_noncanonical",
+      "hng": 0.3333333333333333,
+      "notes": "Official data/templates, six-sample local reader/judge pilot; not comparable to leaderboard scores.",
       "significance": null,
-      "status": "IN_PROGRESS"
+      "status": "EXECUTED_NONCANONICAL"
     },
     {
-      "area": "PersonaMem-v2",
-      "baseline": null,
-      "delta": null,
-      "evidence_class": "public",
-      "hng": null,
-      "notes": "Official dataset/harness not installed.",
+      "area": "PersonaMem-v2 seven-stratum pilot",
+      "baseline": 0.5714285714285714,
+      "delta": 0.0,
+      "evidence_class": "public_noncanonical",
+      "hng": 0.5714285714285714,
+      "notes": "Official data, seven-row local MCQ pilot; dense and agentic baselines absent.",
       "significance": null,
-      "status": "BLOCKED_EXTERNAL"
+      "status": "EXECUTED_NONCANONICAL"
     }
   ],
   "schema_version": 1

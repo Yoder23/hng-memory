@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "recorded_at": "2026-08-31",
+  "recorded_at": "2026-09-01",
   "storage_policy": "External repositories and datasets are ignored by Git; revisions and hashes are versioned here.",
   "longmemeval_v2": {
     "repository": "https://github.com/xiaowu0162/LongMemEval-V2",
@@ -81,6 +81,61 @@
     "canonical_blockers": [
       "full 2,387-sample reader-plus-judge run exceeds the current local inference budget",
       "official hosted reader/judge configuration and credentials unavailable"
+    ]
+  },
+  "personamem_v2": {
+    "repository": "https://github.com/bowen-upenn/PersonaMem-v2",
+    "repository_commit": "dd52429f83ced4394be46c3849186a423942b2a5",
+    "dataset_repository": "bowen-upenn/PersonaMem-v2",
+    "dataset_download_revision": "0622e56d1cc6f1bc990a5100a6ec4022a60e66a6",
+    "files": {
+      "benchmark/text/benchmark.csv": {
+        "bytes": 42426457,
+        "sha256": "95f2a8a324aab7baf2af937feae12731369e2abf7cad5ab3e170594cb25a3e52"
+      }
+    },
+    "validation": {
+      "status": "PASS",
+      "benchmark_rows": 5000,
+      "downloaded_32k_history_files": 1998,
+      "unique_benchmark_referenced_32k_histories": 200,
+      "missing_benchmark_history_references": 0,
+      "preference_type_counts": {
+        "anti_stereotypical_pref": 855,
+        "therapy_background": 627,
+        "neutral_preferences": 858,
+        "health_and_medical_conditions": 568,
+        "stereotypical_pref": 533,
+        "ask_to_forget": 1048,
+        "sensitive_info": 511
+      },
+      "updated_true": 1047,
+      "updated_false": 3953
+    },
+    "local_pilot": {
+      "status": "COMPLETE_NONCANONICAL",
+      "protocol": "one deterministic row per preference type; seven rows and seven arms; NONCANONICAL",
+      "prepared_manifest": "public/personamem_v2/PREPARED.json",
+      "answer_leakage_control": "pref_type defines strata only; selection and retrieval exclude correct/incorrect answers, profile/preference text, and oracle snippets",
+      "qualified_evaluations": 49,
+      "unresolved_failures": 0,
+      "excluded_historical_events": 11,
+      "all_fixed_candidate_invariants_pass": true,
+      "accuracy": {
+        "no_memory": 0.14285714285714285,
+        "short_profile": 0.2857142857142857,
+        "expanded_profile": 0.42857142857142855,
+        "full_history": 0.5714285714285714,
+        "bm25": 0.5714285714285714,
+        "strong_structured": 0.5714285714285714,
+        "hng": 0.5714285714285714
+      }
+    },
+    "canonical_protocol_available": false,
+    "canonical_blockers": [
+      "full 5,000-row run exceeds the current local inference budget",
+      "official frontier-model configuration unavailable locally",
+      "official dense RAG and agentic-profile systems are not installed"
     ]
   }
 }

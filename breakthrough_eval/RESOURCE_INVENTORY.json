@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "audit_date": "2026-08-31",
+  "audit_date": "2026-09-01",
   "baseline_commit": "e57db1b1e92329e9b8f2b173be9a506d2b898da8",
   "github": {
     "status": "CONNECTED_VERIFIED_PRIVATE",
     "account": "Yoder23",
     "repository": "https://github.com/Yoder23/hng-memory",
     "remote": "https://github.com/Yoder23/hng-memory.git",
-    "verified_commit": "c089b1b93bfaffc9d87bca0861dafe44942e9553",
+    "verified_commit": "ca3a262a975b1d5eac44fe09758e99d85f6e9343",
     "viewer_permission": "ADMIN"
   },
   "hardware": {
@@ -55,11 +55,20 @@
     },
     {
       "name": "LoCoMo-Plus",
-      "status": "OFFICIAL_DATA_PREPARED",
+      "status": "OFFICIAL_DATA_PREPARED_NONCANONICAL_PILOT_COMPLETE",
       "repository_commit": "059f4e3d38f7f1f96765e8e2cb7de3097551bffb",
       "unified_samples": 2387
     },
-    {"name": "PersonaMem-v2", "status": "NOT_INSTALLED"},
+    {
+      "name": "PersonaMem-v2",
+      "status": "OFFICIAL_TEXT_32K_DATA_VALIDATED_NONCANONICAL_PILOT_COMPLETE",
+      "repository_commit": "dd52429f83ced4394be46c3849186a423942b2a5",
+      "dataset_revision": "0622e56d1cc6f1bc990a5100a6ec4022a60e66a6",
+      "benchmark_rows": 5000,
+      "downloaded_32k_histories": 1998,
+      "referenced_32k_histories": 200,
+      "missing_references": 0
+    },
     {"name": "PersonaMem", "status": "NOT_INSTALLED"},
     {"name": "LaMP", "status": "NOT_INSTALLED"},
     {"name": "GovReport", "status": "NOT_INSTALLED"},

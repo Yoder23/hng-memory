@@ -64,6 +64,8 @@ def main() -> int:
     longmem = load(longmem_path) if longmem_path.exists() else None
     locomo_path = EVAL / "public" / "locomo_plus" / "RESULTS.json"
     locomo = load(locomo_path) if locomo_path.exists() else None
+    personamem_path = EVAL / "public" / "personamem_v2" / "RESULTS.json"
+    personamem = load(personamem_path) if personamem_path.exists() else None
     reliability_path = EVAL / "reliability" / "STORAGE_PROBE.json"
     reliability = load(reliability_path) if reliability_path.exists() else None
     multitenant_path = EVAL / "reliability" / "MULTITENANT_100K_1K.json"
@@ -74,6 +76,10 @@ def main() -> int:
     provenance = load(provenance_path) if provenance_path.exists() else None
     action_path = EVAL / "action_experience" / "RESULTS.json"
     action = load(action_path) if action_path.exists() else None
+    consolidation_path = EVAL / "consolidation" / "RESULTS.json"
+    consolidation = load(consolidation_path) if consolidation_path.exists() else None
+    ablation_path = EVAL / "ablation_matrix" / "RESULTS.json"
+    ablation = load(ablation_path) if ablation_path.exists() else None
     results: list[dict[str, object]] = []
 
     for name, payload in deterministic["systems"].items():
@@ -171,6 +177,32 @@ def main() -> int:
                 "EXECUTED" if locomo["status"] == "complete" else "PARTIAL",
                 "public/locomo_plus/RESULTS.json",
             ))
+
+    if personamem is not None:
+        for name, payload in personamem["summaries"].items():
+            results.extend([
+                row(
+                    "personamem_v2_seven_stratum_pilot",
+                    name,
+                    "mcq_accuracy",
+                    payload["accuracy"],
+                    "fraction",
+                    "public_noncanonical",
+                    "EXECUTED" if personamem["status"] == "complete" else "PARTIAL",
+                    "public/personamem_v2/RESULTS.json",
+                    "Seven-row local pilot; not comparable to official benchmark scores.",
+                ),
+                row(
+                    "personamem_v2_seven_stratum_pilot",
+                    name,
+                    "prompt_tokens_total",
+                    float(payload["prompt_tokens"]),
+                    "count",
+                    "public_noncanonical",
+                    "EXECUTED" if personamem["status"] == "complete" else "PARTIAL",
+                    "public/personamem_v2/RESULTS.json",
+                ),
+            ])
 
     if reliability is not None:
         results.extend([
@@ -272,6 +304,35 @@ def main() -> int:
                 ),
             ])
 
+    if consolidation is not None:
+        results.extend([
+            row(
+                "synthetic_consolidation", "raw_plus_consolidation", "logical_size_ratio",
+                float(consolidation["logical_size_ratio_patterns_to_raw"]), "ratio", "synthetic",
+                consolidation["status"], "consolidation/RESULTS.json", consolidation["claim_boundary"],
+            ),
+            row(
+                "synthetic_consolidation", "raw_plus_consolidation", "action_quality_changed",
+                1.0 if consolidation["action_quality_changed"] else 0.0, "fraction", "synthetic",
+                consolidation["status"], "consolidation/RESULTS.json",
+                "Patterns are persisted but not consumed by evaluate_action.",
+            ),
+        ])
+
+    if ablation is not None:
+        for name, payload in ablation["summaries"].items():
+            results.append(row(
+                "synthetic_hng_component_ablation",
+                name,
+                "decision_accuracy",
+                float(payload["accuracy"]),
+                "fraction",
+                "synthetic",
+                ablation["status"],
+                "ablation_matrix/RESULTS.json",
+                "One-at-a-time counterfactual transformation; not a production feature flag or public task.",
+            ))
+
     baseline_rows = (
         ("release_pytest", "passed", 94.0, "count"),
         ("expanded_adversarial", "passed", 64.0, "count"),
@@ -293,7 +354,6 @@ def main() -> int:
 
     blocked = {
         "real_hdc_task_success": "Production HDC interpreter/checkpoint and real traces absent.",
-        "personamem_v2": "Official dataset/harness not installed.",
     }
     for area, reason in blocked.items():
         results.append(row(
@@ -313,6 +373,8 @@ def main() -> int:
         pending["locomo_plus"] = "Official data and six-category candidate pools are prepared; reader/judge execution is not complete."
     if longmem is None:
         pending["longmemeval_v2"] = "Official small text tier is validated; the noncanonical local pilot is in progress."
+    if personamem is None:
+        pending["personamem_v2"] = "Official 5,000-row text benchmark and all 1,998 32K histories are pinned; seven-stratum pilot is prepared or running."
     for area, reason in pending.items():
         results.append(row(
             area,
@@ -384,18 +446,30 @@ def main() -> int:
             "status": "IN_PROGRESS",
             "notes": pending["locomo_plus"],
         })
-    public_scoreboard_rows.append(
-        {
+    if personamem is not None:
+        pm_hng = personamem["summaries"]["hng"]["accuracy"]
+        pm_strong = personamem["summaries"]["strong_structured"]["accuracy"]
+        public_scoreboard_rows.append({
+            "area": "PersonaMem-v2 seven-stratum pilot",
+            "hng": pm_hng,
+            "baseline": pm_strong,
+            "delta": None if pm_hng is None or pm_strong is None else pm_hng - pm_strong,
+            "significance": None,
+            "evidence_class": "public_noncanonical",
+            "status": "EXECUTED_NONCANONICAL" if personamem["status"] == "complete" else "PARTIAL",
+            "notes": "Official data, seven-row local MCQ pilot; dense and agentic baselines absent.",
+        })
+    else:
+        public_scoreboard_rows.append({
             "area": "PersonaMem-v2",
             "hng": None,
             "baseline": None,
             "delta": None,
             "significance": None,
-            "evidence_class": "public",
-            "status": "BLOCKED_EXTERNAL",
-            "notes": blocked["personamem_v2"],
-        }
-    )
+            "evidence_class": "public_noncanonical",
+            "status": "IN_PROGRESS",
+            "notes": pending["personamem_v2"],
+        })
 
     scoreboard = {
         "schema_version": 1,
@@ -512,6 +586,16 @@ def main() -> int:
                 "status": "LOSS",
                 "notes": "HNG ties structured/graph/Strong at 68% and loses to nearest-experience retrieval at 75%.",
             }]),
+            *([] if consolidation is None else [{
+                "area": "Synthetic consolidation behavior",
+                "hng": 1.0 if consolidation["raw_only"] == consolidation["raw_plus_consolidation"] else 0.0,
+                "baseline": 1.0,
+                "delta": 0.0 if consolidation["raw_only"] == consolidation["raw_plus_consolidation"] else -1.0,
+                "significance": None,
+                "evidence_class": "synthetic",
+                "status": "LOSS_TIE",
+                "notes": "Raw+consolidation exactly preserves raw action behavior; patterns-only action evaluation is unsupported.",
+            }]),
             *public_scoreboard_rows,
         ],
     }
@@ -526,9 +610,10 @@ def main() -> int:
             "llm_failed_events": llm["failed_events"],
             "github_status": "CONNECTED_VERIFIED_PRIVATE_YODER23_HNG_MEMORY",
             "public_candidate_invariants_verified": (
-                None if longmem is None and locomo is None else bool(
+                None if longmem is None and locomo is None and personamem is None else bool(
                     (longmem is None or longmem["all_fixed_candidate_invariants_pass"])
                     and (locomo is None or locomo["all_fixed_candidate_invariants_pass"])
+                    and (personamem is None or personamem["all_fixed_candidate_invariants_pass"])
                 )
             ),
         },

@@ -63,9 +63,11 @@ def commands_for(args: argparse.Namespace) -> list[Command]:
     if args.command == "public-memory":
         longmem_argv = [sys.executable, str(SCRIPTS / "longmemeval_v2_text_pilot.py")]
         locomo_argv = [sys.executable, str(SCRIPTS / "locomo_plus_pilot.py")]
+        personamem_argv = [sys.executable, str(SCRIPTS / "personamem_v2_pilot.py")]
         if not args.execute_llm:
             longmem_argv.append("--prepare-only")
             locomo_argv.append("--prepare-only")
+            personamem_argv.append("--prepare-only")
         return [
             Command(
                 "longmemeval_v2_text_pilot",
@@ -77,6 +79,11 @@ def commands_for(args: argparse.Namespace) -> list[Command]:
                 tuple(locomo_argv),
                 "Official pinned public data/templates; noncanonical six-category local pilot.",
             ),
+            Command(
+                "personamem_v2_seven_stratum_pilot",
+                tuple(personamem_argv),
+                "Official pinned public data; noncanonical seven-stratum personalization pilot.",
+            ),
             compile_results,
         ]
     if args.command == "belief-revision":
@@ -86,6 +93,16 @@ def commands_for(args: argparse.Namespace) -> list[Command]:
                 py(str(SCRIPTS / "belief_revision_probe.py")),
                 "Synthetic five-event timelines against the shipped BeliefStore.",
             ),
+            tests,
+            compile_results,
+        ]
+    if args.command == "component-probes":
+        return [
+            Command("belief_revision", py(str(SCRIPTS / "belief_revision_probe.py")), "Synthetic belief-revision timelines."),
+            Command("provenance_ablation", py(str(SCRIPTS / "provenance_ablation.py")), "Synthetic provenance-governance ablation."),
+            Command("action_experience", py(str(SCRIPTS / "action_experience_probe.py")), "Synthetic executing action-experience probe."),
+            Command("consolidation", py(str(SCRIPTS / "consolidation_probe.py")), "Synthetic reversible consolidation audit."),
+            Command("hng_ablation_matrix", py(str(SCRIPTS / "hng_ablation_matrix.py")), "Synthetic 250-scenario component-ablation matrix."),
             tests,
             compile_results,
         ]
@@ -128,6 +145,7 @@ def parse_args() -> argparse.Namespace:
     public = subparsers.add_parser("public-memory", help="Prepare or execute the public text pilot.")
     public.add_argument("--execute-llm", action="store_true", help="Run all local reader/judge calls.")
     subparsers.add_parser("belief-revision", help="Reproduce the synthetic belief-revision component study.")
+    subparsers.add_parser("component-probes", help="Reproduce all packaged synthetic component studies.")
     return parser.parse_args()
 
 
