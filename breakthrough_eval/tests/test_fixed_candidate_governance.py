@@ -81,3 +81,14 @@ def test_ollama_decision_outside_frozen_enum_fails_closed(monkeypatch):
         MODULE.ollama_decide(
             "test-model", scenario, context, endpoint="http://unused", timeout=1.0
         )
+
+
+def test_invalid_counterbalanced_order_fails_before_inference(tmp_path):
+    scenario = next(case for case in MODULE.generate_scenarios() if case.split == "holdout")
+    with pytest.raises(ValueError, match="invalid system order"):
+        MODULE.run_llm(
+            [scenario], tmp_path, model="unused", model_digest="unused",
+            endpoint="http://unused", timeout=1.0, limit=1,
+            system_orders={scenario.case_id: ("hng", "hng", "ordinary_rag")},
+        )
+    assert not (tmp_path / "raw" / "llm_events.jsonl").exists()

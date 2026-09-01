@@ -196,6 +196,22 @@ def commands_for(args: argparse.Namespace) -> list[Command]:
             ),
             compile_results,
         ]
+    if args.command == "cross-reader-holdout":
+        argv = [sys.executable, str(SCRIPTS / "fixed_candidate_cross_reader_holdout.py")]
+        if not args.execute_llm:
+            argv.append("--prepare-only")
+        else:
+            if not args.preregistered_commit:
+                raise ValueError("cross-reader-holdout execution requires --preregistered-commit")
+            argv.extend(["--preregistered-commit", args.preregistered_commit])
+        return [
+            Command(
+                "fixed_candidate_disjoint_cross_reader_holdout",
+                tuple(argv),
+                "Disjoint 30-case Qwen/Mistral holdout with balanced system execution orders.",
+            ),
+            compile_results,
+        ]
     raise AssertionError(f"unknown command: {args.command}")
 
 
@@ -251,6 +267,9 @@ def parse_args() -> argparse.Namespace:
     cross = subparsers.add_parser("cross-family", help="Prepare or run the fixed-candidate Mistral reader replication.")
     cross.add_argument("--execute-llm", action="store_true", help="Run the 90 local Mistral holdout calls.")
     cross.add_argument("--preregistered-commit", help="Exact clean commit that froze the cross-family protocol.")
+    cross_reader = subparsers.add_parser("cross-reader-holdout", help="Prepare or run the disjoint Qwen/Mistral holdout.")
+    cross_reader.add_argument("--execute-llm", action="store_true", help="Run 180 pinned local-reader calls.")
+    cross_reader.add_argument("--preregistered-commit", help="Exact clean commit that froze the disjoint protocol.")
     return parser.parse_args()
 
 

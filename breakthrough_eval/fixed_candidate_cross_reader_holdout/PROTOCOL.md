@@ -18,7 +18,7 @@ digests are committed and pushed.
 - Seed: 20260831.
 - Cases: variants 08, 09, and 10 from each of the ten frozen adversarial families; 30 total.
 - Prior-window overlap: zero; variants 05, 06, and 07 are excluded by their frozen case IDs.
-- Prepared SHA-256: `68a325db2f6f00bfd8cf46b70620e4ff1c18e553e9aa4d9c1eb919b0013dfde4`.
+- Prepared SHA-256: `6af5cd25a5f08b1254cbc447c3a16783f5276116aea42a1adecab52121104094`.
 - Systems: `ordinary_rag`, `strong_structured`, and `hng`.
 - Qwen reader: `qwen3.8:27b-q4_K_M`, digest
   `25b843619e944cd0ae6069f94ff4e5e26a16e109ccbc0a66a0f05979ed70098e`.

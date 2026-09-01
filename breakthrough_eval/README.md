@@ -44,6 +44,8 @@ C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py hybrid-holdout --
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py reranker-holdout --execute-llm
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py cross-family
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py cross-family --execute-llm --preregistered-commit COMMIT
+C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py cross-reader-holdout
+C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py cross-reader-holdout --execute-llm --preregistered-commit COMMIT
 ```
 
 Omit `--execute-llm` to prepare and verify expensive experiments without invoking the local 27B
@@ -80,6 +82,11 @@ completed case/system events. This is a model-family replication, not a new or p
 The pushed Mistral run completes 90/90 events with zero failures: HNG and Strong each score 27/30,
 ordinary context scores 8/30, and the preregistered HNG/ordinary interval excludes zero. The exact
 HNG/Strong tie is preserved as a failed HNG-specific attribution test.
+
+The cross-reader-holdout command uses the next 30 untouched generated cases (variants 08-10 in
+each family), pinned Qwen and Mistral readers, and 180 expected events. Each reader uses every one
+of the six ordinary/Strong/HNG execution orders exactly five times. Its joint Bonferroni-adjusted
+rule and separate HNG/Strong attribution control are frozen in the protocol.
 
 The scaled-isolation command creates ignored SQLite runtime files, takes about seven minutes on the
 recorded host, and refuses to overwrite an earlier preserved run.

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from collections import Counter
+import json
 
 import pytest
 
@@ -45,3 +46,55 @@ def test_prepare_is_immutable(tmp_path) -> None:
     (tmp_path / "PREPARED.json").write_text(__import__("json").dumps(changed), encoding="utf-8")
     with pytest.raises(RuntimeError, match="changed"):
         holdout.prepare(tmp_path)
+
+
+def test_joint_comparison_threshold_is_fail_closed() -> None:
+    passing = {
+        "paired_bootstrap_accuracy": {"delta": 0.2, "ci95_low": 0.01, "ci95_high": 0.4},
+        "mcnemar": {"exact_two_sided_p": 0.024},
+    }
+    assert holdout.comparison_pass(passing) is True
+    for key, value in (("delta", 0.0), ("ci95_low", 0.0)):
+        changed = json.loads(json.dumps(passing))
+        changed["paired_bootstrap_accuracy"][key] = value
+        assert holdout.comparison_pass(changed) is False
+    changed = json.loads(json.dumps(passing))
+    changed["mcnemar"]["exact_two_sided_p"] = 0.025
+    assert holdout.comparison_pass(changed) is False
+
+
+def test_180_event_audit_rejects_order_mutation(tmp_path) -> None:
+    prepared = holdout.prepared_payload()
+    expected_by_case = {item.case_id: item.expected for item in holdout.selected_scenarios()}
+    for reader, spec in holdout.READERS.items():
+        rows = []
+        for case in prepared["cases"]:
+            order = case["system_order"][reader]
+            for system in order:
+                rows.append({
+                    "status": "completed", "case_id": case["case_id"], "system": system,
+                    "candidate_ids": case["candidate_ids"],
+                    "candidate_pool_sha256": case["candidate_pool_sha256"],
+                    "memory_context_sha256": case["memory_context_sha256"][system],
+                    "expected": expected_by_case[case["case_id"]],
+                    "system_order": order, "execution_order_index": order.index(system),
+                    "model": spec["model"], "model_digest": spec["digest"],
+                    "protocol": holdout.PROTOCOL, "preregistered_commit": "commit",
+                    "outer_prompt_template_sha256": "outer",
+                })
+        path = tmp_path / "readers" / reader / "raw" / "llm_events.jsonl"
+        path.parent.mkdir(parents=True)
+        path.write_text("".join(json.dumps(row) + "\n" for row in rows), encoding="utf-8")
+    audit = holdout.audit_events(
+        prepared, tmp_path, preregistered_commit="commit",
+        outer_prompt_template_sha256="outer",
+    )
+    assert audit["all_invariants_pass"] is True
+    path = tmp_path / "readers" / "qwen" / "raw" / "llm_events.jsonl"
+    rows = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines()]
+    rows[0]["execution_order_index"] = 99
+    path.write_text("".join(json.dumps(row) + "\n" for row in rows), encoding="utf-8")
+    assert holdout.audit_events(
+        prepared, tmp_path, preregistered_commit="commit",
+        outer_prompt_template_sha256="outer",
+    )["all_invariants_pass"] is False

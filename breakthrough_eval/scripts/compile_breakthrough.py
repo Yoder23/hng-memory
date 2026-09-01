@@ -62,6 +62,8 @@ def main() -> int:
     llm = load(EVAL / "fixed_candidate" / "LLM_RESULTS.json")
     cross_family_path = EVAL / "fixed_candidate_cross_family" / "LLM_RESULTS.json"
     cross_family = load(cross_family_path) if cross_family_path.exists() else None
+    cross_reader_path = EVAL / "fixed_candidate_cross_reader_holdout" / "RESULTS.json"
+    cross_reader = load(cross_reader_path) if cross_reader_path.exists() else None
     longmem_path = EVAL / "public" / "longmemeval_v2" / "RESULTS.json"
     longmem = load(longmem_path) if longmem_path.exists() else None
     expanded_locomo_path = EVAL / "public" / "locomo_plus_n30" / "RESULTS.json"
@@ -188,6 +190,31 @@ def main() -> int:
                 "EXECUTED" if cross_family["status"].startswith("complete") else "PARTIAL",
                 "fixed_candidate_cross_family/LLM_RESULTS.json",
             ))
+
+    if cross_reader is not None:
+        for reader, reader_result in cross_reader["reader_results"].items():
+            for name, system_payload in reader_result["systems"].items():
+                results.append(row(
+                    f"fixed_candidate_disjoint_cross_reader_{reader}",
+                    name,
+                    "answer_accuracy",
+                    None if system_payload["accuracy"] is None else float(system_payload["accuracy"]),
+                    "fraction",
+                    "synthetic",
+                    "EXECUTED" if cross_reader["status"].startswith("complete") else "PARTIAL",
+                    "fixed_candidate_cross_reader_holdout/RESULTS.json",
+                    "Disjoint generated cases with counterbalanced system order; not public or real evidence.",
+                ))
+                results.append(row(
+                    f"fixed_candidate_disjoint_cross_reader_{reader}",
+                    name,
+                    "prompt_tokens_total",
+                    float(system_payload["prompt_tokens_total"]),
+                    "count",
+                    "synthetic",
+                    "EXECUTED" if cross_reader["status"].startswith("complete") else "PARTIAL",
+                    "fixed_candidate_cross_reader_holdout/RESULTS.json",
+                ))
 
     if longmem is not None:
         for name, payload in longmem["summaries"].items():
@@ -682,6 +709,33 @@ def main() -> int:
             "status": "WIN_STRUCTURED_CONTEXT_SYNTHETIC" if cross_success else "LOSS_OR_INCONCLUSIVE",
             "notes": "Preregistered Mistral-family primary passes, but HNG and Strong tie exactly, so HNG-specific superiority fails; fixed-case synthetic replication only.",
         })
+    cross_reader_scoreboard_rows: list[dict[str, object]] = []
+    if cross_reader is not None:
+        for reader, reader_result in cross_reader["reader_results"].items():
+            primary = cross_reader["primary_by_reader"][reader]
+            bootstrap = primary["paired_bootstrap_accuracy"]
+            mcnemar = primary["mcnemar"]
+            cross_reader_scoreboard_rows.append({
+                "area": f"Disjoint fixed-LLM cross-reader holdout ({reader})",
+                "hng": reader_result["systems"]["hng"]["accuracy"],
+                "baseline": reader_result["systems"]["ordinary_rag"]["accuracy"],
+                "delta": bootstrap["delta"],
+                "significance": {
+                    "test": "McNemar exact plus paired bootstrap; per-reader alpha=0.025",
+                    "p": mcnemar["exact_two_sided_p"],
+                    "ci95": [bootstrap["ci95_low"], bootstrap["ci95_high"]],
+                },
+                "evidence_class": "synthetic",
+                "status": (
+                    "WIN_STRUCTURED_CONTEXT_SYNTHETIC"
+                    if cross_reader["structured_context_familywise_supported"]
+                    else "LOSS_OR_INCONCLUSIVE"
+                ),
+                "notes": (
+                    "Joint two-reader rule reported across both rows; HNG-specific attribution "
+                    f"supported={cross_reader['hng_specific_familywise_supported']}. Disjoint generated cases only."
+                ),
+            })
     if longmem is not None:
         public_hng = longmem["summaries"]["hng"]["accuracy"]
         public_strong = longmem["summaries"]["strong_structured"]["accuracy"]
@@ -876,6 +930,7 @@ def main() -> int:
                 "notes": "No HNG-specific behavioral advantage; StrongStructuredBaseline uses fewer prompt tokens.",
             },
             *cross_family_scoreboard_rows,
+            *cross_reader_scoreboard_rows,
             *([] if reliability is None else [{
                 "area": "Bounded storage reliability",
                 "hng": 1.0 if reliability["status"] == "PASS" else 0.0,
@@ -1017,6 +1072,8 @@ def main() -> int:
             "llm_failed_events": llm["failed_events"],
             "cross_family_failed_events": None if cross_family is None else cross_family["historical_failed_events"],
             "cross_family_candidate_invariants_verified": None if cross_family is None else cross_family["all_fixed_candidate_invariants_pass"],
+            "cross_reader_failed_events": None if cross_reader is None else cross_reader["historical_failed_events"],
+            "cross_reader_candidate_invariants_verified": None if cross_reader is None else cross_reader["all_invariants_pass"],
             "github_status": "CONNECTED_VERIFIED_PRIVATE_YODER23_HNG_MEMORY",
             "public_candidate_invariants_verified": (
                 None if longmem is None and locomo is None and personamem is None and budget is None and hybrid is None and reranker is None else bool(

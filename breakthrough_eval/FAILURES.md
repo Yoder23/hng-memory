@@ -284,3 +284,15 @@ an exact 27/30 tie with CI [0, 0] and p=1, and both miss all three duplicate-att
 uses 18,261 prompt tokens versus Strong's 17,358. This is evidence for structured/governed context,
 not an HNG-specific breakthrough, and the fixed-case synthetic design supplies no public or real
 assistant claim.
+
+## Disjoint cross-reader holdout setup failures
+
+1. The first preregistration-manifest freeze failed closed before writing a manifest because the
+   harness expected Ollama family `qwen3`, while the exact installed Qwen 3.5 model digest reports
+   authoritative family `qwen35`. No inference or result event occurred. The model name and full
+   digest were already correct; the family pin now uses the observed exact metadata rather than a
+   weakened or substring-based check.
+2. After correcting the code pin, the next freeze refused to proceed because the already-preserved
+   preparation artifact still contained the old family label. No case, candidate, context, order,
+   or model event changed. The single metadata field and its protocol file hash were updated
+   explicitly before preregistration rather than bypassing the immutability check.

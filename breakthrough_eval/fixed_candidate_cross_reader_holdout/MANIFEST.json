@@ -1,0 +1,96 @@
+{
+  "complexity_control": "hng_vs_strong_structured within each reader",
+  "expected_events": 180,
+  "familywise_alpha": 0.05,
+  "frozen_files": {
+    "breakthrough_eval/fixed_candidate/LLM_RESULTS.json": "3ee002b23e602fd95f8d7311e42e91ec2e5600cc3106768ff46619157609e318",
+    "breakthrough_eval/fixed_candidate/raw/llm_events.jsonl": "ef6f7add11cdc150e964cca686decf07c059f22bf0c25d2c2668c964f4699220",
+    "breakthrough_eval/fixed_candidate_cross_family/EXECUTION_MANIFEST.json": "afe8627faf4c8630df9959209bae36b8e70a3017faaafd72553fc799c0dd61b8",
+    "breakthrough_eval/fixed_candidate_cross_family/MODEL_QUALIFICATION.json": "ea371f116428bc2c7928e393ec0fede65781d3da0feb5a0de55c2db06e581982",
+    "breakthrough_eval/fixed_candidate_cross_family/PREPARED.json": "eddfc96fc553dad7c5ac675222658bd8b374d9b85465383e48c3d864ad6b28c3",
+    "breakthrough_eval/fixed_candidate_cross_reader_holdout/PREPARED.json": "6af5cd25a5f08b1254cbc447c3a16783f5276116aea42a1adecab52121104094",
+    "breakthrough_eval/fixed_candidate_cross_reader_holdout/PROTOCOL.md": "d0f2d44092b9fc018d8828512ad1389dc9d49e67939f9b7f1a1a385a7d894276",
+    "breakthrough_eval/scripts/compile_breakthrough.py": "f4f32c1366a1417ee6a0dc827a09789d9429e078a862d6f49ae46ff368b0f0bb",
+    "breakthrough_eval/scripts/fixed_candidate_cross_reader_holdout.py": "09cdb1e44ce1cae1b475d22a8a8b21aaddd99aec7ee1f12b54fc5c95dab2af4d",
+    "breakthrough_eval/scripts/fixed_candidate_governance.py": "2938fb79d7b61ac86f6589140c0bf35dd450d1c5d0e607e8e845f37423738c5b",
+    "breakthrough_eval/scripts/reproduce.py": "4c4a239ec5a407431d311be1db93723087345632282f7331d9718e0017377b4c",
+    "breakthrough_eval/tests/test_fixed_candidate_cross_reader_holdout.py": "5180f7e472227e2cc22c82854912ef3199a5bcbbbc79d2da4f3e449d28348555",
+    "breakthrough_eval/tests/test_fixed_candidate_governance.py": "1d2eed8eca131d6df851563bf36661f822705d35a3d587c81f93f4ad7cc23549"
+  },
+  "installed_reader_metadata": {
+    "mistral": {
+      "capabilities": [
+        "vision",
+        "completion",
+        "tools"
+      ],
+      "details": {
+        "context_length": 131072,
+        "embedding_length": 5120,
+        "families": [
+          "mistral3"
+        ],
+        "family": "mistral3",
+        "format": "gguf",
+        "parameter_size": "24.0B",
+        "parent_model": "",
+        "quantization_level": "Q4_K_M"
+      },
+      "digest": "b9aaf0c2586a8ed8105feab808c0f034bd4d346203822f048e2366165a13f4ea",
+      "model": "mistral-small3.1:24b-instruct-2503-q4_K_M",
+      "modified_at": "2026-09-01T10:20:37.8183916-04:00",
+      "name": "mistral-small3.1:24b-instruct-2503-q4_K_M",
+      "size": 15486899116
+    },
+    "qwen": {
+      "capabilities": [
+        "completion",
+        "tools",
+        "thinking",
+        "vision"
+      ],
+      "details": {
+        "context_length": 262144,
+        "embedding_length": 5120,
+        "families": [
+          "qwen35"
+        ],
+        "family": "qwen35",
+        "format": "gguf",
+        "parameter_size": "27.3B",
+        "parent_model": "",
+        "quantization_level": "Q4_K_M"
+      },
+      "digest": "25b843619e944cd0ae6069f94ff4e5e26a16e109ccbc0a66a0f05979ed70098e",
+      "model": "qwen3.8:27b-q4_K_M",
+      "modified_at": "2026-08-26T23:16:16.6204443-04:00",
+      "name": "qwen3.8:27b-q4_K_M",
+      "size": 17741872132
+    }
+  },
+  "joint_success_rule": "both reader deltas > 0, both bootstrap ci95_low > 0, and both exact McNemar p < 0.025",
+  "outer_prompt_template_sha256": "5c9341015df826725a014c61afe115edbeeb2b979f3308ef3659082e79d7f7bd",
+  "per_reader_alpha": 0.025,
+  "primary_comparison": "hng_vs_ordinary_rag within each reader",
+  "protocol": "fixed_candidate_disjoint_cross_reader_holdout",
+  "readers": {
+    "mistral": {
+      "digest": "b9aaf0c2586a8ed8105feab808c0f034bd4d346203822f048e2366165a13f4ea",
+      "family": "mistral3",
+      "model": "mistral-small3.1:24b-instruct-2503-q4_K_M"
+    },
+    "qwen": {
+      "digest": "25b843619e944cd0ae6069f94ff4e5e26a16e109ccbc0a66a0f05979ed70098e",
+      "family": "qwen35",
+      "model": "qwen3.8:27b-q4_K_M"
+    }
+  },
+  "sample_count": 30,
+  "schema_version": 1,
+  "status": "PREREGISTERED_SCORE_BLIND",
+  "systems": [
+    "ordinary_rag",
+    "strong_structured",
+    "hng"
+  ]
+}
