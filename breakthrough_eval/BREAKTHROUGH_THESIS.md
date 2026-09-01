@@ -21,12 +21,20 @@ interval [-3.3, +21.7] points includes zero. K64 nearly matches full context at 
 while using about 17% of its prompt tokens. HNG, Strong, and plain BM25 remain exact ties at fixed
 k64, so the follow-up improves the retrieval operating point without supplying an HNG-specific win.
 
+A second preregistered follow-up uses a third disjoint 30-sample window and genuine Qwen3 dense
+embeddings. Dense retrieval scores 71.7%, hybrid BM25/dense reciprocal-rank fusion 61.7%, BM25
+51.7%, and full context 63.3%. Hybrid's preregistered +10-point gain over BM25 is inconclusive
+(95% CI [-10, +30]); dense's exploratory +20-point gain is also not statistically established
+(CI [0, +40]). Dense and hybrid use roughly one-sixth of full-context prompt tokens. HNG, Strong,
+and plain hybrid remain exact ties, so better retrieval is the surviving direction while the
+HNG-specific claim remains unsupported.
+
 The stronger breakthrough claim remains unproven because:
 
 - no real HDC assistant is available for HNG-off/on testing;
 - no qualifying canonical public result is complete;
 - HNG does not beat or extend the strong simple baseline in the isolated governance study;
-- HDC-versus-dense and real-assistant evidence remain absent; public personalization, belief
+- matched HDC-versus-dense and real-assistant evidence remain absent; public personalization, belief
   revision, cross-session learning, action experience, tool-agent, provenance, and consolidation
   evidence is synthetic or noncanonical and does not reveal an HNG advantage over Strong.
 

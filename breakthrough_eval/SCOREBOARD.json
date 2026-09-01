@@ -195,6 +195,24 @@
       "status": "EXECUTED_NONCANONICAL"
     },
     {
+      "area": "LoCoMo-Plus disjoint dense/hybrid retrieval n=30",
+      "baseline": 0.5166666666666667,
+      "delta": 0.09999999999999998,
+      "evidence_class": "public_noncanonical",
+      "hng": 0.6166666666666667,
+      "notes": "Primary retrieval comparison: BM25/dense RRF hybrid versus BM25 at k64. Dense alone scores higher descriptively; HNG, Strong, and plain hybrid are exact ties.",
+      "significance": {
+        "mean_score_ci95": [
+          -0.10000000000000003,
+          0.30000000000000004
+        ],
+        "p": 0.548828125,
+        "paired_cases": 30,
+        "test": "McNemar exact; official judge score > 0.5"
+      },
+      "status": "EXECUTED_NONCANONICAL"
+    },
+    {
       "area": "PersonaMem-v2 seven-stratum pilot",
       "baseline": 0.5714285714285714,
       "delta": 0.0,

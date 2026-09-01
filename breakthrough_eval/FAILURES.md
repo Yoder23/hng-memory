@@ -239,3 +239,9 @@ zero event errors, and one preregistration commit across the complete log.
    development manifest and raised `KeyError`. The byte-stable prepared manifest was unchanged.
    The corrected audit derived indices from its sample rows and verified zero overlap with all 60
    earlier samples and exact equality between the excluded set and those prior windows.
+3. After execution, an unscoped repository-root `pytest -q` repeated the known collection failure:
+   it traversed the immutable baseline snapshot and vendored external projects, producing 36
+   missing-package import errors for isolated or optional dependencies such as `hngfrontier`,
+   `verl`, `flash_attn`, and `tensordict`. No experiment or result artifact changed. The owned
+   breakthrough suite passed 51/51 and the production package suite passed 100/100 from its
+   package root.

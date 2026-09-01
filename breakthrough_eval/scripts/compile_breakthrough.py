@@ -71,6 +71,8 @@ def main() -> int:
     locomo = load(locomo_path) if locomo_path.exists() else None
     budget_path = EVAL / "public" / "locomo_retrieval_budget_holdout" / "RESULTS.json"
     budget = load(budget_path) if budget_path.exists() else None
+    hybrid_path = EVAL / "public" / "locomo_hybrid_holdout" / "RESULTS.json"
+    hybrid = load(hybrid_path) if hybrid_path.exists() else None
     personamem_path = EVAL / "public" / "personamem_v2" / "RESULTS.json"
     personamem = load(personamem_path) if personamem_path.exists() else None
     reliability_path = EVAL / "reliability" / "STORAGE_PROBE.json"
@@ -216,6 +218,25 @@ def main() -> int:
                     "EXECUTED" if budget["status"] == "complete" else "PARTIAL",
                     "public/locomo_retrieval_budget_holdout/RESULTS.json",
                     "Preregistered disjoint holdout; retrieval budgets change candidates and do not isolate governance except at fixed k64.",
+                ))
+
+    if hybrid is not None:
+        for name, payload in hybrid["summaries"].items():
+            for metric, value, unit in (
+                ("judge_score_average", payload["average"], "fraction"),
+                ("prompt_tokens_total", payload["prompt_tokens"], "count"),
+                ("mean_selected_context_chars", payload["mean_selected_context_chars"], "count"),
+            ):
+                results.append(row(
+                    "locomo_plus_disjoint_dense_hybrid_n30",
+                    name,
+                    metric,
+                    None if value is None else float(value),
+                    unit,
+                    "public_noncanonical",
+                    "EXECUTED" if hybrid["status"] == "complete" else "PARTIAL",
+                    "public/locomo_hybrid_holdout/RESULTS.json",
+                    "Preregistered disjoint holdout; genuine Qwen3 dense retrieval and BM25/dense reciprocal-rank fusion. HNG and Strong reuse the exact hybrid context/output.",
                 ))
 
     if personamem is not None:
@@ -667,6 +688,26 @@ def main() -> int:
             "status": "EXECUTED_NONCANONICAL" if budget["status"] == "complete" else "PARTIAL",
             "notes": "Primary retrieval comparison: BM25 k64 versus k16. HNG, Strong, and BM25 are exact ties at fixed k64.",
         })
+    if hybrid is not None:
+        primary = hybrid["paired_statistics"]["hybrid_k64_vs_bm25_k64_primary"]
+        public_scoreboard_rows.append({
+            "area": "LoCoMo-Plus disjoint dense/hybrid retrieval n=30",
+            "hng": hybrid["summaries"]["hng_hybrid_k64"]["average"],
+            "baseline": hybrid["summaries"]["bm25_k64"]["average"],
+            "delta": primary["paired_bootstrap_mean_score"]["delta"],
+            "significance": {
+                "test": "McNemar exact; official judge score > 0.5",
+                "p": primary["mcnemar_judge_positive"]["exact_two_sided_p"],
+                "paired_cases": primary["paired_cases"],
+                "mean_score_ci95": [
+                    primary["paired_bootstrap_mean_score"]["ci95_low"],
+                    primary["paired_bootstrap_mean_score"]["ci95_high"],
+                ],
+            },
+            "evidence_class": "public_noncanonical",
+            "status": "EXECUTED_NONCANONICAL" if hybrid["status"] == "complete" else "PARTIAL",
+            "notes": "Primary retrieval comparison: BM25/dense RRF hybrid versus BM25 at k64. Dense alone scores higher descriptively; HNG, Strong, and plain hybrid are exact ties.",
+        })
     if personamem is not None:
         pm_hng = personamem["summaries"]["hng"]["accuracy"]
         pm_strong = personamem["summaries"]["strong_structured"]["accuracy"]
@@ -881,11 +922,12 @@ def main() -> int:
             "llm_failed_events": llm["failed_events"],
             "github_status": "CONNECTED_VERIFIED_PRIVATE_YODER23_HNG_MEMORY",
             "public_candidate_invariants_verified": (
-                None if longmem is None and locomo is None and personamem is None and budget is None else bool(
+                None if longmem is None and locomo is None and personamem is None and budget is None and hybrid is None else bool(
                     (longmem is None or longmem["all_fixed_candidate_invariants_pass"])
                     and (locomo is None or locomo["all_fixed_candidate_invariants_pass"])
                     and (personamem is None or personamem["all_fixed_candidate_invariants_pass"])
                     and (budget is None or budget["all_fixed_candidate_k64_invariants_pass"])
+                    and (hybrid is None or hybrid["all_fixed_candidate_hybrid_invariants_pass"])
                 )
             ),
         },

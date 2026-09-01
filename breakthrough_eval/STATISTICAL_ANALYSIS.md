@@ -106,16 +106,21 @@ StrongStructuredBaseline (CI [0.0154, 0.0175]). Mean per-run p99 is 2.292 ms for
 although both are negligible beside local 27B inference. These are synthetic single-host latency
 intervals, not deployment SLO evidence.
 
-## Preregistered disjoint LoCoMo-Plus retrieval-budget holdout
+## Preregistered disjoint LoCoMo-Plus dense/hybrid holdout
 
-The 30-sample holdout uses zero source-index overlap with the observed top-16 development slice.
-BM25 k16 scores 11/30 (36.7%), k32 scores 12/30 (40.0%), and k64 scores 13.5/30 (45.0%);
-full context scores 14/30 (46.7%). The primary k64-versus-k16 delta is +8.3 percentage points,
-with paired bootstrap 95% CI [-3.3, +21.7] and exact McNemar p=0.375 (4 k64-only versus 1
-k16-only positive). The interval includes zero, so wider lexical retrieval is promising but not a
-statistically established improvement on this holdout. K64 uses 116,800 prompt tokens versus
-680,824 for full context and trails it by 1.7 points (CI [-20.0, +16.7], p=1). HNG, Strong, and
-plain BM25 are exact fixed-candidate k64 ties: 13.5/30, delta 0, CI [0, 0], p=1.
+The third disjoint 30-sample window excludes all 60 prior LoCoMo-Plus development and
+retrieval-budget samples. At k64, BM25 scores 15.5/30 (51.7%), Qwen3 dense retrieval scores
+21.5/30 (71.7%), reciprocal-rank fusion scores 18.5/30 (61.7%), and full context scores 19/30
+(63.3%). The preregistered primary hybrid-versus-BM25 delta is +10.0 percentage points, with
+paired bootstrap 95% CI [-10.0, +30.0] and exact McNemar p=0.5488. The interval includes zero,
+so the primary improvement is not established. Dense versus BM25 is +20.0 points with CI
+[0.0, +40.0] and p=0.2266; dense versus hybrid is +10.0 points with CI [-5.0, +25.0] and
+p=0.6875. These exploratory comparisons likewise do not establish superiority at n=30.
+
+Dense uses 106,672 prompt tokens and hybrid 112,665, versus 643,575 for full context. Every
+BM25/dense and BM25/hybrid ordered candidate list differs, so this is genuine retrieval variation
+rather than renamed lexical output. HNG hybrid, Strong hybrid, and plain hybrid are exact
+fixed-candidate ties: 18.5/30, delta 0, CI [0, 0], p=1. The protocol remains noncanonical.
 
 ## Preregistered disjoint LoCoMo-Plus retrieval-budget holdout
 

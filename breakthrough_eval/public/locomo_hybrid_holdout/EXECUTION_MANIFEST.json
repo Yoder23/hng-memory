@@ -1,0 +1,36 @@
+{
+  "actual_evaluation_count": 120,
+  "artifacts": {
+    "breakthrough_eval/BREAKTHROUGH_SCOREBOARD.md": "8b9586e0f41854e80783be6e23a6562d574c3210d032c6d2c5876b54aec48544",
+    "breakthrough_eval/BREAKTHROUGH_THESIS.md": "9cddee1d568ac4942492c78dc28fb98b55231304c2ac708030596e23b40b5aab",
+    "breakthrough_eval/FAILURES.md": "438b491aa76c1304bbcdb90a5e73e92f122129ab25239a70fc3554bc072c7ba8",
+    "breakthrough_eval/PROGRAM_AUDIT.md": "6c47c5c264d1e9b12cf479dbc2a51095d96591cac41a2b3395d0c3d867be5faf",
+    "breakthrough_eval/RESULTS.csv": "d36abaa27f78bdb6a3ce27c0cf7f38d101e2190f605fb46c1d00726cf2b82539",
+    "breakthrough_eval/RESULTS.json": "4fa1b7c22563fdcca613a6a9090fbe66de5281bee99a2f11a44e2d67ffaf6cb9",
+    "breakthrough_eval/SCOREBOARD.json": "08a2062a2ea00c58a91a0d58d5b8712e874419346d3199989d4908e276200582",
+    "breakthrough_eval/SCOREBOARD.md": "8b9586e0f41854e80783be6e23a6562d574c3210d032c6d2c5876b54aec48544",
+    "breakthrough_eval/STATISTICAL_ANALYSIS.md": "63f4f74379b0bb2fddd902cc4421f0aa68c65634bc6c7e3d96439f0fbe17b7b7",
+    "breakthrough_eval/public/locomo_hybrid_holdout/MANIFEST.json": "e090c12cf58c2494314ca0d6fb637c4f776778745cb509c6e1b36babff7b7a1a",
+    "breakthrough_eval/public/locomo_hybrid_holdout/PREPARED.json": "001503947246e60f8139db1ca6fa0cfcaf72a2ec5123ac8d72ae35a58088b436",
+    "breakthrough_eval/public/locomo_hybrid_holdout/PROTOCOL.md": "91002ae0fec8023e856e4d913ea8f03a9fcbb720134d80a9aa894e9f5503093e",
+    "breakthrough_eval/public/locomo_hybrid_holdout/RESULTS.json": "fb191b66ed2ae7ad2d00008bbc83e80c3bb60e27eeabf325d77d0bc065d4ec09",
+    "breakthrough_eval/public/locomo_hybrid_holdout/raw/events.jsonl": "0c453d55e87fa9de3af039345d03283157437f6b20caadb4ade225a54633fd8c",
+    "breakthrough_eval/scripts/compile_breakthrough.py": "c02fb1c50cf7a5d9f8af60106be88149f194486302d9cf0667f82ac52182f4a7",
+    "breakthrough_eval/scripts/locomo_hybrid_holdout.py": "f6c22debdd06d08994ab49d80a82880cfe651e2b17efbb47f3b0e49baaa088b5",
+    "breakthrough_eval/tests/test_locomo_hybrid_holdout.py": "31d8f52ab0a8c628ac78a0c44c468cb2dc05a492be9bbbbea3fe4b5e86ffb49a"
+  },
+  "completed_at": "2026-09-01T11:05:01.963644+00:00",
+  "embedding_model_digest": "ac6da0dfba84a81fdbfbaf330198c33cd77c4cdfc53e8bc50eb581914a15621d",
+  "event_count": 180,
+  "failure_count": 0,
+  "fixed_candidate_hybrid_invariants_pass": true,
+  "model_digest": "25b843619e944cd0ae6069f94ff4e5e26a16e109ccbc0a66a0f05979ed70098e",
+  "preregistered_commit": "2d5aef3871c21a9174bd4d39909fcdfdafa3a7b9",
+  "reused_evaluation_count": 60,
+  "schema_version": 1,
+  "status": "COMPLETE_NONCANONICAL",
+  "test_verification": {
+    "breakthrough_eval": "51 passed",
+    "production_package": "100 passed"
+  }
+}
