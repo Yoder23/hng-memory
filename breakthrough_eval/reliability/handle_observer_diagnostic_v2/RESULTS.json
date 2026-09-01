@@ -1,0 +1,237 @@
+{
+  "analysis": {
+    "median_external_net_handles": 0.0,
+    "median_slope_handles_per_minute": {
+      "baseline": -1.0083125869447465,
+      "external": 0.0,
+      "recovery": 0.0
+    },
+    "outcome": "INVALID",
+    "per_variant": {
+      "event_poll": {
+        "baseline": {
+          "elapsed_seconds": 119.01071309999999,
+          "first_handles": 228,
+          "last_handles": 226,
+          "net_handles": -2,
+          "samples": 120,
+          "slope_handles_per_minute": -1.0083125869447465
+        },
+        "external": {
+          "elapsed_seconds": 118.99028510000002,
+          "first_handles": 226,
+          "last_handles": 226,
+          "net_handles": 0,
+          "samples": 120,
+          "slope_handles_per_minute": 0.0
+        },
+        "recovery": {
+          "elapsed_seconds": 119.9787647,
+          "first_handles": 226,
+          "last_handles": 226,
+          "net_handles": 0,
+          "samples": 121,
+          "slope_handles_per_minute": 0.0
+        }
+      },
+      "idle": {
+        "baseline": {
+          "elapsed_seconds": 119.01071309999999,
+          "first_handles": 228,
+          "last_handles": 226,
+          "net_handles": -2,
+          "samples": 120,
+          "slope_handles_per_minute": -1.0083125869447465
+        },
+        "external": {
+          "elapsed_seconds": 118.99028510000002,
+          "first_handles": 226,
+          "last_handles": 226,
+          "net_handles": 0,
+          "samples": 120,
+          "slope_handles_per_minute": 0.0
+        },
+        "recovery": {
+          "elapsed_seconds": 119.9787647,
+          "first_handles": 226,
+          "last_handles": 226,
+          "net_handles": 0,
+          "samples": 121,
+          "slope_handles_per_minute": 0.0
+        }
+      },
+      "sqlite_read": {
+        "baseline": {
+          "elapsed_seconds": 117.9981932,
+          "first_handles": 229,
+          "last_handles": 227,
+          "net_handles": -2,
+          "samples": 119,
+          "slope_handles_per_minute": -1.0169647241683357
+        },
+        "external": {
+          "elapsed_seconds": 118.9982871,
+          "first_handles": 227,
+          "last_handles": 227,
+          "net_handles": 0,
+          "samples": 120,
+          "slope_handles_per_minute": 0.0
+        },
+        "recovery": {
+          "elapsed_seconds": 119.9787647,
+          "first_handles": 227,
+          "last_handles": 227,
+          "net_handles": 0,
+          "samples": 121,
+          "slope_handles_per_minute": 0.0
+        }
+      },
+      "sqlite_write": {
+        "baseline": {
+          "elapsed_seconds": 119.99233360000001,
+          "first_handles": 229,
+          "last_handles": 227,
+          "net_handles": -2,
+          "samples": 118,
+          "slope_handles_per_minute": -1.0000638907484336
+        },
+        "external": {
+          "elapsed_seconds": 117.98123010000003,
+          "first_handles": 227,
+          "last_handles": 227,
+          "net_handles": 0,
+          "samples": 114,
+          "slope_handles_per_minute": 0.0
+        },
+        "recovery": {
+          "elapsed_seconds": 119.9787647,
+          "first_handles": 227,
+          "last_handles": 227,
+          "net_handles": 0,
+          "samples": 120,
+          "slope_handles_per_minute": 0.0
+        }
+      }
+    },
+    "pulse_count": 20,
+    "pulse_ordinals": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "valid": false,
+    "validity": {
+      "all_child_exitcodes_zero": true,
+      "all_children_reported": true,
+      "all_pulses_in_external_phase": false,
+      "exact_pulse_ordinals": true,
+      "minimum_samples_each_phase": true,
+      "no_child_errors": true
+    }
+  },
+  "artifacts": {
+    "breakthrough_eval/reliability/handle_observer_diagnostic_v2/events.jsonl": {
+      "bytes": 826,
+      "sha256": "c8d7e9e0909bd61f8f723160576eb726b471222069fa653280964c09f2d3af5d"
+    },
+    "breakthrough_eval/reliability/handle_observer_diagnostic_v2/pulses.jsonl": {
+      "bytes": 3780,
+      "sha256": "2c64c6f5b11615ebc760cc416ab996aa43dfc0623944ee9b7b9e70803fd5844d"
+    },
+    "breakthrough_eval/reliability/handle_observer_diagnostic_v2/run_data/event_poll.jsonl": {
+      "bytes": 78770,
+      "sha256": "403fb756013cddcd250cbfc7a4e0d5dbb1face88e2db86dcf94e07a5ad2e91d0"
+    },
+    "breakthrough_eval/reliability/handle_observer_diagnostic_v2/run_data/idle.jsonl": {
+      "bytes": 76424,
+      "sha256": "902c2e178b9d7caa19224e003c87808a3e6eb0a3d00708df48bb56d47e872608"
+    },
+    "breakthrough_eval/reliability/handle_observer_diagnostic_v2/run_data/sqlite_read.jsonl": {
+      "bytes": 80523,
+      "sha256": "157a25f57001e207696483369a58938537f986e091c886068051040ddb5af389"
+    },
+    "breakthrough_eval/reliability/handle_observer_diagnostic_v2/run_data/sqlite_write.jsonl": {
+      "bytes": 78751,
+      "sha256": "3b678cfc29742ab72e651c207919df88dc134716d82eb4bfa1c11e066ccc3893"
+    }
+  },
+  "benchmark": "child_handle_observer_effect_diagnostic",
+  "claim_boundary": "Environment attribution diagnostic only; never storage, HNG, recovery, production, or v2 qualification evidence.",
+  "config": {
+    "baseline_seconds": 120.0,
+    "expected_pulses": 20,
+    "external_seconds": 120.0,
+    "minimum_samples_per_phase": 100,
+    "multiprocessing_start_method": "spawn",
+    "recovery_seconds": 120.0,
+    "refute_maximum_external_net_handles": 20,
+    "refute_slope_tolerance_handles_per_minute": 5.0,
+    "sample_interval_seconds": 1.0,
+    "support_minimum_external_net_handles": 50,
+    "support_slope_margin_handles_per_minute": 20.0,
+    "variants": [
+      "idle",
+      "event_poll",
+      "sqlite_read",
+      "sqlite_write"
+    ],
+    "warmup_seconds": 30.0
+  },
+  "created_at": "2026-09-01T19:46:21.652588+00:00",
+  "exitcodes": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "preregistered_commit": "8585905e7c78107228a2e93ce3987974845f0397",
+  "reports": [
+    {
+      "error": null,
+      "operations": 0,
+      "pid": 22952,
+      "samples": 391,
+      "variant": "event_poll"
+    },
+    {
+      "error": null,
+      "operations": 22111,
+      "pid": 31440,
+      "samples": 391,
+      "variant": "sqlite_read"
+    },
+    {
+      "error": null,
+      "operations": 0,
+      "pid": 36572,
+      "samples": 391,
+      "variant": "idle"
+    },
+    {
+      "error": null,
+      "operations": 14431,
+      "pid": 31264,
+      "samples": 381,
+      "variant": "sqlite_write"
+    }
+  ],
+  "schema_version": 1,
+  "status": "ERROR"
+}

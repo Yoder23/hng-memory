@@ -466,3 +466,18 @@ SQLite-read, and SQLite-write variants, but that descriptive observation cannot
 satisfy the preregistered decision because two pulse-timing controls failed. A
 follow-up requires a new protocol/output directory and a cadence that leaves a
 larger timing margin.
+
+## Child-handle diagnostic v2 timing-control failure
+
+The distinct timing-corrected run from commit
+`8585905e7c78107228a2e93ce3987974845f0397` shortened its intended pulse cadence
+to two seconds, but external process-start and approval overhead delayed the
+first pulse to 180.702 seconds and made the effective cadence about 5.3 seconds.
+Pulses 18, 19, and 20 landed at 273.536, 279.255, and 284.688 seconds, outside
+the frozen `[150,270)` external phase. All other validity checks passed; the
+analyzer again returned `ERROR/INVALID`, and the run is not retried.
+
+The four child variants again had zero measured external-phase handle growth.
+That repeated descriptive observation remains inadmissible for the frozen
+decision because timing validity failed. A follow-up must use a wider external
+window plus no intentional inter-pulse delay, under a new protocol and commit.
