@@ -498,3 +498,20 @@ thresholds for those isolated variants. It does not reproduce the failed v2
 12-process shared-database workload or make v2 pass. Reliability root-cause
 work must now isolate process count, shared SQLite/WAL activity, and workload
 operations rather than attributing the breach to progress-report tool calls.
+
+## Shared-SQLite handle-matrix sampling failure
+
+The first four-condition root-cause matrix ran from commit
+`71706b2a06daa56745f878eb7918d9cd3baa81ee`. All 48 children returned reports
+with zero errors and exits, and all reader checks were well formed. Idle and
+isolated-SQLite controls passed. In the two shared-database conditions, several
+writers completed only 72 to 79 of 80 required self-samples because sampling
+ran in the workload loop and long SQLite operations delayed it. The exact run
+is consequently `ERROR/INVALID` and is not retried.
+
+The invalid run descriptively separated the conditions: idle and isolated
+medians were both about 0.667 handles/minute, versus 32.360 and 17.334 for the
+two shared conditions, with positive synchronized growth in every shared child.
+Those values cannot satisfy the invalid run's decision. They justify a new
+protocol with an independent sampler thread and an explicit replicated
+lower-bound rule.

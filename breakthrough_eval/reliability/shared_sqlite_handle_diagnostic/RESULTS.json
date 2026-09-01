@@ -1,0 +1,1434 @@
+{
+  "benchmark": "shared_sqlite_child_handle_root_cause_matrix",
+  "claim_boundary": "Root-cause diagnostic only; never HNG, storage, recovery, production, or sustained-run qualification evidence.",
+  "command": [
+    "C:\\Python310\\python.exe",
+    "breakthrough_eval\\scripts\\shared_sqlite_handle_diagnostic.py",
+    "--preregistered-commit",
+    "71706b2a06daa56745f878eb7918d9cd3baa81ee"
+  ],
+  "conditions": {
+    "idle_12": {
+      "artifacts": {
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/idle_12/worker-00.jsonl": {
+          "bytes": 19627,
+          "sha256": "4881fcd4ac4d63486d430f5782cce88f6e655034ffd3ef26d1fdf83dc75bade6"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/idle_12/worker-01.jsonl": {
+          "bytes": 19630,
+          "sha256": "ba0905de27b32486a529d06afbbc3ea06f5b41e1a7c600863b78a8e4f6fe3820"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/idle_12/worker-02.jsonl": {
+          "bytes": 19628,
+          "sha256": "a1a10b670690381b872e9924cd4c2b384419f37c669b3cd52445270f7bac7c19"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/idle_12/worker-03.jsonl": {
+          "bytes": 19628,
+          "sha256": "98d3028b95c324b7e1dd12d3cb8ab21273ed3f9bc180d9752ae22353bf35d38d"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/idle_12/worker-04.jsonl": {
+          "bytes": 19536,
+          "sha256": "031b584b3919adb81989769e97db870205f28bec59d51cbaca4848f1fd9c0ef6"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/idle_12/worker-05.jsonl": {
+          "bytes": 19629,
+          "sha256": "18c0ee808c7bd25849e635a03de67da72567b1103f5363e3645e396e6dab47d2"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/idle_12/worker-06.jsonl": {
+          "bytes": 19533,
+          "sha256": "cc24d083ef82046f733c5de93f01f505a4c574c1751db9ec3ee64188cb9e336a"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/idle_12/worker-07.jsonl": {
+          "bytes": 19627,
+          "sha256": "206d0cd4fdd87b5ee9d5eabf8a9a761a184ca89ad4dcedc5bce00a9e4b50d34a"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/idle_12/worker-08.jsonl": {
+          "bytes": 19626,
+          "sha256": "9542ba962341c0b2b69beb5a0ed1bbe4953c55f4823012a184f3e8dd37d29ef0"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/idle_12/worker-09.jsonl": {
+          "bytes": 19626,
+          "sha256": "f2dcdab86546419a5a426a56086876af2bb120debd860a6049452ab1ac9c76d1"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/idle_12/worker-10.jsonl": {
+          "bytes": 19720,
+          "sha256": "3b7cfc3fa8859799b9ad6b396f45d577dbaa8d5658fa847d6ceb1edd1467948d"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/idle_12/worker-11.jsonl": {
+          "bytes": 19719,
+          "sha256": "e85a52e34f49536419eeba9c0f6415bc1ab4a644613f0d999d0afa804dcb4318"
+        }
+      },
+      "condition": "idle_12",
+      "exitcodes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "maximum_slope_handles_per_minute": 0.6667690142286419,
+      "median_slope_handles_per_minute": 0.6667518242096546,
+      "minimum_slope_handles_per_minute": 0.6667518242096546,
+      "per_child": [
+        {
+          "elapsed_seconds": 89.9885052,
+          "first_handles": 222,
+          "last_handles": 223,
+          "maximum_handles": 223,
+          "net_handles": 1,
+          "role": "writer",
+          "samples": 91,
+          "slope_handles_per_minute": 0.6667518242096546,
+          "worker_index": 0
+        },
+        {
+          "elapsed_seconds": 89.9885052,
+          "first_handles": 222,
+          "last_handles": 223,
+          "maximum_handles": 223,
+          "net_handles": 1,
+          "role": "writer",
+          "samples": 91,
+          "slope_handles_per_minute": 0.6667518242096546,
+          "worker_index": 1
+        },
+        {
+          "elapsed_seconds": 89.9885052,
+          "first_handles": 222,
+          "last_handles": 223,
+          "maximum_handles": 223,
+          "net_handles": 1,
+          "role": "writer",
+          "samples": 91,
+          "slope_handles_per_minute": 0.6667518242096546,
+          "worker_index": 2
+        },
+        {
+          "elapsed_seconds": 89.9885052,
+          "first_handles": 222,
+          "last_handles": 223,
+          "maximum_handles": 223,
+          "net_handles": 1,
+          "role": "writer",
+          "samples": 91,
+          "slope_handles_per_minute": 0.6667518242096546,
+          "worker_index": 3
+        },
+        {
+          "elapsed_seconds": 89.9861852,
+          "first_handles": 222,
+          "last_handles": 223,
+          "maximum_handles": 223,
+          "net_handles": 1,
+          "role": "reader",
+          "samples": 91,
+          "slope_handles_per_minute": 0.6667690142286419,
+          "worker_index": 4
+        },
+        {
+          "elapsed_seconds": 89.9885052,
+          "first_handles": 222,
+          "last_handles": 223,
+          "maximum_handles": 223,
+          "net_handles": 1,
+          "role": "reader",
+          "samples": 91,
+          "slope_handles_per_minute": 0.6667518242096546,
+          "worker_index": 5
+        },
+        {
+          "elapsed_seconds": 89.9885052,
+          "first_handles": 222,
+          "last_handles": 223,
+          "maximum_handles": 223,
+          "net_handles": 1,
+          "role": "reader",
+          "samples": 91,
+          "slope_handles_per_minute": 0.6667518242096546,
+          "worker_index": 6
+        },
+        {
+          "elapsed_seconds": 89.9861852,
+          "first_handles": 222,
+          "last_handles": 223,
+          "maximum_handles": 223,
+          "net_handles": 1,
+          "role": "reader",
+          "samples": 91,
+          "slope_handles_per_minute": 0.6667690142286419,
+          "worker_index": 7
+        },
+        {
+          "elapsed_seconds": 89.9885052,
+          "first_handles": 222,
+          "last_handles": 223,
+          "maximum_handles": 223,
+          "net_handles": 1,
+          "role": "reader",
+          "samples": 91,
+          "slope_handles_per_minute": 0.6667518242096546,
+          "worker_index": 8
+        },
+        {
+          "elapsed_seconds": 89.9885052,
+          "first_handles": 222,
+          "last_handles": 223,
+          "maximum_handles": 223,
+          "net_handles": 1,
+          "role": "reader",
+          "samples": 91,
+          "slope_handles_per_minute": 0.6667518242096546,
+          "worker_index": 9
+        },
+        {
+          "elapsed_seconds": 89.9885052,
+          "first_handles": 222,
+          "last_handles": 223,
+          "maximum_handles": 223,
+          "net_handles": 1,
+          "role": "reader",
+          "samples": 91,
+          "slope_handles_per_minute": 0.6667518242096546,
+          "worker_index": 10
+        },
+        {
+          "elapsed_seconds": 89.9885052,
+          "first_handles": 222,
+          "last_handles": 223,
+          "maximum_handles": 223,
+          "net_handles": 1,
+          "role": "reader",
+          "samples": 91,
+          "slope_handles_per_minute": 0.6667518242096546,
+          "worker_index": 11
+        }
+      ],
+      "reports": [
+        {
+          "condition": "idle_12",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 0,
+          "pid": 34024,
+          "role": "writer",
+          "samples": 91,
+          "worker_index": 3
+        },
+        {
+          "condition": "idle_12",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 0,
+          "pid": 36416,
+          "role": "reader",
+          "samples": 91,
+          "worker_index": 7
+        },
+        {
+          "condition": "idle_12",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 0,
+          "pid": 30896,
+          "role": "reader",
+          "samples": 91,
+          "worker_index": 11
+        },
+        {
+          "condition": "idle_12",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 0,
+          "pid": 20764,
+          "role": "writer",
+          "samples": 91,
+          "worker_index": 1
+        },
+        {
+          "condition": "idle_12",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 0,
+          "pid": 14456,
+          "role": "writer",
+          "samples": 91,
+          "worker_index": 2
+        },
+        {
+          "condition": "idle_12",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 0,
+          "pid": 15220,
+          "role": "reader",
+          "samples": 91,
+          "worker_index": 5
+        },
+        {
+          "condition": "idle_12",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 0,
+          "pid": 30080,
+          "role": "writer",
+          "samples": 91,
+          "worker_index": 0
+        },
+        {
+          "condition": "idle_12",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 0,
+          "pid": 3644,
+          "role": "reader",
+          "samples": 91,
+          "worker_index": 4
+        },
+        {
+          "condition": "idle_12",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 0,
+          "pid": 24512,
+          "role": "reader",
+          "samples": 91,
+          "worker_index": 8
+        },
+        {
+          "condition": "idle_12",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 0,
+          "pid": 36840,
+          "role": "reader",
+          "samples": 91,
+          "worker_index": 10
+        },
+        {
+          "condition": "idle_12",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 0,
+          "pid": 5144,
+          "role": "reader",
+          "samples": 91,
+          "worker_index": 6
+        },
+        {
+          "condition": "idle_12",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 0,
+          "pid": 34884,
+          "role": "reader",
+          "samples": 91,
+          "worker_index": 9
+        }
+      ],
+      "valid": true,
+      "validity": {
+        "all_child_exitcodes_zero": true,
+        "all_children_reported": true,
+        "minimum_samples_each_child": true,
+        "no_child_errors": true,
+        "no_reader_misses": true
+      }
+    },
+    "isolated_sqlite_12": {
+      "artifacts": {
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/isolated_sqlite_12/worker-00.jsonl": {
+          "bytes": 20863,
+          "sha256": "a086be6be15aab363e65abc3eae24488730de07173048f4fb5ad4236500dc8d9"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/isolated_sqlite_12/worker-01.jsonl": {
+          "bytes": 20950,
+          "sha256": "4338fd871037bf073b37750c4e692b86946bc429f8b670c7c55ce2989119986e"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/isolated_sqlite_12/worker-02.jsonl": {
+          "bytes": 20954,
+          "sha256": "7ed15c4f0d2afa019ab23a2036a33785b17cd1354528da8856a4233d8acacad8"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/isolated_sqlite_12/worker-03.jsonl": {
+          "bytes": 20954,
+          "sha256": "a4dc2bbe3e05d40c4cb4b7382c685c96032c5f3370fb5541c3aacbdd57a4f2cd"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/isolated_sqlite_12/worker-04.jsonl": {
+          "bytes": 21073,
+          "sha256": "2bd1b0070b0f7e4ae8a1b2b893bbee138778444f8b7c0061f02b01643836c54e"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/isolated_sqlite_12/worker-05.jsonl": {
+          "bytes": 21073,
+          "sha256": "14cd0a349e8b9a98bed565a82ce8817c90383b4d602a3d8522c8d423e0cf85ce"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/isolated_sqlite_12/worker-06.jsonl": {
+          "bytes": 21073,
+          "sha256": "05169d370738814a9915c1117e36b073dd79db5b8d7d1dde8ed81284b2b4402a"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/isolated_sqlite_12/worker-07.jsonl": {
+          "bytes": 21073,
+          "sha256": "9ae41125625c44d75ee0ce1b0c8f8e3bb4b7aa9349892b9f2a00b52b375a4add"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/isolated_sqlite_12/worker-08.jsonl": {
+          "bytes": 21073,
+          "sha256": "7eeb977fc64715433dd7753a0c648d2c566c0099cbc538899276b2605f0ee890"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/isolated_sqlite_12/worker-09.jsonl": {
+          "bytes": 21073,
+          "sha256": "2bf06e913417cba5130f3a99161cd7b9100e4d67df2be375ebd1f77558af0547"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/isolated_sqlite_12/worker-10.jsonl": {
+          "bytes": 21073,
+          "sha256": "5edab4515891beba6079fc9b80b2996a786a8071d832c64fc676e5010089dbd8"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/isolated_sqlite_12/worker-11.jsonl": {
+          "bytes": 21164,
+          "sha256": "4ca3edd413aa595ffe7f60c0e644510aa4f9149426cb1de0ba0b0bda4a78f895"
+        }
+      },
+      "condition": "isolated_sqlite_12",
+      "exitcodes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "maximum_slope_handles_per_minute": 0.666745862740243,
+      "median_slope_handles_per_minute": 0.666745862740243,
+      "minimum_slope_handles_per_minute": 0.6667046451263848,
+      "per_child": [
+        {
+          "elapsed_seconds": 89.99373990000001,
+          "first_handles": 227,
+          "last_handles": 228,
+          "maximum_handles": 228,
+          "net_handles": 1,
+          "role": "writer",
+          "samples": 91,
+          "slope_handles_per_minute": 0.666713041003422,
+          "worker_index": 0
+        },
+        {
+          "elapsed_seconds": 89.9893098,
+          "first_handles": 227,
+          "last_handles": 228,
+          "maximum_handles": 228,
+          "net_handles": 1,
+          "role": "writer",
+          "samples": 91,
+          "slope_handles_per_minute": 0.666745862740243,
+          "worker_index": 1
+        },
+        {
+          "elapsed_seconds": 89.9948732,
+          "first_handles": 227,
+          "last_handles": 228,
+          "maximum_handles": 228,
+          "net_handles": 1,
+          "role": "writer",
+          "samples": 91,
+          "slope_handles_per_minute": 0.6667046451263848,
+          "worker_index": 2
+        },
+        {
+          "elapsed_seconds": 89.99373990000001,
+          "first_handles": 227,
+          "last_handles": 228,
+          "maximum_handles": 228,
+          "net_handles": 1,
+          "role": "writer",
+          "samples": 91,
+          "slope_handles_per_minute": 0.666713041003422,
+          "worker_index": 3
+        },
+        {
+          "elapsed_seconds": 89.9893098,
+          "first_handles": 227,
+          "last_handles": 228,
+          "maximum_handles": 228,
+          "net_handles": 1,
+          "role": "reader",
+          "samples": 91,
+          "slope_handles_per_minute": 0.666745862740243,
+          "worker_index": 4
+        },
+        {
+          "elapsed_seconds": 89.9893098,
+          "first_handles": 227,
+          "last_handles": 228,
+          "maximum_handles": 228,
+          "net_handles": 1,
+          "role": "reader",
+          "samples": 91,
+          "slope_handles_per_minute": 0.666745862740243,
+          "worker_index": 5
+        },
+        {
+          "elapsed_seconds": 89.9893098,
+          "first_handles": 227,
+          "last_handles": 228,
+          "maximum_handles": 228,
+          "net_handles": 1,
+          "role": "reader",
+          "samples": 91,
+          "slope_handles_per_minute": 0.666745862740243,
+          "worker_index": 6
+        },
+        {
+          "elapsed_seconds": 89.9893098,
+          "first_handles": 227,
+          "last_handles": 228,
+          "maximum_handles": 228,
+          "net_handles": 1,
+          "role": "reader",
+          "samples": 91,
+          "slope_handles_per_minute": 0.666745862740243,
+          "worker_index": 7
+        },
+        {
+          "elapsed_seconds": 89.9893098,
+          "first_handles": 227,
+          "last_handles": 228,
+          "maximum_handles": 228,
+          "net_handles": 1,
+          "role": "reader",
+          "samples": 91,
+          "slope_handles_per_minute": 0.666745862740243,
+          "worker_index": 8
+        },
+        {
+          "elapsed_seconds": 89.9893098,
+          "first_handles": 227,
+          "last_handles": 228,
+          "maximum_handles": 228,
+          "net_handles": 1,
+          "role": "reader",
+          "samples": 91,
+          "slope_handles_per_minute": 0.666745862740243,
+          "worker_index": 9
+        },
+        {
+          "elapsed_seconds": 89.9893098,
+          "first_handles": 227,
+          "last_handles": 228,
+          "maximum_handles": 228,
+          "net_handles": 1,
+          "role": "reader",
+          "samples": 91,
+          "slope_handles_per_minute": 0.666745862740243,
+          "worker_index": 10
+        },
+        {
+          "elapsed_seconds": 89.9893098,
+          "first_handles": 227,
+          "last_handles": 228,
+          "maximum_handles": 228,
+          "net_handles": 1,
+          "role": "reader",
+          "samples": 91,
+          "slope_handles_per_minute": 0.666745862740243,
+          "worker_index": 11
+        }
+      ],
+      "reports": [
+        {
+          "condition": "isolated_sqlite_12",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 912987,
+          "pid": 36188,
+          "role": "reader",
+          "samples": 91,
+          "worker_index": 7
+        },
+        {
+          "condition": "isolated_sqlite_12",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 914705,
+          "pid": 29884,
+          "role": "reader",
+          "samples": 91,
+          "worker_index": 4
+        },
+        {
+          "condition": "isolated_sqlite_12",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 913150,
+          "pid": 17872,
+          "role": "reader",
+          "samples": 91,
+          "worker_index": 5
+        },
+        {
+          "condition": "isolated_sqlite_12",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 909115,
+          "pid": 15356,
+          "role": "reader",
+          "samples": 91,
+          "worker_index": 6
+        },
+        {
+          "condition": "isolated_sqlite_12",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 916532,
+          "pid": 22984,
+          "role": "reader",
+          "samples": 91,
+          "worker_index": 9
+        },
+        {
+          "condition": "isolated_sqlite_12",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 913876,
+          "pid": 26264,
+          "role": "reader",
+          "samples": 91,
+          "worker_index": 8
+        },
+        {
+          "condition": "isolated_sqlite_12",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 912827,
+          "pid": 7916,
+          "role": "reader",
+          "samples": 91,
+          "worker_index": 10
+        },
+        {
+          "condition": "isolated_sqlite_12",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 916972,
+          "pid": 13084,
+          "role": "reader",
+          "samples": 91,
+          "worker_index": 11
+        },
+        {
+          "condition": "isolated_sqlite_12",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 18644,
+          "pid": 14876,
+          "role": "writer",
+          "samples": 91,
+          "worker_index": 1
+        },
+        {
+          "condition": "isolated_sqlite_12",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 18660,
+          "pid": 35264,
+          "role": "writer",
+          "samples": 91,
+          "worker_index": 3
+        },
+        {
+          "condition": "isolated_sqlite_12",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 18641,
+          "pid": 31288,
+          "role": "writer",
+          "samples": 91,
+          "worker_index": 2
+        },
+        {
+          "condition": "isolated_sqlite_12",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 18644,
+          "pid": 2704,
+          "role": "writer",
+          "samples": 91,
+          "worker_index": 0
+        }
+      ],
+      "valid": true,
+      "validity": {
+        "all_child_exitcodes_zero": true,
+        "all_children_reported": true,
+        "minimum_samples_each_child": true,
+        "no_child_errors": true,
+        "no_reader_misses": true
+      }
+    },
+    "shared_sqlite_12_a": {
+      "artifacts": {
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/shared_sqlite_12_a/worker-00.jsonl": {
+          "bytes": 19746,
+          "sha256": "33d4f4cf8790641590a058a84c24e00808867945b97f4aa38243811675977624"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/shared_sqlite_12_a/worker-01.jsonl": {
+          "bytes": 16534,
+          "sha256": "56f740073a85061890785eebb4950ea746f22806a0db1ff0dfde646dd9bae07a"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/shared_sqlite_12_a/worker-02.jsonl": {
+          "bytes": 17598,
+          "sha256": "0c764c2397f065b9c3df1916449b072d4cdd3d179ca759aa2058ffa54a8a8979"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/shared_sqlite_12_a/worker-03.jsonl": {
+          "bytes": 19061,
+          "sha256": "0c7036266e0b3bcfadde6de3a941c40ba4724fbe35ed65e2e4cdea73432a5338"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/shared_sqlite_12_a/worker-04.jsonl": {
+          "bytes": 20761,
+          "sha256": "8035223878849f961cba321d32211ae5cad6b5c75374b45ced2329496931170b"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/shared_sqlite_12_a/worker-05.jsonl": {
+          "bytes": 20675,
+          "sha256": "27a601175b2e95c0ba05693ff2ef4f7f39c7eff67cc2077d34221ce547220376"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/shared_sqlite_12_a/worker-06.jsonl": {
+          "bytes": 20763,
+          "sha256": "36d9e9f0579ceb8f7b6650a1e171fb32c284738b0f6bc992d96a2518d56cda7b"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/shared_sqlite_12_a/worker-07.jsonl": {
+          "bytes": 20758,
+          "sha256": "6849238913287fbf35559cb8dfd272dc0f183baace8a0e58758522db25c96367"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/shared_sqlite_12_a/worker-08.jsonl": {
+          "bytes": 20764,
+          "sha256": "ab77c6f19f3d4aa981cc1f91b271bf070d01fd92e788cc1cf779ff85da70cf51"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/shared_sqlite_12_a/worker-09.jsonl": {
+          "bytes": 20766,
+          "sha256": "b33c445052901638aa856b90719fdeb49260c452078e977f24ed864b3a43e1c5"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/shared_sqlite_12_a/worker-10.jsonl": {
+          "bytes": 20855,
+          "sha256": "3e66c8f15dcdec9e6f3d542b1141a10096e3fb24b56974431e4b89a6cfcb2acd"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/shared_sqlite_12_a/worker-11.jsonl": {
+          "bytes": 20766,
+          "sha256": "2ef21c9359350c9c2ccd1d092839045bcbc2b6d73760cb591ee2d72dd670b7c1"
+        }
+      },
+      "condition": "shared_sqlite_12_a",
+      "exitcodes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "maximum_slope_handles_per_minute": 32.36007559493437,
+      "median_slope_handles_per_minute": 32.359506501000375,
+      "minimum_slope_handles_per_minute": 32.02630638080476,
+      "per_child": [
+        {
+          "elapsed_seconds": 89.8278232,
+          "first_handles": 227,
+          "last_handles": 275,
+          "maximum_handles": 275,
+          "net_handles": 48,
+          "role": "writer",
+          "samples": 86,
+          "slope_handles_per_minute": 32.06133575771655,
+          "worker_index": 0
+        },
+        {
+          "elapsed_seconds": 89.0095368,
+          "first_handles": 227,
+          "last_handles": 275,
+          "maximum_handles": 275,
+          "net_handles": 48,
+          "role": "writer",
+          "samples": 72,
+          "slope_handles_per_minute": 32.356083443858566,
+          "worker_index": 1
+        },
+        {
+          "elapsed_seconds": 88.0526142,
+          "first_handles": 227,
+          "last_handles": 274,
+          "maximum_handles": 274,
+          "net_handles": 47,
+          "role": "writer",
+          "samples": 77,
+          "slope_handles_per_minute": 32.02630638080476,
+          "worker_index": 2
+        },
+        {
+          "elapsed_seconds": 88.9988788,
+          "first_handles": 227,
+          "last_handles": 275,
+          "maximum_handles": 275,
+          "net_handles": 48,
+          "role": "writer",
+          "samples": 83,
+          "slope_handles_per_minute": 32.35995822455237,
+          "worker_index": 3
+        },
+        {
+          "elapsed_seconds": 88.9988788,
+          "first_handles": 227,
+          "last_handles": 275,
+          "maximum_handles": 275,
+          "net_handles": 48,
+          "role": "reader",
+          "samples": 90,
+          "slope_handles_per_minute": 32.35995822455237,
+          "worker_index": 4
+        },
+        {
+          "elapsed_seconds": 88.998556,
+          "first_handles": 227,
+          "last_handles": 275,
+          "maximum_handles": 275,
+          "net_handles": 48,
+          "role": "reader",
+          "samples": 90,
+          "slope_handles_per_minute": 32.36007559493437,
+          "worker_index": 5
+        },
+        {
+          "elapsed_seconds": 88.9988788,
+          "first_handles": 227,
+          "last_handles": 275,
+          "maximum_handles": 275,
+          "net_handles": 48,
+          "role": "reader",
+          "samples": 90,
+          "slope_handles_per_minute": 32.35995822455237,
+          "worker_index": 6
+        },
+        {
+          "elapsed_seconds": 89.0013636,
+          "first_handles": 227,
+          "last_handles": 275,
+          "maximum_handles": 275,
+          "net_handles": 48,
+          "role": "reader",
+          "samples": 90,
+          "slope_handles_per_minute": 32.35905477744838,
+          "worker_index": 7
+        },
+        {
+          "elapsed_seconds": 88.9988788,
+          "first_handles": 227,
+          "last_handles": 275,
+          "maximum_handles": 275,
+          "net_handles": 48,
+          "role": "reader",
+          "samples": 90,
+          "slope_handles_per_minute": 32.35995822455237,
+          "worker_index": 8
+        },
+        {
+          "elapsed_seconds": 89.0013636,
+          "first_handles": 227,
+          "last_handles": 275,
+          "maximum_handles": 275,
+          "net_handles": 48,
+          "role": "reader",
+          "samples": 90,
+          "slope_handles_per_minute": 32.35905477744838,
+          "worker_index": 9
+        },
+        {
+          "elapsed_seconds": 89.0013636,
+          "first_handles": 227,
+          "last_handles": 275,
+          "maximum_handles": 275,
+          "net_handles": 48,
+          "role": "reader",
+          "samples": 90,
+          "slope_handles_per_minute": 32.35905477744838,
+          "worker_index": 10
+        },
+        {
+          "elapsed_seconds": 88.9988788,
+          "first_handles": 227,
+          "last_handles": 275,
+          "maximum_handles": 275,
+          "net_handles": 48,
+          "role": "reader",
+          "samples": 90,
+          "slope_handles_per_minute": 32.35995822455237,
+          "worker_index": 11
+        }
+      ],
+      "reports": [
+        {
+          "condition": "shared_sqlite_12_a",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 67195,
+          "pid": 30012,
+          "role": "reader",
+          "samples": 90,
+          "worker_index": 6
+        },
+        {
+          "condition": "shared_sqlite_12_a",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 67090,
+          "pid": 31620,
+          "role": "reader",
+          "samples": 90,
+          "worker_index": 7
+        },
+        {
+          "condition": "shared_sqlite_12_a",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 6224,
+          "pid": 33060,
+          "role": "writer",
+          "samples": 72,
+          "worker_index": 1
+        },
+        {
+          "condition": "shared_sqlite_12_a",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 66556,
+          "pid": 35396,
+          "role": "reader",
+          "samples": 90,
+          "worker_index": 9
+        },
+        {
+          "condition": "shared_sqlite_12_a",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 67959,
+          "pid": 33540,
+          "role": "reader",
+          "samples": 90,
+          "worker_index": 4
+        },
+        {
+          "condition": "shared_sqlite_12_a",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 67380,
+          "pid": 1280,
+          "role": "reader",
+          "samples": 90,
+          "worker_index": 5
+        },
+        {
+          "condition": "shared_sqlite_12_a",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 66855,
+          "pid": 8172,
+          "role": "reader",
+          "samples": 90,
+          "worker_index": 11
+        },
+        {
+          "condition": "shared_sqlite_12_a",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 67169,
+          "pid": 29928,
+          "role": "reader",
+          "samples": 90,
+          "worker_index": 8
+        },
+        {
+          "condition": "shared_sqlite_12_a",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 68044,
+          "pid": 36204,
+          "role": "reader",
+          "samples": 90,
+          "worker_index": 10
+        },
+        {
+          "condition": "shared_sqlite_12_a",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 8658,
+          "pid": 34952,
+          "role": "writer",
+          "samples": 86,
+          "worker_index": 0
+        },
+        {
+          "condition": "shared_sqlite_12_a",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 7946,
+          "pid": 22948,
+          "role": "writer",
+          "samples": 83,
+          "worker_index": 3
+        },
+        {
+          "condition": "shared_sqlite_12_a",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 6064,
+          "pid": 6552,
+          "role": "writer",
+          "samples": 77,
+          "worker_index": 2
+        }
+      ],
+      "valid": false,
+      "validity": {
+        "all_child_exitcodes_zero": true,
+        "all_children_reported": true,
+        "minimum_samples_each_child": false,
+        "no_child_errors": true,
+        "no_reader_misses": true
+      }
+    },
+    "shared_sqlite_12_b": {
+      "artifacts": {
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/shared_sqlite_12_b/worker-00.jsonl": {
+          "bytes": 18588,
+          "sha256": "e07199b5b9e90dd9b64862f18b50ba5349f49f929049d8d836da46a1e1d02aad"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/shared_sqlite_12_b/worker-01.jsonl": {
+          "bytes": 18141,
+          "sha256": "69240a575a5ed68eca4b7377a9171b39b6a97e6943eb327425495a4e5dca975a"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/shared_sqlite_12_b/worker-02.jsonl": {
+          "bytes": 17227,
+          "sha256": "dc39517ced15026861a4e001e537ccbe14deb82fd1c72d818ec3f0c348367176"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/shared_sqlite_12_b/worker-03.jsonl": {
+          "bytes": 16983,
+          "sha256": "16c6d7b40927ea259265c5e0fda0c558ec09545f0b31fef0f136c17e369310aa"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/shared_sqlite_12_b/worker-04.jsonl": {
+          "bytes": 20998,
+          "sha256": "97408161bfe0366670ba80a257b6798625c69e9857f8669f176042f8b0a128f8"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/shared_sqlite_12_b/worker-05.jsonl": {
+          "bytes": 21000,
+          "sha256": "601fb09e77299a6a1e5b201efe3bd658c3de068e37293c25e35953c2df5bc22a"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/shared_sqlite_12_b/worker-06.jsonl": {
+          "bytes": 21001,
+          "sha256": "1f33f759f5112e829e89fd5affa8b8c87862449a1d39c1f4a7c794df27328110"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/shared_sqlite_12_b/worker-07.jsonl": {
+          "bytes": 20997,
+          "sha256": "c40d7a0c1a706664e95fe3bbddd21d45d26c151c6b6fd77d2f8be54960873cad"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/shared_sqlite_12_b/worker-08.jsonl": {
+          "bytes": 21002,
+          "sha256": "7cd00344fb9d3415140c0f4a901acef1e79c7f688ff22bdeb28dad831b1d04fa"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/shared_sqlite_12_b/worker-09.jsonl": {
+          "bytes": 20994,
+          "sha256": "6ba7d2cf54d5f1c32961c2c61ceeaf2cd44063de8407a898e63a97c462bc6642"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/shared_sqlite_12_b/worker-10.jsonl": {
+          "bytes": 20994,
+          "sha256": "297a82554db7f6bf09ae8fe1d44b2556d37cad226ca8a2bcb993e6a51130e10a"
+        },
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/run_data/shared_sqlite_12_b/worker-11.jsonl": {
+          "bytes": 21092,
+          "sha256": "dbd72cff240c15a03facf73c1398fde4fde5853cfcefd3a007acdfdd6cdc01a1"
+        }
+      },
+      "condition": "shared_sqlite_12_b",
+      "exitcodes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "maximum_slope_handles_per_minute": 17.334023208196996,
+      "median_slope_handles_per_minute": 17.334023208196996,
+      "minimum_slope_handles_per_minute": 16.798732158023178,
+      "per_child": [
+        {
+          "elapsed_seconds": 89.2924529,
+          "first_handles": 227,
+          "last_handles": 252,
+          "maximum_handles": 252,
+          "net_handles": 25,
+          "role": "writer",
+          "samples": 81,
+          "slope_handles_per_minute": 16.798732158023178,
+          "worker_index": 0
+        },
+        {
+          "elapsed_seconds": 90.0109612,
+          "first_handles": 227,
+          "last_handles": 253,
+          "maximum_handles": 253,
+          "net_handles": 26,
+          "role": "writer",
+          "samples": 79,
+          "slope_handles_per_minute": 17.331222544482728,
+          "worker_index": 1
+        },
+        {
+          "elapsed_seconds": 89.9964181,
+          "first_handles": 227,
+          "last_handles": 253,
+          "maximum_handles": 253,
+          "net_handles": 26,
+          "role": "writer",
+          "samples": 75,
+          "slope_handles_per_minute": 17.334023208196996,
+          "worker_index": 2
+        },
+        {
+          "elapsed_seconds": 88.996598,
+          "first_handles": 227,
+          "last_handles": 252,
+          "maximum_handles": 252,
+          "net_handles": 25,
+          "role": "writer",
+          "samples": 74,
+          "slope_handles_per_minute": 16.85457684573516,
+          "worker_index": 3
+        },
+        {
+          "elapsed_seconds": 89.9964181,
+          "first_handles": 227,
+          "last_handles": 253,
+          "maximum_handles": 253,
+          "net_handles": 26,
+          "role": "reader",
+          "samples": 91,
+          "slope_handles_per_minute": 17.334023208196996,
+          "worker_index": 4
+        },
+        {
+          "elapsed_seconds": 89.9964181,
+          "first_handles": 227,
+          "last_handles": 253,
+          "maximum_handles": 253,
+          "net_handles": 26,
+          "role": "reader",
+          "samples": 91,
+          "slope_handles_per_minute": 17.334023208196996,
+          "worker_index": 5
+        },
+        {
+          "elapsed_seconds": 89.9964181,
+          "first_handles": 227,
+          "last_handles": 253,
+          "maximum_handles": 253,
+          "net_handles": 26,
+          "role": "reader",
+          "samples": 91,
+          "slope_handles_per_minute": 17.334023208196996,
+          "worker_index": 6
+        },
+        {
+          "elapsed_seconds": 89.9998332,
+          "first_handles": 227,
+          "last_handles": 253,
+          "maximum_handles": 253,
+          "net_handles": 26,
+          "role": "reader",
+          "samples": 91,
+          "slope_handles_per_minute": 17.333365457837314,
+          "worker_index": 7
+        },
+        {
+          "elapsed_seconds": 89.9964181,
+          "first_handles": 227,
+          "last_handles": 253,
+          "maximum_handles": 253,
+          "net_handles": 26,
+          "role": "reader",
+          "samples": 91,
+          "slope_handles_per_minute": 17.334023208196996,
+          "worker_index": 8
+        },
+        {
+          "elapsed_seconds": 89.9964181,
+          "first_handles": 227,
+          "last_handles": 253,
+          "maximum_handles": 253,
+          "net_handles": 26,
+          "role": "reader",
+          "samples": 91,
+          "slope_handles_per_minute": 17.334023208196996,
+          "worker_index": 9
+        },
+        {
+          "elapsed_seconds": 89.9998332,
+          "first_handles": 227,
+          "last_handles": 253,
+          "maximum_handles": 253,
+          "net_handles": 26,
+          "role": "reader",
+          "samples": 91,
+          "slope_handles_per_minute": 17.333365457837314,
+          "worker_index": 10
+        },
+        {
+          "elapsed_seconds": 89.9964181,
+          "first_handles": 227,
+          "last_handles": 253,
+          "maximum_handles": 253,
+          "net_handles": 26,
+          "role": "reader",
+          "samples": 91,
+          "slope_handles_per_minute": 17.334023208196996,
+          "worker_index": 11
+        }
+      ],
+      "reports": [
+        {
+          "condition": "shared_sqlite_12_b",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 63139,
+          "pid": 33236,
+          "role": "reader",
+          "samples": 91,
+          "worker_index": 4
+        },
+        {
+          "condition": "shared_sqlite_12_b",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 62963,
+          "pid": 17272,
+          "role": "reader",
+          "samples": 91,
+          "worker_index": 11
+        },
+        {
+          "condition": "shared_sqlite_12_b",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 62601,
+          "pid": 35708,
+          "role": "reader",
+          "samples": 91,
+          "worker_index": 8
+        },
+        {
+          "condition": "shared_sqlite_12_b",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 62615,
+          "pid": 8488,
+          "role": "reader",
+          "samples": 91,
+          "worker_index": 10
+        },
+        {
+          "condition": "shared_sqlite_12_b",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 62778,
+          "pid": 35464,
+          "role": "reader",
+          "samples": 91,
+          "worker_index": 7
+        },
+        {
+          "condition": "shared_sqlite_12_b",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 62469,
+          "pid": 34320,
+          "role": "reader",
+          "samples": 91,
+          "worker_index": 9
+        },
+        {
+          "condition": "shared_sqlite_12_b",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 62420,
+          "pid": 23236,
+          "role": "reader",
+          "samples": 91,
+          "worker_index": 6
+        },
+        {
+          "condition": "shared_sqlite_12_b",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 62780,
+          "pid": 33280,
+          "role": "reader",
+          "samples": 91,
+          "worker_index": 5
+        },
+        {
+          "condition": "shared_sqlite_12_b",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 7234,
+          "pid": 14920,
+          "role": "writer",
+          "samples": 79,
+          "worker_index": 1
+        },
+        {
+          "condition": "shared_sqlite_12_b",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 5775,
+          "pid": 33036,
+          "role": "writer",
+          "samples": 74,
+          "worker_index": 3
+        },
+        {
+          "condition": "shared_sqlite_12_b",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 5813,
+          "pid": 31388,
+          "role": "writer",
+          "samples": 75,
+          "worker_index": 2
+        },
+        {
+          "condition": "shared_sqlite_12_b",
+          "error": null,
+          "malformed": 0,
+          "missing": 0,
+          "operations": 5873,
+          "pid": 10352,
+          "role": "writer",
+          "samples": 81,
+          "worker_index": 0
+        }
+      ],
+      "valid": false,
+      "validity": {
+        "all_child_exitcodes_zero": true,
+        "all_children_reported": true,
+        "minimum_samples_each_child": false,
+        "no_child_errors": true,
+        "no_reader_misses": true
+      }
+    }
+  },
+  "config": {
+    "condition_seconds": 90.0,
+    "conditions": [
+      "idle_12",
+      "isolated_sqlite_12",
+      "shared_sqlite_12_a",
+      "shared_sqlite_12_b"
+    ],
+    "control_maximum_slope_handles_per_minute": 5.0,
+    "minimum_samples_per_child": 80,
+    "multiprocessing_start_method": "spawn",
+    "process_count_support_slope_handles_per_minute": 20.0,
+    "reader_workers": 8,
+    "sample_interval_seconds": 1.0,
+    "seed_records": 1000,
+    "shared_replication_tolerance_handles_per_minute": 15.0,
+    "shared_support_slope_handles_per_minute": 20.0,
+    "tenants": 100,
+    "writer_workers": 4
+  },
+  "created_at": "2026-09-01T20:19:05.496189+00:00",
+  "events": {
+    "bytes": 2266,
+    "path": "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/events.jsonl",
+    "sha256": "f9db916304a784862444e2bf04be0fcea6404cb2d8b911331ede53e790dc4aad"
+  },
+  "outcome": "INVALID",
+  "preflight": {
+    "clean_worktree": true,
+    "config_matches": true,
+    "origin_main_matches_head": true,
+    "source_hashes_match": true
+  },
+  "prepared": "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/PREPARED.json",
+  "preregistered_commit": "71706b2a06daa56745f878eb7918d9cd3baa81ee",
+  "protocol": "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic/PROTOCOL.md",
+  "schema_version": 1,
+  "status": "ERROR"
+}
