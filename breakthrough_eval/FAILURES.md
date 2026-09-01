@@ -214,3 +214,13 @@ request-boundary security; deployments must keep raw access behind server-side a
    `telemetry`; the production trust map therefore assigned a low default and excluded nearly all
    evidence. All 2,250 revision-1 events remain in the append-only log but are excluded. Revision 2
    uses `system_telemetry`, reruns all decisions, and is the sole reported matrix result.
+
+## Retrieval-budget preregistration validation boundary
+
+A repository-root `pytest -q` attempt failed during collection with 36 import errors because it
+traversed the preserved 0.5.1 baseline source snapshot and vendored external benchmark trees as if
+they were part of the active package. The failures include the snapshot's isolated `hngfrontier`
+path plus intentionally uninstalled PersonaMem-v2 GPU/distributed dependencies such as `verl`,
+`flash_attn`, `vllm`, and `tensordict`. No retrieval-budget inference had started. The owned
+breakthrough suite passed 46/46, including the holdout's 13 focused tests; the production package
+suite is validated separately rather than silently excluding or modifying preserved external code.

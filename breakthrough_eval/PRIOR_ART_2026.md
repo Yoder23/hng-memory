@@ -1,6 +1,6 @@
 # Prior art and benchmark bar
 
-Research cutoff: 2026-08-31.
+Research cutoff: 2026-09-01.
 
 This review uses primary papers, official repositories, and official documentation. Reported
 scores are **literature evidence**, not local reproductions, unless a row explicitly says
@@ -74,6 +74,18 @@ HNG's falsifiable claim is therefore narrower:
 | [Microsoft GraphRAG](https://github.com/microsoft/graphrag) | LLM-extracted entity graph, hierarchical communities, local/global search | Source text retained; temporal/authority policy application-defined | Not local; high indexing cost and different global-synthesis objective | Official MIT code; model APIs needed |
 | [RAPTOR](https://proceedings.iclr.cc/paper_files/paper/2024/hash/8a2acd174940dbca361a6398a4f9df91-Abstract-Conference.html) | Recursively embed, cluster and LLM-summarize retrieval tree | No inherent temporal/actor policy | Paper reports strong QA gains including +20 absolute QuALITY with GPT-4 versus cited prior best | [Official code](https://github.com/parthsarthi03/raptor) |
 | [SVD-RAG](https://arxiv.org/abs/2607.10316) | Deterministic SVD extractive summaries in RAPTOR-like tree | No inherent temporal/actor policy | Paper: MRR .867 vs RAPTOR .875, Recall@1 .483 vs .458, 317x faster build in its small controlled corpus | Paper says package released; official repository not discovered |
+
+### Retrieval-budget implication after the LoCoMo-Plus loss
+
+The [official LoCoMo release](https://github.com/snap-research/locomo) evaluates RAG over generated
+session observations and summaries, making candidate construction and retained context part of the
+benchmark system rather than a fixed constant. Current official implementations also expose wider
+retrieval regimes: [SYNAPSE](https://github.com/hq0709/synapse) reports recall@30 and uses a
+Top-K(15) graph sparsity gate, while [LazyMem](https://github.com/allacnobug/LazyMem) releases a
+hybrid dense/BM25/cross-encoder pipeline that saves and windows top-50 LoCoMo results. Their scores
+are not locally comparable, but the configurations make a top-16-only evaluation too narrow to
+diagnose retrieval-budget sensitivity. HNG therefore preregisters a disjoint 16/32/64-turn sweep;
+this changes retrieval candidates and is analyzed separately from fixed-candidate governance.
 
 ## Architectural consequences
 

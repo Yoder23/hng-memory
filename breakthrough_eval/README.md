@@ -39,6 +39,7 @@ C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py scaled-isolation
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py tool-agent
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py real-hdc --manifest PATH
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py latency --repeats 20
+C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py retrieval-budget --execute-llm
 ```
 
 Omit `--execute-llm` to prepare and verify expensive experiments without invoking the local 27B
@@ -54,6 +55,10 @@ The expanded LoCoMo-Plus evidence is preserved separately under `public/locomo_p
 deterministically selected samples, 120 complete arm events, paired statistics, and exact-input
 reuse provenance. The repeated latency command creates 20 fresh stores and refuses to overwrite
 existing evidence.
+
+The retrieval-budget command uses a separately frozen LoCoMo-Plus holdout: the next five
+SHA-ranked samples per category after the observed n=30 development slice. Omit `--execute-llm`
+to verify and preserve its preparation without invoking the local model.
 
 The scaled-isolation command creates ignored SQLite runtime files, takes about seven minutes on the
 recorded host, and refuses to overwrite an earlier preserved run.

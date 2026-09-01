@@ -144,6 +144,18 @@ def commands_for(args: argparse.Namespace) -> list[Command]:
             ),
             compile_results,
         ]
+    if args.command == "retrieval-budget":
+        argv = [sys.executable, str(SCRIPTS / "locomo_retrieval_budget_holdout.py")]
+        if not args.execute_llm:
+            argv.append("--prepare-only")
+        return [
+            Command(
+                "locomo_disjoint_retrieval_budget_holdout",
+                tuple(argv),
+                "Disjoint public-data 16/32/64-turn retrieval budget sweep after the observed top-16 loss.",
+            ),
+            compile_results,
+        ]
     raise AssertionError(f"unknown command: {args.command}")
 
 
@@ -190,6 +202,8 @@ def parse_args() -> argparse.Namespace:
     hdc.add_argument("--manifest", type=Path, help="Manifest describing and hashing every real-assistant artifact.")
     latency = subparsers.add_parser("latency", help="Run repeated synthetic decision-latency measurements.")
     latency.add_argument("--repeats", type=int, default=20)
+    budget = subparsers.add_parser("retrieval-budget", help="Prepare or run the disjoint LoCoMo retrieval-budget holdout.")
+    budget.add_argument("--execute-llm", action="store_true", help="Run the costly local reader/judge calls.")
     return parser.parse_args()
 
 
