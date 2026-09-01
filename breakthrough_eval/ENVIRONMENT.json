@@ -32,6 +32,17 @@
       "status": "AVAILABLE_SAME_FAMILY_SECONDARY"
     },
     {
+      "declared_context_tokens": 131072,
+      "digest": "b9aaf0c2586a8ed8105feab808c0f034bd4d346203822f048e2366165a13f4ea",
+      "family": "mistral3",
+      "installed_bytes": 15486899116,
+      "name": "mistral-small3.1:24b-instruct-2503-q4_K_M",
+      "parameters": "24.0B",
+      "quantization": "Q4_K_M",
+      "runtime": "ollama",
+      "status": "AVAILABLE_QUALIFIED_CROSS_FAMILY_READER"
+    },
+    {
       "declared_context_tokens": 32768,
       "digest": "ac6da0dfba84a81fdbfbaf330198c33cd77c4cdfc53e8bc50eb581914a15621d",
       "embedding_dimensions": 1024,
@@ -196,7 +207,7 @@
     "remote": "https://github.com/Yoder23/hng-memory.git",
     "repository": "https://github.com/Yoder23/hng-memory",
     "status": "CONNECTED_VERIFIED_PRIVATE",
-    "verified_commit": "41a3317f87dc5c80b6ee84a6f4f2411baa111ea8",
+    "verified_commit": "7e95e900a63ceb09a094b7a91b96d255008dc68d",
     "viewer_permission": "ADMIN"
   },
   "public_resources": {

@@ -60,6 +60,8 @@ def main() -> int:
     public_resources = load(EVAL / "PUBLIC_RESOURCES.json")
     deterministic = load(EVAL / "fixed_candidate" / "DETERMINISTIC_RESULTS.json")
     llm = load(EVAL / "fixed_candidate" / "LLM_RESULTS.json")
+    cross_family_path = EVAL / "fixed_candidate_cross_family" / "LLM_RESULTS.json"
+    cross_family = load(cross_family_path) if cross_family_path.exists() else None
     longmem_path = EVAL / "public" / "longmemeval_v2" / "RESULTS.json"
     longmem = load(longmem_path) if longmem_path.exists() else None
     expanded_locomo_path = EVAL / "public" / "locomo_plus_n30" / "RESULTS.json"
@@ -161,6 +163,30 @@ def main() -> int:
                 "local_synthetic",
                 "EXECUTED",
                 "fixed_candidate/LLM_RESULTS.json",
+            ))
+
+    if cross_family is not None:
+        for name, system_payload in cross_family["systems"].items():
+            results.append(row(
+                "fixed_candidate_cross_family_llm_holdout",
+                name,
+                "answer_accuracy",
+                None if system_payload["accuracy"] is None else float(system_payload["accuracy"]),
+                "fraction",
+                "synthetic",
+                "EXECUTED" if cross_family["status"].startswith("complete") else "PARTIAL",
+                "fixed_candidate_cross_family/LLM_RESULTS.json",
+                f"Pinned {cross_family['model']} digest {cross_family['model_digest']}; fixed-case model-family replication only.",
+            ))
+            results.append(row(
+                "fixed_candidate_cross_family_llm_holdout",
+                name,
+                "prompt_tokens_total",
+                float(system_payload["prompt_tokens_total"]),
+                "count",
+                "synthetic",
+                "EXECUTED" if cross_family["status"].startswith("complete") else "PARTIAL",
+                "fixed_candidate_cross_family/LLM_RESULTS.json",
             ))
 
     if longmem is not None:
@@ -629,6 +655,33 @@ def main() -> int:
     ci_raw = llm["paired_statistics"]["hng_vs_ordinary_rag"]["paired_bootstrap_accuracy"]
 
     public_scoreboard_rows: list[dict[str, object]] = []
+    cross_family_scoreboard_rows: list[dict[str, object]] = []
+    if cross_family is not None:
+        cross_primary = cross_family["paired_statistics"]["hng_vs_ordinary_rag"]
+        cross_bootstrap = cross_primary["paired_bootstrap_accuracy"]
+        cross_mcnemar = cross_primary["mcnemar"]
+        cross_hng = cross_family["systems"]["hng"]["accuracy"]
+        cross_ordinary = cross_family["systems"]["ordinary_rag"]["accuracy"]
+        cross_delta = cross_bootstrap["delta"]
+        cross_success = bool(
+            cross_delta > 0
+            and cross_bootstrap["ci95_low"] > 0
+            and cross_mcnemar["exact_two_sided_p"] < 0.05
+        )
+        cross_family_scoreboard_rows.append({
+            "area": "Fixed-LLM cross-family governance vs ordinary candidates",
+            "hng": cross_hng,
+            "baseline": cross_ordinary,
+            "delta": cross_delta,
+            "significance": {
+                "test": "McNemar exact plus paired bootstrap",
+                "p": cross_mcnemar["exact_two_sided_p"],
+                "ci95": [cross_bootstrap["ci95_low"], cross_bootstrap["ci95_high"]],
+            },
+            "evidence_class": "synthetic",
+            "status": "WIN_SYNTHETIC_CROSS_FAMILY" if cross_success else "LOSS_OR_INCONCLUSIVE",
+            "notes": "Preregistered fixed-case Mistral-family replication; not an independent dataset, public result, or real-assistant result.",
+        })
     if longmem is not None:
         public_hng = longmem["summaries"]["hng"]["accuracy"]
         public_strong = longmem["summaries"]["strong_structured"]["accuracy"]
@@ -822,6 +875,7 @@ def main() -> int:
                 "status": "LOSS_TIE",
                 "notes": "No HNG-specific behavioral advantage; StrongStructuredBaseline uses fewer prompt tokens.",
             },
+            *cross_family_scoreboard_rows,
             *([] if reliability is None else [{
                 "area": "Bounded storage reliability",
                 "hng": 1.0 if reliability["status"] == "PASS" else 0.0,
@@ -961,6 +1015,8 @@ def main() -> int:
                 and llm["candidate_pool_identity_verified"]
             ),
             "llm_failed_events": llm["failed_events"],
+            "cross_family_failed_events": None if cross_family is None else cross_family["historical_failed_events"],
+            "cross_family_candidate_invariants_verified": None if cross_family is None else cross_family["all_fixed_candidate_invariants_pass"],
             "github_status": "CONNECTED_VERIFIED_PRIVATE_YODER23_HNG_MEMORY",
             "public_candidate_invariants_verified": (
                 None if longmem is None and locomo is None and personamem is None and budget is None and hybrid is None and reranker is None else bool(

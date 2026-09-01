@@ -1,0 +1,55 @@
+{
+  "eval_count": 8,
+  "installed_model_metadata": {
+    "capabilities": [
+      "vision",
+      "completion",
+      "tools"
+    ],
+    "details": {
+      "context_length": 131072,
+      "embedding_length": 5120,
+      "families": [
+        "mistral3"
+      ],
+      "family": "mistral3",
+      "format": "gguf",
+      "parameter_size": "24.0B",
+      "parent_model": "",
+      "quantization_level": "Q4_K_M"
+    },
+    "digest": "b9aaf0c2586a8ed8105feab808c0f034bd4d346203822f048e2366165a13f4ea",
+    "model": "mistral-small3.1:24b-instruct-2503-q4_K_M",
+    "modified_at": "2026-09-01T10:20:37.8183916-04:00",
+    "name": "mistral-small3.1:24b-instruct-2503-q4_K_M",
+    "size": 15486899116
+  },
+  "model": "mistral-small3.1:24b-instruct-2503-q4_K_M",
+  "model_digest": "b9aaf0c2586a8ed8105feab808c0f034bd4d346203822f048e2366165a13f4ea",
+  "outer_prompt_template_sha256": "5c9341015df826725a014c61afe115edbeeb2b979f3308ef3659082e79d7f7bd",
+  "prompt_eval_count": 1892,
+  "prompt_sha256": "9d5d1e5988fa564c2059bce6f6874b8375148ac4966cb635e65ddeaa9817ed4c",
+  "qualification_scope": "Endpoint, exact digest, system-message, JSON-schema, and enum-response smoke only; no holdout inference.",
+  "qualified_at": "2026-09-01T14:21:17.202099+00:00",
+  "raw_response": {
+    "created_at": "2026-09-01T14:21:17.2000702Z",
+    "done": true,
+    "done_reason": "stop",
+    "eval_count": 8,
+    "eval_duration": 821583000,
+    "load_duration": 13033867600,
+    "message": {
+      "content": "{\"decision\":\"conflicted\"}",
+      "role": "assistant"
+    },
+    "model": "mistral-small3.1:24b-instruct-2503-q4_K_M",
+    "prompt_eval_count": 1892,
+    "prompt_eval_duration": 9431990000,
+    "total_duration": 23310842100
+  },
+  "returned_decision": "conflicted",
+  "schema_version": 1,
+  "smoke_case_id": "duplicate_attack-00",
+  "smoke_split": "development",
+  "status": "QUALIFIED"
+}

@@ -46,6 +46,7 @@ SEED = 20260831
 NOW = "2026-08-31T12:00:00+00:00"
 DEFAULT_MODEL = "qwen3.8:27b-q4_K_M"
 DEFAULT_DIGEST = "25b843619e944cd0ae6069f94ff4e5e26a16e109ccbc0a66a0f05979ed70098e"
+DECISION_VALUES = ("support", "challenge", "conflicted", "insufficient_evidence")
 
 TRUST_SOURCE = {
     "system_telemetry": 1.0,
@@ -571,12 +572,7 @@ def ollama_decide(
             "properties": {
                 "decision": {
                     "type": "string",
-                    "enum": [
-                        "support",
-                        "challenge",
-                        "conflicted",
-                        "insufficient_evidence",
-                    ],
+                    "enum": list(DECISION_VALUES),
                 }
             },
             "required": ["decision"],
@@ -607,6 +603,8 @@ def ollama_decide(
     content = payload.get("message", {}).get("content", "")
     parsed = json.loads(content)
     decision = str(parsed["decision"])
+    if decision not in DECISION_VALUES:
+        raise ValueError(f"unsupported model decision: {decision!r}")
     metadata = {
         "elapsed_seconds": elapsed,
         "prompt_eval_count": payload.get("prompt_eval_count"),
@@ -729,6 +727,8 @@ def run_llm(
     endpoint: str,
     timeout: float,
     limit: int,
+    protocol: str = "fixed_candidate_llm_holdout",
+    preregistered_commit: str | None = None,
 ) -> dict[str, object]:
     selected_cases = [case for case in scenarios if case.split == "holdout"][:limit]
     event_path = output / "raw" / "llm_events.jsonl"
@@ -754,6 +754,8 @@ def run_llm(
             base = {
                 "schema_version": SCHEMA_VERSION,
                 "event_type": "llm_memory_system_result",
+                "protocol": protocol,
+                "preregistered_commit": preregistered_commit,
                 "evidence_class": "synthetic",
                 "case_id": scenario.case_id,
                 "family": scenario.family,
@@ -810,6 +812,8 @@ def run_llm(
         "schema_version": SCHEMA_VERSION,
         "evidence_class": "synthetic",
         "benchmark": "fixed_candidate_llm_holdout",
+        "protocol": protocol,
+        "preregistered_commit": preregistered_commit,
         "model": model,
         "model_digest": model_digest,
         "requested_cases": len(selected_cases),
@@ -844,6 +848,16 @@ def run_llm(
             "correct": sum(correctness[system]),
             "total": len(correctness[system]),
             "accuracy": statistics.mean(correctness[system]) if correctness[system] else None,
+            "by_family": {
+                family: {
+                    "correct": sum(bool(row["correct"]) for row in selected if row["family"] == family),
+                    "total": sum(row["family"] == family for row in selected),
+                    "accuracy": statistics.mean(
+                        bool(row["correct"]) for row in selected if row["family"] == family
+                    ),
+                }
+                for family in sorted({str(row["family"]) for row in selected})
+            },
             "prompt_tokens_total": sum(int(row.get("prompt_eval_count") or 0) for row in selected),
             "generation_tokens_total": sum(int(row.get("eval_count") or 0) for row in selected),
             "latency_seconds": {

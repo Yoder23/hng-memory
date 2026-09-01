@@ -1,0 +1,33 @@
+{
+  "complexity_control": "hng_vs_strong_structured",
+  "evidence_class": "synthetic",
+  "expected_events": 90,
+  "frozen_files": {
+    "breakthrough_eval/fixed_candidate/LLM_RESULTS.json": "3ee002b23e602fd95f8d7311e42e91ec2e5600cc3106768ff46619157609e318",
+    "breakthrough_eval/fixed_candidate/raw/llm_events.jsonl": "ef6f7add11cdc150e964cca686decf07c059f22bf0c25d2c2668c964f4699220",
+    "breakthrough_eval/fixed_candidate_cross_family/MODEL_QUALIFICATION.json": "ea371f116428bc2c7928e393ec0fede65781d3da0feb5a0de55c2db06e581982",
+    "breakthrough_eval/fixed_candidate_cross_family/PREPARED.json": "eddfc96fc553dad7c5ac675222658bd8b374d9b85465383e48c3d864ad6b28c3",
+    "breakthrough_eval/fixed_candidate_cross_family/PROTOCOL.md": "3a123473c547bcab08ee41215326c846b041c476579b903a568fb0e4b2d8a365",
+    "breakthrough_eval/scripts/fixed_candidate_cross_family.py": "b19a8573bb6cea430cda3e35dc9b42fd5e4cf7c24ee40243dbacc8a60fe2523f",
+    "breakthrough_eval/scripts/fixed_candidate_governance.py": "58c6569254ee3a451151cac061e6ce42b2cceeb56637fbfe1e05ca985877e55f",
+    "breakthrough_eval/tests/test_fixed_candidate_cross_family.py": "9bb468567ed890e7317930ef4c458e80127f46bc814a5252c44ecc4dbb450d3c",
+    "breakthrough_eval/tests/test_fixed_candidate_governance.py": "c64ed71944f0827464b7b801635a3b16bda04819ae52606150b2e4b856362ee5"
+  },
+  "model": "mistral-small3.1:24b-instruct-2503-q4_K_M",
+  "model_digest": "b9aaf0c2586a8ed8105feab808c0f034bd4d346203822f048e2366165a13f4ea",
+  "model_family": "mistral3",
+  "outer_prompt_template_sha256": "5c9341015df826725a014c61afe115edbeeb2b979f3308ef3659082e79d7f7bd",
+  "parameter_size": "24.0B",
+  "primary_comparison": "hng_vs_ordinary_rag",
+  "protocol": "fixed_candidate_cross_family_llm_holdout",
+  "quantization_level": "Q4_K_M",
+  "sample_count": 30,
+  "schema_version": 1,
+  "status": "PREREGISTERED_SCORE_BLIND",
+  "success_rule": "positive delta, paired-bootstrap ci95_low > 0, and exact two-sided McNemar p < 0.05",
+  "systems": [
+    "ordinary_rag",
+    "strong_structured",
+    "hng"
+  ]
+}

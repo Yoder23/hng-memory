@@ -4,7 +4,7 @@ Audit date: 2026-09-01. Machine-readable source: RESOURCE_INVENTORY.json.
 
 GitHub is connected to the user-confirmed account Yoder23. The only remote is the private
 repository at https://github.com/Yoder23/hng-memory.git; local main, origin/main, and GitHub were
-verified at commit 41a3317f87dc5c80b6ee84a6f4f2411baa111ea8 on 2026-09-01.
+verified at commit 7e95e900a63ceb09a094b7a91b96d255008dc68d on 2026-09-01.
 
 ## Available
 
@@ -18,6 +18,10 @@ verified at commit 41a3317f87dc5c80b6ee84a6f4f2411baa111ea8 on 2026-09-01.
   27.3B parameters, Q4_K_M, 262,144-token declared context.
 - qwen3-coder:latest is available, but is another Qwen-family model and cannot satisfy a
   cross-family claim.
+- Ollama Mistral Small 3.1 `mistral-small3.1:24b-instruct-2503-q4_K_M`, digest
+  b9aaf0c2586a8ed8105feab808c0f034bd4d346203822f048e2366165a13f4ea, is qualified as a
+  genuinely different `mistral3` reader family: 24.0B parameters, Q4_K_M, 131,072-token declared
+  context. Its development-only JSON-schema smoke is preserved with no holdout inference.
 - Official Qwen3-Reranker-0.6B at repository revision
   e61197ed45024b0ed8a2d74b80b4d909f1255473 is installed for local Transformers/CUDA inference;
   model.safetensors SHA-256 is

@@ -1,8 +1,11 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 from pathlib import Path
 import sys
+
+import pytest
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -58,3 +61,23 @@ def test_mcnemar_exact_known_values():
     assert result["left_correct_right_wrong"] == 10
     assert result["right_correct_left_wrong"] == 0
     assert result["exact_two_sided_p"] == 0.001953125
+
+
+def test_ollama_decision_outside_frozen_enum_fails_closed(monkeypatch):
+    class Response:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_args):
+            return None
+
+        def read(self):
+            return json.dumps({"message": {"content": '{"decision":"invented"}'}}).encode()
+
+    monkeypatch.setattr(MODULE.urllib.request, "urlopen", lambda *_args, **_kwargs: Response())
+    scenario = next(case for case in MODULE.generate_scenarios() if case.split == "development")
+    context = MODULE.context_for("ordinary_rag", scenario, MODULE.raw_majority_decide(scenario))
+    with pytest.raises(ValueError, match="unsupported model decision"):
+        MODULE.ollama_decide(
+            "test-model", scenario, context, endpoint="http://unused", timeout=1.0
+        )

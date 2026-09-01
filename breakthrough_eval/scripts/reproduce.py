@@ -180,6 +180,22 @@ def commands_for(args: argparse.Namespace) -> list[Command]:
             ),
             compile_results,
         ]
+    if args.command == "cross-family":
+        argv = [sys.executable, str(SCRIPTS / "fixed_candidate_cross_family.py")]
+        if not args.execute_llm:
+            argv.append("--prepare-only")
+        else:
+            if not args.preregistered_commit:
+                raise ValueError("cross-family execution requires --preregistered-commit")
+            argv.extend(["--preregistered-commit", args.preregistered_commit])
+        return [
+            Command(
+                "fixed_candidate_cross_family_llm_holdout",
+                tuple(argv),
+                "Fixed-case Mistral-family replication of ordinary, Strong, and HNG contexts.",
+            ),
+            compile_results,
+        ]
     raise AssertionError(f"unknown command: {args.command}")
 
 
@@ -232,6 +248,9 @@ def parse_args() -> argparse.Namespace:
     hybrid.add_argument("--execute-llm", action="store_true", help="Run the costly local reader/judge calls.")
     reranker = subparsers.add_parser("reranker-holdout", help="Prepare or run the disjoint LoCoMo neural-reranker holdout.")
     reranker.add_argument("--execute-llm", action="store_true", help="Run the costly local reader/judge calls.")
+    cross = subparsers.add_parser("cross-family", help="Prepare or run the fixed-candidate Mistral reader replication.")
+    cross.add_argument("--execute-llm", action="store_true", help="Run the 90 local Mistral holdout calls.")
+    cross.add_argument("--preregistered-commit", help="Exact clean commit that froze the cross-family protocol.")
     return parser.parse_args()
 
 

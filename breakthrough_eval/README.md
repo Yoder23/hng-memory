@@ -42,6 +42,8 @@ C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py latency --repeats
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py retrieval-budget --execute-llm
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py hybrid-holdout --execute-llm
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py reranker-holdout --execute-llm
+C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py cross-family
+C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py cross-family --execute-llm --preregistered-commit COMMIT
 ```
 
 Omit `--execute-llm` to prepare and verify expensive experiments without invoking the local 27B
@@ -70,6 +72,11 @@ The reranker-holdout command uses a fourth disjoint LoCoMo-Plus window. It appli
 Qwen3-Reranker-0.6B interface to the union of BM25-top-128 and dense-top-128, freezes the resulting
 top 64, and compares BM25, dense, RRF hybrid, cross-encoder reranked, full context, Strong, and HNG.
 Preparation requires the pinned model revision and weight SHA recorded in the protocol.
+
+The cross-family command reuses the exact 30 synthetic fixed-candidate holdout cases and all
+ordinary/Strong/HNG context hashes with a pinned Mistral Small 3.1 reader. Execution is fail-closed:
+it requires the exact clean preregistration commit, full installed model digest, and 90 unique
+completed case/system events. This is a model-family replication, not a new or public benchmark.
 
 The scaled-isolation command creates ignored SQLite runtime files, takes about seven minutes on the
 recorded host, and refuses to overwrite an earlier preserved run.

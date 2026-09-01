@@ -259,3 +259,18 @@ zero event errors, and one preregistration commit across the complete log.
 3. The first direct smoke-script invocation failed before model load because its module search path
    omitted the repository root. The entry point now uses the same root bootstrap as the other
    evaluation scripts. The corrected smoke ranks the relevant passage 0.9897 versus 0.0250.
+
+## Cross-family reader replication setup failures
+
+1. The first Ollama inventory command used a nested inline Python f-string that the local shell
+   helper rejected while parsing quotes. Python never launched and no model or artifact changed.
+   A JSON-only inventory command then succeeded.
+2. A standalone `pytest` executable resolved to a different Python environment and failed during
+   collection because it could not import `breakthrough_eval`. The project interpreter passed the
+   same focused suite. No holdout inference had started.
+3. One combined patch submission had an invalid multi-file hunk boundary and was rejected before
+   applying any line. The changes were split into valid patches and their regression tests passed.
+4. The first append-only resume-guard patch lost a backslash while traversing the JavaScript,
+   PowerShell, and Python quoting layers, producing a Python syntax error during test collection.
+   No inference ran. The path normalization now uses an unambiguous character code and the focused
+   suite passes before preregistration.

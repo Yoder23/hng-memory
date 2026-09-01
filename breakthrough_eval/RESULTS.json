@@ -1,6 +1,8 @@
 {
   "integrity": {
     "candidate_pool_identity_verified": true,
+    "cross_family_candidate_invariants_verified": null,
+    "cross_family_failed_events": null,
     "github_status": "CONNECTED_VERIFIED_PRIVATE_YODER23_HNG_MEMORY",
     "literature_mixed_with_local": false,
     "llm_failed_events": 0,
