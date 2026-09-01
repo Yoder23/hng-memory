@@ -3,10 +3,12 @@
   "audit_date": "2026-08-31",
   "baseline_commit": "e57db1b1e92329e9b8f2b173be9a506d2b898da8",
   "github": {
-    "status": "DISCONNECTED_PENDING_USER_ACCOUNT",
-    "account": null,
-    "repository": null,
-    "note": "The Yoder23 credential and remote were rejected by the user as belonging to Tao Yu and removed. No push destination is configured."
+    "status": "CONNECTED_VERIFIED_PRIVATE",
+    "account": "Yoder23",
+    "repository": "https://github.com/Yoder23/hng-memory",
+    "remote": "https://github.com/Yoder23/hng-memory.git",
+    "verified_commit": "c089b1b93bfaffc9d87bca0861dafe44942e9553",
+    "viewer_permission": "ADMIN"
   },
   "hardware": {
     "cpu": "Intel Core i9-12900H",
@@ -43,8 +45,20 @@
   ],
   "datasets": [
     {"name": "QMSum", "status": "AVAILABLE_OFFICIAL_PINNED_CHECKOUT"},
-    {"name": "LongMemEval-V2", "status": "NOT_INSTALLED"},
-    {"name": "LoCoMo-Plus", "status": "NOT_INSTALLED"},
+    {
+      "name": "LongMemEval-V2",
+      "status": "TEXT_SMALL_TIER_VALIDATED_SCREENSHOT_TRAJECTORIES_MISSING",
+      "repository_commit": "2cc8c540bdb87fe6761629b585e727e1c4704520",
+      "questions": 451,
+      "trajectories": 1870,
+      "haystack_questions": 451
+    },
+    {
+      "name": "LoCoMo-Plus",
+      "status": "OFFICIAL_DATA_PREPARED",
+      "repository_commit": "059f4e3d38f7f1f96765e8e2cb7de3097551bffb",
+      "unified_samples": 2387
+    },
     {"name": "PersonaMem-v2", "status": "NOT_INSTALLED"},
     {"name": "PersonaMem", "status": "NOT_INSTALLED"},
     {"name": "LaMP", "status": "NOT_INSTALLED"},

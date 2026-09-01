@@ -26,6 +26,20 @@ Additional batches are `gauntlets`, `public`, `providers`, and `10m`. Batches ar
 
 The QMSum public batch additionally requires `--qmsum-jsonl` pointing to the official test JSONL. External datasets are not committed to this repository.
 
+The breakthrough experiments have one small command surface:
+
+```powershell
+C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py core
+C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py adversarial
+C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py rag-governance --execute-llm
+C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py public-memory --execute-llm
+C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py belief-revision
+```
+
+Omit `--execute-llm` to prepare and verify expensive experiments without invoking the local 27B
+model. Add `--dry-run` before the subcommand to print the exact commands. Public-memory execution
+requires the pinned external datasets described in `PUBLIC_RESOURCES.json`; they are ignored by Git.
+
 ## Current resource boundary
 
-The repository includes synthetic HDC assistant benchmarks, adapters, QMSum, and the governed-memory implementation. It does not include the user's production HDC interpreter, real interaction traces, LLM credentials, or downloaded LongMemEval-V2/LoCoMo-Plus/PersonaMem-v2 datasets. Those gates remain `BLOCKED_EXTERNAL` until the required resource is actually available; they are never substituted with oracle labels or synthetic vectors.
+The repository includes synthetic HDC assistant benchmarks, adapters, QMSum, and the governed-memory implementation. Official LongMemEval-V2 small-tier text data and LoCoMo-Plus inputs are installed externally and pinned by revision/hash, but not committed. The repository does not include the user's production HDC interpreter, real interaction traces, LongMemEval-V2 trajectory screenshots, hosted judge credentials, or PersonaMem-v2 data. Those missing gates remain `BLOCKED_EXTERNAL`; they are never substituted with oracle labels or synthetic vectors.

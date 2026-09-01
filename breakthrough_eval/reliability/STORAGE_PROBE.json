@@ -1,0 +1,128 @@
+{
+  "append_latency_ms": {
+    "mean": 2.5920016400690655,
+    "p50": 2.332200005184859,
+    "p95": 2.971215039724484,
+    "p99": 7.091460035881037,
+    "stdev": 4.6335285537696285
+  },
+  "backup": "breakthrough_eval/reliability/run_data/storage_probe_backup.sqlite",
+  "backup_bytes": 12410880,
+  "benchmark": "bounded_sqlite_evidence_store_reliability_probe",
+  "claim_boundary": "bounded local probe, not an hours/days production soak",
+  "command": [
+    "C:\\Python310\\python.exe",
+    "breakthrough_eval\\scripts\\storage_reliability_probe.py"
+  ],
+  "config": {
+    "journal_mode": "WAL",
+    "lifecycle_records": 10,
+    "records": 10000,
+    "restart_every": 1000,
+    "synchronous": "FULL",
+    "tenants": 10
+  },
+  "database": "breakthrough_eval/reliability/run_data/storage_probe.sqlite",
+  "database_bytes": 12410880,
+  "duration_seconds": 28.12475080002332,
+  "generation_before_backup": 10011,
+  "ledger": {
+    "after_count": 10000,
+    "after_sha256": "1e7584b89e6afa80e73ae5dbf0a30a26d1271cb0fccd667f13bd8012050e1ded",
+    "before_count": 10000,
+    "before_sha256": "1e7584b89e6afa80e73ae5dbf0a30a26d1271cb0fccd667f13bd8012050e1ded",
+    "identical": true
+  },
+  "lifecycle_passed": true,
+  "restart_checks": [
+    {
+      "expected_generation": 1000,
+      "generation": 1000,
+      "passed": true,
+      "records_written": 1000,
+      "reopen_ms": 5.2063000039197505,
+      "sentinel_present": true
+    },
+    {
+      "expected_generation": 2000,
+      "generation": 2000,
+      "passed": true,
+      "records_written": 2000,
+      "reopen_ms": 4.865400027483702,
+      "sentinel_present": true
+    },
+    {
+      "expected_generation": 3000,
+      "generation": 3000,
+      "passed": true,
+      "records_written": 3000,
+      "reopen_ms": 2.875200007110834,
+      "sentinel_present": true
+    },
+    {
+      "expected_generation": 4000,
+      "generation": 4000,
+      "passed": true,
+      "records_written": 4000,
+      "reopen_ms": 2.483299991581589,
+      "sentinel_present": true
+    },
+    {
+      "expected_generation": 5000,
+      "generation": 5000,
+      "passed": true,
+      "records_written": 5000,
+      "reopen_ms": 1.8762999679893255,
+      "sentinel_present": true
+    },
+    {
+      "expected_generation": 6000,
+      "generation": 6000,
+      "passed": true,
+      "records_written": 6000,
+      "reopen_ms": 2.43130000308156,
+      "sentinel_present": true
+    },
+    {
+      "expected_generation": 7000,
+      "generation": 7000,
+      "passed": true,
+      "records_written": 7000,
+      "reopen_ms": 2.4042000295594335,
+      "sentinel_present": true
+    },
+    {
+      "expected_generation": 8000,
+      "generation": 8000,
+      "passed": true,
+      "records_written": 8000,
+      "reopen_ms": 3.9084000163711607,
+      "sentinel_present": true
+    },
+    {
+      "expected_generation": 9000,
+      "generation": 9000,
+      "passed": true,
+      "records_written": 9000,
+      "reopen_ms": 4.266000003553927,
+      "sentinel_present": true
+    }
+  ],
+  "restored_generation": 10011,
+  "schema_version": 1,
+  "seed": 20260831,
+  "status": "PASS",
+  "tenant_counts": {
+    "tenant-000": 1000,
+    "tenant-001": 1000,
+    "tenant-002": 1000,
+    "tenant-003": 1000,
+    "tenant-004": 1000,
+    "tenant-005": 1000,
+    "tenant-006": 1000,
+    "tenant-007": 1000,
+    "tenant-008": 1000,
+    "tenant-009": 1000
+  },
+  "tenant_isolation_passed": true
+}

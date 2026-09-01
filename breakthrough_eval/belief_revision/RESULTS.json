@@ -1,0 +1,317 @@
+{
+  "arms": {
+    "append_only_latest": {
+      "contradiction_recognition_rate": 0.0,
+      "correct": 400,
+      "current_belief_accuracy": 0.8,
+      "historical_reconstruction_rate": 1.0,
+      "incorrect_persistence_events": 0,
+      "provenance_preservation_rate": 1.0,
+      "queries": 500,
+      "revision_latency_events_mean": 0
+    },
+    "hng_belief_store_authority": {
+      "contradiction_recognition_rate": 1.0,
+      "correct": 500,
+      "current_belief_accuracy": 1.0,
+      "historical_reconstruction_rate": 1.0,
+      "incorrect_persistence_events": 0,
+      "provenance_preservation_rate": 1.0,
+      "queries": 500,
+      "revision_latency_events_mean": 0
+    },
+    "naive_first_fact": {
+      "contradiction_recognition_rate": 0.0,
+      "correct": 300,
+      "current_belief_accuracy": 0.6,
+      "historical_reconstruction_rate": 0.0,
+      "incorrect_persistence_events": 200,
+      "provenance_preservation_rate": 0.0,
+      "queries": 500,
+      "revision_latency_events_mean": null
+    },
+    "strong_structured_authority": {
+      "contradiction_recognition_rate": 1.0,
+      "correct": 500,
+      "current_belief_accuracy": 1.0,
+      "historical_reconstruction_rate": 1.0,
+      "incorrect_persistence_events": 0,
+      "provenance_preservation_rate": 1.0,
+      "queries": 500,
+      "revision_latency_events_mean": 0
+    },
+    "temporal_latest": {
+      "contradiction_recognition_rate": 1.0,
+      "correct": 400,
+      "current_belief_accuracy": 0.8,
+      "historical_reconstruction_rate": 1.0,
+      "incorrect_persistence_events": 0,
+      "provenance_preservation_rate": 1.0,
+      "queries": 500,
+      "revision_latency_events_mean": 0
+    }
+  },
+  "benchmark": "synthetic_belief_revision_component_probe",
+  "cases": 100,
+  "claim_boundary": "controlled synthetic component study; authority policy is supplied by the harness; not a public benchmark or end-to-end assistant result",
+  "duration_seconds": 0.07495649997144938,
+  "events_per_case": 5,
+  "hng_vs_strong_structured": {
+    "accuracy_delta": 0.0,
+    "interpretation": "exact tie; no HNG superiority claim"
+  },
+  "samples": [
+    {
+      "hng": {
+        "current_statement": "state-0-c",
+        "history": [
+          {
+            "contradicting_evidence_ids": [],
+            "reason": "created",
+            "revision": 1,
+            "statement": "state-0-a",
+            "supporting_evidence_ids": [
+              "t000-e1"
+            ]
+          },
+          {
+            "contradicting_evidence_ids": [
+              "t000-e3"
+            ],
+            "reason": "new verified authoritative evidence",
+            "revision": 2,
+            "statement": "state-0-b",
+            "supporting_evidence_ids": [
+              "t000-e1",
+              "t000-e2",
+              "t000-e4"
+            ]
+          },
+          {
+            "contradicting_evidence_ids": [
+              "t000-e3"
+            ],
+            "reason": "new verified authoritative evidence",
+            "revision": 3,
+            "statement": "state-0-c",
+            "supporting_evidence_ids": [
+              "t000-e1",
+              "t000-e2",
+              "t000-e4",
+              "t000-e5"
+            ]
+          }
+        ],
+        "preserved_evidence_ids": [
+          "t000-e1",
+          "t000-e2",
+          "t000-e3",
+          "t000-e4",
+          "t000-e5"
+        ],
+        "revision_count": 3
+      },
+      "timeline": [
+        {
+          "authoritative": true,
+          "id": "t000-e1",
+          "value": "state-0-a",
+          "verified": true
+        },
+        {
+          "authoritative": false,
+          "id": "t000-e2",
+          "value": "state-0-a",
+          "verified": true
+        },
+        {
+          "authoritative": false,
+          "id": "t000-e3",
+          "value": "state-0-b",
+          "verified": false
+        },
+        {
+          "authoritative": true,
+          "id": "t000-e4",
+          "value": "state-0-b",
+          "verified": true
+        },
+        {
+          "authoritative": true,
+          "id": "t000-e5",
+          "value": "state-0-c",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "hng": {
+        "current_statement": "state-1-c",
+        "history": [
+          {
+            "contradicting_evidence_ids": [],
+            "reason": "created",
+            "revision": 1,
+            "statement": "state-1-a",
+            "supporting_evidence_ids": [
+              "t001-e1"
+            ]
+          },
+          {
+            "contradicting_evidence_ids": [
+              "t001-e3"
+            ],
+            "reason": "new verified authoritative evidence",
+            "revision": 2,
+            "statement": "state-1-b",
+            "supporting_evidence_ids": [
+              "t001-e1",
+              "t001-e2",
+              "t001-e4"
+            ]
+          },
+          {
+            "contradicting_evidence_ids": [
+              "t001-e3"
+            ],
+            "reason": "new verified authoritative evidence",
+            "revision": 3,
+            "statement": "state-1-c",
+            "supporting_evidence_ids": [
+              "t001-e1",
+              "t001-e2",
+              "t001-e4",
+              "t001-e5"
+            ]
+          }
+        ],
+        "preserved_evidence_ids": [
+          "t001-e1",
+          "t001-e2",
+          "t001-e3",
+          "t001-e4",
+          "t001-e5"
+        ],
+        "revision_count": 3
+      },
+      "timeline": [
+        {
+          "authoritative": true,
+          "id": "t001-e1",
+          "value": "state-1-a",
+          "verified": true
+        },
+        {
+          "authoritative": false,
+          "id": "t001-e2",
+          "value": "state-1-a",
+          "verified": true
+        },
+        {
+          "authoritative": false,
+          "id": "t001-e3",
+          "value": "state-1-b",
+          "verified": false
+        },
+        {
+          "authoritative": true,
+          "id": "t001-e4",
+          "value": "state-1-b",
+          "verified": true
+        },
+        {
+          "authoritative": true,
+          "id": "t001-e5",
+          "value": "state-1-c",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "hng": {
+        "current_statement": "state-2-c",
+        "history": [
+          {
+            "contradicting_evidence_ids": [],
+            "reason": "created",
+            "revision": 1,
+            "statement": "state-2-a",
+            "supporting_evidence_ids": [
+              "t002-e1"
+            ]
+          },
+          {
+            "contradicting_evidence_ids": [
+              "t002-e3"
+            ],
+            "reason": "new verified authoritative evidence",
+            "revision": 2,
+            "statement": "state-2-b",
+            "supporting_evidence_ids": [
+              "t002-e1",
+              "t002-e2",
+              "t002-e4"
+            ]
+          },
+          {
+            "contradicting_evidence_ids": [
+              "t002-e3"
+            ],
+            "reason": "new verified authoritative evidence",
+            "revision": 3,
+            "statement": "state-2-c",
+            "supporting_evidence_ids": [
+              "t002-e1",
+              "t002-e2",
+              "t002-e4",
+              "t002-e5"
+            ]
+          }
+        ],
+        "preserved_evidence_ids": [
+          "t002-e1",
+          "t002-e2",
+          "t002-e3",
+          "t002-e4",
+          "t002-e5"
+        ],
+        "revision_count": 3
+      },
+      "timeline": [
+        {
+          "authoritative": true,
+          "id": "t002-e1",
+          "value": "state-2-a",
+          "verified": true
+        },
+        {
+          "authoritative": false,
+          "id": "t002-e2",
+          "value": "state-2-a",
+          "verified": true
+        },
+        {
+          "authoritative": false,
+          "id": "t002-e3",
+          "value": "state-2-b",
+          "verified": false
+        },
+        {
+          "authoritative": true,
+          "id": "t002-e4",
+          "value": "state-2-b",
+          "verified": true
+        },
+        {
+          "authoritative": true,
+          "id": "t002-e5",
+          "value": "state-2-c",
+          "verified": true
+        }
+      ]
+    }
+  ],
+  "schema_version": 1,
+  "seed": 20260831,
+  "status": "PASS"
+}

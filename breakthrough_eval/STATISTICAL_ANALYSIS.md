@@ -8,6 +8,20 @@ test over discordant pairs. Accuracy deltas use 10,000 paired bootstrap resample
 this phase does not claim latency confidence intervals because calls were serialized once on one
 machine and order effects remain possible.
 
+## Provenance ablation
+
+On the 25 frozen `untrusted_poison` cases, HNG provenance governance is correct on all 25 while
+no-provenance and display-only policies are correct on 0. The paired exact McNemar p-value is below
+`1e-7`. HNG and StrongStructuredBaseline are identical on all 25, giving exact McNemar p=1.0 and a
+zero effect. The study is synthetic and family-specific.
+
+## LongMemEval-V2 public-data pilot
+
+HNG, StrongStructuredBaseline, and BM25 each score 4/21 on the noncanonical text pilot, with the
+same per-ability counts and identical fixed prompts. The observed effect is 0 percentage points.
+No significance or competitiveness claim is made at n=21, and no leaderboard comparison is valid
+because the reader, retriever, judge, and subset differ from the official stack.
+
 ## Deterministic Adversarial-250
 
 | Comparison | Delta | Bootstrap 95% CI | Discordant HNG-only / other-only | Exact p |

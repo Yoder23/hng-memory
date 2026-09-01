@@ -2,9 +2,9 @@
 
 Audit date: 2026-08-31. Machine-readable source: RESOURCE_INVENTORY.json.
 
-GitHub is intentionally disconnected. The previously configured Yoder23 credential and remote
-were rejected by the user as belonging to Tao Yu, then removed. No push destination is configured
-until the user authenticates the correct account.
+GitHub is connected to the user-confirmed account Yoder23. The only remote is the private
+repository at https://github.com/Yoder23/hng-memory.git; local main, origin/main, and GitHub were
+verified at commit c089b1b93bfaffc9d87bca0861dafe44942e9553 on 2026-08-31.
 
 ## Available
 
@@ -17,6 +17,13 @@ until the user authenticates the correct account.
 - qwen3-coder:latest is available, but is another Qwen-family model and cannot satisfy a
   cross-family claim.
 - Official QMSum test JSONL in the existing pinned checkout.
+- Official LoCoMo-Plus repository at commit
+  059f4e3d38f7f1f96765e8e2cb7de3097551bffb; both released inputs are pinned by SHA-256 and
+  the upstream unified-input generator produced 2,387 samples.
+- Official LongMemEval-V2 repository at commit
+  2cc8c540bdb87fe6761629b585e727e1c4704520; the 451-question small text tier, 1,870
+  trajectories, 451 haystack mappings, and question screenshots pass the upstream validator
+  with trajectory screenshot checking disabled.
 - FAISS CPU 1.15.0 and USearch 2.26.1 vendor environments.
 - Intel Core i9-12900H (14 physical / 20 logical cores), 68,473,409,536 bytes RAM,
   NVIDIA RTX 3080 Laptop GPU 16 GB (driver 591.44), Windows build 26200,
@@ -28,15 +35,16 @@ until the user authenticates the correct account.
   interpreter checkpoint, frozen action library, or real interaction trace corpus is present.
   C:\\Python310\\trainslm contains prototype integration code but no usable trained model.
   This gate is BLOCKED_EXTERNAL; synthetic semantics are forbidden as a substitute.
-- LongMemEval-V2, LoCoMo-Plus, PersonaMem-v2, PersonaMem, LaMP, GovReport, and BillSum are
-  not installed locally.
+- LongMemEval-V2 trajectory screenshots are not installed (the text path and question images are
+  present). PersonaMem-v2, PersonaMem, LaMP, GovReport, and BillSum are not installed locally.
 - No paid hosted-judge credential or spend authorization is assumed.
 - Hindsight, MAGMA, Mem0, Zep, Letta, APEX-MEM, and Memory-R1 are not locally installed
   end-to-end. They remain undefeated.
 
-## Feasible next experiment
+## Active public experiment
 
-The fixed-candidate LLM test can run locally without changing model weights. It will freeze the
-Ollama model digest, prompt template, task, candidate IDs/order, generation options, token budget,
-and random seed. The only variable is the rendered memory system. Ordinary candidate context,
-StrongStructuredBaseline, and HNG must receive the same candidate metadata.
+The pinned LongMemEval-V2 small-tier text pilot is running locally. It is explicitly noncanonical:
+the reader is the frozen local 27B model, trajectory screenshots are omitted, BM25 selects text
+state slices, and judge-dependent items use the same local model as judge. Its fixed-candidate arms
+freeze candidate order, prompt hash, model digest, generation options, and seed. Official answers
+are used only after generation by the official evaluator functions.

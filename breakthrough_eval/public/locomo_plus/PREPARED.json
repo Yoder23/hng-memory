@@ -1,0 +1,873 @@
+{
+  "created_at": "2026-09-01T03:43:14.260962+00:00",
+  "parameters": {
+    "context_chars": 18000,
+    "per_category": 1,
+    "top_k": 16
+  },
+  "protocol": "LoCoMo-Plus six-category local pilot; NONCANONICAL",
+  "sample_count": 6,
+  "samples": [
+    {
+      "candidates": [
+        {
+          "bm25_score": 6.652359580831705,
+          "candidate_id": "locomo-0364:00172",
+          "source_event_id": "locomo-0364:00172",
+          "state_index": 172,
+          "text": "DATE: 9:36 am on 2 April, 2023\nMaria said, \"I bet! What are your plans for the future?\"",
+          "trajectory_id": "locomo-0364"
+        },
+        {
+          "bm25_score": 5.584555995753576,
+          "candidate_id": "locomo-0364:00069",
+          "source_event_id": "locomo-0364:00069",
+          "state_index": 69,
+          "text": "DATE: 7:06 pm on 9 January, 2023\nMaria said, \"Yeah, it's tough. Appreciate what you've got. You got through it - stay strong. Are there any things you like to do to calm down during times like this?\"",
+          "trajectory_id": "locomo-0364"
+        },
+        {
+          "bm25_score": 5.3931674319173,
+          "candidate_id": "locomo-0364:00395",
+          "source_event_id": "locomo-0364:00395",
+          "state_index": 395,
+          "text": "DATE: 7:20 pm on 16 June, 2023\nMaria said, \"Cool, so you have a reminder of all that. It's good to acknowledge what you've been through and appreciate where you are now. Could you tell me more about the challenges?\"",
+          "trajectory_id": "locomo-0364"
+        },
+        {
+          "bm25_score": 5.059694470179756,
+          "candidate_id": "locomo-0364:00584",
+          "source_event_id": "locomo-0364:00584",
+          "state_index": 584,
+          "text": "DATE: 8:06 pm on 9 August, 2023\nMaria said, \"John, that sounds inspiring! Community events like that are always amazing. This pic is heartwarming, that little girl has such a cute smile. What was the event all about?\"",
+          "trajectory_id": "locomo-0364"
+        },
+        {
+          "bm25_score": 4.829726019998997,
+          "candidate_id": "locomo-0364:00630",
+          "source_event_id": "locomo-0364:00630",
+          "state_index": 630,
+          "text": "DATE: 3:14 pm on 13 August, 2023\nMaria said, \"Yeah, John! Pets are great at making you feel loved. It's awesome having them around, they bring so much joy! How's everything going with the mentoring program? Are the students making progress?\"",
+          "trajectory_id": "locomo-0364"
+        },
+        {
+          "bm25_score": 4.340031747346214,
+          "candidate_id": "locomo-0364:00553",
+          "source_event_id": "locomo-0364:00553",
+          "state_index": 553,
+          "text": "DATE: 6:20 pm on 3 August, 2023\nJohn said, \"Maria, what's the deal with that note? Who wrote it and what does it say?\"",
+          "trajectory_id": "locomo-0364"
+        },
+        {
+          "bm25_score": 4.139941759025464,
+          "candidate_id": "locomo-0364:00408",
+          "source_event_id": "locomo-0364:00408",
+          "state_index": 408,
+          "text": "DATE: 7:20 pm on 16 June, 2023\nJohn said, \"Wow, Maria! That photo is so stunning. The colors there are so vivid - it must have been amazing! Trips like these are great - always full of amazing memories! Here's one from our vacation!\" and shared a photo of two children playing in the ocean waves.",
+          "trajectory_id": "locomo-0364"
+        },
+        {
+          "bm25_score": 3.9788137780896005,
+          "candidate_id": "locomo-0364:00098",
+          "source_event_id": "locomo-0364:00098",
+          "state_index": 98,
+          "text": "DATE: 1:17 pm on 28 January, 2023\nMaria said, \"That's nice of you, John. What's the photo about?\"",
+          "trajectory_id": "locomo-0364"
+        },
+        {
+          "bm25_score": 3.8484078840477567,
+          "candidate_id": "locomo-0364:00000",
+          "source_event_id": "locomo-0364:00000",
+          "state_index": 0,
+          "text": "DATE: 11:01 am on 17 December, 2022\nMaria said, \"Hey John! Long time no see! What's up?\"",
+          "trajectory_id": "locomo-0364"
+        },
+        {
+          "bm25_score": 3.7381115184053457,
+          "candidate_id": "locomo-0364:00308",
+          "source_event_id": "locomo-0364:00308",
+          "state_index": 308,
+          "text": "DATE: 7:38 pm on 20 May, 2023\nJohn said, \"Hey Maria, how's it going? Been real busy tackling a project to support military veterans. Trying to get a petition going, it's pretty rewarding but kinda stressful. How are you?\"",
+          "trajectory_id": "locomo-0364"
+        },
+        {
+          "bm25_score": 3.7309664049773636,
+          "candidate_id": "locomo-0364:00075",
+          "source_event_id": "locomo-0364:00075",
+          "state_index": 75,
+          "text": "DATE: 7:06 pm on 9 January, 2023\nMaria said, \"Glad I could help, John. What's up next for you?\"",
+          "trajectory_id": "locomo-0364"
+        },
+        {
+          "bm25_score": 3.7164705856150757,
+          "candidate_id": "locomo-0364:00520",
+          "source_event_id": "locomo-0364:00520",
+          "state_index": 520,
+          "text": "DATE: 6:21 pm on 22 July, 2023\nJohn said, \"Yup, it's a yoga studio I go to often. The vibe is really chill and the instructors are awesome.\"",
+          "trajectory_id": "locomo-0364"
+        },
+        {
+          "bm25_score": 3.6748932301248978,
+          "candidate_id": "locomo-0364:00249",
+          "source_event_id": "locomo-0364:00249",
+          "state_index": 249,
+          "text": "DATE: 3:18 pm on 4 May, 2023\nMaria said, \"Hey John! Nice to hear from you. What's new with you?\"",
+          "trajectory_id": "locomo-0364"
+        },
+        {
+          "bm25_score": 3.6672702182474044,
+          "candidate_id": "locomo-0364:00316",
+          "source_event_id": "locomo-0364:00316",
+          "state_index": 316,
+          "text": "DATE: 7:38 pm on 20 May, 2023\nJohn said, \"I'm really passionate about making sure veterans are supported and valued in our community, so let's make it happen!\"",
+          "trajectory_id": "locomo-0364"
+        },
+        {
+          "bm25_score": 3.6519051100959734,
+          "candidate_id": "locomo-0364:00355",
+          "source_event_id": "locomo-0364:00355",
+          "state_index": 355,
+          "text": "DATE: 11:51 am on 3 June, 2023\nMaria said, \"That's a great lesson to pass on to your kids, John. Both are really important for strong relationships. Any plans to give another pet a loving home?\"",
+          "trajectory_id": "locomo-0364"
+        },
+        {
+          "bm25_score": 3.6391968063508693,
+          "candidate_id": "locomo-0364:00579",
+          "source_event_id": "locomo-0364:00579",
+          "state_index": 579,
+          "text": "DATE: 5:19 pm on 5 August, 2023\nJohn said, \"I appreciate it! Your words are really motivating.\"",
+          "trajectory_id": "locomo-0364"
+        }
+      ],
+      "category": "multi-hop",
+      "input_prompt_sha256": "4be83a46fd86df40ca41b87dd009076c56c2bc3d963888228f325fc874347efa",
+      "memory_without_query_sha256": "df55bc4b7407d3b735ea981b2da17137b17b4c02fb486c14399d12edc28c8d73",
+      "retrieval_corpus_count": 663,
+      "retrieval_corpus_sha256": "171891d5740e1dd9a49e4d917f2030478c9b0b19d0d67759f377afe627af6ecb",
+      "sample_id": "locomo-plus-0364",
+      "selected_candidate_count": 16,
+      "selected_candidate_sha256": "d8fc98a4593d24e900e015bf9f97982ccec480a571cf2dc9348eb235a6392f97",
+      "selected_context_chars": 2558,
+      "source_index": 364,
+      "trigger_sha256": "5862f5a3622b6a1056759ec2a609128d23cd0901244337c208c074cb97328cb5"
+    },
+    {
+      "candidates": [
+        {
+          "bm25_score": 9.15642703296048,
+          "candidate_id": "locomo-0810:00155",
+          "source_event_id": "locomo-0810:00155",
+          "state_index": 155,
+          "text": "DATE: 4:29 pm on 21 August, 2023\nTim said, \"That makes sense! Your holistic approach seems to have numerous benefits. Does strength training have a positive impact on your basketball performance?\"",
+          "trajectory_id": "locomo-0810"
+        },
+        {
+          "bm25_score": 8.748278702588681,
+          "candidate_id": "locomo-0810:00678",
+          "source_event_id": "locomo-0810:00678",
+          "state_index": 678,
+          "text": "DATE: 1:41 pm on 12 January, 2024\nJohn said, \"No problem! Glad you liked the suggestion. Let me know if you have any other questions or need help with anything.\"",
+          "trajectory_id": "locomo-0810"
+        },
+        {
+          "bm25_score": 8.222675416601167,
+          "candidate_id": "locomo-0810:00304",
+          "source_event_id": "locomo-0810:00304",
+          "state_index": 304,
+          "text": "DATE: 1:50 pm on 17 October, 2023\nJohn said, \"Mentoring them has been awesome! Seeing their growth, improvement, and confidence is so fulfilling. I'm glad I could make a positive impact on their lives. Here's a pic of me and some of the younger players at a recent practice.\" and shared a photography of a basketball player standing in a gym with his hands on his hips.",
+          "trajectory_id": "locomo-0810"
+        },
+        {
+          "bm25_score": 8.112357638599814,
+          "candidate_id": "locomo-0810:00341",
+          "source_event_id": "locomo-0810:00341",
+          "state_index": 341,
+          "text": "DATE: 5:51 pm on 21 October, 2023\nTim said, \"That's key, having a strong support network can really help with what we're trying to do. Do you have people you can lean on outside of sports?\" and shared a photo of a group of people hiking through a forest.",
+          "trajectory_id": "locomo-0810"
+        },
+        {
+          "bm25_score": 7.881158873413148,
+          "candidate_id": "locomo-0810:00414",
+          "source_event_id": "locomo-0810:00414",
+          "state_index": 414,
+          "text": "DATE: 10:22 am on 21 November, 2023\nTim said, \"Cool idea. Reflecting on what went wrong and how to improve could definitely help me get back on track. Thanks! Out of curiosity, what's been one of your toughest challenges in basketball?\"",
+          "trajectory_id": "locomo-0810"
+        },
+        {
+          "bm25_score": 7.62278126458902,
+          "candidate_id": "locomo-0810:00268",
+          "source_event_id": "locomo-0810:00268",
+          "state_index": 268,
+          "text": "DATE: 3:00 pm on 2 October, 2023\nJohn said, \"I really admire his work ethic and dedication to the game, such an inspiration.\" and shared a photo of a group of people standing on a basketball court.",
+          "trajectory_id": "locomo-0810"
+        },
+        {
+          "bm25_score": 7.227038795265764,
+          "candidate_id": "locomo-0810:00196",
+          "source_event_id": "locomo-0810:00196",
+          "state_index": 196,
+          "text": "DATE: 6:59 pm on 26 August, 2023\nJohn said, \"Awesome! Can't wait to hear when you are going. Let me know and I'm sure I can help you out.\"",
+          "trajectory_id": "locomo-0810"
+        },
+        {
+          "bm25_score": 7.210750664453392,
+          "candidate_id": "locomo-0810:00271",
+          "source_event_id": "locomo-0810:00271",
+          "state_index": 271,
+          "text": "DATE: 3:00 pm on 2 October, 2023\nTim said, \"Wow! Meeting him and seeing him play must've been awesome. I can only imagine his skills up close.\" and shared a photo of a crowd of people at a concert with their hands in the air.",
+          "trajectory_id": "locomo-0810"
+        },
+        {
+          "bm25_score": 7.14947534571621,
+          "candidate_id": "locomo-0810:00540",
+          "source_event_id": "locomo-0810:00540",
+          "state_index": 540,
+          "text": "DATE: 3:37 pm on 16 December, 2023\nJohn said, \"It's been tough, but I'm trying to stay active and do my rehab. I do physical therapy exercises every day.\" and shared a photo of a man sitting on a chair with a blue ball.",
+          "trajectory_id": "locomo-0810"
+        },
+        {
+          "bm25_score": 7.009020137912763,
+          "candidate_id": "locomo-0810:00425",
+          "source_event_id": "locomo-0810:00425",
+          "state_index": 425,
+          "text": "DATE: 10:22 am on 21 November, 2023\nJohn said, \"I love non-fiction books about personal development and mindset. They help me know myself better. Do you enjoy reading other types of books as well?\"",
+          "trajectory_id": "locomo-0810"
+        },
+        {
+          "bm25_score": 6.8363681876689135,
+          "candidate_id": "locomo-0810:00172",
+          "source_event_id": "locomo-0810:00172",
+          "state_index": 172,
+          "text": "DATE: 4:29 pm on 21 August, 2023\nJohn said, \"That's a classic! What other movies do you watch during the holidays?\"",
+          "trajectory_id": "locomo-0810"
+        },
+        {
+          "bm25_score": 6.805849761879259,
+          "candidate_id": "locomo-0810:00229",
+          "source_event_id": "locomo-0810:00229",
+          "state_index": 229,
+          "text": "DATE: 8:17 pm on 21 September, 2023\nJohn said, \"Thanks! I'll definitely reach out if I need more suggestions. Appreciate the help! Here's a pic I snapped during one of our practices. The sunset looked amazing on the court. Moments like these make me so grateful for my basketball career.\" and shared a photo of a basketball ball on the ground with a basketball hoop in the background.",
+          "trajectory_id": "locomo-0810"
+        },
+        {
+          "bm25_score": 6.75358374689662,
+          "candidate_id": "locomo-0810:00424",
+          "source_event_id": "locomo-0810:00424",
+          "state_index": 424,
+          "text": "DATE: 10:22 am on 21 November, 2023\nTim said, \"Yes, they are still my favorites - I love how they take me to other places. What other books do you like?\"",
+          "trajectory_id": "locomo-0810"
+        },
+        {
+          "bm25_score": 6.730246804425414,
+          "candidate_id": "locomo-0810:00391",
+          "source_event_id": "locomo-0810:00391",
+          "state_index": 391,
+          "text": "DATE: 3:36 pm on 11 November, 2023\nTim said, \"Taking a break from life can help us recharge and get some peace. Plus, it gives us a chance to reconnect with ourselves and tackle life's challenges with a new outlook.\"",
+          "trajectory_id": "locomo-0810"
+        },
+        {
+          "bm25_score": 6.657461454970875,
+          "candidate_id": "locomo-0810:00617",
+          "source_event_id": "locomo-0810:00617",
+          "state_index": 617,
+          "text": "DATE: 5:26 pm on 2 January, 2024\nJohn said, \"Yeah, basketball is still really important to me - I practice and train every day to stay in shape and improve. Can't imagine my life without it, it's my passion.\" and shared a photo of a basketball ball on the ground with a basketball hoop in the background.",
+          "trajectory_id": "locomo-0810"
+        },
+        {
+          "bm25_score": 6.335598329897384,
+          "candidate_id": "locomo-0810:00084",
+          "source_event_id": "locomo-0810:00084",
+          "state_index": 84,
+          "text": "DATE: 4:17 pm on 2 August, 2023\nTim said, \"Books can really inspire and help us keep our dreams alive. Keep it up!\"",
+          "trajectory_id": "locomo-0810"
+        }
+      ],
+      "category": "common-sense",
+      "input_prompt_sha256": "c2716a7651fe6af985deea27d838e21c8ef7d5c4ff992a785e672b75193ef0df",
+      "memory_without_query_sha256": "ebcda2ee067fafe57cec3519b8d7df54de598418a87710820ef78da5763b1772",
+      "retrieval_corpus_count": 680,
+      "retrieval_corpus_sha256": "f6438efc0e17671f2c688196d85b3fa70dd42d964581c9b82a3930b0e39e2f38",
+      "sample_id": "locomo-plus-0810",
+      "selected_candidate_count": 16,
+      "selected_candidate_sha256": "54bf1291469ed5900d3f1fd518423df6e7919dbe521b8175fd247f6ff4bd7531",
+      "selected_context_chars": 3479,
+      "source_index": 810,
+      "trigger_sha256": "fc1a9d721efc8cb5e6769e02fddebe555338df3965b76dda64db0bdc55f15934"
+    },
+    {
+      "candidates": [
+        {
+          "bm25_score": 14.572232998837222,
+          "candidate_id": "locomo-1113:00612",
+          "source_event_id": "locomo-1113:00612",
+          "state_index": 612,
+          "text": "DATE: 2:36 pm on 28 October, 2023\nAndrew said, \"Yay! Does Saturday sound good? We can grab some snacks and have a blast exploring. Because on Sunday I am going on a picnic date with my girlfriend.\"",
+          "trajectory_id": "locomo-1113"
+        },
+        {
+          "bm25_score": 9.287484082770918,
+          "candidate_id": "locomo-1113:00261",
+          "source_event_id": "locomo-1113:00261",
+          "state_index": 261,
+          "text": "DATE: 9:48 am on 8 July, 2023\nAndrew said, \"Woah! They look so cute! What is going on here? They look ready for an adventure.\"",
+          "trajectory_id": "locomo-1113"
+        },
+        {
+          "bm25_score": 7.111659545370365,
+          "candidate_id": "locomo-1113:00162",
+          "source_event_id": "locomo-1113:00162",
+          "state_index": 162,
+          "text": "DATE: 5:23 pm on 13 June, 2023\nAndrew said, \"Hey! Long time no chat. Last Sunday was awesome - my friends and I took a rock climbing class and I made it to the top! It was a fantastic experience and now I'm hooked. Think I'm going to try to do more outdoor activities like this every week!\"",
+          "trajectory_id": "locomo-1113"
+        },
+        {
+          "bm25_score": 7.0833056745754535,
+          "candidate_id": "locomo-1113:00014",
+          "source_event_id": "locomo-1113:00014",
+          "state_index": 14,
+          "text": "DATE: 1:10 pm on 27 March, 2023\nAudrey said, \"Yeah, birds are amazing! I can imagine it feels incredible to soar and see the world from up high. Do you have a favorite type of bird?\"",
+          "trajectory_id": "locomo-1113"
+        },
+        {
+          "bm25_score": 6.683332520039837,
+          "candidate_id": "locomo-1113:00611",
+          "source_event_id": "locomo-1113:00611",
+          "state_index": 611,
+          "text": "DATE: 2:36 pm on 28 October, 2023\nAudrey said, \"Hmmm sure! Let's pick a date and go hike. It should be good!\"",
+          "trajectory_id": "locomo-1113"
+        },
+        {
+          "bm25_score": 6.256915941300231,
+          "candidate_id": "locomo-1113:00206",
+          "source_event_id": "locomo-1113:00206",
+          "state_index": 206,
+          "text": "DATE: 1:51 pm on 26 June, 2023\nAndrew said, \"Definitely! So what's new with you? Anything going on lately? Take a look at this park in my neighborhood that has these flowers.\" and shared a photography of a flower bed with many different colored flowers.",
+          "trajectory_id": "locomo-1113"
+        },
+        {
+          "bm25_score": 5.929567055800332,
+          "candidate_id": "locomo-1113:00559",
+          "source_event_id": "locomo-1113:00559",
+          "state_index": 559,
+          "text": "DATE: 6:12 pm on 19 October, 2023\nAudrey said, \"That's awesome! What is his name?\"",
+          "trajectory_id": "locomo-1113"
+        },
+        {
+          "bm25_score": 5.834932765010725,
+          "candidate_id": "locomo-1113:00236",
+          "source_event_id": "locomo-1113:00236",
+          "state_index": 236,
+          "text": "DATE: 8:32 pm on 3 July, 2023\nAudrey said, \"Agreed! Cooking and eating the food is so rewarding; it's like a form of self-care. I love throwing on some music, pouring a glass of wine, and just going with the flow in the kitchen. It's so therapeutic. See how beautiful this dish is?\" and shared a photo of a plate of food with a lot of vegetables.",
+          "trajectory_id": "locomo-1113"
+        },
+        {
+          "bm25_score": 5.448984567435127,
+          "candidate_id": "locomo-1113:00094",
+          "source_event_id": "locomo-1113:00094",
+          "state_index": 94,
+          "text": "DATE: 5:41 pm on 3 May, 2023\nAndrew said, \"Yup! We don't realize it, but even the littlest gestures can have a big effect. Spreading good vibes and joy, that's the goal right? So what's up? Anything new or fun going on?\"",
+          "trajectory_id": "locomo-1113"
+        },
+        {
+          "bm25_score": 5.334165984071213,
+          "candidate_id": "locomo-1113:00051",
+          "source_event_id": "locomo-1113:00051",
+          "state_index": 51,
+          "text": "DATE: 4:19 pm on 16 April, 2023\nAudrey said, \"Hey Andrew! That cafe sounds pretty awesome, glad you enjoyed it. Yeah, I know what you mean. That feeling of being out in nature, surrounded by beauty and peace, is unbeatable, compared to being surrounded by concrete jungles.\"",
+          "trajectory_id": "locomo-1113"
+        },
+        {
+          "bm25_score": 5.2802862744473105,
+          "candidate_id": "locomo-1113:00386",
+          "source_event_id": "locomo-1113:00386",
+          "state_index": 386,
+          "text": "DATE: 12:24 am on 24 August, 2023\nAudrey said, \"Yeah they really do enjoy the mountain life. Regular grooming is essential to keep them looking good. Daily brushing, regular baths, nail trims, and lots of love is what helps them stay healthy and happy. It's all about keeping them in good shape.\"",
+          "trajectory_id": "locomo-1113"
+        },
+        {
+          "bm25_score": 5.222093562696809,
+          "candidate_id": "locomo-1113:00539",
+          "source_event_id": "locomo-1113:00539",
+          "state_index": 539,
+          "text": "DATE: 4:22 pm on 13 October, 2023\nAndrew said, \"My pup Toby is German Shephard and loves cute sweaters! He's so active. What games do your dogs like to play at the park?\"",
+          "trajectory_id": "locomo-1113"
+        },
+        {
+          "bm25_score": 5.16416084608033,
+          "candidate_id": "locomo-1113:00335",
+          "source_event_id": "locomo-1113:00335",
+          "state_index": 335,
+          "text": "DATE: 11:05 am on 4 August, 2023\nAudrey said, \"Yeah they really mean the world to me. Btw, I never really asked, what breed is Toby?\" and shared a photo of three dogs sitting on a wooden floor looking up.",
+          "trajectory_id": "locomo-1113"
+        },
+        {
+          "bm25_score": 5.078208697395774,
+          "candidate_id": "locomo-1113:00443",
+          "source_event_id": "locomo-1113:00443",
+          "state_index": 443,
+          "text": "DATE: 5:53 pm on 24 September, 2023\nAudrey said, \"It's going great! The flowers are looking great and my veggie patch is coming along. It's so fun to see them grow! Really feels accomplishing.\" and shared a photo of a cactus plant with two white flowers.",
+          "trajectory_id": "locomo-1113"
+        },
+        {
+          "bm25_score": 5.00851068959158,
+          "candidate_id": "locomo-1113:00581",
+          "source_event_id": "locomo-1113:00581",
+          "state_index": 581,
+          "text": "DATE: 10:14 am on 24 October, 2023\nAndrew said, \"Taking it one day at a time is the way to go. A while ago I've been curious about trying sushi. Never done it before, but always hear it's good. Now I understand what the hype is. Have you ever tried it?\" and shared a photo of a tray of sushi with a variety of toppings.",
+          "trajectory_id": "locomo-1113"
+        },
+        {
+          "bm25_score": 4.851415463022725,
+          "candidate_id": "locomo-1113:00652",
+          "source_event_id": "locomo-1113:00652",
+          "state_index": 652,
+          "text": "DATE: 7:59 pm on 4 November, 2023\nAndrew said, \"That's so cute! What sort of activities do you do to stay mentally stimulated?\"",
+          "trajectory_id": "locomo-1113"
+        }
+      ],
+      "category": "single-hop",
+      "input_prompt_sha256": "37979e1028641fcab999f5b68f45ec716e4b0773261fc758794d7a4fa7ac7814",
+      "memory_without_query_sha256": "c3a7bcc44465fd2e58e68000f3008faf73005da09f01bf911e12f810351bd866",
+      "retrieval_corpus_count": 676,
+      "retrieval_corpus_sha256": "505026249dd9c2fa677b77f3f510acf92b7d77a3465c8552b5d76642f7f1d4c7",
+      "sample_id": "locomo-plus-1113",
+      "selected_candidate_count": 16,
+      "selected_candidate_sha256": "5aa22add448df0e29aad43111c630178e0de7f537534f9b2f5069ec333a5bc1e",
+      "selected_context_chars": 3449,
+      "source_index": 1113,
+      "trigger_sha256": "658d11fd6550785f593f600bce0decec33f7127bf71083a008c94d1c5aca5672"
+    },
+    {
+      "candidates": [
+        {
+          "bm25_score": 14.330426036515071,
+          "candidate_id": "locomo-1323:00408",
+          "source_event_id": "locomo-1323:00408",
+          "state_index": 408,
+          "text": "DATE: 1:45 pm on 6 August, 2022\nJames said, \"Cool! You always mentioned your love for gaming. What other game do you want to organize competitions for? And what`s your plan now?\"",
+          "trajectory_id": "locomo-1323"
+        },
+        {
+          "bm25_score": 9.62937101054727,
+          "candidate_id": "locomo-1323:00068",
+          "source_event_id": "locomo-1323:00068",
+          "state_index": 68,
+          "text": "DATE: 12:40 am on 27 March, 2022\nJohn said, \"I played my favorite CS:GO game in an intense tournament. It was awesome to see all the skilled players competing.\"",
+          "trajectory_id": "locomo-1323"
+        },
+        {
+          "bm25_score": 8.48236373313877,
+          "candidate_id": "locomo-1323:00410",
+          "source_event_id": "locomo-1323:00410",
+          "state_index": 410,
+          "text": "DATE: 1:45 pm on 6 August, 2022\nJames said, \"Sounds like a solid plan! Trying out different game genres can be a great way to widen your skills and knowledge.\"",
+          "trajectory_id": "locomo-1323"
+        },
+        {
+          "bm25_score": 7.582043495566264,
+          "candidate_id": "locomo-1323:00185",
+          "source_event_id": "locomo-1323:00185",
+          "state_index": 185,
+          "text": "DATE: 2:36 pm on 29 April, 2022\nJohn said, \"That sounds fun! What's the game like? Does it require a lot of strategy?\"",
+          "trajectory_id": "locomo-1323"
+        },
+        {
+          "bm25_score": 7.2082020076575,
+          "candidate_id": "locomo-1323:00358",
+          "source_event_id": "locomo-1323:00358",
+          "state_index": 358,
+          "text": "DATE: 5:13 pm on 9 July, 2022\nJames said, \"I also plan to visit Vancouver. Maybe, I'll go somewhere else.\"",
+          "trajectory_id": "locomo-1323"
+        },
+        {
+          "bm25_score": 6.77277120324958,
+          "candidate_id": "locomo-1323:00360",
+          "source_event_id": "locomo-1323:00360",
+          "state_index": 360,
+          "text": "DATE: 5:13 pm on 9 July, 2022\nJames said, \"I plan to return on July 20, I\u2019ll definitely bring you some kind of souvenir!\"",
+          "trajectory_id": "locomo-1323"
+        },
+        {
+          "bm25_score": 6.250111992797962,
+          "candidate_id": "locomo-1323:00310",
+          "source_event_id": "locomo-1323:00310",
+          "state_index": 310,
+          "text": "DATE: 5:07 pm on 16 June, 2022\nJohn said, \"Does he enjoy swimming?\"",
+          "trajectory_id": "locomo-1323"
+        },
+        {
+          "bm25_score": 5.95871527408093,
+          "candidate_id": "locomo-1323:00506",
+          "source_event_id": "locomo-1323:00506",
+          "state_index": 506,
+          "text": "DATE: 9:23 pm on 4 September, 2022\nJames said, \"Cool, which company did you choose? And what other devices did you buy?\"",
+          "trajectory_id": "locomo-1323"
+        },
+        {
+          "bm25_score": 5.591347504466794,
+          "candidate_id": "locomo-1323:00135",
+          "source_event_id": "locomo-1323:00135",
+          "state_index": 135,
+          "text": "DATE: 9:32 pm on 20 April, 2022\nJames said, \"In fact, I haven't visited many countries. Besides Italy, I was also in Turkey and Mexico. What was the last country you visited?\"",
+          "trajectory_id": "locomo-1323"
+        },
+        {
+          "bm25_score": 5.535425381000485,
+          "candidate_id": "locomo-1323:00318",
+          "source_event_id": "locomo-1323:00318",
+          "state_index": 318,
+          "text": "DATE: 5:07 pm on 16 June, 2022\nJohn said, \"Wow, Max loves playing fetch! Does he also enjoy long walks?\"",
+          "trajectory_id": "locomo-1323"
+        },
+        {
+          "bm25_score": 5.517011026160382,
+          "candidate_id": "locomo-1323:00262",
+          "source_event_id": "locomo-1323:00262",
+          "state_index": 262,
+          "text": "DATE: 7:33 pm on 23 May, 2022\nJohn said, \"Hey James! Sounds like an awesome time! I bet those rides brought back some great memories. Were there any other attractions besides the roller coaster?\"",
+          "trajectory_id": "locomo-1323"
+        },
+        {
+          "bm25_score": 5.448706863768677,
+          "candidate_id": "locomo-1323:00509",
+          "source_event_id": "locomo-1323:00509",
+          "state_index": 509,
+          "text": "DATE: 9:23 pm on 4 September, 2022\nJohn said, \"I really hope so too. Well, do you have anything new besides the great news about you and Samantha?\"",
+          "trajectory_id": "locomo-1323"
+        },
+        {
+          "bm25_score": 5.446455347388815,
+          "candidate_id": "locomo-1323:00316",
+          "source_event_id": "locomo-1323:00316",
+          "state_index": 316,
+          "text": "DATE: 5:07 pm on 16 June, 2022\nJohn said, \"Does Max have any special talents? He seems like quite the go-getter!\"",
+          "trajectory_id": "locomo-1323"
+        },
+        {
+          "bm25_score": 5.387805503521552,
+          "candidate_id": "locomo-1323:00452",
+          "source_event_id": "locomo-1323:00452",
+          "state_index": 452,
+          "text": "DATE: 3:57 pm on 21 August, 2022\nJohn said, \"Me and my siblings don't hang out much since we live far apart, but when we do we always try to plan a gaming night.\"",
+          "trajectory_id": "locomo-1323"
+        },
+        {
+          "bm25_score": 5.360300075648365,
+          "candidate_id": "locomo-1323:00218",
+          "source_event_id": "locomo-1323:00218",
+          "state_index": 218,
+          "text": "DATE: 7:01 pm on 4 May, 2022\nJohn said, \"Pizza? Cool, I love pizza too! Which one do you love the most?\"",
+          "trajectory_id": "locomo-1323"
+        },
+        {
+          "bm25_score": 5.31686246708332,
+          "candidate_id": "locomo-1323:00236",
+          "source_event_id": "locomo-1323:00236",
+          "state_index": 236,
+          "text": "DATE: 12:45 am on 8 May, 2022\nJohn said, \"Our main goal was to raise money for a dog shelter, which is not far from the street where I live. And we did it!\"",
+          "trajectory_id": "locomo-1323"
+        }
+      ],
+      "category": "adversarial",
+      "input_prompt_sha256": "9f1fcfdb150b723d06343a1f833faabf059352b1b51458ed248265bd93d121ac",
+      "memory_without_query_sha256": "78d0ffb665708f715d342d0ae8679c687fd957fc5c878532c74d6c7a097ce633",
+      "retrieval_corpus_count": 689,
+      "retrieval_corpus_sha256": "3085deeb75796970b702197c3e664e2dd38e6d261761fad18163e5f05f06de65",
+      "sample_id": "locomo-plus-1323",
+      "selected_candidate_count": 16,
+      "selected_candidate_sha256": "3f0d088f8fefdb97cdcbeca5ebdb316282e6582a995596ed244970c959bde556",
+      "selected_context_chars": 2185,
+      "source_index": 1323,
+      "trigger_sha256": "d6489b3e0c0de6992d0cfcdaf45e4e441ec8de2ab9604bb1c312728cd909e6c6"
+    },
+    {
+      "candidates": [
+        {
+          "bm25_score": 8.801406702447828,
+          "candidate_id": "locomo-1825:00027",
+          "source_event_id": "locomo-1825:00027",
+          "state_index": 27,
+          "text": "DATE: 4:45 pm on 26 March, 2023\nCalvin said, \"Wow, sounds like a blast! Which one was your favorite?\"",
+          "trajectory_id": "locomo-1825"
+        },
+        {
+          "bm25_score": 8.784690061044651,
+          "candidate_id": "locomo-1825:00261",
+          "source_event_id": "locomo-1825:00261",
+          "state_index": 261,
+          "text": "DATE: 11:06 am on 22 August, 2023\nCalvin said, \"It was an incredible experience, Dave! The city was buzzing with energy and the festival crowd was so lively - it was like fuel for my soul. Look at this photo, that's amazing!\" and shared a photo of a crowd of people sitting on the grass at night.",
+          "trajectory_id": "locomo-1825"
+        },
+        {
+          "bm25_score": 8.547332019594958,
+          "candidate_id": "locomo-1825:00411",
+          "source_event_id": "locomo-1825:00411",
+          "state_index": 411,
+          "text": "DATE: 10:11 am on 19 October, 2023\nCalvin said, \"Thanks, Dave! That pic was taken in Tokyo during a concert. Man, the energy was nuts - felt like the whole city came out!\"",
+          "trajectory_id": "locomo-1825"
+        },
+        {
+          "bm25_score": 7.623693003117817,
+          "candidate_id": "locomo-1825:00414",
+          "source_event_id": "locomo-1825:00414",
+          "state_index": 414,
+          "text": "DATE: 10:11 am on 19 October, 2023\nDave said, \"Of course, Calvin! Tokyo is amazing! I want to know everything about it - the people, the culture, the food, take a walk at the vibrant city life! In the photo below, the city is so alive and colorful that's impressive! It will be an unforgettable experience!\" and shared a photo of a crowded street at night with people walking and walking.",
+          "trajectory_id": "locomo-1825"
+        },
+        {
+          "bm25_score": 7.215286750214608,
+          "candidate_id": "locomo-1825:00473",
+          "source_event_id": "locomo-1825:00473",
+          "state_index": 473,
+          "text": "DATE: 10:49 am on 29 October, 2023\nDave said, \"Look at this magnificent sunset I captured on camera. It's truly breathtaking to witness such beautiful sunsets! The sky looks like it's on fire!\" and shared a photo of a city skyline at sunset with a clock tower.",
+          "trajectory_id": "locomo-1825"
+        },
+        {
+          "bm25_score": 6.555392932489273,
+          "candidate_id": "locomo-1825:00475",
+          "source_event_id": "locomo-1825:00475",
+          "state_index": 475,
+          "text": "DATE: 10:49 am on 29 October, 2023\nDave said, \"That's Boston, Cal! Check this out, I took this picture last month, and got a great shot - it was stunning!\" and shared a photography of a clock tower in a city with buildings.",
+          "trajectory_id": "locomo-1825"
+        },
+        {
+          "bm25_score": 6.321640191182142,
+          "candidate_id": "locomo-1825:00474",
+          "source_event_id": "locomo-1825:00474",
+          "state_index": 474,
+          "text": "DATE: 10:49 am on 29 October, 2023\nCalvin said, \"Wow, that view looks awesome! What city is it? Have you taken any good pictures lately?\"",
+          "trajectory_id": "locomo-1825"
+        },
+        {
+          "bm25_score": 6.0501661941087095,
+          "candidate_id": "locomo-1825:00217",
+          "source_event_id": "locomo-1825:00217",
+          "state_index": 217,
+          "text": "DATE: 1:12 pm on 3 August, 2023\nDave said, \"Glad to help, Calvin! Eager to see what you do. Keep at it and never forget your dreams!\"",
+          "trajectory_id": "locomo-1825"
+        },
+        {
+          "bm25_score": 5.986821717031645,
+          "candidate_id": "locomo-1825:00417",
+          "source_event_id": "locomo-1825:00417",
+          "state_index": 417,
+          "text": "DATE: 10:11 am on 19 October, 2023\nCalvin said, \"Cool, Dave! I'm actually going to Tokyo next month after the tour ends. Sometimes I wish I could go back to places like the one in the photo below. What a great view!\" and shared a photo of a city at night with a tall building in the background.",
+          "trajectory_id": "locomo-1825"
+        },
+        {
+          "bm25_score": 5.873848353934363,
+          "candidate_id": "locomo-1825:00409",
+          "source_event_id": "locomo-1825:00409",
+          "state_index": 409,
+          "text": "DATE: 10:11 am on 19 October, 2023\nCalvin said, \"Wow, the crowd energy is amazing! It always gets me so pumped and it's awesome. Look at that photo, that was awesome!\" and shared a photography of a crowd of people at a concert with their hands in the air.",
+          "trajectory_id": "locomo-1825"
+        },
+        {
+          "bm25_score": 5.677988597444488,
+          "candidate_id": "locomo-1825:00177",
+          "source_event_id": "locomo-1825:00177",
+          "state_index": 177,
+          "text": "DATE: 7:56 pm on 7 July, 2023\nDave said, \"Yeah, today we are going to that spot. Look at that lovely photo.\" and shared a photo of a city skyline with a river and boats in the water.",
+          "trajectory_id": "locomo-1825"
+        },
+        {
+          "bm25_score": 5.622102405495359,
+          "candidate_id": "locomo-1825:00407",
+          "source_event_id": "locomo-1825:00407",
+          "state_index": 407,
+          "text": "DATE: 10:11 am on 19 October, 2023\nCalvin said, \"Thanks, Dave! I'm so excited you'll be at one of our shows. It's such a great experience, you'll definitely enjoy it! Look at this crowd, that was insane!\" and shared a photo of a large crowd of people in a large auditorium.",
+          "trajectory_id": "locomo-1825"
+        },
+        {
+          "bm25_score": 5.518005997516029,
+          "candidate_id": "locomo-1825:00113",
+          "source_event_id": "locomo-1825:00113",
+          "state_index": 113,
+          "text": "DATE: 11:50 am on 16 May, 2023\nCalvin said, \"Sure thing, Dave! I'll keep you posted on how it goes. Thanks for the good luck! Look what a wonderful night!\" and shared a photo of a city at night with a lot of lights.",
+          "trajectory_id": "locomo-1825"
+        },
+        {
+          "bm25_score": 5.489257146931061,
+          "candidate_id": "locomo-1825:00548",
+          "source_event_id": "locomo-1825:00548",
+          "state_index": 548,
+          "text": "DATE: 10:54 am on 17 November, 2023\nDave said, \"That's amazing, Calvin! Music really does bring people together and foster creativity. Glad to hear you had such an inspiring conversation! Take a look at my new vintage camera that I bought this month, which takes awesome photos!\" and shared a photo of a camera sitting on a table next to a plant.",
+          "trajectory_id": "locomo-1825"
+        },
+        {
+          "bm25_score": 5.437485397890689,
+          "candidate_id": "locomo-1825:00448",
+          "source_event_id": "locomo-1825:00448",
+          "state_index": 448,
+          "text": "DATE: 2:17 pm on 23 October, 2023\nDave said, \"Glad you like it, Cal! It reminds me of the good times I've had at concerts last month. Music has a way of connecting us and making memories. Take a look at this picture, the atmosphere was amazing!\" and shared a photo of a crowd of people at a concert with their hands in the air.",
+          "trajectory_id": "locomo-1825"
+        },
+        {
+          "bm25_score": 5.179270540271514,
+          "candidate_id": "locomo-1825:00369",
+          "source_event_id": "locomo-1825:00369",
+          "state_index": 369,
+          "text": "DATE: 3:13 pm on 8 October, 2023\nDave said, \"Hey Calvin! What\u2019s up? Last Friday I went to the car show. I saw some awesome cars and got to mess with car mods! There were so many cool machines around, it was so much fun! Take a look at this beautiful car!\" and shared a photography of two men looking at a car engine.",
+          "trajectory_id": "locomo-1825"
+        }
+      ],
+      "category": "temporal",
+      "input_prompt_sha256": "db3084832958705e5a180589f9ad12bf49aa4e2b73796abd9e443351b4fc09fa",
+      "memory_without_query_sha256": "eb8a159daf358e851e16032d31d85ae4dde10787f59f86d7fb77fdc2eb9364dc",
+      "retrieval_corpus_count": 568,
+      "retrieval_corpus_sha256": "49024fd8f8a5541ffb870e61ee8f3b1bc2013df7df7516640a712b411b60a018",
+      "sample_id": "locomo-plus-1825",
+      "selected_candidate_count": 16,
+      "selected_candidate_sha256": "680cb168b51b62a70af5ca78516abac03a38b7868448f6cfc20ab61df84ca562",
+      "selected_context_chars": 3917,
+      "source_index": 1825,
+      "trigger_sha256": "98f085cb324d6c2e5ec3f5ed8bf2caf1fdb2b99d1336b5ea92757fb6472ef48c"
+    },
+    {
+      "candidates": [
+        {
+          "bm25_score": 13.951744341168478,
+          "candidate_id": "locomo-2212:00051",
+          "source_event_id": "locomo-2212:00051",
+          "state_index": 51,
+          "text": "DATE: unknown\nJames said, \"Check out this pic of my best buds having a blast in the park. They've brought so much joy to my life. My two dogs are the best pals ever, right?\"",
+          "trajectory_id": "locomo-2212"
+        },
+        {
+          "bm25_score": 12.551624597323986,
+          "candidate_id": "locomo-2212:00429",
+          "source_event_id": "locomo-2212:00429",
+          "state_index": 429,
+          "text": "DATE: unknown\nJohn said, \"That's a great pic! The graphics are truly stunning! By the way, look how I organized my workplace!\"",
+          "trajectory_id": "locomo-2212"
+        },
+        {
+          "bm25_score": 12.224444294629931,
+          "candidate_id": "locomo-2212:00569",
+          "source_event_id": "locomo-2212:00569",
+          "state_index": 569,
+          "text": "DATE: unknown\nJohn said, \"They asked me to be a programming mentor for game developers. I'll be teaching coding and assisting with projects. I'm really excited to share my knowledge and motivate people who are passionate about gaming.\"",
+          "trajectory_id": "locomo-2212"
+        },
+        {
+          "bm25_score": 11.449538694305978,
+          "candidate_id": "locomo-2212:00389",
+          "source_event_id": "locomo-2212:00389",
+          "state_index": 389,
+          "text": "DATE: unknown\nJames said, \"You're welcome! By the way, look who came to see me!\"",
+          "trajectory_id": "locomo-2212"
+        },
+        {
+          "bm25_score": 11.31768508850831,
+          "candidate_id": "locomo-2212:00295",
+          "source_event_id": "locomo-2212:00295",
+          "state_index": 295,
+          "text": "DATE: unknown\nJames said, \"Hey John, how's it going? A lot has happened for me lately, some good and some not so great. I`m lucky to have at least two people who always help me out when I'm struggling. What about you?\"",
+          "trajectory_id": "locomo-2212"
+        },
+        {
+          "bm25_score": 11.224509071403954,
+          "candidate_id": "locomo-2212:00209",
+          "source_event_id": "locomo-2212:00209",
+          "state_index": 209,
+          "text": "DATE: unknown\nJames said, \"Yeah, totally! It's awesome to have a group of people who share the same passions. They give you help and bring their own ideas to the mix. You can achieve so much when everyone works together. Are you working on anything today?\"",
+          "trajectory_id": "locomo-2212"
+        },
+        {
+          "bm25_score": 10.360487102430804,
+          "candidate_id": "locomo-2212:00197",
+          "source_event_id": "locomo-2212:00197",
+          "state_index": 197,
+          "text": "DATE: unknown\nJohn said, \"Yeah for sure! I've been playing one more game with friends these days. It's a game to figure out who the impostors are and it's super fun.\"",
+          "trajectory_id": "locomo-2212"
+        },
+        {
+          "bm25_score": 10.290422084059653,
+          "candidate_id": "locomo-2212:00171",
+          "source_event_id": "locomo-2212:00171",
+          "state_index": 171,
+          "text": "DATE: unknown\nJohn said, \"Figuring out how to get payments on the website was tough. I needed some help so I used some resources to understand the process. It's taken a while, but I'm getting closer to a solution.\"",
+          "trajectory_id": "locomo-2212"
+        },
+        {
+          "bm25_score": 10.176634080763824,
+          "candidate_id": "locomo-2212:00003",
+          "source_event_id": "locomo-2212:00003",
+          "state_index": 3,
+          "text": "DATE: unknown\nJames said, \"I'm totally into The Witcher 3 right now. The story and atmosphere are amazing. Have you tried it yet?\"",
+          "trajectory_id": "locomo-2212"
+        },
+        {
+          "bm25_score": 10.082957066778992,
+          "candidate_id": "locomo-2212:00211",
+          "source_event_id": "locomo-2212:00211",
+          "state_index": 211,
+          "text": "DATE: unknown\nJames said, \"Sounds great, John! I'm definitely in next time. Hanging out with friends and unwinding is key. By the way, today I decided to spend time with my beloved pets again.\"",
+          "trajectory_id": "locomo-2212"
+        },
+        {
+          "bm25_score": 9.769293547913172,
+          "candidate_id": "locomo-2212:00288",
+          "source_event_id": "locomo-2212:00288",
+          "state_index": 288,
+          "text": "DATE: unknown\nJames said, \"Absolutely! They are forever in my heart, they are a great team. I hope they become champions next season!\"",
+          "trajectory_id": "locomo-2212"
+        },
+        {
+          "bm25_score": 9.625504393786677,
+          "candidate_id": "locomo-2212:00038",
+          "source_event_id": "locomo-2212:00038",
+          "state_index": 38,
+          "text": "DATE: unknown\nJohn said, \"Hey James, awesome! Glad you're enjoying it and connecting with others. Building a community is really cool, especially when you meet people who enjoy the same things.\"",
+          "trajectory_id": "locomo-2212"
+        },
+        {
+          "bm25_score": 9.351588344385222,
+          "candidate_id": "locomo-2212:00390",
+          "source_event_id": "locomo-2212:00390",
+          "state_index": 390,
+          "text": "DATE: unknown\nJohn said, \"Nice pic, James! Who are they?\"",
+          "trajectory_id": "locomo-2212"
+        },
+        {
+          "bm25_score": 9.035365914714319,
+          "candidate_id": "locomo-2212:00304",
+          "source_event_id": "locomo-2212:00304",
+          "state_index": 304,
+          "text": "DATE: unknown\nJohn said, \"Definitely! Two of my favorites are \"The Stormlight Archive\" and \"Kingkiller Chronicle\". If SF is your thing, check out \"The Expanse\" series. It's epic!\"",
+          "trajectory_id": "locomo-2212"
+        },
+        {
+          "bm25_score": 8.894456438892693,
+          "candidate_id": "locomo-2212:00614",
+          "source_event_id": "locomo-2212:00614",
+          "state_index": 614,
+          "text": "DATE: unknown\nJames said, \"I'll reach out if I need help. Thanks for the resources, really appreciate it. By the way, my mother came to see me with her army friend two days ago. We had fun.\"",
+          "trajectory_id": "locomo-2212"
+        },
+        {
+          "bm25_score": 8.75204012389706,
+          "candidate_id": "locomo-2212:00132",
+          "source_event_id": "locomo-2212:00132",
+          "state_index": 132,
+          "text": "DATE: unknown\nJohn said, \"I adhere to the principle that only those who rest well work well. Therefore, chilling with friends and traveling always give me motivation to work further.\"",
+          "trajectory_id": "locomo-2212"
+        }
+      ],
+      "category": "Cognitive",
+      "input_prompt_sha256": "dd9717e4efa511c14bfe9e24e2d8b37b1b56e4a8ba2a890c663b474f60c42bd9",
+      "memory_without_query_sha256": "771c40690c58fd81f9613e432593f1e59ed164c6afff81d50fb316ad05ce2897",
+      "retrieval_corpus_count": 691,
+      "retrieval_corpus_sha256": "932fb5dd310819c0d478f26be2f6b1523e84edca22a78a419304afc964c4cc22",
+      "sample_id": "locomo-plus-2212",
+      "selected_candidate_count": 16,
+      "selected_candidate_sha256": "7e6657f215a731c62ca39c60b8ba86381d743c9c4ccf221b828a81d947e0810b",
+      "selected_context_chars": 2728,
+      "source_index": 2212,
+      "trigger_sha256": "6fefa5987c0bd892c0137b2cdbfcb3487a56b6f2b5c7b4992514ba0b3a5d81e0"
+    }
+  ],
+  "schema_version": 1,
+  "seed": 20260831,
+  "selection": "SHA-256(seed,category,index,input-prompt-hash); answers/evidence excluded"
+}

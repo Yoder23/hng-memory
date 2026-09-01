@@ -1,0 +1,318 @@
+{
+  "all_fixed_candidate_invariants_pass": true,
+  "by_ability": [
+    {
+      "ability": "dynamic_state",
+      "accuracy": 0,
+      "arm": "no_retrieval",
+      "correct": 0,
+      "count": 6
+    },
+    {
+      "ability": "environment_gotchas",
+      "accuracy": 0,
+      "arm": "no_retrieval",
+      "correct": 0,
+      "count": 3
+    },
+    {
+      "ability": "static_state",
+      "accuracy": 0,
+      "arm": "no_retrieval",
+      "correct": 0,
+      "count": 6
+    },
+    {
+      "ability": "workflow",
+      "accuracy": 0,
+      "arm": "no_retrieval",
+      "correct": 0,
+      "count": 6
+    },
+    {
+      "ability": "dynamic_state",
+      "accuracy": 0,
+      "arm": "bm25",
+      "correct": 0,
+      "count": 6
+    },
+    {
+      "ability": "environment_gotchas",
+      "accuracy": 0.6666666666666666,
+      "arm": "bm25",
+      "correct": 2,
+      "count": 3
+    },
+    {
+      "ability": "static_state",
+      "accuracy": 0.16666666666666666,
+      "arm": "bm25",
+      "correct": 1,
+      "count": 6
+    },
+    {
+      "ability": "workflow",
+      "accuracy": 0.16666666666666666,
+      "arm": "bm25",
+      "correct": 1,
+      "count": 6
+    },
+    {
+      "ability": "dynamic_state",
+      "accuracy": 0,
+      "arm": "strong_structured",
+      "correct": 0,
+      "count": 6
+    },
+    {
+      "ability": "environment_gotchas",
+      "accuracy": 0.6666666666666666,
+      "arm": "strong_structured",
+      "correct": 2,
+      "count": 3
+    },
+    {
+      "ability": "static_state",
+      "accuracy": 0.16666666666666666,
+      "arm": "strong_structured",
+      "correct": 1,
+      "count": 6
+    },
+    {
+      "ability": "workflow",
+      "accuracy": 0.16666666666666666,
+      "arm": "strong_structured",
+      "correct": 1,
+      "count": 6
+    },
+    {
+      "ability": "dynamic_state",
+      "accuracy": 0,
+      "arm": "hng",
+      "correct": 0,
+      "count": 6
+    },
+    {
+      "ability": "environment_gotchas",
+      "accuracy": 0.6666666666666666,
+      "arm": "hng",
+      "correct": 2,
+      "count": 3
+    },
+    {
+      "ability": "static_state",
+      "accuracy": 0.16666666666666666,
+      "arm": "hng",
+      "correct": 1,
+      "count": 6
+    },
+    {
+      "ability": "workflow",
+      "accuracy": 0.16666666666666666,
+      "arm": "hng",
+      "correct": 1,
+      "count": 6
+    }
+  ],
+  "created_at": "2026-09-01T03:43:04.253808+00:00",
+  "failure_count": 0,
+  "failures": [],
+  "fixed_candidate_invariants": [
+    {
+      "candidate_pool_identical": true,
+      "model_digest_identical": true,
+      "prompt_identical": true,
+      "question_id": "0382ed92",
+      "selected_candidates_identical": true
+    },
+    {
+      "candidate_pool_identical": true,
+      "model_digest_identical": true,
+      "prompt_identical": true,
+      "question_id": "1cf04706",
+      "selected_candidates_identical": true
+    },
+    {
+      "candidate_pool_identical": true,
+      "model_digest_identical": true,
+      "prompt_identical": true,
+      "question_id": "2ca2d443",
+      "selected_candidates_identical": true
+    },
+    {
+      "candidate_pool_identical": true,
+      "model_digest_identical": true,
+      "prompt_identical": true,
+      "question_id": "2e90de97",
+      "selected_candidates_identical": true
+    },
+    {
+      "candidate_pool_identical": true,
+      "model_digest_identical": true,
+      "prompt_identical": true,
+      "question_id": "31f146ba",
+      "selected_candidates_identical": true
+    },
+    {
+      "candidate_pool_identical": true,
+      "model_digest_identical": true,
+      "prompt_identical": true,
+      "question_id": "329742b1",
+      "selected_candidates_identical": true
+    },
+    {
+      "candidate_pool_identical": true,
+      "model_digest_identical": true,
+      "prompt_identical": true,
+      "question_id": "45d1e7f1",
+      "selected_candidates_identical": true
+    },
+    {
+      "candidate_pool_identical": true,
+      "model_digest_identical": true,
+      "prompt_identical": true,
+      "question_id": "499488a6",
+      "selected_candidates_identical": true
+    },
+    {
+      "candidate_pool_identical": true,
+      "model_digest_identical": true,
+      "prompt_identical": true,
+      "question_id": "50711c52",
+      "selected_candidates_identical": true
+    },
+    {
+      "candidate_pool_identical": true,
+      "model_digest_identical": true,
+      "prompt_identical": true,
+      "question_id": "50d92f55",
+      "selected_candidates_identical": true
+    },
+    {
+      "candidate_pool_identical": true,
+      "model_digest_identical": true,
+      "prompt_identical": true,
+      "question_id": "521b124f",
+      "selected_candidates_identical": true
+    },
+    {
+      "candidate_pool_identical": true,
+      "model_digest_identical": true,
+      "prompt_identical": true,
+      "question_id": "626e401e",
+      "selected_candidates_identical": true
+    },
+    {
+      "candidate_pool_identical": true,
+      "model_digest_identical": true,
+      "prompt_identical": true,
+      "question_id": "6a73e32b",
+      "selected_candidates_identical": true
+    },
+    {
+      "candidate_pool_identical": true,
+      "model_digest_identical": true,
+      "prompt_identical": true,
+      "question_id": "7195f494",
+      "selected_candidates_identical": true
+    },
+    {
+      "candidate_pool_identical": true,
+      "model_digest_identical": true,
+      "prompt_identical": true,
+      "question_id": "82cdfcc3",
+      "selected_candidates_identical": true
+    },
+    {
+      "candidate_pool_identical": true,
+      "model_digest_identical": true,
+      "prompt_identical": true,
+      "question_id": "914ab1d4",
+      "selected_candidates_identical": true
+    },
+    {
+      "candidate_pool_identical": true,
+      "model_digest_identical": true,
+      "prompt_identical": true,
+      "question_id": "ad903be2",
+      "selected_candidates_identical": true
+    },
+    {
+      "candidate_pool_identical": true,
+      "model_digest_identical": true,
+      "prompt_identical": true,
+      "question_id": "b82d0dd6",
+      "selected_candidates_identical": true
+    },
+    {
+      "candidate_pool_identical": true,
+      "model_digest_identical": true,
+      "prompt_identical": true,
+      "question_id": "c738b934",
+      "selected_candidates_identical": true
+    },
+    {
+      "candidate_pool_identical": true,
+      "model_digest_identical": true,
+      "prompt_identical": true,
+      "question_id": "e334d5c6",
+      "selected_candidates_identical": true
+    },
+    {
+      "candidate_pool_identical": true,
+      "model_digest_identical": true,
+      "prompt_identical": true,
+      "question_id": "ee75b921",
+      "selected_candidates_identical": true
+    }
+  ],
+  "limitations": [
+    "text-only accessibility-tree path; trajectory screenshots were not downloaded",
+    "local qwen3.8 27B reader instead of official reader configuration",
+    "same local model used as evaluator for judge-dependent questions",
+    "stratified pilot subset, not the full 451-question tier",
+    "BM25-selected state slices rather than official embedding retriever"
+  ],
+  "model": "qwen3.8:27b-q4_K_M",
+  "model_digest": "25b843619e944cd0ae6069f94ff4e5e26a16e109ccbc0a66a0f05979ed70098e",
+  "protocol": "LongMemEval-V2 small-tier text pilot; NONCANONICAL",
+  "question_count": 21,
+  "raw_log": "breakthrough_eval/public/longmemeval_v2/raw/events.jsonl",
+  "schema_version": 1,
+  "seed": 20260831,
+  "status": "complete",
+  "summaries": {
+    "bm25": {
+      "accuracy": 0.19047619047619047,
+      "correct": 4,
+      "count": 21,
+      "latency_seconds_p50": 46.301561899948865,
+      "latency_seconds_p95": 49.16954390000319,
+      "prompt_tokens": 122054
+    },
+    "hng": {
+      "accuracy": 0.19047619047619047,
+      "correct": 4,
+      "count": 21,
+      "latency_seconds_p50": 30.588330600003246,
+      "latency_seconds_p95": 32.12690409994684,
+      "prompt_tokens": 122054
+    },
+    "no_retrieval": {
+      "accuracy": 0,
+      "correct": 0,
+      "count": 21,
+      "latency_seconds_p50": 16.097314599959645,
+      "latency_seconds_p95": 30.315671199990902,
+      "prompt_tokens": 3832
+    },
+    "strong_structured": {
+      "accuracy": 0.19047619047619047,
+      "correct": 4,
+      "count": 21,
+      "latency_seconds_p50": 30.5695846999879,
+      "latency_seconds_p95": 32.547269299975596,
+      "prompt_tokens": 122054
+    }
+  }
+}

@@ -55,8 +55,25 @@ def fmt(value: float | None, unit: str) -> str:
 
 def main() -> int:
     baseline = load(EVAL / "baseline_070" / "BASELINE_STATUS.json")
+    baseline_environment = load(EVAL / "baseline_070" / "ENVIRONMENT.json")
+    resource_inventory = load(EVAL / "RESOURCE_INVENTORY.json")
+    public_resources = load(EVAL / "PUBLIC_RESOURCES.json")
     deterministic = load(EVAL / "fixed_candidate" / "DETERMINISTIC_RESULTS.json")
     llm = load(EVAL / "fixed_candidate" / "LLM_RESULTS.json")
+    longmem_path = EVAL / "public" / "longmemeval_v2" / "RESULTS.json"
+    longmem = load(longmem_path) if longmem_path.exists() else None
+    locomo_path = EVAL / "public" / "locomo_plus" / "RESULTS.json"
+    locomo = load(locomo_path) if locomo_path.exists() else None
+    reliability_path = EVAL / "reliability" / "STORAGE_PROBE.json"
+    reliability = load(reliability_path) if reliability_path.exists() else None
+    multitenant_path = EVAL / "reliability" / "MULTITENANT_100K_1K.json"
+    multitenant = load(multitenant_path) if multitenant_path.exists() else None
+    belief_path = EVAL / "belief_revision" / "RESULTS.json"
+    belief = load(belief_path) if belief_path.exists() else None
+    provenance_path = EVAL / "provenance_ablation" / "RESULTS.json"
+    provenance = load(provenance_path) if provenance_path.exists() else None
+    action_path = EVAL / "action_experience" / "RESULTS.json"
+    action = load(action_path) if action_path.exists() else None
     results: list[dict[str, object]] = []
 
     for name, payload in deterministic["systems"].items():
@@ -117,6 +134,144 @@ def main() -> int:
                 "fixed_candidate/LLM_RESULTS.json",
             ))
 
+    if longmem is not None:
+        for name, payload in longmem["summaries"].items():
+            results.append(row(
+                "longmemeval_v2_text_pilot",
+                name,
+                "answer_accuracy",
+                None if payload["accuracy"] is None else float(payload["accuracy"]),
+                "fraction",
+                "public_noncanonical",
+                "EXECUTED" if longmem["status"] == "complete" else "PARTIAL",
+                "public/longmemeval_v2/RESULTS.json",
+                "Official public data; stratified text-only pilot with local reader/judge, not a leaderboard score.",
+            ))
+
+    if locomo is not None:
+        for name, payload in locomo["summaries"].items():
+            results.append(row(
+                "locomo_plus_six_category_pilot",
+                name,
+                "judge_score_average",
+                None if payload["average"] is None else float(payload["average"]),
+                "fraction",
+                "public_noncanonical",
+                "EXECUTED" if locomo["status"] == "complete" else "PARTIAL",
+                "public/locomo_plus/RESULTS.json",
+                "Official public data/templates; six-sample local reader/judge pilot, not a leaderboard score.",
+            ))
+            results.append(row(
+                "locomo_plus_six_category_pilot",
+                name,
+                "prompt_tokens_total",
+                float(payload["prompt_tokens"]),
+                "count",
+                "public_noncanonical",
+                "EXECUTED" if locomo["status"] == "complete" else "PARTIAL",
+                "public/locomo_plus/RESULTS.json",
+            ))
+
+    if reliability is not None:
+        results.extend([
+            row(
+                "bounded_storage_reliability",
+                "sqlite_evidence_store",
+                "records_preserved_after_backup",
+                float(reliability["ledger"]["after_count"]),
+                "count",
+                "local",
+                reliability["status"],
+                "reliability/STORAGE_PROBE.json",
+                reliability["claim_boundary"],
+            ),
+            row(
+                "bounded_storage_reliability",
+                "sqlite_evidence_store",
+                "append_latency_p95",
+                float(reliability["append_latency_ms"]["p95"]),
+                "milliseconds",
+                "local",
+                reliability["status"],
+                "reliability/STORAGE_PROBE.json",
+                reliability["claim_boundary"],
+            ),
+        ])
+
+    if multitenant is not None:
+        results.extend([
+            row(
+                "bounded_multitenant_storage",
+                "sqlite_evidence_store",
+                "records_preserved_after_backup",
+                float(multitenant["ledger"]["after_count"]),
+                "count",
+                "local",
+                multitenant["status"],
+                "reliability/MULTITENANT_100K_1K.json",
+                "1,000 tenants with 100 records each; not a 100,000-user concurrency test or soak.",
+            ),
+            row(
+                "bounded_multitenant_storage",
+                "sqlite_evidence_store",
+                "append_latency_p95",
+                float(multitenant["append_latency_ms"]["p95"]),
+                "milliseconds",
+                "local",
+                multitenant["status"],
+                "reliability/MULTITENANT_100K_1K.json",
+                multitenant["claim_boundary"],
+            ),
+            row(
+                "bounded_multitenant_storage",
+                "sqlite_evidence_store",
+                "tenant_isolation",
+                1.0 if multitenant["tenant_isolation_passed"] else 0.0,
+                "fraction",
+                "local",
+                multitenant["status"],
+                "reliability/MULTITENANT_100K_1K.json",
+                "Exact per-tenant eligible-ID counts; no concurrent user workload was exercised.",
+            ),
+        ])
+
+    if belief is not None:
+        for name, payload in belief["arms"].items():
+            results.append(row(
+                "synthetic_belief_revision",
+                name,
+                "current_belief_accuracy",
+                float(payload["current_belief_accuracy"]),
+                "fraction",
+                "synthetic",
+                belief["status"],
+                "belief_revision/RESULTS.json",
+                belief["claim_boundary"],
+            ))
+
+    if provenance is not None:
+        for name, payload in provenance["summaries"].items():
+            results.append(row(
+                "synthetic_provenance_ablation", name, "decision_accuracy",
+                float(payload["accuracy"]), "fraction", "synthetic", provenance["status"],
+                "provenance_ablation/RESULTS.json", provenance["claim_boundary"],
+            ))
+
+    if action is not None:
+        for name, payload in action["summaries"].items():
+            results.extend([
+                row(
+                    "synthetic_action_experience", name, "action_success_rate",
+                    float(payload["action_success_rate"]), "fraction", "synthetic", action["status"],
+                    "action_experience/RESULTS.json", action["claim_boundary"],
+                ),
+                row(
+                    "synthetic_action_experience", name, "action_regret",
+                    float(payload["action_regret"]), "count", "synthetic", action["status"],
+                    "action_experience/RESULTS.json", "Failures relative to the deterministic oracle action.",
+                ),
+            ])
+
     baseline_rows = (
         ("release_pytest", "passed", 94.0, "count"),
         ("expanded_adversarial", "passed", 64.0, "count"),
@@ -138,8 +293,6 @@ def main() -> int:
 
     blocked = {
         "real_hdc_task_success": "Production HDC interpreter/checkpoint and real traces absent.",
-        "longmemeval_v2": "Official dataset/harness not installed; canonical model/judge resources unresolved.",
-        "locomo_plus": "Official dataset/harness not installed.",
         "personamem_v2": "Official dataset/harness not installed.",
     }
     for area, reason in blocked.items():
@@ -155,6 +308,24 @@ def main() -> int:
             reason,
         ))
 
+    pending = {}
+    if locomo is None:
+        pending["locomo_plus"] = "Official data and six-category candidate pools are prepared; reader/judge execution is not complete."
+    if longmem is None:
+        pending["longmemeval_v2"] = "Official small text tier is validated; the noncanonical local pilot is in progress."
+    for area, reason in pending.items():
+        results.append(row(
+            area,
+            "hng",
+            "primary_metric",
+            None,
+            "fraction",
+            "public",
+            "IN_PROGRESS",
+            "PUBLIC_RESOURCES.json",
+            reason,
+        ))
+
     det_hng = deterministic["systems"]["hng"]
     det_strong = deterministic["systems"]["strong_structured"]
     llm_hng = llm["systems"]["hng"]
@@ -163,6 +334,68 @@ def main() -> int:
     p_raw = llm["paired_statistics"]["hng_vs_ordinary_rag"]["mcnemar"]["exact_two_sided_p"]
     p_strong = llm["paired_statistics"]["hng_vs_strong_structured"]["mcnemar"]["exact_two_sided_p"]
     ci_raw = llm["paired_statistics"]["hng_vs_ordinary_rag"]["paired_bootstrap_accuracy"]
+
+    public_scoreboard_rows: list[dict[str, object]] = []
+    if longmem is not None:
+        public_hng = longmem["summaries"]["hng"]["accuracy"]
+        public_strong = longmem["summaries"]["strong_structured"]["accuracy"]
+        public_scoreboard_rows.append({
+            "area": "LongMemEval-V2 text pilot",
+            "hng": public_hng,
+            "baseline": public_strong,
+            "delta": None if public_hng is None or public_strong is None else public_hng - public_strong,
+            "significance": None,
+            "evidence_class": "public_noncanonical",
+            "status": "EXECUTED_NONCANONICAL" if longmem["status"] == "complete" else "PARTIAL",
+            "notes": "Official data, local text-only reader/judge pilot; not comparable to leaderboard scores.",
+        })
+    else:
+        public_scoreboard_rows.append({
+            "area": "LongMemEval-V2 text pilot",
+            "hng": None,
+            "baseline": None,
+            "delta": None,
+            "significance": None,
+            "evidence_class": "public_noncanonical",
+            "status": "IN_PROGRESS",
+            "notes": "Official small text tier validated; local pilot is running.",
+        })
+    if locomo is not None:
+        locomo_hng = locomo["summaries"]["hng"]["average"]
+        locomo_strong = locomo["summaries"]["strong_structured"]["average"]
+        public_scoreboard_rows.append({
+            "area": "LoCoMo-Plus six-category pilot",
+            "hng": locomo_hng,
+            "baseline": locomo_strong,
+            "delta": None if locomo_hng is None or locomo_strong is None else locomo_hng - locomo_strong,
+            "significance": None,
+            "evidence_class": "public_noncanonical",
+            "status": "EXECUTED_NONCANONICAL" if locomo["status"] == "complete" else "PARTIAL",
+            "notes": "Official data/templates, six-sample local reader/judge pilot; not comparable to leaderboard scores.",
+        })
+    else:
+        public_scoreboard_rows.append({
+            "area": "LoCoMo-Plus",
+            "hng": None,
+            "baseline": None,
+            "delta": None,
+            "significance": None,
+            "evidence_class": "public",
+            "status": "IN_PROGRESS",
+            "notes": pending["locomo_plus"],
+        })
+    public_scoreboard_rows.append(
+        {
+            "area": "PersonaMem-v2",
+            "hng": None,
+            "baseline": None,
+            "delta": None,
+            "significance": None,
+            "evidence_class": "public",
+            "status": "BLOCKED_EXTERNAL",
+            "notes": blocked["personamem_v2"],
+        }
+    )
 
     scoreboard = {
         "schema_version": 1,
@@ -212,19 +445,74 @@ def main() -> int:
                 "status": "LOSS_TIE",
                 "notes": "No HNG-specific behavioral advantage; StrongStructuredBaseline uses fewer prompt tokens.",
             },
-            *[
-                {
-                    "area": area.replace("_", " ").title(),
-                    "hng": None,
-                    "baseline": None,
-                    "delta": None,
-                    "significance": None,
-                    "evidence_class": "public",
-                    "status": "BLOCKED_EXTERNAL",
-                    "notes": blocked[area],
-                }
-                for area in ("longmemeval_v2", "locomo_plus", "personamem_v2")
-            ],
+            *([] if reliability is None else [{
+                "area": "Bounded storage reliability",
+                "hng": 1.0 if reliability["status"] == "PASS" else 0.0,
+                "baseline": None,
+                "delta": None,
+                "significance": None,
+                "evidence_class": "local",
+                "status": reliability["status"],
+                "notes": (
+                    f"{reliability['ledger']['after_count']} records; backup ledger identical; "
+                    f"p95 append {reliability['append_latency_ms']['p95']:.3f} ms. "
+                    + reliability["claim_boundary"]
+                ),
+            }]),
+            *([] if multitenant is None else [{
+                "area": "Bounded 100K-record / 1K-tenant storage",
+                "hng": 1.0 if multitenant["status"] == "PASS" else 0.0,
+                "baseline": None,
+                "delta": None,
+                "significance": None,
+                "evidence_class": "local",
+                "status": multitenant["status"],
+                "notes": (
+                    f"{multitenant['ledger']['after_count']} records; exact 100-per-tenant counts; "
+                    f"backup ledger identical; p95 append {multitenant['append_latency_ms']['p95']:.3f} ms. "
+                    "Not a 100K-user or concurrent load test."
+                ),
+            }]),
+            *([] if belief is None else [{
+                "area": "Synthetic belief revision",
+                "hng": belief["arms"]["hng_belief_store_authority"]["current_belief_accuracy"],
+                "baseline": belief["arms"]["strong_structured_authority"]["current_belief_accuracy"],
+                "delta": belief["hng_vs_strong_structured"]["accuracy_delta"],
+                "significance": None,
+                "evidence_class": "synthetic",
+                "status": "LOSS_TIE",
+                "notes": "Authority policy plus HNG revision history ties the same strong structured policy; component study only.",
+            }]),
+            *([] if provenance is None else [{
+                "area": "Synthetic provenance governance",
+                "hng": provenance["summaries"]["hng_provenance_governance"]["accuracy"],
+                "baseline": provenance["summaries"]["strong_structured_provenance_governance"]["accuracy"],
+                "delta": provenance["hng_vs_strong_accuracy_delta"],
+                "significance": None,
+                "evidence_class": "synthetic",
+                "status": "LOSS_TIE",
+                "notes": "Governed provenance beats ignored/display-only provenance, but HNG ties StrongStructuredBaseline on 25 poison cases.",
+            }]),
+            *([] if action is None else [{
+                "area": "Synthetic action experience",
+                "hng": action["summaries"]["hng_governed_transitions"]["action_success_rate"],
+                "baseline": max(
+                    payload["action_success_rate"]
+                    for name, payload in action["summaries"].items()
+                    if name != "hng_governed_transitions"
+                ),
+                "delta": action["summaries"]["hng_governed_transitions"]["action_success_rate"]
+                - max(
+                    payload["action_success_rate"]
+                    for name, payload in action["summaries"].items()
+                    if name != "hng_governed_transitions"
+                ),
+                "significance": None,
+                "evidence_class": "synthetic",
+                "status": "LOSS",
+                "notes": "HNG ties structured/graph/Strong at 68% and loses to nearest-experience retrieval at 75%.",
+            }]),
+            *public_scoreboard_rows,
         ],
     }
     payload = {
@@ -236,7 +524,13 @@ def main() -> int:
                 and llm["candidate_pool_identity_verified"]
             ),
             "llm_failed_events": llm["failed_events"],
-            "github_status": "DISCONNECTED_PENDING_USER_ACCOUNT",
+            "github_status": "CONNECTED_VERIFIED_PRIVATE_YODER23_HNG_MEMORY",
+            "public_candidate_invariants_verified": (
+                None if longmem is None and locomo is None else bool(
+                    (longmem is None or longmem["all_fixed_candidate_invariants_pass"])
+                    and (locomo is None or locomo["all_fixed_candidate_invariants_pass"])
+                )
+            ),
         },
         "results": results,
     }
@@ -247,6 +541,20 @@ def main() -> int:
         writer.writeheader()
         writer.writerows(results)
     (EVAL / "SCOREBOARD.json").write_text(json.dumps(scoreboard, indent=2, sort_keys=True), encoding="utf-8")
+    environment = {
+        "schema_version": 1,
+        "purpose": "Breakthrough-program execution environment and pinned external resources",
+        "release_baseline_commit": baseline.get("baseline_commit"),
+        "frozen_baseline_environment": baseline_environment,
+        "current_hardware": resource_inventory["hardware"],
+        "current_models": resource_inventory["models"],
+        "github": resource_inventory["github"],
+        "public_resources": public_resources,
+    }
+    (EVAL / "ENVIRONMENT.json").write_text(
+        json.dumps(environment, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
 
     markdown = [
         "# Breakthrough Scoreboard",
@@ -273,7 +581,9 @@ def main() -> int:
         "columns. Synthetic results do not satisfy real-assistant or public-benchmark gates.",
         "",
     ])
-    (EVAL / "SCOREBOARD.md").write_text("\n".join(markdown), encoding="utf-8")
+    rendered_scoreboard = "\n".join(markdown)
+    (EVAL / "SCOREBOARD.md").write_text(rendered_scoreboard, encoding="utf-8")
+    (EVAL / "BREAKTHROUGH_SCOREBOARD.md").write_text(rendered_scoreboard, encoding="utf-8")
     print(json.dumps({"results": len(results), "scoreboard_rows": len(scoreboard["rows"])}, indent=2))
     return 0
 

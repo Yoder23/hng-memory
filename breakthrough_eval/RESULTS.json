@@ -1,9 +1,10 @@
 {
   "integrity": {
     "candidate_pool_identity_verified": true,
-    "github_status": "DISCONNECTED_PENDING_USER_ACCOUNT",
+    "github_status": "CONNECTED_VERIFIED_PRIVATE_YODER23_HNG_MEMORY",
     "literature_mixed_with_local": false,
-    "llm_failed_events": 0
+    "llm_failed_events": 0,
+    "public_candidate_invariants_verified": true
   },
   "results": [
     {
@@ -304,6 +305,358 @@
       "value": 5.897988928985433
     },
     {
+      "area": "longmemeval_v2_text_pilot",
+      "evidence_class": "public_noncanonical",
+      "metric": "answer_accuracy",
+      "notes": "Official public data; stratified text-only pilot with local reader/judge, not a leaderboard score.",
+      "source": "public/longmemeval_v2/RESULTS.json",
+      "status": "EXECUTED",
+      "system": "bm25",
+      "unit": "fraction",
+      "value": 0.19047619047619047
+    },
+    {
+      "area": "longmemeval_v2_text_pilot",
+      "evidence_class": "public_noncanonical",
+      "metric": "answer_accuracy",
+      "notes": "Official public data; stratified text-only pilot with local reader/judge, not a leaderboard score.",
+      "source": "public/longmemeval_v2/RESULTS.json",
+      "status": "EXECUTED",
+      "system": "hng",
+      "unit": "fraction",
+      "value": 0.19047619047619047
+    },
+    {
+      "area": "longmemeval_v2_text_pilot",
+      "evidence_class": "public_noncanonical",
+      "metric": "answer_accuracy",
+      "notes": "Official public data; stratified text-only pilot with local reader/judge, not a leaderboard score.",
+      "source": "public/longmemeval_v2/RESULTS.json",
+      "status": "EXECUTED",
+      "system": "no_retrieval",
+      "unit": "fraction",
+      "value": 0.0
+    },
+    {
+      "area": "longmemeval_v2_text_pilot",
+      "evidence_class": "public_noncanonical",
+      "metric": "answer_accuracy",
+      "notes": "Official public data; stratified text-only pilot with local reader/judge, not a leaderboard score.",
+      "source": "public/longmemeval_v2/RESULTS.json",
+      "status": "EXECUTED",
+      "system": "strong_structured",
+      "unit": "fraction",
+      "value": 0.19047619047619047
+    },
+    {
+      "area": "bounded_storage_reliability",
+      "evidence_class": "local",
+      "metric": "records_preserved_after_backup",
+      "notes": "bounded local probe, not an hours/days production soak",
+      "source": "reliability/STORAGE_PROBE.json",
+      "status": "PASS",
+      "system": "sqlite_evidence_store",
+      "unit": "count",
+      "value": 10000.0
+    },
+    {
+      "area": "bounded_storage_reliability",
+      "evidence_class": "local",
+      "metric": "append_latency_p95",
+      "notes": "bounded local probe, not an hours/days production soak",
+      "source": "reliability/STORAGE_PROBE.json",
+      "status": "PASS",
+      "system": "sqlite_evidence_store",
+      "unit": "milliseconds",
+      "value": 2.971215039724484
+    },
+    {
+      "area": "bounded_multitenant_storage",
+      "evidence_class": "local",
+      "metric": "records_preserved_after_backup",
+      "notes": "1,000 tenants with 100 records each; not a 100,000-user concurrency test or soak.",
+      "source": "reliability/MULTITENANT_100K_1K.json",
+      "status": "PASS",
+      "system": "sqlite_evidence_store",
+      "unit": "count",
+      "value": 100000.0
+    },
+    {
+      "area": "bounded_multitenant_storage",
+      "evidence_class": "local",
+      "metric": "append_latency_p95",
+      "notes": "bounded local probe, not an hours/days production soak",
+      "source": "reliability/MULTITENANT_100K_1K.json",
+      "status": "PASS",
+      "system": "sqlite_evidence_store",
+      "unit": "milliseconds",
+      "value": 5.330405017593875
+    },
+    {
+      "area": "bounded_multitenant_storage",
+      "evidence_class": "local",
+      "metric": "tenant_isolation",
+      "notes": "Exact per-tenant eligible-ID counts; no concurrent user workload was exercised.",
+      "source": "reliability/MULTITENANT_100K_1K.json",
+      "status": "PASS",
+      "system": "sqlite_evidence_store",
+      "unit": "fraction",
+      "value": 1.0
+    },
+    {
+      "area": "synthetic_belief_revision",
+      "evidence_class": "synthetic",
+      "metric": "current_belief_accuracy",
+      "notes": "controlled synthetic component study; authority policy is supplied by the harness; not a public benchmark or end-to-end assistant result",
+      "source": "belief_revision/RESULTS.json",
+      "status": "PASS",
+      "system": "append_only_latest",
+      "unit": "fraction",
+      "value": 0.8
+    },
+    {
+      "area": "synthetic_belief_revision",
+      "evidence_class": "synthetic",
+      "metric": "current_belief_accuracy",
+      "notes": "controlled synthetic component study; authority policy is supplied by the harness; not a public benchmark or end-to-end assistant result",
+      "source": "belief_revision/RESULTS.json",
+      "status": "PASS",
+      "system": "hng_belief_store_authority",
+      "unit": "fraction",
+      "value": 1.0
+    },
+    {
+      "area": "synthetic_belief_revision",
+      "evidence_class": "synthetic",
+      "metric": "current_belief_accuracy",
+      "notes": "controlled synthetic component study; authority policy is supplied by the harness; not a public benchmark or end-to-end assistant result",
+      "source": "belief_revision/RESULTS.json",
+      "status": "PASS",
+      "system": "naive_first_fact",
+      "unit": "fraction",
+      "value": 0.6
+    },
+    {
+      "area": "synthetic_belief_revision",
+      "evidence_class": "synthetic",
+      "metric": "current_belief_accuracy",
+      "notes": "controlled synthetic component study; authority policy is supplied by the harness; not a public benchmark or end-to-end assistant result",
+      "source": "belief_revision/RESULTS.json",
+      "status": "PASS",
+      "system": "strong_structured_authority",
+      "unit": "fraction",
+      "value": 1.0
+    },
+    {
+      "area": "synthetic_belief_revision",
+      "evidence_class": "synthetic",
+      "metric": "current_belief_accuracy",
+      "notes": "controlled synthetic component study; authority policy is supplied by the harness; not a public benchmark or end-to-end assistant result",
+      "source": "belief_revision/RESULTS.json",
+      "status": "PASS",
+      "system": "temporal_latest",
+      "unit": "fraction",
+      "value": 0.8
+    },
+    {
+      "area": "synthetic_provenance_ablation",
+      "evidence_class": "synthetic",
+      "metric": "decision_accuracy",
+      "notes": "25 frozen synthetic poison cases; deterministic decision study, not downstream public behavior",
+      "source": "provenance_ablation/RESULTS.json",
+      "status": "PASS",
+      "system": "hng_provenance_governance",
+      "unit": "fraction",
+      "value": 1.0
+    },
+    {
+      "area": "synthetic_provenance_ablation",
+      "evidence_class": "synthetic",
+      "metric": "decision_accuracy",
+      "notes": "25 frozen synthetic poison cases; deterministic decision study, not downstream public behavior",
+      "source": "provenance_ablation/RESULTS.json",
+      "status": "PASS",
+      "system": "no_provenance",
+      "unit": "fraction",
+      "value": 0.0
+    },
+    {
+      "area": "synthetic_provenance_ablation",
+      "evidence_class": "synthetic",
+      "metric": "decision_accuracy",
+      "notes": "25 frozen synthetic poison cases; deterministic decision study, not downstream public behavior",
+      "source": "provenance_ablation/RESULTS.json",
+      "status": "PASS",
+      "system": "provenance_displayed_only",
+      "unit": "fraction",
+      "value": 0.0
+    },
+    {
+      "area": "synthetic_provenance_ablation",
+      "evidence_class": "synthetic",
+      "metric": "decision_accuracy",
+      "notes": "25 frozen synthetic poison cases; deterministic decision study, not downstream public behavior",
+      "source": "provenance_ablation/RESULTS.json",
+      "status": "PASS",
+      "system": "strong_structured_provenance_governance",
+      "unit": "fraction",
+      "value": 1.0
+    },
+    {
+      "area": "synthetic_action_experience",
+      "evidence_class": "synthetic",
+      "metric": "action_success_rate",
+      "notes": "deterministic synthetic action simulator with synthetic binary vectors; production HNG store/evaluator; not a public benchmark, real assistant, or real-HDC result",
+      "source": "action_experience/RESULTS.json",
+      "status": "PASS",
+      "system": "graph_memory",
+      "unit": "fraction",
+      "value": 0.68
+    },
+    {
+      "area": "synthetic_action_experience",
+      "evidence_class": "synthetic",
+      "metric": "action_regret",
+      "notes": "Failures relative to the deterministic oracle action.",
+      "source": "action_experience/RESULTS.json",
+      "status": "PASS",
+      "system": "graph_memory",
+      "unit": "count",
+      "value": 32.0
+    },
+    {
+      "area": "synthetic_action_experience",
+      "evidence_class": "synthetic",
+      "metric": "action_success_rate",
+      "notes": "deterministic synthetic action simulator with synthetic binary vectors; production HNG store/evaluator; not a public benchmark, real assistant, or real-HDC result",
+      "source": "action_experience/RESULTS.json",
+      "status": "PASS",
+      "system": "hng_governed_transitions",
+      "unit": "fraction",
+      "value": 0.68
+    },
+    {
+      "area": "synthetic_action_experience",
+      "evidence_class": "synthetic",
+      "metric": "action_regret",
+      "notes": "Failures relative to the deterministic oracle action.",
+      "source": "action_experience/RESULTS.json",
+      "status": "PASS",
+      "system": "hng_governed_transitions",
+      "unit": "count",
+      "value": 32.0
+    },
+    {
+      "area": "synthetic_action_experience",
+      "evidence_class": "synthetic",
+      "metric": "action_success_rate",
+      "notes": "deterministic synthetic action simulator with synthetic binary vectors; production HNG store/evaluator; not a public benchmark, real assistant, or real-HDC result",
+      "source": "action_experience/RESULTS.json",
+      "status": "PASS",
+      "system": "nearest_neighbor_experience",
+      "unit": "fraction",
+      "value": 0.75
+    },
+    {
+      "area": "synthetic_action_experience",
+      "evidence_class": "synthetic",
+      "metric": "action_regret",
+      "notes": "Failures relative to the deterministic oracle action.",
+      "source": "action_experience/RESULTS.json",
+      "status": "PASS",
+      "system": "nearest_neighbor_experience",
+      "unit": "count",
+      "value": 25.0
+    },
+    {
+      "area": "synthetic_action_experience",
+      "evidence_class": "synthetic",
+      "metric": "action_success_rate",
+      "notes": "deterministic synthetic action simulator with synthetic binary vectors; production HNG store/evaluator; not a public benchmark, real assistant, or real-HDC result",
+      "source": "action_experience/RESULTS.json",
+      "status": "PASS",
+      "system": "semantic_action_router",
+      "unit": "fraction",
+      "value": 0.2
+    },
+    {
+      "area": "synthetic_action_experience",
+      "evidence_class": "synthetic",
+      "metric": "action_regret",
+      "notes": "Failures relative to the deterministic oracle action.",
+      "source": "action_experience/RESULTS.json",
+      "status": "PASS",
+      "system": "semantic_action_router",
+      "unit": "count",
+      "value": 80.0
+    },
+    {
+      "area": "synthetic_action_experience",
+      "evidence_class": "synthetic",
+      "metric": "action_success_rate",
+      "notes": "deterministic synthetic action simulator with synthetic binary vectors; production HNG store/evaluator; not a public benchmark, real assistant, or real-HDC result",
+      "source": "action_experience/RESULTS.json",
+      "status": "PASS",
+      "system": "strong_structured",
+      "unit": "fraction",
+      "value": 0.68
+    },
+    {
+      "area": "synthetic_action_experience",
+      "evidence_class": "synthetic",
+      "metric": "action_regret",
+      "notes": "Failures relative to the deterministic oracle action.",
+      "source": "action_experience/RESULTS.json",
+      "status": "PASS",
+      "system": "strong_structured",
+      "unit": "count",
+      "value": 32.0
+    },
+    {
+      "area": "synthetic_action_experience",
+      "evidence_class": "synthetic",
+      "metric": "action_success_rate",
+      "notes": "deterministic synthetic action simulator with synthetic binary vectors; production HNG store/evaluator; not a public benchmark, real assistant, or real-HDC result",
+      "source": "action_experience/RESULTS.json",
+      "status": "PASS",
+      "system": "structured_database",
+      "unit": "fraction",
+      "value": 0.68
+    },
+    {
+      "area": "synthetic_action_experience",
+      "evidence_class": "synthetic",
+      "metric": "action_regret",
+      "notes": "Failures relative to the deterministic oracle action.",
+      "source": "action_experience/RESULTS.json",
+      "status": "PASS",
+      "system": "structured_database",
+      "unit": "count",
+      "value": 32.0
+    },
+    {
+      "area": "synthetic_action_experience",
+      "evidence_class": "synthetic",
+      "metric": "action_success_rate",
+      "notes": "deterministic synthetic action simulator with synthetic binary vectors; production HNG store/evaluator; not a public benchmark, real assistant, or real-HDC result",
+      "source": "action_experience/RESULTS.json",
+      "status": "PASS",
+      "system": "weighted_multi_vector",
+      "unit": "fraction",
+      "value": 0.68
+    },
+    {
+      "area": "synthetic_action_experience",
+      "evidence_class": "synthetic",
+      "metric": "action_regret",
+      "notes": "Failures relative to the deterministic oracle action.",
+      "source": "action_experience/RESULTS.json",
+      "status": "PASS",
+      "system": "weighted_multi_vector",
+      "unit": "count",
+      "value": 32.0
+    },
+    {
       "area": "release_pytest",
       "evidence_class": "local",
       "metric": "passed",
@@ -359,10 +712,10 @@
       "value": null
     },
     {
-      "area": "longmemeval_v2",
+      "area": "personamem_v2",
       "evidence_class": "public",
       "metric": "primary_metric",
-      "notes": "Official dataset/harness not installed; canonical model/judge resources unresolved.",
+      "notes": "Official dataset/harness not installed.",
       "source": "RESOURCE_INVENTORY.json",
       "status": "BLOCKED_EXTERNAL",
       "system": "hng",
@@ -373,20 +726,9 @@
       "area": "locomo_plus",
       "evidence_class": "public",
       "metric": "primary_metric",
-      "notes": "Official dataset/harness not installed.",
-      "source": "RESOURCE_INVENTORY.json",
-      "status": "BLOCKED_EXTERNAL",
-      "system": "hng",
-      "unit": "fraction",
-      "value": null
-    },
-    {
-      "area": "personamem_v2",
-      "evidence_class": "public",
-      "metric": "primary_metric",
-      "notes": "Official dataset/harness not installed.",
-      "source": "RESOURCE_INVENTORY.json",
-      "status": "BLOCKED_EXTERNAL",
+      "notes": "Official data and six-category candidate pools are prepared; reader/judge execution is not complete.",
+      "source": "PUBLIC_RESOURCES.json",
+      "status": "IN_PROGRESS",
       "system": "hng",
       "unit": "fraction",
       "value": null

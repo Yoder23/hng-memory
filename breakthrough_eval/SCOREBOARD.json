@@ -55,27 +55,77 @@
       "status": "LOSS_TIE"
     },
     {
-      "area": "Longmemeval V2",
+      "area": "Bounded storage reliability",
+      "baseline": null,
+      "delta": null,
+      "evidence_class": "local",
+      "hng": 1.0,
+      "notes": "10000 records; backup ledger identical; p95 append 2.971 ms. bounded local probe, not an hours/days production soak",
+      "significance": null,
+      "status": "PASS"
+    },
+    {
+      "area": "Bounded 100K-record / 1K-tenant storage",
+      "baseline": null,
+      "delta": null,
+      "evidence_class": "local",
+      "hng": 1.0,
+      "notes": "100000 records; exact 100-per-tenant counts; backup ledger identical; p95 append 5.330 ms. Not a 100K-user or concurrent load test.",
+      "significance": null,
+      "status": "PASS"
+    },
+    {
+      "area": "Synthetic belief revision",
+      "baseline": 1.0,
+      "delta": 0.0,
+      "evidence_class": "synthetic",
+      "hng": 1.0,
+      "notes": "Authority policy plus HNG revision history ties the same strong structured policy; component study only.",
+      "significance": null,
+      "status": "LOSS_TIE"
+    },
+    {
+      "area": "Synthetic provenance governance",
+      "baseline": 1,
+      "delta": 0,
+      "evidence_class": "synthetic",
+      "hng": 1,
+      "notes": "Governed provenance beats ignored/display-only provenance, but HNG ties StrongStructuredBaseline on 25 poison cases.",
+      "significance": null,
+      "status": "LOSS_TIE"
+    },
+    {
+      "area": "Synthetic action experience",
+      "baseline": 0.75,
+      "delta": -0.06999999999999995,
+      "evidence_class": "synthetic",
+      "hng": 0.68,
+      "notes": "HNG ties structured/graph/Strong at 68% and loses to nearest-experience retrieval at 75%.",
+      "significance": null,
+      "status": "LOSS"
+    },
+    {
+      "area": "LongMemEval-V2 text pilot",
+      "baseline": 0.19047619047619047,
+      "delta": 0.0,
+      "evidence_class": "public_noncanonical",
+      "hng": 0.19047619047619047,
+      "notes": "Official data, local text-only reader/judge pilot; not comparable to leaderboard scores.",
+      "significance": null,
+      "status": "EXECUTED_NONCANONICAL"
+    },
+    {
+      "area": "LoCoMo-Plus",
       "baseline": null,
       "delta": null,
       "evidence_class": "public",
       "hng": null,
-      "notes": "Official dataset/harness not installed; canonical model/judge resources unresolved.",
+      "notes": "Official data and six-category candidate pools are prepared; reader/judge execution is not complete.",
       "significance": null,
-      "status": "BLOCKED_EXTERNAL"
+      "status": "IN_PROGRESS"
     },
     {
-      "area": "Locomo Plus",
-      "baseline": null,
-      "delta": null,
-      "evidence_class": "public",
-      "hng": null,
-      "notes": "Official dataset/harness not installed.",
-      "significance": null,
-      "status": "BLOCKED_EXTERNAL"
-    },
-    {
-      "area": "Personamem V2",
+      "area": "PersonaMem-v2",
       "baseline": null,
       "delta": null,
       "evidence_class": "public",

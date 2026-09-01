@@ -1,0 +1,4106 @@
+{
+  "benchmark": "fixed_candidate_provenance_ablation",
+  "claim_boundary": "25 frozen synthetic poison cases; deterministic decision study, not downstream public behavior",
+  "events": [
+    {
+      "arms": {
+        "hng_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-00-e03",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-00-e02",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-00-e04",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-00-e05",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-00-e01",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-00-e00",
+              "reason": "untrusted:0.262<0.600"
+            }
+          ],
+          "included": [
+            "untrusted_poison-00-e06"
+          ]
+        },
+        "no_provenance": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-00-e03",
+            "untrusted_poison-00-e02",
+            "untrusted_poison-00-e04",
+            "untrusted_poison-00-e05",
+            "untrusted_poison-00-e06",
+            "untrusted_poison-00-e01",
+            "untrusted_poison-00-e00"
+          ]
+        },
+        "provenance_displayed_only": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-00-e03",
+            "untrusted_poison-00-e02",
+            "untrusted_poison-00-e04",
+            "untrusted_poison-00-e05",
+            "untrusted_poison-00-e06",
+            "untrusted_poison-00-e01",
+            "untrusted_poison-00-e00"
+          ]
+        },
+        "strong_structured_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-00-e03",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-00-e02",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-00-e04",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-00-e05",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-00-e01",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-00-e00",
+              "reason": "untrusted"
+            }
+          ],
+          "included": [
+            "untrusted_poison-00-e06"
+          ]
+        }
+      },
+      "candidate_ids": [
+        "untrusted_poison-00-e03",
+        "untrusted_poison-00-e02",
+        "untrusted_poison-00-e04",
+        "untrusted_poison-00-e05",
+        "untrusted_poison-00-e06",
+        "untrusted_poison-00-e01",
+        "untrusted_poison-00-e00"
+      ],
+      "candidate_pool_sha256": "b81c3bf5babc98f15373b3100955b88c4b62fde914be835bb67a2b88a14e5db8",
+      "case_id": "untrusted_poison-00",
+      "displayed_provenance": [
+        {
+          "source_id": "model_inference:untrusted_poison-00-poison-3",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-00-poison-2",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-00-poison-4",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-00-poison-5",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "system_telemetry:untrusted_poison-00-telemetry-failure",
+          "source_type": "system_telemetry",
+          "trust": 1.0,
+          "verification_status": "verified",
+          "verified": true
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-00-poison-1",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-00-poison-0",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        }
+      ],
+      "expected": "challenge",
+      "split": "development"
+    },
+    {
+      "arms": {
+        "hng_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-01-e03",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-01-e01",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-01-e05",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-01-e02",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-01-e00",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-01-e04",
+              "reason": "untrusted:0.262<0.600"
+            }
+          ],
+          "included": [
+            "untrusted_poison-01-e06"
+          ]
+        },
+        "no_provenance": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-01-e06",
+            "untrusted_poison-01-e03",
+            "untrusted_poison-01-e01",
+            "untrusted_poison-01-e05",
+            "untrusted_poison-01-e02",
+            "untrusted_poison-01-e00",
+            "untrusted_poison-01-e04"
+          ]
+        },
+        "provenance_displayed_only": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-01-e06",
+            "untrusted_poison-01-e03",
+            "untrusted_poison-01-e01",
+            "untrusted_poison-01-e05",
+            "untrusted_poison-01-e02",
+            "untrusted_poison-01-e00",
+            "untrusted_poison-01-e04"
+          ]
+        },
+        "strong_structured_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-01-e03",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-01-e01",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-01-e05",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-01-e02",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-01-e00",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-01-e04",
+              "reason": "untrusted"
+            }
+          ],
+          "included": [
+            "untrusted_poison-01-e06"
+          ]
+        }
+      },
+      "candidate_ids": [
+        "untrusted_poison-01-e06",
+        "untrusted_poison-01-e03",
+        "untrusted_poison-01-e01",
+        "untrusted_poison-01-e05",
+        "untrusted_poison-01-e02",
+        "untrusted_poison-01-e00",
+        "untrusted_poison-01-e04"
+      ],
+      "candidate_pool_sha256": "b86579eb5c29a49d108a0a1ff594cd32b407f6958cbc5e5d95b61d8693c94b51",
+      "case_id": "untrusted_poison-01",
+      "displayed_provenance": [
+        {
+          "source_id": "system_telemetry:untrusted_poison-01-telemetry-failure",
+          "source_type": "system_telemetry",
+          "trust": 1.0,
+          "verification_status": "verified",
+          "verified": true
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-01-poison-3",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-01-poison-1",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-01-poison-5",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-01-poison-2",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-01-poison-0",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-01-poison-4",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        }
+      ],
+      "expected": "challenge",
+      "split": "development"
+    },
+    {
+      "arms": {
+        "hng_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-02-e02",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-02-e01",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-02-e00",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-02-e04",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-02-e05",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-02-e03",
+              "reason": "untrusted:0.262<0.600"
+            }
+          ],
+          "included": [
+            "untrusted_poison-02-e06"
+          ]
+        },
+        "no_provenance": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-02-e02",
+            "untrusted_poison-02-e01",
+            "untrusted_poison-02-e00",
+            "untrusted_poison-02-e04",
+            "untrusted_poison-02-e05",
+            "untrusted_poison-02-e06",
+            "untrusted_poison-02-e03"
+          ]
+        },
+        "provenance_displayed_only": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-02-e02",
+            "untrusted_poison-02-e01",
+            "untrusted_poison-02-e00",
+            "untrusted_poison-02-e04",
+            "untrusted_poison-02-e05",
+            "untrusted_poison-02-e06",
+            "untrusted_poison-02-e03"
+          ]
+        },
+        "strong_structured_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-02-e02",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-02-e01",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-02-e00",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-02-e04",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-02-e05",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-02-e03",
+              "reason": "untrusted"
+            }
+          ],
+          "included": [
+            "untrusted_poison-02-e06"
+          ]
+        }
+      },
+      "candidate_ids": [
+        "untrusted_poison-02-e02",
+        "untrusted_poison-02-e01",
+        "untrusted_poison-02-e00",
+        "untrusted_poison-02-e04",
+        "untrusted_poison-02-e05",
+        "untrusted_poison-02-e06",
+        "untrusted_poison-02-e03"
+      ],
+      "candidate_pool_sha256": "419d42eb76917f325a18b3130612e4d42ab7a0dd3ebe2b77362c65894cfe4945",
+      "case_id": "untrusted_poison-02",
+      "displayed_provenance": [
+        {
+          "source_id": "model_inference:untrusted_poison-02-poison-2",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-02-poison-1",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-02-poison-0",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-02-poison-4",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-02-poison-5",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "system_telemetry:untrusted_poison-02-telemetry-failure",
+          "source_type": "system_telemetry",
+          "trust": 1.0,
+          "verification_status": "verified",
+          "verified": true
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-02-poison-3",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        }
+      ],
+      "expected": "challenge",
+      "split": "development"
+    },
+    {
+      "arms": {
+        "hng_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-03-e01",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-03-e00",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-03-e03",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-03-e05",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-03-e02",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-03-e04",
+              "reason": "untrusted:0.262<0.600"
+            }
+          ],
+          "included": [
+            "untrusted_poison-03-e06"
+          ]
+        },
+        "no_provenance": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-03-e06",
+            "untrusted_poison-03-e01",
+            "untrusted_poison-03-e00",
+            "untrusted_poison-03-e03",
+            "untrusted_poison-03-e05",
+            "untrusted_poison-03-e02",
+            "untrusted_poison-03-e04"
+          ]
+        },
+        "provenance_displayed_only": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-03-e06",
+            "untrusted_poison-03-e01",
+            "untrusted_poison-03-e00",
+            "untrusted_poison-03-e03",
+            "untrusted_poison-03-e05",
+            "untrusted_poison-03-e02",
+            "untrusted_poison-03-e04"
+          ]
+        },
+        "strong_structured_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-03-e01",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-03-e00",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-03-e03",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-03-e05",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-03-e02",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-03-e04",
+              "reason": "untrusted"
+            }
+          ],
+          "included": [
+            "untrusted_poison-03-e06"
+          ]
+        }
+      },
+      "candidate_ids": [
+        "untrusted_poison-03-e06",
+        "untrusted_poison-03-e01",
+        "untrusted_poison-03-e00",
+        "untrusted_poison-03-e03",
+        "untrusted_poison-03-e05",
+        "untrusted_poison-03-e02",
+        "untrusted_poison-03-e04"
+      ],
+      "candidate_pool_sha256": "584be7c102fca396420a20b31608cda6bc8a7c5d3cdb9c9914b50017895854a9",
+      "case_id": "untrusted_poison-03",
+      "displayed_provenance": [
+        {
+          "source_id": "system_telemetry:untrusted_poison-03-telemetry-failure",
+          "source_type": "system_telemetry",
+          "trust": 1.0,
+          "verification_status": "verified",
+          "verified": true
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-03-poison-1",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-03-poison-0",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-03-poison-3",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-03-poison-5",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-03-poison-2",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-03-poison-4",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        }
+      ],
+      "expected": "challenge",
+      "split": "development"
+    },
+    {
+      "arms": {
+        "hng_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-04-e04",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-04-e05",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-04-e00",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-04-e03",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-04-e01",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-04-e02",
+              "reason": "untrusted:0.262<0.600"
+            }
+          ],
+          "included": [
+            "untrusted_poison-04-e06"
+          ]
+        },
+        "no_provenance": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-04-e06",
+            "untrusted_poison-04-e04",
+            "untrusted_poison-04-e05",
+            "untrusted_poison-04-e00",
+            "untrusted_poison-04-e03",
+            "untrusted_poison-04-e01",
+            "untrusted_poison-04-e02"
+          ]
+        },
+        "provenance_displayed_only": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-04-e06",
+            "untrusted_poison-04-e04",
+            "untrusted_poison-04-e05",
+            "untrusted_poison-04-e00",
+            "untrusted_poison-04-e03",
+            "untrusted_poison-04-e01",
+            "untrusted_poison-04-e02"
+          ]
+        },
+        "strong_structured_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-04-e04",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-04-e05",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-04-e00",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-04-e03",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-04-e01",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-04-e02",
+              "reason": "untrusted"
+            }
+          ],
+          "included": [
+            "untrusted_poison-04-e06"
+          ]
+        }
+      },
+      "candidate_ids": [
+        "untrusted_poison-04-e06",
+        "untrusted_poison-04-e04",
+        "untrusted_poison-04-e05",
+        "untrusted_poison-04-e00",
+        "untrusted_poison-04-e03",
+        "untrusted_poison-04-e01",
+        "untrusted_poison-04-e02"
+      ],
+      "candidate_pool_sha256": "fa61cb75ea2c2c605b0f10990763bc876603a024bb6765270f4e47c9eb7b9c14",
+      "case_id": "untrusted_poison-04",
+      "displayed_provenance": [
+        {
+          "source_id": "system_telemetry:untrusted_poison-04-telemetry-failure",
+          "source_type": "system_telemetry",
+          "trust": 1.0,
+          "verification_status": "verified",
+          "verified": true
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-04-poison-4",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-04-poison-5",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-04-poison-0",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-04-poison-3",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-04-poison-1",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-04-poison-2",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        }
+      ],
+      "expected": "challenge",
+      "split": "development"
+    },
+    {
+      "arms": {
+        "hng_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-05-e02",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-05-e04",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-05-e00",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-05-e01",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-05-e05",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-05-e03",
+              "reason": "untrusted:0.262<0.600"
+            }
+          ],
+          "included": [
+            "untrusted_poison-05-e06"
+          ]
+        },
+        "no_provenance": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-05-e06",
+            "untrusted_poison-05-e02",
+            "untrusted_poison-05-e04",
+            "untrusted_poison-05-e00",
+            "untrusted_poison-05-e01",
+            "untrusted_poison-05-e05",
+            "untrusted_poison-05-e03"
+          ]
+        },
+        "provenance_displayed_only": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-05-e06",
+            "untrusted_poison-05-e02",
+            "untrusted_poison-05-e04",
+            "untrusted_poison-05-e00",
+            "untrusted_poison-05-e01",
+            "untrusted_poison-05-e05",
+            "untrusted_poison-05-e03"
+          ]
+        },
+        "strong_structured_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-05-e02",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-05-e04",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-05-e00",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-05-e01",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-05-e05",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-05-e03",
+              "reason": "untrusted"
+            }
+          ],
+          "included": [
+            "untrusted_poison-05-e06"
+          ]
+        }
+      },
+      "candidate_ids": [
+        "untrusted_poison-05-e06",
+        "untrusted_poison-05-e02",
+        "untrusted_poison-05-e04",
+        "untrusted_poison-05-e00",
+        "untrusted_poison-05-e01",
+        "untrusted_poison-05-e05",
+        "untrusted_poison-05-e03"
+      ],
+      "candidate_pool_sha256": "fa021b7991da6f182941cda59734248eb3745920747b64529e099fb6b25fbb3f",
+      "case_id": "untrusted_poison-05",
+      "displayed_provenance": [
+        {
+          "source_id": "system_telemetry:untrusted_poison-05-telemetry-failure",
+          "source_type": "system_telemetry",
+          "trust": 1.0,
+          "verification_status": "verified",
+          "verified": true
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-05-poison-2",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-05-poison-4",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-05-poison-0",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-05-poison-1",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-05-poison-5",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-05-poison-3",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        }
+      ],
+      "expected": "challenge",
+      "split": "holdout"
+    },
+    {
+      "arms": {
+        "hng_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-06-e04",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-06-e03",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-06-e00",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-06-e05",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-06-e02",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-06-e01",
+              "reason": "untrusted:0.262<0.600"
+            }
+          ],
+          "included": [
+            "untrusted_poison-06-e06"
+          ]
+        },
+        "no_provenance": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-06-e04",
+            "untrusted_poison-06-e03",
+            "untrusted_poison-06-e00",
+            "untrusted_poison-06-e05",
+            "untrusted_poison-06-e02",
+            "untrusted_poison-06-e06",
+            "untrusted_poison-06-e01"
+          ]
+        },
+        "provenance_displayed_only": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-06-e04",
+            "untrusted_poison-06-e03",
+            "untrusted_poison-06-e00",
+            "untrusted_poison-06-e05",
+            "untrusted_poison-06-e02",
+            "untrusted_poison-06-e06",
+            "untrusted_poison-06-e01"
+          ]
+        },
+        "strong_structured_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-06-e04",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-06-e03",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-06-e00",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-06-e05",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-06-e02",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-06-e01",
+              "reason": "untrusted"
+            }
+          ],
+          "included": [
+            "untrusted_poison-06-e06"
+          ]
+        }
+      },
+      "candidate_ids": [
+        "untrusted_poison-06-e04",
+        "untrusted_poison-06-e03",
+        "untrusted_poison-06-e00",
+        "untrusted_poison-06-e05",
+        "untrusted_poison-06-e02",
+        "untrusted_poison-06-e06",
+        "untrusted_poison-06-e01"
+      ],
+      "candidate_pool_sha256": "8d529f70875159bdc39de6685101465e7c879f6354f5fbef899e6853960c4fa1",
+      "case_id": "untrusted_poison-06",
+      "displayed_provenance": [
+        {
+          "source_id": "model_inference:untrusted_poison-06-poison-4",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-06-poison-3",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-06-poison-0",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-06-poison-5",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-06-poison-2",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "system_telemetry:untrusted_poison-06-telemetry-failure",
+          "source_type": "system_telemetry",
+          "trust": 1.0,
+          "verification_status": "verified",
+          "verified": true
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-06-poison-1",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        }
+      ],
+      "expected": "challenge",
+      "split": "holdout"
+    },
+    {
+      "arms": {
+        "hng_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-07-e00",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-07-e02",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-07-e04",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-07-e03",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-07-e01",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-07-e05",
+              "reason": "untrusted:0.262<0.600"
+            }
+          ],
+          "included": [
+            "untrusted_poison-07-e06"
+          ]
+        },
+        "no_provenance": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-07-e00",
+            "untrusted_poison-07-e02",
+            "untrusted_poison-07-e04",
+            "untrusted_poison-07-e03",
+            "untrusted_poison-07-e01",
+            "untrusted_poison-07-e06",
+            "untrusted_poison-07-e05"
+          ]
+        },
+        "provenance_displayed_only": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-07-e00",
+            "untrusted_poison-07-e02",
+            "untrusted_poison-07-e04",
+            "untrusted_poison-07-e03",
+            "untrusted_poison-07-e01",
+            "untrusted_poison-07-e06",
+            "untrusted_poison-07-e05"
+          ]
+        },
+        "strong_structured_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-07-e00",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-07-e02",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-07-e04",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-07-e03",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-07-e01",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-07-e05",
+              "reason": "untrusted"
+            }
+          ],
+          "included": [
+            "untrusted_poison-07-e06"
+          ]
+        }
+      },
+      "candidate_ids": [
+        "untrusted_poison-07-e00",
+        "untrusted_poison-07-e02",
+        "untrusted_poison-07-e04",
+        "untrusted_poison-07-e03",
+        "untrusted_poison-07-e01",
+        "untrusted_poison-07-e06",
+        "untrusted_poison-07-e05"
+      ],
+      "candidate_pool_sha256": "2171a617e04a7cedd182258bed90ffbeed4e81b1f651b2845dd2e89d9c145c11",
+      "case_id": "untrusted_poison-07",
+      "displayed_provenance": [
+        {
+          "source_id": "model_inference:untrusted_poison-07-poison-0",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-07-poison-2",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-07-poison-4",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-07-poison-3",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-07-poison-1",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "system_telemetry:untrusted_poison-07-telemetry-failure",
+          "source_type": "system_telemetry",
+          "trust": 1.0,
+          "verification_status": "verified",
+          "verified": true
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-07-poison-5",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        }
+      ],
+      "expected": "challenge",
+      "split": "holdout"
+    },
+    {
+      "arms": {
+        "hng_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-08-e00",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-08-e04",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-08-e03",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-08-e05",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-08-e02",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-08-e01",
+              "reason": "untrusted:0.262<0.600"
+            }
+          ],
+          "included": [
+            "untrusted_poison-08-e06"
+          ]
+        },
+        "no_provenance": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-08-e00",
+            "untrusted_poison-08-e06",
+            "untrusted_poison-08-e04",
+            "untrusted_poison-08-e03",
+            "untrusted_poison-08-e05",
+            "untrusted_poison-08-e02",
+            "untrusted_poison-08-e01"
+          ]
+        },
+        "provenance_displayed_only": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-08-e00",
+            "untrusted_poison-08-e06",
+            "untrusted_poison-08-e04",
+            "untrusted_poison-08-e03",
+            "untrusted_poison-08-e05",
+            "untrusted_poison-08-e02",
+            "untrusted_poison-08-e01"
+          ]
+        },
+        "strong_structured_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-08-e00",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-08-e04",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-08-e03",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-08-e05",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-08-e02",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-08-e01",
+              "reason": "untrusted"
+            }
+          ],
+          "included": [
+            "untrusted_poison-08-e06"
+          ]
+        }
+      },
+      "candidate_ids": [
+        "untrusted_poison-08-e00",
+        "untrusted_poison-08-e06",
+        "untrusted_poison-08-e04",
+        "untrusted_poison-08-e03",
+        "untrusted_poison-08-e05",
+        "untrusted_poison-08-e02",
+        "untrusted_poison-08-e01"
+      ],
+      "candidate_pool_sha256": "2cdff9700ba2318224c356415295bef89a1dab2f9354f7b6866c875ef25fafbb",
+      "case_id": "untrusted_poison-08",
+      "displayed_provenance": [
+        {
+          "source_id": "model_inference:untrusted_poison-08-poison-0",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "system_telemetry:untrusted_poison-08-telemetry-failure",
+          "source_type": "system_telemetry",
+          "trust": 1.0,
+          "verification_status": "verified",
+          "verified": true
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-08-poison-4",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-08-poison-3",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-08-poison-5",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-08-poison-2",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-08-poison-1",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        }
+      ],
+      "expected": "challenge",
+      "split": "holdout"
+    },
+    {
+      "arms": {
+        "hng_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-09-e03",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-09-e01",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-09-e02",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-09-e05",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-09-e00",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-09-e04",
+              "reason": "untrusted:0.262<0.600"
+            }
+          ],
+          "included": [
+            "untrusted_poison-09-e06"
+          ]
+        },
+        "no_provenance": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-09-e03",
+            "untrusted_poison-09-e06",
+            "untrusted_poison-09-e01",
+            "untrusted_poison-09-e02",
+            "untrusted_poison-09-e05",
+            "untrusted_poison-09-e00",
+            "untrusted_poison-09-e04"
+          ]
+        },
+        "provenance_displayed_only": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-09-e03",
+            "untrusted_poison-09-e06",
+            "untrusted_poison-09-e01",
+            "untrusted_poison-09-e02",
+            "untrusted_poison-09-e05",
+            "untrusted_poison-09-e00",
+            "untrusted_poison-09-e04"
+          ]
+        },
+        "strong_structured_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-09-e03",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-09-e01",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-09-e02",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-09-e05",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-09-e00",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-09-e04",
+              "reason": "untrusted"
+            }
+          ],
+          "included": [
+            "untrusted_poison-09-e06"
+          ]
+        }
+      },
+      "candidate_ids": [
+        "untrusted_poison-09-e03",
+        "untrusted_poison-09-e06",
+        "untrusted_poison-09-e01",
+        "untrusted_poison-09-e02",
+        "untrusted_poison-09-e05",
+        "untrusted_poison-09-e00",
+        "untrusted_poison-09-e04"
+      ],
+      "candidate_pool_sha256": "10219c37c4dea90dfe2cf2f400f4823bd5b796ec0651475e54928d892eea8068",
+      "case_id": "untrusted_poison-09",
+      "displayed_provenance": [
+        {
+          "source_id": "model_inference:untrusted_poison-09-poison-3",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "system_telemetry:untrusted_poison-09-telemetry-failure",
+          "source_type": "system_telemetry",
+          "trust": 1.0,
+          "verification_status": "verified",
+          "verified": true
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-09-poison-1",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-09-poison-2",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-09-poison-5",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-09-poison-0",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-09-poison-4",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        }
+      ],
+      "expected": "challenge",
+      "split": "holdout"
+    },
+    {
+      "arms": {
+        "hng_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-10-e01",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-10-e03",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-10-e04",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-10-e00",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-10-e02",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-10-e05",
+              "reason": "untrusted:0.262<0.600"
+            }
+          ],
+          "included": [
+            "untrusted_poison-10-e06"
+          ]
+        },
+        "no_provenance": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-10-e01",
+            "untrusted_poison-10-e03",
+            "untrusted_poison-10-e04",
+            "untrusted_poison-10-e00",
+            "untrusted_poison-10-e02",
+            "untrusted_poison-10-e05",
+            "untrusted_poison-10-e06"
+          ]
+        },
+        "provenance_displayed_only": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-10-e01",
+            "untrusted_poison-10-e03",
+            "untrusted_poison-10-e04",
+            "untrusted_poison-10-e00",
+            "untrusted_poison-10-e02",
+            "untrusted_poison-10-e05",
+            "untrusted_poison-10-e06"
+          ]
+        },
+        "strong_structured_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-10-e01",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-10-e03",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-10-e04",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-10-e00",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-10-e02",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-10-e05",
+              "reason": "untrusted"
+            }
+          ],
+          "included": [
+            "untrusted_poison-10-e06"
+          ]
+        }
+      },
+      "candidate_ids": [
+        "untrusted_poison-10-e01",
+        "untrusted_poison-10-e03",
+        "untrusted_poison-10-e04",
+        "untrusted_poison-10-e00",
+        "untrusted_poison-10-e02",
+        "untrusted_poison-10-e05",
+        "untrusted_poison-10-e06"
+      ],
+      "candidate_pool_sha256": "024e97bf1d89d04c342354d98a7fcb7eb7c1d158bac5901194efab4c62f89222",
+      "case_id": "untrusted_poison-10",
+      "displayed_provenance": [
+        {
+          "source_id": "model_inference:untrusted_poison-10-poison-1",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-10-poison-3",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-10-poison-4",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-10-poison-0",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-10-poison-2",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-10-poison-5",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "system_telemetry:untrusted_poison-10-telemetry-failure",
+          "source_type": "system_telemetry",
+          "trust": 1.0,
+          "verification_status": "verified",
+          "verified": true
+        }
+      ],
+      "expected": "challenge",
+      "split": "holdout"
+    },
+    {
+      "arms": {
+        "hng_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-11-e01",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-11-e03",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-11-e02",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-11-e05",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-11-e04",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-11-e00",
+              "reason": "untrusted:0.262<0.600"
+            }
+          ],
+          "included": [
+            "untrusted_poison-11-e06"
+          ]
+        },
+        "no_provenance": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-11-e01",
+            "untrusted_poison-11-e03",
+            "untrusted_poison-11-e02",
+            "untrusted_poison-11-e05",
+            "untrusted_poison-11-e04",
+            "untrusted_poison-11-e00",
+            "untrusted_poison-11-e06"
+          ]
+        },
+        "provenance_displayed_only": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-11-e01",
+            "untrusted_poison-11-e03",
+            "untrusted_poison-11-e02",
+            "untrusted_poison-11-e05",
+            "untrusted_poison-11-e04",
+            "untrusted_poison-11-e00",
+            "untrusted_poison-11-e06"
+          ]
+        },
+        "strong_structured_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-11-e01",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-11-e03",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-11-e02",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-11-e05",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-11-e04",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-11-e00",
+              "reason": "untrusted"
+            }
+          ],
+          "included": [
+            "untrusted_poison-11-e06"
+          ]
+        }
+      },
+      "candidate_ids": [
+        "untrusted_poison-11-e01",
+        "untrusted_poison-11-e03",
+        "untrusted_poison-11-e02",
+        "untrusted_poison-11-e05",
+        "untrusted_poison-11-e04",
+        "untrusted_poison-11-e00",
+        "untrusted_poison-11-e06"
+      ],
+      "candidate_pool_sha256": "b187d9edb3e4c3da08720ab164e354c2cea5e0aaac53c0d9029bb62459c6b6f4",
+      "case_id": "untrusted_poison-11",
+      "displayed_provenance": [
+        {
+          "source_id": "model_inference:untrusted_poison-11-poison-1",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-11-poison-3",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-11-poison-2",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-11-poison-5",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-11-poison-4",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-11-poison-0",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "system_telemetry:untrusted_poison-11-telemetry-failure",
+          "source_type": "system_telemetry",
+          "trust": 1.0,
+          "verification_status": "verified",
+          "verified": true
+        }
+      ],
+      "expected": "challenge",
+      "split": "holdout"
+    },
+    {
+      "arms": {
+        "hng_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-12-e05",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-12-e01",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-12-e03",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-12-e02",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-12-e00",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-12-e04",
+              "reason": "untrusted:0.262<0.600"
+            }
+          ],
+          "included": [
+            "untrusted_poison-12-e06"
+          ]
+        },
+        "no_provenance": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-12-e05",
+            "untrusted_poison-12-e01",
+            "untrusted_poison-12-e03",
+            "untrusted_poison-12-e06",
+            "untrusted_poison-12-e02",
+            "untrusted_poison-12-e00",
+            "untrusted_poison-12-e04"
+          ]
+        },
+        "provenance_displayed_only": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-12-e05",
+            "untrusted_poison-12-e01",
+            "untrusted_poison-12-e03",
+            "untrusted_poison-12-e06",
+            "untrusted_poison-12-e02",
+            "untrusted_poison-12-e00",
+            "untrusted_poison-12-e04"
+          ]
+        },
+        "strong_structured_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-12-e05",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-12-e01",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-12-e03",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-12-e02",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-12-e00",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-12-e04",
+              "reason": "untrusted"
+            }
+          ],
+          "included": [
+            "untrusted_poison-12-e06"
+          ]
+        }
+      },
+      "candidate_ids": [
+        "untrusted_poison-12-e05",
+        "untrusted_poison-12-e01",
+        "untrusted_poison-12-e03",
+        "untrusted_poison-12-e06",
+        "untrusted_poison-12-e02",
+        "untrusted_poison-12-e00",
+        "untrusted_poison-12-e04"
+      ],
+      "candidate_pool_sha256": "a168bd0a82ea00600942357d1b563201a0f231b409aa85090433765c64a0a234",
+      "case_id": "untrusted_poison-12",
+      "displayed_provenance": [
+        {
+          "source_id": "model_inference:untrusted_poison-12-poison-5",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-12-poison-1",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-12-poison-3",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "system_telemetry:untrusted_poison-12-telemetry-failure",
+          "source_type": "system_telemetry",
+          "trust": 1.0,
+          "verification_status": "verified",
+          "verified": true
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-12-poison-2",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-12-poison-0",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-12-poison-4",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        }
+      ],
+      "expected": "challenge",
+      "split": "holdout"
+    },
+    {
+      "arms": {
+        "hng_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-13-e05",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-13-e03",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-13-e01",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-13-e02",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-13-e00",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-13-e04",
+              "reason": "untrusted:0.262<0.600"
+            }
+          ],
+          "included": [
+            "untrusted_poison-13-e06"
+          ]
+        },
+        "no_provenance": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-13-e05",
+            "untrusted_poison-13-e03",
+            "untrusted_poison-13-e01",
+            "untrusted_poison-13-e02",
+            "untrusted_poison-13-e00",
+            "untrusted_poison-13-e04",
+            "untrusted_poison-13-e06"
+          ]
+        },
+        "provenance_displayed_only": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-13-e05",
+            "untrusted_poison-13-e03",
+            "untrusted_poison-13-e01",
+            "untrusted_poison-13-e02",
+            "untrusted_poison-13-e00",
+            "untrusted_poison-13-e04",
+            "untrusted_poison-13-e06"
+          ]
+        },
+        "strong_structured_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-13-e05",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-13-e03",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-13-e01",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-13-e02",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-13-e00",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-13-e04",
+              "reason": "untrusted"
+            }
+          ],
+          "included": [
+            "untrusted_poison-13-e06"
+          ]
+        }
+      },
+      "candidate_ids": [
+        "untrusted_poison-13-e05",
+        "untrusted_poison-13-e03",
+        "untrusted_poison-13-e01",
+        "untrusted_poison-13-e02",
+        "untrusted_poison-13-e00",
+        "untrusted_poison-13-e04",
+        "untrusted_poison-13-e06"
+      ],
+      "candidate_pool_sha256": "7b444c13f0b8e7ce9f3bd3d47fb47ef5df84e2652223ef65b569babe1b2f8a2c",
+      "case_id": "untrusted_poison-13",
+      "displayed_provenance": [
+        {
+          "source_id": "model_inference:untrusted_poison-13-poison-5",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-13-poison-3",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-13-poison-1",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-13-poison-2",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-13-poison-0",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-13-poison-4",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "system_telemetry:untrusted_poison-13-telemetry-failure",
+          "source_type": "system_telemetry",
+          "trust": 1.0,
+          "verification_status": "verified",
+          "verified": true
+        }
+      ],
+      "expected": "challenge",
+      "split": "holdout"
+    },
+    {
+      "arms": {
+        "hng_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-14-e05",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-14-e00",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-14-e03",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-14-e02",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-14-e01",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-14-e04",
+              "reason": "untrusted:0.262<0.600"
+            }
+          ],
+          "included": [
+            "untrusted_poison-14-e06"
+          ]
+        },
+        "no_provenance": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-14-e05",
+            "untrusted_poison-14-e00",
+            "untrusted_poison-14-e03",
+            "untrusted_poison-14-e02",
+            "untrusted_poison-14-e06",
+            "untrusted_poison-14-e01",
+            "untrusted_poison-14-e04"
+          ]
+        },
+        "provenance_displayed_only": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-14-e05",
+            "untrusted_poison-14-e00",
+            "untrusted_poison-14-e03",
+            "untrusted_poison-14-e02",
+            "untrusted_poison-14-e06",
+            "untrusted_poison-14-e01",
+            "untrusted_poison-14-e04"
+          ]
+        },
+        "strong_structured_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-14-e05",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-14-e00",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-14-e03",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-14-e02",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-14-e01",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-14-e04",
+              "reason": "untrusted"
+            }
+          ],
+          "included": [
+            "untrusted_poison-14-e06"
+          ]
+        }
+      },
+      "candidate_ids": [
+        "untrusted_poison-14-e05",
+        "untrusted_poison-14-e00",
+        "untrusted_poison-14-e03",
+        "untrusted_poison-14-e02",
+        "untrusted_poison-14-e06",
+        "untrusted_poison-14-e01",
+        "untrusted_poison-14-e04"
+      ],
+      "candidate_pool_sha256": "bba5b531c4217e31069d133ffd3fa31196f461fd7cfc37fbb08d50f1f7fb3226",
+      "case_id": "untrusted_poison-14",
+      "displayed_provenance": [
+        {
+          "source_id": "model_inference:untrusted_poison-14-poison-5",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-14-poison-0",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-14-poison-3",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-14-poison-2",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "system_telemetry:untrusted_poison-14-telemetry-failure",
+          "source_type": "system_telemetry",
+          "trust": 1.0,
+          "verification_status": "verified",
+          "verified": true
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-14-poison-1",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-14-poison-4",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        }
+      ],
+      "expected": "challenge",
+      "split": "holdout"
+    },
+    {
+      "arms": {
+        "hng_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-15-e05",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-15-e03",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-15-e01",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-15-e04",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-15-e02",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-15-e00",
+              "reason": "untrusted:0.262<0.600"
+            }
+          ],
+          "included": [
+            "untrusted_poison-15-e06"
+          ]
+        },
+        "no_provenance": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-15-e05",
+            "untrusted_poison-15-e03",
+            "untrusted_poison-15-e01",
+            "untrusted_poison-15-e04",
+            "untrusted_poison-15-e02",
+            "untrusted_poison-15-e00",
+            "untrusted_poison-15-e06"
+          ]
+        },
+        "provenance_displayed_only": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-15-e05",
+            "untrusted_poison-15-e03",
+            "untrusted_poison-15-e01",
+            "untrusted_poison-15-e04",
+            "untrusted_poison-15-e02",
+            "untrusted_poison-15-e00",
+            "untrusted_poison-15-e06"
+          ]
+        },
+        "strong_structured_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-15-e05",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-15-e03",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-15-e01",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-15-e04",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-15-e02",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-15-e00",
+              "reason": "untrusted"
+            }
+          ],
+          "included": [
+            "untrusted_poison-15-e06"
+          ]
+        }
+      },
+      "candidate_ids": [
+        "untrusted_poison-15-e05",
+        "untrusted_poison-15-e03",
+        "untrusted_poison-15-e01",
+        "untrusted_poison-15-e04",
+        "untrusted_poison-15-e02",
+        "untrusted_poison-15-e00",
+        "untrusted_poison-15-e06"
+      ],
+      "candidate_pool_sha256": "9cdbd807b21c397bcb92313ba7a4a8e0d160255dfcc4e5f8bca8b6170a5b10c7",
+      "case_id": "untrusted_poison-15",
+      "displayed_provenance": [
+        {
+          "source_id": "model_inference:untrusted_poison-15-poison-5",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-15-poison-3",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-15-poison-1",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-15-poison-4",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-15-poison-2",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-15-poison-0",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "system_telemetry:untrusted_poison-15-telemetry-failure",
+          "source_type": "system_telemetry",
+          "trust": 1.0,
+          "verification_status": "verified",
+          "verified": true
+        }
+      ],
+      "expected": "challenge",
+      "split": "holdout"
+    },
+    {
+      "arms": {
+        "hng_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-16-e05",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-16-e00",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-16-e02",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-16-e03",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-16-e04",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-16-e01",
+              "reason": "untrusted:0.262<0.600"
+            }
+          ],
+          "included": [
+            "untrusted_poison-16-e06"
+          ]
+        },
+        "no_provenance": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-16-e05",
+            "untrusted_poison-16-e00",
+            "untrusted_poison-16-e02",
+            "untrusted_poison-16-e03",
+            "untrusted_poison-16-e06",
+            "untrusted_poison-16-e04",
+            "untrusted_poison-16-e01"
+          ]
+        },
+        "provenance_displayed_only": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-16-e05",
+            "untrusted_poison-16-e00",
+            "untrusted_poison-16-e02",
+            "untrusted_poison-16-e03",
+            "untrusted_poison-16-e06",
+            "untrusted_poison-16-e04",
+            "untrusted_poison-16-e01"
+          ]
+        },
+        "strong_structured_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-16-e05",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-16-e00",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-16-e02",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-16-e03",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-16-e04",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-16-e01",
+              "reason": "untrusted"
+            }
+          ],
+          "included": [
+            "untrusted_poison-16-e06"
+          ]
+        }
+      },
+      "candidate_ids": [
+        "untrusted_poison-16-e05",
+        "untrusted_poison-16-e00",
+        "untrusted_poison-16-e02",
+        "untrusted_poison-16-e03",
+        "untrusted_poison-16-e06",
+        "untrusted_poison-16-e04",
+        "untrusted_poison-16-e01"
+      ],
+      "candidate_pool_sha256": "b54583d4124ce3d79d87d9b8e5f43953fa4f67893ffb2cf27785099c78af71b7",
+      "case_id": "untrusted_poison-16",
+      "displayed_provenance": [
+        {
+          "source_id": "model_inference:untrusted_poison-16-poison-5",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-16-poison-0",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-16-poison-2",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-16-poison-3",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "system_telemetry:untrusted_poison-16-telemetry-failure",
+          "source_type": "system_telemetry",
+          "trust": 1.0,
+          "verification_status": "verified",
+          "verified": true
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-16-poison-4",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-16-poison-1",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        }
+      ],
+      "expected": "challenge",
+      "split": "holdout"
+    },
+    {
+      "arms": {
+        "hng_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-17-e02",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-17-e01",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-17-e00",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-17-e03",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-17-e05",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-17-e04",
+              "reason": "untrusted:0.262<0.600"
+            }
+          ],
+          "included": [
+            "untrusted_poison-17-e06"
+          ]
+        },
+        "no_provenance": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-17-e02",
+            "untrusted_poison-17-e01",
+            "untrusted_poison-17-e00",
+            "untrusted_poison-17-e06",
+            "untrusted_poison-17-e03",
+            "untrusted_poison-17-e05",
+            "untrusted_poison-17-e04"
+          ]
+        },
+        "provenance_displayed_only": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-17-e02",
+            "untrusted_poison-17-e01",
+            "untrusted_poison-17-e00",
+            "untrusted_poison-17-e06",
+            "untrusted_poison-17-e03",
+            "untrusted_poison-17-e05",
+            "untrusted_poison-17-e04"
+          ]
+        },
+        "strong_structured_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-17-e02",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-17-e01",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-17-e00",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-17-e03",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-17-e05",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-17-e04",
+              "reason": "untrusted"
+            }
+          ],
+          "included": [
+            "untrusted_poison-17-e06"
+          ]
+        }
+      },
+      "candidate_ids": [
+        "untrusted_poison-17-e02",
+        "untrusted_poison-17-e01",
+        "untrusted_poison-17-e00",
+        "untrusted_poison-17-e06",
+        "untrusted_poison-17-e03",
+        "untrusted_poison-17-e05",
+        "untrusted_poison-17-e04"
+      ],
+      "candidate_pool_sha256": "98f802b4c052200b4596e7d310b35cda54572271e4df02514c314d0235c0635d",
+      "case_id": "untrusted_poison-17",
+      "displayed_provenance": [
+        {
+          "source_id": "model_inference:untrusted_poison-17-poison-2",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-17-poison-1",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-17-poison-0",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "system_telemetry:untrusted_poison-17-telemetry-failure",
+          "source_type": "system_telemetry",
+          "trust": 1.0,
+          "verification_status": "verified",
+          "verified": true
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-17-poison-3",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-17-poison-5",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-17-poison-4",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        }
+      ],
+      "expected": "challenge",
+      "split": "holdout"
+    },
+    {
+      "arms": {
+        "hng_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-18-e05",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-18-e04",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-18-e00",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-18-e03",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-18-e01",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-18-e02",
+              "reason": "untrusted:0.262<0.600"
+            }
+          ],
+          "included": [
+            "untrusted_poison-18-e06"
+          ]
+        },
+        "no_provenance": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-18-e06",
+            "untrusted_poison-18-e05",
+            "untrusted_poison-18-e04",
+            "untrusted_poison-18-e00",
+            "untrusted_poison-18-e03",
+            "untrusted_poison-18-e01",
+            "untrusted_poison-18-e02"
+          ]
+        },
+        "provenance_displayed_only": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-18-e06",
+            "untrusted_poison-18-e05",
+            "untrusted_poison-18-e04",
+            "untrusted_poison-18-e00",
+            "untrusted_poison-18-e03",
+            "untrusted_poison-18-e01",
+            "untrusted_poison-18-e02"
+          ]
+        },
+        "strong_structured_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-18-e05",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-18-e04",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-18-e00",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-18-e03",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-18-e01",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-18-e02",
+              "reason": "untrusted"
+            }
+          ],
+          "included": [
+            "untrusted_poison-18-e06"
+          ]
+        }
+      },
+      "candidate_ids": [
+        "untrusted_poison-18-e06",
+        "untrusted_poison-18-e05",
+        "untrusted_poison-18-e04",
+        "untrusted_poison-18-e00",
+        "untrusted_poison-18-e03",
+        "untrusted_poison-18-e01",
+        "untrusted_poison-18-e02"
+      ],
+      "candidate_pool_sha256": "cc430241cf5ec22db62414b3b0e9fdc6a58c55e7aa564fb1977eb000d18bd44f",
+      "case_id": "untrusted_poison-18",
+      "displayed_provenance": [
+        {
+          "source_id": "system_telemetry:untrusted_poison-18-telemetry-failure",
+          "source_type": "system_telemetry",
+          "trust": 1.0,
+          "verification_status": "verified",
+          "verified": true
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-18-poison-5",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-18-poison-4",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-18-poison-0",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-18-poison-3",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-18-poison-1",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-18-poison-2",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        }
+      ],
+      "expected": "challenge",
+      "split": "holdout"
+    },
+    {
+      "arms": {
+        "hng_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-19-e05",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-19-e00",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-19-e01",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-19-e04",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-19-e03",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-19-e02",
+              "reason": "untrusted:0.262<0.600"
+            }
+          ],
+          "included": [
+            "untrusted_poison-19-e06"
+          ]
+        },
+        "no_provenance": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-19-e05",
+            "untrusted_poison-19-e00",
+            "untrusted_poison-19-e01",
+            "untrusted_poison-19-e04",
+            "untrusted_poison-19-e06",
+            "untrusted_poison-19-e03",
+            "untrusted_poison-19-e02"
+          ]
+        },
+        "provenance_displayed_only": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-19-e05",
+            "untrusted_poison-19-e00",
+            "untrusted_poison-19-e01",
+            "untrusted_poison-19-e04",
+            "untrusted_poison-19-e06",
+            "untrusted_poison-19-e03",
+            "untrusted_poison-19-e02"
+          ]
+        },
+        "strong_structured_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-19-e05",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-19-e00",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-19-e01",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-19-e04",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-19-e03",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-19-e02",
+              "reason": "untrusted"
+            }
+          ],
+          "included": [
+            "untrusted_poison-19-e06"
+          ]
+        }
+      },
+      "candidate_ids": [
+        "untrusted_poison-19-e05",
+        "untrusted_poison-19-e00",
+        "untrusted_poison-19-e01",
+        "untrusted_poison-19-e04",
+        "untrusted_poison-19-e06",
+        "untrusted_poison-19-e03",
+        "untrusted_poison-19-e02"
+      ],
+      "candidate_pool_sha256": "a85abf44c3c23b1e46570663002f1f5b2850f9ae29979bb1a537cba7351dc20c",
+      "case_id": "untrusted_poison-19",
+      "displayed_provenance": [
+        {
+          "source_id": "model_inference:untrusted_poison-19-poison-5",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-19-poison-0",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-19-poison-1",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-19-poison-4",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "system_telemetry:untrusted_poison-19-telemetry-failure",
+          "source_type": "system_telemetry",
+          "trust": 1.0,
+          "verification_status": "verified",
+          "verified": true
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-19-poison-3",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-19-poison-2",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        }
+      ],
+      "expected": "challenge",
+      "split": "holdout"
+    },
+    {
+      "arms": {
+        "hng_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-20-e04",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-20-e03",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-20-e01",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-20-e02",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-20-e00",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-20-e05",
+              "reason": "untrusted:0.262<0.600"
+            }
+          ],
+          "included": [
+            "untrusted_poison-20-e06"
+          ]
+        },
+        "no_provenance": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-20-e04",
+            "untrusted_poison-20-e03",
+            "untrusted_poison-20-e01",
+            "untrusted_poison-20-e06",
+            "untrusted_poison-20-e02",
+            "untrusted_poison-20-e00",
+            "untrusted_poison-20-e05"
+          ]
+        },
+        "provenance_displayed_only": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-20-e04",
+            "untrusted_poison-20-e03",
+            "untrusted_poison-20-e01",
+            "untrusted_poison-20-e06",
+            "untrusted_poison-20-e02",
+            "untrusted_poison-20-e00",
+            "untrusted_poison-20-e05"
+          ]
+        },
+        "strong_structured_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-20-e04",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-20-e03",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-20-e01",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-20-e02",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-20-e00",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-20-e05",
+              "reason": "untrusted"
+            }
+          ],
+          "included": [
+            "untrusted_poison-20-e06"
+          ]
+        }
+      },
+      "candidate_ids": [
+        "untrusted_poison-20-e04",
+        "untrusted_poison-20-e03",
+        "untrusted_poison-20-e01",
+        "untrusted_poison-20-e06",
+        "untrusted_poison-20-e02",
+        "untrusted_poison-20-e00",
+        "untrusted_poison-20-e05"
+      ],
+      "candidate_pool_sha256": "d3c3f926715a79abcc5827a4c9a1990428957b18b7c37c5a65c0afd1d6afa906",
+      "case_id": "untrusted_poison-20",
+      "displayed_provenance": [
+        {
+          "source_id": "model_inference:untrusted_poison-20-poison-4",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-20-poison-3",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-20-poison-1",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "system_telemetry:untrusted_poison-20-telemetry-failure",
+          "source_type": "system_telemetry",
+          "trust": 1.0,
+          "verification_status": "verified",
+          "verified": true
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-20-poison-2",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-20-poison-0",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-20-poison-5",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        }
+      ],
+      "expected": "challenge",
+      "split": "holdout"
+    },
+    {
+      "arms": {
+        "hng_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-21-e04",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-21-e03",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-21-e00",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-21-e05",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-21-e01",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-21-e02",
+              "reason": "untrusted:0.262<0.600"
+            }
+          ],
+          "included": [
+            "untrusted_poison-21-e06"
+          ]
+        },
+        "no_provenance": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-21-e04",
+            "untrusted_poison-21-e03",
+            "untrusted_poison-21-e00",
+            "untrusted_poison-21-e05",
+            "untrusted_poison-21-e01",
+            "untrusted_poison-21-e02",
+            "untrusted_poison-21-e06"
+          ]
+        },
+        "provenance_displayed_only": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-21-e04",
+            "untrusted_poison-21-e03",
+            "untrusted_poison-21-e00",
+            "untrusted_poison-21-e05",
+            "untrusted_poison-21-e01",
+            "untrusted_poison-21-e02",
+            "untrusted_poison-21-e06"
+          ]
+        },
+        "strong_structured_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-21-e04",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-21-e03",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-21-e00",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-21-e05",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-21-e01",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-21-e02",
+              "reason": "untrusted"
+            }
+          ],
+          "included": [
+            "untrusted_poison-21-e06"
+          ]
+        }
+      },
+      "candidate_ids": [
+        "untrusted_poison-21-e04",
+        "untrusted_poison-21-e03",
+        "untrusted_poison-21-e00",
+        "untrusted_poison-21-e05",
+        "untrusted_poison-21-e01",
+        "untrusted_poison-21-e02",
+        "untrusted_poison-21-e06"
+      ],
+      "candidate_pool_sha256": "5188f90c083a00c3b0c4ba93d86bd75c3b63da4ee7990bf8fc41c804c396f4f1",
+      "case_id": "untrusted_poison-21",
+      "displayed_provenance": [
+        {
+          "source_id": "model_inference:untrusted_poison-21-poison-4",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-21-poison-3",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-21-poison-0",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-21-poison-5",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-21-poison-1",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-21-poison-2",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "system_telemetry:untrusted_poison-21-telemetry-failure",
+          "source_type": "system_telemetry",
+          "trust": 1.0,
+          "verification_status": "verified",
+          "verified": true
+        }
+      ],
+      "expected": "challenge",
+      "split": "holdout"
+    },
+    {
+      "arms": {
+        "hng_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-22-e02",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-22-e04",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-22-e01",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-22-e05",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-22-e00",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-22-e03",
+              "reason": "untrusted:0.262<0.600"
+            }
+          ],
+          "included": [
+            "untrusted_poison-22-e06"
+          ]
+        },
+        "no_provenance": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-22-e02",
+            "untrusted_poison-22-e04",
+            "untrusted_poison-22-e01",
+            "untrusted_poison-22-e06",
+            "untrusted_poison-22-e05",
+            "untrusted_poison-22-e00",
+            "untrusted_poison-22-e03"
+          ]
+        },
+        "provenance_displayed_only": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-22-e02",
+            "untrusted_poison-22-e04",
+            "untrusted_poison-22-e01",
+            "untrusted_poison-22-e06",
+            "untrusted_poison-22-e05",
+            "untrusted_poison-22-e00",
+            "untrusted_poison-22-e03"
+          ]
+        },
+        "strong_structured_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-22-e02",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-22-e04",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-22-e01",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-22-e05",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-22-e00",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-22-e03",
+              "reason": "untrusted"
+            }
+          ],
+          "included": [
+            "untrusted_poison-22-e06"
+          ]
+        }
+      },
+      "candidate_ids": [
+        "untrusted_poison-22-e02",
+        "untrusted_poison-22-e04",
+        "untrusted_poison-22-e01",
+        "untrusted_poison-22-e06",
+        "untrusted_poison-22-e05",
+        "untrusted_poison-22-e00",
+        "untrusted_poison-22-e03"
+      ],
+      "candidate_pool_sha256": "027de8b95c53e4205453f001efe44e9b682923c484779fc5fa5cc227a08b5f26",
+      "case_id": "untrusted_poison-22",
+      "displayed_provenance": [
+        {
+          "source_id": "model_inference:untrusted_poison-22-poison-2",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-22-poison-4",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-22-poison-1",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "system_telemetry:untrusted_poison-22-telemetry-failure",
+          "source_type": "system_telemetry",
+          "trust": 1.0,
+          "verification_status": "verified",
+          "verified": true
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-22-poison-5",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-22-poison-0",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-22-poison-3",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        }
+      ],
+      "expected": "challenge",
+      "split": "holdout"
+    },
+    {
+      "arms": {
+        "hng_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-23-e04",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-23-e03",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-23-e05",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-23-e02",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-23-e00",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-23-e01",
+              "reason": "untrusted:0.262<0.600"
+            }
+          ],
+          "included": [
+            "untrusted_poison-23-e06"
+          ]
+        },
+        "no_provenance": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-23-e04",
+            "untrusted_poison-23-e06",
+            "untrusted_poison-23-e03",
+            "untrusted_poison-23-e05",
+            "untrusted_poison-23-e02",
+            "untrusted_poison-23-e00",
+            "untrusted_poison-23-e01"
+          ]
+        },
+        "provenance_displayed_only": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-23-e04",
+            "untrusted_poison-23-e06",
+            "untrusted_poison-23-e03",
+            "untrusted_poison-23-e05",
+            "untrusted_poison-23-e02",
+            "untrusted_poison-23-e00",
+            "untrusted_poison-23-e01"
+          ]
+        },
+        "strong_structured_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-23-e04",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-23-e03",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-23-e05",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-23-e02",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-23-e00",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-23-e01",
+              "reason": "untrusted"
+            }
+          ],
+          "included": [
+            "untrusted_poison-23-e06"
+          ]
+        }
+      },
+      "candidate_ids": [
+        "untrusted_poison-23-e04",
+        "untrusted_poison-23-e06",
+        "untrusted_poison-23-e03",
+        "untrusted_poison-23-e05",
+        "untrusted_poison-23-e02",
+        "untrusted_poison-23-e00",
+        "untrusted_poison-23-e01"
+      ],
+      "candidate_pool_sha256": "7678e1517ffaf171a2db13bc7386cfb3129fa9ba0c4c62cff2b4645bcd8ce2ec",
+      "case_id": "untrusted_poison-23",
+      "displayed_provenance": [
+        {
+          "source_id": "model_inference:untrusted_poison-23-poison-4",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "system_telemetry:untrusted_poison-23-telemetry-failure",
+          "source_type": "system_telemetry",
+          "trust": 1.0,
+          "verification_status": "verified",
+          "verified": true
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-23-poison-3",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-23-poison-5",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-23-poison-2",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-23-poison-0",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-23-poison-1",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        }
+      ],
+      "expected": "challenge",
+      "split": "holdout"
+    },
+    {
+      "arms": {
+        "hng_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-24-e04",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-24-e01",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-24-e02",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-24-e00",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-24-e05",
+              "reason": "untrusted:0.262<0.600"
+            },
+            {
+              "id": "untrusted_poison-24-e03",
+              "reason": "untrusted:0.262<0.600"
+            }
+          ],
+          "included": [
+            "untrusted_poison-24-e06"
+          ]
+        },
+        "no_provenance": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-24-e04",
+            "untrusted_poison-24-e01",
+            "untrusted_poison-24-e02",
+            "untrusted_poison-24-e00",
+            "untrusted_poison-24-e05",
+            "untrusted_poison-24-e03",
+            "untrusted_poison-24-e06"
+          ]
+        },
+        "provenance_displayed_only": {
+          "correct": false,
+          "decision": "support",
+          "excluded": [],
+          "included": [
+            "untrusted_poison-24-e04",
+            "untrusted_poison-24-e01",
+            "untrusted_poison-24-e02",
+            "untrusted_poison-24-e00",
+            "untrusted_poison-24-e05",
+            "untrusted_poison-24-e03",
+            "untrusted_poison-24-e06"
+          ]
+        },
+        "strong_structured_provenance_governance": {
+          "correct": true,
+          "decision": "challenge",
+          "excluded": [
+            {
+              "id": "untrusted_poison-24-e04",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-24-e01",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-24-e02",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-24-e00",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-24-e05",
+              "reason": "untrusted"
+            },
+            {
+              "id": "untrusted_poison-24-e03",
+              "reason": "untrusted"
+            }
+          ],
+          "included": [
+            "untrusted_poison-24-e06"
+          ]
+        }
+      },
+      "candidate_ids": [
+        "untrusted_poison-24-e04",
+        "untrusted_poison-24-e01",
+        "untrusted_poison-24-e02",
+        "untrusted_poison-24-e00",
+        "untrusted_poison-24-e05",
+        "untrusted_poison-24-e03",
+        "untrusted_poison-24-e06"
+      ],
+      "candidate_pool_sha256": "fc9d9f674f56e29944a085fb84b81db4a28ea4ae5c674a5cf43f85934666fd9c",
+      "case_id": "untrusted_poison-24",
+      "displayed_provenance": [
+        {
+          "source_id": "model_inference:untrusted_poison-24-poison-4",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-24-poison-1",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-24-poison-2",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-24-poison-0",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-24-poison-5",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "model_inference:untrusted_poison-24-poison-3",
+          "source_type": "model_inference",
+          "trust": 0.99,
+          "verification_status": "unverified",
+          "verified": false
+        },
+        {
+          "source_id": "system_telemetry:untrusted_poison-24-telemetry-failure",
+          "source_type": "system_telemetry",
+          "trust": 1.0,
+          "verification_status": "verified",
+          "verified": true
+        }
+      ],
+      "expected": "challenge",
+      "split": "holdout"
+    }
+  ],
+  "hng_vs_strong_accuracy_delta": 0,
+  "invariants": {
+    "no_provenance_equals_display_only_decisions": true,
+    "same_candidate_pool_all_arms": true,
+    "scenario_count": 25
+  },
+  "paired_statistics": {
+    "hng_vs_display_only": {
+      "discordant": 25,
+      "exact_two_sided_p": 5.960464477539063e-08,
+      "left_correct_right_wrong": 25,
+      "right_correct_left_wrong": 0
+    },
+    "hng_vs_no_provenance": {
+      "discordant": 25,
+      "exact_two_sided_p": 5.960464477539063e-08,
+      "left_correct_right_wrong": 25,
+      "right_correct_left_wrong": 0
+    },
+    "hng_vs_strong": {
+      "discordant": 0,
+      "exact_two_sided_p": 1.0,
+      "left_correct_right_wrong": 0,
+      "right_correct_left_wrong": 0
+    }
+  },
+  "schema_version": 1,
+  "status": "PASS",
+  "summaries": {
+    "hng_provenance_governance": {
+      "accuracy": 1,
+      "correct": 25,
+      "count": 25
+    },
+    "no_provenance": {
+      "accuracy": 0,
+      "correct": 0,
+      "count": 25
+    },
+    "provenance_displayed_only": {
+      "accuracy": 0,
+      "correct": 0,
+      "count": 25
+    },
+    "strong_structured_provenance_governance": {
+      "accuracy": 1,
+      "correct": 25,
+      "count": 25
+    }
+  }
+}
