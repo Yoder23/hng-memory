@@ -29,6 +29,13 @@ embeddings. Dense retrieval scores 71.7%, hybrid BM25/dense reciprocal-rank fusi
 and plain hybrid remain exact ties, so better retrieval is the surviving direction while the
 HNG-specific claim remains unsupported.
 
+A fourth disjoint preregistered window closes the missing genuine-reranker control. A pinned Qwen3
+cross-encoder reranks the BM25-top-128/dense-top-128 union, but scores 48.3% versus RRF hybrid at
+50.0%; the primary delta is -1.7 points with 95% CI [-13.3, +8.3]. Full context scores 58.3%.
+HNG, Strong, and plain reranked contexts are exact ties at 48.3%. Thus neither neural reranking nor
+governance supplies a demonstrated gain on this slice; prompt-efficient retrieval remains useful,
+but its best recipe varies across disjoint windows.
+
 The stronger breakthrough claim remains unproven because:
 
 - no real HDC assistant is available for HNG-off/on testing;

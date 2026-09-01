@@ -1,0 +1,34 @@
+{
+  "actual_evaluation_count": 150,
+  "artifacts": {
+    "breakthrough_eval/BREAKTHROUGH_SCOREBOARD.md": "7f97e7f1a35188b161e876f0576e6ccd35ac206b1683a82d3e6b2820f17e371e",
+    "breakthrough_eval/BREAKTHROUGH_THESIS.md": "b00af18ea05efdc0ca54a60c9f9fb17c6641b11fb9a236b27d263d7a5dfc251f",
+    "breakthrough_eval/PROGRAM_AUDIT.md": "9cf4895ff3e4951442955b47c615db602f137763ba40522418a60034fd1069ea",
+    "breakthrough_eval/RESULTS.csv": "ac04cfdd516d0c0169eafb2277d652a5a9850aab92acd9d5bfb563507a9a821b",
+    "breakthrough_eval/RESULTS.json": "f2fdf7772c191c67b35c550d9935c85cf19bb733b4b268eaea406b49f4ac55d8",
+    "breakthrough_eval/SCOREBOARD.json": "fc386bdafa139a8e8e6902e4fb1185fcfd668a9cecc8593b9eb97714057df046",
+    "breakthrough_eval/SCOREBOARD.md": "7f97e7f1a35188b161e876f0576e6ccd35ac206b1683a82d3e6b2820f17e371e",
+    "breakthrough_eval/STATISTICAL_ANALYSIS.md": "e8c5f48ba813630faa995fa9bd44d513dfe5e714f5bd554a16a9df77d56ebdbb",
+    "breakthrough_eval/public/locomo_reranker_holdout/MANIFEST.json": "9c225255fa67049d6713c8963ac2564a76df43d4393d38ff1c9be580af1e35f8",
+    "breakthrough_eval/public/locomo_reranker_holdout/PREPARED.json": "2f55581a2e99eba823697d60acebf79c11ac0e965615ad82a28c5a08d1a0fcd8",
+    "breakthrough_eval/public/locomo_reranker_holdout/PROTOCOL.md": "7e38cc27368523c0499fcc6c49a840d861664728b4bfb553cea5b419c833dd99",
+    "breakthrough_eval/public/locomo_reranker_holdout/RESULTS.json": "1c7b21cf42c2165b48cc70738dfded901c58875779484348ab138379e8a29256",
+    "breakthrough_eval/public/locomo_reranker_holdout/raw/events.jsonl": "8aea8df8b147b30a34b24567fdc03a75b74c039ad66519e2680e2e0754ae5849",
+    "breakthrough_eval/scripts/compile_breakthrough.py": "5415c23b385b7f85b9afc983d1af32d5b146c1cbe2a3315d66fd4b7519d8e2af"
+  },
+  "completed_at": "2026-09-01T13:44:19.740898+00:00",
+  "embedding_model_digest": "ac6da0dfba84a81fdbfbaf330198c33cd77c4cdfc53e8bc50eb581914a15621d",
+  "event_count": 210,
+  "failure_count": 0,
+  "fixed_candidate_reranked_invariants_pass": true,
+  "model_digest": "25b843619e944cd0ae6069f94ff4e5e26a16e109ccbc0a66a0f05979ed70098e",
+  "preregistered_commit": "6fcb7f9bf2067e52c44efc68608c51b78c7b2c1c",
+  "reranker_weight_sha256": "27cd75a405b9c1b46b59abfd88aaa209e6fed2a1972cde9b70e7659537c5e65b",
+  "reused_evaluation_count": 60,
+  "schema_version": 1,
+  "status": "COMPLETE_NONCANONICAL",
+  "test_verification": {
+    "breakthrough_eval": "60 passed",
+    "production_package": "100 passed"
+  }
+}

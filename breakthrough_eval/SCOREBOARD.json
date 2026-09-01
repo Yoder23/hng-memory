@@ -213,6 +213,24 @@
       "status": "EXECUTED_NONCANONICAL"
     },
     {
+      "area": "LoCoMo-Plus disjoint neural reranker n=30",
+      "baseline": 0.5,
+      "delta": -0.016666666666666663,
+      "evidence_class": "public_noncanonical",
+      "hng": 0.48333333333333334,
+      "notes": "Primary comparison: pinned cross-encoder reranked k64 versus RRF hybrid k64. Reranking loses descriptively; HNG, Strong, and plain reranked are exact ties.",
+      "significance": {
+        "mean_score_ci95": [
+          -0.1333333333333333,
+          0.08333333333333337
+        ],
+        "p": 1.0,
+        "paired_cases": 30,
+        "test": "McNemar exact; official judge score > 0.5"
+      },
+      "status": "EXECUTED_NONCANONICAL"
+    },
+    {
       "area": "PersonaMem-v2 seven-stratum pilot",
       "baseline": 0.5714285714285714,
       "delta": 0.0,

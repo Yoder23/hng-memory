@@ -73,6 +73,8 @@ def main() -> int:
     budget = load(budget_path) if budget_path.exists() else None
     hybrid_path = EVAL / "public" / "locomo_hybrid_holdout" / "RESULTS.json"
     hybrid = load(hybrid_path) if hybrid_path.exists() else None
+    reranker_path = EVAL / "public" / "locomo_reranker_holdout" / "RESULTS.json"
+    reranker = load(reranker_path) if reranker_path.exists() else None
     personamem_path = EVAL / "public" / "personamem_v2" / "RESULTS.json"
     personamem = load(personamem_path) if personamem_path.exists() else None
     reliability_path = EVAL / "reliability" / "STORAGE_PROBE.json"
@@ -237,6 +239,25 @@ def main() -> int:
                     "EXECUTED" if hybrid["status"] == "complete" else "PARTIAL",
                     "public/locomo_hybrid_holdout/RESULTS.json",
                     "Preregistered disjoint holdout; genuine Qwen3 dense retrieval and BM25/dense reciprocal-rank fusion. HNG and Strong reuse the exact hybrid context/output.",
+                ))
+
+    if reranker is not None:
+        for name, payload in reranker["summaries"].items():
+            for metric, value, unit in (
+                ("judge_score_average", payload["average"], "fraction"),
+                ("prompt_tokens_total", payload["prompt_tokens"], "count"),
+                ("mean_selected_context_chars", payload["mean_selected_context_chars"], "count"),
+            ):
+                results.append(row(
+                    "locomo_plus_disjoint_neural_reranker_n30",
+                    name,
+                    metric,
+                    None if value is None else float(value),
+                    unit,
+                    "public_noncanonical",
+                    "EXECUTED" if reranker["status"] == "complete" else "PARTIAL",
+                    "public/locomo_reranker_holdout/RESULTS.json",
+                    "Preregistered fourth disjoint window; pinned Qwen3 cross-encoder reranks the BM25-top-128/dense-top-128 union to 64. HNG and Strong reuse the exact reranked context/output.",
                 ))
 
     if personamem is not None:
@@ -708,6 +729,26 @@ def main() -> int:
             "status": "EXECUTED_NONCANONICAL" if hybrid["status"] == "complete" else "PARTIAL",
             "notes": "Primary retrieval comparison: BM25/dense RRF hybrid versus BM25 at k64. Dense alone scores higher descriptively; HNG, Strong, and plain hybrid are exact ties.",
         })
+    if reranker is not None:
+        primary = reranker["paired_statistics"]["reranked_k64_vs_hybrid_k64_primary"]
+        public_scoreboard_rows.append({
+            "area": "LoCoMo-Plus disjoint neural reranker n=30",
+            "hng": reranker["summaries"]["hng_reranked_k64"]["average"],
+            "baseline": reranker["summaries"]["hybrid_k64"]["average"],
+            "delta": primary["paired_bootstrap_mean_score"]["delta"],
+            "significance": {
+                "test": "McNemar exact; official judge score > 0.5",
+                "p": primary["mcnemar_judge_positive"]["exact_two_sided_p"],
+                "paired_cases": primary["paired_cases"],
+                "mean_score_ci95": [
+                    primary["paired_bootstrap_mean_score"]["ci95_low"],
+                    primary["paired_bootstrap_mean_score"]["ci95_high"],
+                ],
+            },
+            "evidence_class": "public_noncanonical",
+            "status": "EXECUTED_NONCANONICAL" if reranker["status"] == "complete" else "PARTIAL",
+            "notes": "Primary comparison: pinned cross-encoder reranked k64 versus RRF hybrid k64. Reranking loses descriptively; HNG, Strong, and plain reranked are exact ties.",
+        })
     if personamem is not None:
         pm_hng = personamem["summaries"]["hng"]["accuracy"]
         pm_strong = personamem["summaries"]["strong_structured"]["accuracy"]
@@ -922,12 +963,13 @@ def main() -> int:
             "llm_failed_events": llm["failed_events"],
             "github_status": "CONNECTED_VERIFIED_PRIVATE_YODER23_HNG_MEMORY",
             "public_candidate_invariants_verified": (
-                None if longmem is None and locomo is None and personamem is None and budget is None and hybrid is None else bool(
+                None if longmem is None and locomo is None and personamem is None and budget is None and hybrid is None and reranker is None else bool(
                     (longmem is None or longmem["all_fixed_candidate_invariants_pass"])
                     and (locomo is None or locomo["all_fixed_candidate_invariants_pass"])
                     and (personamem is None or personamem["all_fixed_candidate_invariants_pass"])
                     and (budget is None or budget["all_fixed_candidate_k64_invariants_pass"])
                     and (hybrid is None or hybrid["all_fixed_candidate_hybrid_invariants_pass"])
+                    and (reranker is None or reranker["all_fixed_candidate_reranked_invariants_pass"])
                 )
             ),
         },

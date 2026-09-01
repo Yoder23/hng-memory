@@ -122,6 +122,21 @@ BM25/dense and BM25/hybrid ordered candidate list differs, so this is genuine re
 rather than renamed lexical output. HNG hybrid, Strong hybrid, and plain hybrid are exact
 fixed-candidate ties: 18.5/30, delta 0, CI [0, 0], p=1. The protocol remains noncanonical.
 
+## Preregistered disjoint LoCoMo-Plus neural-reranker holdout
+
+The fourth disjoint 30-sample window excludes the exact 90 indices in the three prior windows. A
+pinned Qwen3 cross-encoder reranks the union of BM25-top-128 and dense-top-128 to 64 turns. BM25
+scores 12/30 (40.0%), dense 13.5/30 (45.0%), RRF hybrid 15/30 (50.0%), reranked 14.5/30
+(48.3%), and full context 17.5/30 (58.3%). The preregistered primary reranked-versus-hybrid delta
+is -1.7 percentage points with paired bootstrap 95% CI [-13.3, +8.3] and exact McNemar p=1.0.
+The cross-encoder therefore does not improve this holdout.
+
+Reranked versus BM25 is +8.3 points (CI [-6.7, +25.0], p=1); versus dense is +3.3 points (CI
+[-11.7, +18.3], p=1); and versus full context is -10.0 points (CI [-23.3, +3.3], p=0.21875).
+All intervals include zero. Reranked uses 104,965 prompt tokens versus 658,631 for full context.
+HNG reranked, Strong reranked, and plain reranked are exact fixed-candidate ties: 14.5/30, delta
+0, CI [0, 0], p=1. The result is noncanonical and preserves a preregistered retrieval loss.
+
 ## Preregistered disjoint LoCoMo-Plus retrieval-budget holdout
 
 The 30-sample holdout uses zero source-index overlap with the observed top-16 development slice.
