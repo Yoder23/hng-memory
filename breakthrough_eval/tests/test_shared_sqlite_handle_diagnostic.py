@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import multiprocessing as mp
 from pathlib import Path
 
 import pytest
@@ -10,6 +11,7 @@ import pytest
 from breakthrough_eval.scripts import shared_sqlite_handle_diagnostic as matrix
 from breakthrough_eval.scripts import shared_sqlite_handle_type_diagnostic as typed
 from breakthrough_eval.scripts import shared_sqlite_handle_type_diagnostic_v2 as typed_v2
+from breakthrough_eval.scripts import shared_sqlite_handle_type_diagnostic_v3 as typed_v3
 from breakthrough_eval.scripts import shared_sqlite_handle_diagnostic_v2 as matrix_v2
 from breakthrough_eval.scripts import windows_handle_snapshot
 
@@ -136,6 +138,35 @@ def test_typed_v2_preparation_pins_preserved_preflight_failure() -> None:
         ] == "aacd71337084dfe198873ed164c7d6588f95a75f2da04d2e15931d409b7ffd2b"
         assert (
             "breakthrough_eval/scripts/shared_sqlite_handle_type_diagnostic_v2.py"
+            in payload["source_sha256"]
+        )
+    finally:
+        for name, value in original.items():
+            setattr(matrix, name, value)
+
+
+def test_typed_v3_preparation_pins_queue_failure_and_drain_fix() -> None:
+    names = (
+        "OUTPUT_DIR", "PROTOCOL", "PREPARED", "RESULT", "EVENTS",
+        "RUN_DATA", "WRAPPER", "V2_FAILURE", "OBSERVER_RESULT",
+        "SOURCE_FILES", "frozen_config", "matrix_worker", "run_condition",
+        "classify", "run_matrix",
+    )
+    original = {name: getattr(matrix, name) for name in names}
+    args = qualifying_args()
+    args.condition_seconds = 60.0
+    args.minimum_samples_per_child = 50
+    args.shared_support_slope_handles_per_minute = 10.0
+    try:
+        typed_v3.configure()
+        payload = json.loads(typed_v3.PREPARED.read_text(encoding="utf-8"))
+        matrix.verify_prepared(payload, args)
+        assert payload["source_sha256"][
+            "breakthrough_eval/reliability/shared_sqlite_handle_type_diagnostic_v2/RESULTS.json"
+        ] == "760c97c46802f4474f71eb26956af695f6eb4aeb32604f22da85dcf3012c4704"
+        assert matrix.run_condition is typed_v3.queue_safe_run_condition
+        assert (
+            "breakthrough_eval/scripts/shared_sqlite_handle_type_diagnostic_v3.py"
             in payload["source_sha256"]
         )
     finally:
@@ -434,6 +465,49 @@ def test_typed_snapshot_multiprocess_smoke(tmp_path: Path) -> None:
             for item in result["conditions"].values()
             for report in item["reports"]
         )
+    finally:
+        for name, value in original.items():
+            setattr(matrix, name, value)
+
+
+@pytest.mark.skipif(
+    matrix.sustained.psutil is None
+    or not hasattr(matrix.sustained.psutil.Process(), "num_handles"),
+    reason="Windows psutil num_handles is required",
+)
+def test_typed_v3_drains_twelve_reports_before_join(tmp_path: Path) -> None:
+    names = (
+        "OUTPUT_DIR", "PROTOCOL", "PREPARED", "RESULT", "EVENTS",
+        "RUN_DATA", "WRAPPER", "V2_FAILURE", "OBSERVER_RESULT",
+        "SOURCE_FILES", "frozen_config", "matrix_worker", "run_condition",
+        "classify", "run_matrix",
+    )
+    original = {name: getattr(matrix, name) for name in names}
+    output = tmp_path / "matrix-typed-v3"
+    args = qualifying_args()
+    args.condition_seconds = 2.0
+    args.sample_interval_seconds = 0.2
+    args.writer_workers = 4
+    args.reader_workers = 8
+    args.seed_records = 20
+    args.tenants = 2
+    args.minimum_samples_per_child = 5
+    args.shared_support_slope_handles_per_minute = 10.0
+    try:
+        typed_v3.configure()
+        matrix.RUN_DATA = output / "run_data"
+        matrix.RUN_DATA.mkdir(parents=True)
+        events_path = output / "events.jsonl"
+        with events_path.open("x", encoding="utf-8", newline="\n") as events:
+            result = typed_v3.queue_safe_run_condition(
+                mp.get_context("spawn"), "idle_12", 0, args, events
+            )
+
+        assert result["valid"]
+        assert result["report_drain_order"] == "concurrent_before_join"
+        assert len(result["reports"]) == 12
+        assert result["exitcodes"] == [0] * 12
+        assert result["validity"]["handle_type_snapshots_complete"]
     finally:
         for name, value in original.items():
             setattr(matrix, name, value)
