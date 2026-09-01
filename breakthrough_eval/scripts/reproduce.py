@@ -126,6 +126,24 @@ def commands_for(args: argparse.Namespace) -> list[Command]:
             tests,
             compile_results,
         ]
+    if args.command == "real-hdc":
+        argv = [sys.executable, str(SCRIPTS / "real_hdc_readiness.py")]
+        if args.manifest is not None:
+            argv.extend(["--manifest", str(args.manifest)])
+        return [Command(
+            "real_hdc_readiness",
+            tuple(argv),
+            "Fail-closed artifact and paired-invariant gate; this does not substitute for executing the real assistant.",
+        )]
+    if args.command == "latency":
+        return [
+            Command(
+                "repeated_tool_agent_latency",
+                py(str(SCRIPTS / "repeated_latency_probe.py"), "--repeats", str(args.repeats)),
+                "Repeated independent-store latency runs with bootstrap intervals over per-run p50/p95/p99.",
+            ),
+            compile_results,
+        ]
     raise AssertionError(f"unknown command: {args.command}")
 
 
@@ -168,6 +186,10 @@ def parse_args() -> argparse.Namespace:
     subparsers.add_parser("component-probes", help="Reproduce all packaged synthetic component studies.")
     subparsers.add_parser("scaled-isolation", help="Run the 100,000-principal scoped isolation probe.")
     subparsers.add_parser("tool-agent", help="Run the executing synthetic tool-agent advisory study.")
+    hdc = subparsers.add_parser("real-hdc", help="Verify prerequisites for a real HDC assistant paired A/B.")
+    hdc.add_argument("--manifest", type=Path, help="Manifest describing and hashing every real-assistant artifact.")
+    latency = subparsers.add_parser("latency", help="Run repeated synthetic decision-latency measurements.")
+    latency.add_argument("--repeats", type=int, default=20)
     return parser.parse_args()
 
 

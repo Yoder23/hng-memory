@@ -186,6 +186,26 @@
         "official hosted reader/judge configuration and credentials unavailable"
       ],
       "canonical_protocol_available": false,
+      "expanded_local_holdout": {
+        "all_fixed_candidate_invariants_pass": true,
+        "evaluation_errors": 0,
+        "events": 120,
+        "hng_vs_full_context_bootstrap_95_ci": [
+          -0.5333333333333334,
+          -0.08333333333333337
+        ],
+        "hng_vs_full_context_delta": -0.3166666666666667,
+        "hng_vs_full_context_mcnemar_p": 0.03515625,
+        "manifest": "public/locomo_plus_n30/MANIFEST.json",
+        "protocol": "five deterministic samples per each of six categories; 30 samples, four arms; NONCANONICAL",
+        "scores": {
+          "bm25": 9.0,
+          "full_context": 18.5,
+          "hng": 9.0,
+          "strong_structured": 9.0
+        },
+        "status": "COMPLETE_NONCANONICAL_LOSS"
+      },
       "files": {
         "data/locomo10.json": {
           "bytes": 2872024,

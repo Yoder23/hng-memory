@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import json
+
 from breakthrough_eval.scripts import locomo_plus_pilot as pilot
 
 
@@ -63,3 +65,30 @@ def test_clean_governance_arms_render_identical_retrieved_prompt():
     strong_body = pilot.render_retrieved(strong, "What happened?", "single-hop")
     hng_body = pilot.render_retrieved(hng, "What happened?", "single-hop")
     assert pilot.reader_messages(strong_body, "single-hop") == pilot.reader_messages(hng_body, "single-hop")
+
+
+def test_protocol_label_records_actual_sample_density():
+    assert "(5 per category)" in pilot.protocol_label(5)
+    assert "NONCANONICAL" in pilot.protocol_label(5)
+
+
+def test_paired_statistics_known_values():
+    result = pilot.paired_bootstrap_delta([1.0, 1.0, 0.0], [0.0, 1.0, 0.0], samples=100)
+    assert result["delta"] == 1 / 3
+    exact = pilot.mcnemar([True, True, False], [False, True, False])
+    assert exact["discordant"] == 1
+    assert exact["exact_two_sided_p"] == 1.0
+
+
+def test_reusable_predictions_requires_same_sample_prompt_and_model(tmp_path):
+    raw = tmp_path / "events.jsonl"
+    event = {
+        "event": "prediction", "source_index": 7, "arm": "bm25",
+        "prompt_sha256": "prompt", "model_digest": "model", "prediction": "answer",
+        "judge_score": 1.0, "reader": {}, "judge": {}, "ground_truth": "answer",
+        "oracle_judge_evidence": "evidence",
+    }
+    raw.write_text(json.dumps(event) + "\n", encoding="utf-8")
+    cached = pilot.reusable_predictions(raw)
+    assert cached[(7, "prompt", "model")]["arm"] == "bm25"
+    assert (8, "prompt", "model") not in cached

@@ -4,9 +4,10 @@
 
 Paired categorical results use exact McNemar tests, implemented as an exact two-sided binomial
 test over discordant pairs. Accuracy deltas use 10,000 paired bootstrap resamples with fixed seed
-20260831 and percentile 95% intervals. Latency is reported descriptively at p50, p95 and p99;
-this phase does not claim latency confidence intervals because calls were serialized once on one
-machine and order effects remain possible.
+20260831 and percentile 95% intervals. Single model runs report latency descriptively. A dedicated
+tool-agent probe reports bootstrap intervals for the mean of per-run p50, p95, and p99 across 20
+independent fresh-store repeats on one host; these intervals do not estimate cross-host or
+production-load variation.
 
 ## Provenance ablation
 
@@ -87,6 +88,24 @@ The experimental unit is a deterministic synthetic episode. The significant ordi
 comparison does not establish public or real-agent generality. The exact Strong tie is the
 complexity control and prevents an HNG-specific superiority claim.
 
+## Expanded LoCoMo-Plus holdout
+
+The expanded fixed holdout contains 30 samples, five per category. HNG,
+StrongStructuredBaseline, and BM25 each score 9/30 (30.0%); full context scores 18.5/30 (61.7%).
+HNG versus full context is -31.7 percentage points with paired bootstrap 95% CI [-53.3, -8.3]
+and exact McNemar p=0.0352 (3 HNG-only positives, 12 full-context-only positives). HNG versus BM25
+and Strong is an exact tie: delta 0, CI [0, 0], McNemar p=1. The expanded result remains
+noncanonical and does not establish an official benchmark rank.
+
+## Repeated tool-agent latency
+
+Twenty fresh-store repeats preserve identical behavior across 8,640 raw events. Mean per-run p95
+decision latency is 1.976 ms for HNG (bootstrap 95% CI [1.936, 2.016]) and 0.0164 ms for
+StrongStructuredBaseline (CI [0.0154, 0.0175]). Mean per-run p99 is 2.292 ms for HNG (CI [2.196,
+2.390]) and 0.0323 ms for Strong (CI [0.0264, 0.0391]). HNG is roughly 121 times slower at p95,
+although both are negligible beside local 27B inference. These are synthetic single-host latency
+intervals, not deployment SLO evidence.
+
 ## Multiplicity and claims
 
 No family-level significance tests are used; the ten family breakdowns are diagnostic. This avoids
@@ -99,5 +118,6 @@ local statistical comparison.
 - Add order randomization or counterbalancing and multiple inference seeds where stochasticity is
   enabled.
 - Use public benchmark bootstrap units defined by official examples/users, not generated variants.
-- Add confidence intervals for component and end-to-end latency from repeated independent runs.
+- Extend repeated-run confidence intervals beyond the synthetic tool-agent decision path to every
+  component and end-to-end deployment path.
 - Pre-register any aggregation-threshold fix against a varied development set before holdout.

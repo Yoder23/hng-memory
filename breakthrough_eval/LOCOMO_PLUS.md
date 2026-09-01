@@ -55,3 +55,55 @@ outside the current single-machine inference budget. Raw evidence is append-only
 `public/locomo_plus/raw/events.jsonl`; compiled evidence is in `public/locomo_plus/RESULTS.json`.
 Six original HNG events with a mislabeled shared-adapter source identity are preserved but excluded;
 their corrected selective reruns reproduce the same scores and prompts with zero unresolved failures.
+
+## Expanded preregistered holdout
+
+A second preserved evaluation increases the deterministic selection to five samples per category:
+30 samples and 120 arm events. Selection, model, top-k, context budget, reader prompt, judge prompt,
+and answer/evidence leakage controls are unchanged. The original six-sample evidence remains intact.
+All 30 fixed-candidate invariants pass and no evaluation event failed.
+
+| Arm | Judge score | Average | Prompt tokens |
+|---|---:|---:|---:|
+| Full context | 18.5/30 | 61.7% | 686,221 |
+| BM25 | 9/30 | 30.0% | 31,511 |
+| StrongStructuredBaseline | 9/30 | 30.0% | 31,511 |
+| HNG | 9/30 | 30.0% | 31,511 |
+
+HNG again ties BM25 and StrongStructuredBaseline exactly. Against full context, HNG loses by 31.7
+percentage points: paired bootstrap 95% CI [-53.3, -8.3] points; exact McNemar p=0.0352 using an
+official-judge score above 0.5 as positive. This is a meaningful local loss, not an official
+leaderboard result. It indicates that turn-level top-16 truncation discards useful clean dialogue
+on this slice; governance has no applicable metadata distinction with which to recover it.
+
+The run contains 70 actual deterministic model/judge evaluations and 50 exact-input reuses. Reuse
+occurs only within the same sample when prompt SHA-256, model digest, reader options, prediction,
+and judge input are identical. This prevents repeated-call nondeterminism from being mislabeled as
+a memory effect. Raw evidence is in `public/locomo_plus_n30/raw/events.jsonl`; the preparation and
+result are `public/locomo_plus_n30/PREPARED.json` and `public/locomo_plus_n30/RESULTS.json`.
+
+## Expanded preregistered holdout
+
+A second preserved evaluation increases the deterministic selection to five samples per category:
+30 samples and 120 arm events. Selection, model, top-k, context budget, reader prompt, judge prompt,
+and answer/evidence leakage controls are unchanged. The original six-sample evidence remains intact.
+All 30 fixed-candidate invariants pass and no evaluation event failed.
+
+| Arm | Judge score | Average | Prompt tokens |
+|---|---:|---:|---:|
+| Full context | 18.5/30 | 61.7% | 686,221 |
+| BM25 | 9/30 | 30.0% | 31,511 |
+| StrongStructuredBaseline | 9/30 | 30.0% | 31,511 |
+| HNG | 9/30 | 30.0% | 31,511 |
+
+HNG again ties BM25 and StrongStructuredBaseline exactly. Against full context, HNG loses by 31.7
+percentage points: paired bootstrap 95% CI [-53.3, -8.3] points; exact McNemar p=0.0352 using an
+official-judge score above 0.5 as positive. This is a meaningful local loss, not an official
+leaderboard result. It indicates that turn-level top-16 truncation discards useful clean dialogue
+on this slice; governance has no applicable metadata distinction with which to recover it.
+
+The run contains 70 actual deterministic model/judge evaluations and 50 exact-input reuses. Reuse
+occurs only within the same sample when prompt SHA-256, model digest, reader options, prediction,
+and judge input are identical. This prevents repeated-call nondeterminism from being mislabeled as
+a memory effect. Raw evidence is in `public/locomo_plus_n30/raw/events.jsonl`; the preparation and
+result are `public/locomo_plus_n30/PREPARED.json` and `public/locomo_plus_n30/RESULTS.json`.

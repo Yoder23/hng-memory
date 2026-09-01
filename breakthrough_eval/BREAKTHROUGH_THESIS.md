@@ -11,16 +11,18 @@ Current evidence supports a narrower statement:
 It does **not** yet establish that the HNG implementation is the necessary or best way to obtain
 that benefit. On 250 deterministic synthetic cases, both HNG and StrongStructuredBaseline score
 90%; on the 30-case frozen local-LLM holdout both score 90%. The simple baseline is faster and uses
-fewer LLM prompt tokens. HNG's only losses are the 25 frozen duplicate-boundary cases, and the
-simple baseline reproduces them exactly.
+fewer LLM prompt tokens. In the expanded 30-sample LoCoMo-Plus slice, HNG, Strong, and BM25 tie at
+30.0% and all lose to full context at 61.7%; the HNG/full-context gap is statistically supported in
+this noncanonical local protocol. The result points to retrieval truncation rather than governance.
 
 The stronger breakthrough claim remains unproven because:
 
 - no real HDC assistant is available for HNG-off/on testing;
 - no qualifying canonical public result is complete;
 - HNG does not beat or extend the strong simple baseline in the isolated governance study;
-- HDC-versus-dense, personalization, belief revision, cross-session learning, action experience,
-  tool-agent, provenance, and consolidation studies remain incomplete.
+- HDC-versus-dense and real-assistant evidence remain absent; public personalization, belief
+  revision, cross-session learning, action experience, tool-agent, provenance, and consolidation
+  evidence is synthetic or noncanonical and does not reveal an HNG advantage over Strong.
 
 The research direction is therefore falsifiable. If clean public evidence produces no policy
 changes, HNG should tie ordinary retrieval. If strong structured filters reproduce every robust

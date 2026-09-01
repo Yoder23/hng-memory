@@ -7,7 +7,7 @@
       "delta": null,
       "evidence_class": "real",
       "hng": null,
-      "notes": "Production HDC interpreter/checkpoint and real traces absent.",
+      "notes": "Fail-closed readiness gate reports 21 unmet checks: manifest_not_supplied, evidence_class_not_real, synthetic_exclusion_unconfirmed, missing_interpreter, missing_checkpoint, missing_action_library, missing_workload_traces, missing_hng_off_config, missing_hng_on_config, missing_preregistration, missing_runner, invariant_unconfirmed_same_interpreter, invariant_unconfirmed_same_checkpoint, invariant_unconfirmed_same_action_library, invariant_unconfirmed_same_reasoning_policy, invariant_unconfirmed_same_tools, invariant_unconfirmed_same_tasks, invariant_unconfirmed_same_retrieval_candidates, invariant_unconfirmed_only_memory_governance_changes, primary_metrics_missing, minimum_sample_size_missing.",
       "significance": null,
       "status": "BLOCKED_EXTERNAL"
     },
@@ -98,6 +98,17 @@
       "status": "LOSS_TIE"
     },
     {
+      "area": "Tool-agent decision latency p95",
+      "baseline": 0.01638350178836844,
+      "delta": 1.960109003994148,
+      "evidence_class": "local_synthetic",
+      "hng": 1.9764925057825165,
+      "notes": "Mean per-run p95 over 20 independent-store repeats; both arms have identical behavior.",
+      "significance": null,
+      "status": "LOSS_LATENCY",
+      "unit": "milliseconds"
+    },
+    {
       "area": "Synthetic belief revision",
       "baseline": 1.0,
       "delta": 0.0,
@@ -148,13 +159,21 @@
       "status": "EXECUTED_NONCANONICAL"
     },
     {
-      "area": "LoCoMo-Plus six-category pilot",
-      "baseline": 0.3333333333333333,
+      "area": "LoCoMo-Plus stratified n=30",
+      "baseline": 0.3,
       "delta": 0.0,
       "evidence_class": "public_noncanonical",
-      "hng": 0.3333333333333333,
-      "notes": "Official data/templates, six-sample local reader/judge pilot; not comparable to leaderboard scores.",
-      "significance": null,
+      "hng": 0.3,
+      "notes": "Official data/templates, 30-sample local reader/judge evaluation; not comparable to leaderboard scores.",
+      "significance": {
+        "mean_score_ci95": [
+          0.0,
+          0.0
+        ],
+        "p": 1.0,
+        "paired_cases": 30,
+        "test": "McNemar exact; official judge score > 0.5"
+      },
       "status": "EXECUTED_NONCANONICAL"
     },
     {

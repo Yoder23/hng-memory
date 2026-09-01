@@ -62,7 +62,12 @@ def main() -> int:
     llm = load(EVAL / "fixed_candidate" / "LLM_RESULTS.json")
     longmem_path = EVAL / "public" / "longmemeval_v2" / "RESULTS.json"
     longmem = load(longmem_path) if longmem_path.exists() else None
-    locomo_path = EVAL / "public" / "locomo_plus" / "RESULTS.json"
+    expanded_locomo_path = EVAL / "public" / "locomo_plus_n30" / "RESULTS.json"
+    locomo_path = (
+        expanded_locomo_path
+        if expanded_locomo_path.exists()
+        else EVAL / "public" / "locomo_plus" / "RESULTS.json"
+    )
     locomo = load(locomo_path) if locomo_path.exists() else None
     personamem_path = EVAL / "public" / "personamem_v2" / "RESULTS.json"
     personamem = load(personamem_path) if personamem_path.exists() else None
@@ -88,6 +93,10 @@ def main() -> int:
     tool_after = load(tool_after_path) if tool_after_path.exists() else None
     release_path = EVAL / "releases" / "0.7.0rc2" / "RELEASE_MANIFEST.json"
     release = load(release_path) if release_path.exists() else None
+    real_hdc_path = EVAL / "real_hdc" / "READINESS.json"
+    real_hdc = load(real_hdc_path) if real_hdc_path.exists() else None
+    latency_path = EVAL / "latency" / "RESULTS.json"
+    latency = load(latency_path) if latency_path.exists() else None
     results: list[dict[str, object]] = []
 
     for name, payload in deterministic["systems"].items():
@@ -163,27 +172,29 @@ def main() -> int:
             ))
 
     if locomo is not None:
+        locomo_source = locomo_path.relative_to(EVAL).as_posix()
+        locomo_area = f"locomo_plus_stratified_n{locomo['sample_count']}"
         for name, payload in locomo["summaries"].items():
             results.append(row(
-                "locomo_plus_six_category_pilot",
+                locomo_area,
                 name,
                 "judge_score_average",
                 None if payload["average"] is None else float(payload["average"]),
                 "fraction",
                 "public_noncanonical",
                 "EXECUTED" if locomo["status"] == "complete" else "PARTIAL",
-                "public/locomo_plus/RESULTS.json",
-                "Official public data/templates; six-sample local reader/judge pilot, not a leaderboard score.",
+                locomo_source,
+                f"Official public data/templates; {locomo['sample_count']}-sample local reader/judge evaluation, not a leaderboard score.",
             ))
             results.append(row(
-                "locomo_plus_six_category_pilot",
+                locomo_area,
                 name,
                 "prompt_tokens_total",
                 float(payload["prompt_tokens"]),
                 "count",
                 "public_noncanonical",
                 "EXECUTED" if locomo["status"] == "complete" else "PARTIAL",
-                "public/locomo_plus/RESULTS.json",
+                locomo_source,
             ))
 
     if personamem is not None:
@@ -382,6 +393,21 @@ def main() -> int:
                 tool_result["claim_boundary"],
             ))
 
+    if latency is not None:
+        for arm, payload in latency["arms"].items():
+            for statistic, interval in payload["across_repeat_bootstrap_95_ci_ms"].items():
+                results.append(row(
+                    "repeated_tool_agent_latency",
+                    arm,
+                    f"decision_latency_{statistic}_across_run_mean",
+                    float(interval["mean"]),
+                    "milliseconds",
+                    "local_synthetic",
+                    "EXECUTED",
+                    "latency/RESULTS.json",
+                    f"95% bootstrap CI [{interval['ci95_low']:.6f}, {interval['ci95_high']:.6f}] ms over {latency['repeat_count']} independent-store runs.",
+                ))
+
     if release is not None:
         for metric in (
             "wheel_install_no_deps",
@@ -486,9 +512,17 @@ def main() -> int:
             f"Exact frozen commit {baseline.get('baseline_commit', 'unknown')}.",
         ))
 
-    blocked = {
-        "real_hdc_task_success": "Production HDC interpreter/checkpoint and real traces absent.",
-    }
+    hdc_reason = "Production HDC interpreter/checkpoint and real traces absent."
+    hdc_source = "RESOURCE_INVENTORY.json"
+    if real_hdc is not None:
+        codes = [item["code"] for item in real_hdc.get("failures", [])]
+        hdc_reason = (
+            f"Fail-closed readiness gate reports {real_hdc['failure_count']} unmet checks: "
+            + ", ".join(codes)
+            + "."
+        )
+        hdc_source = "real_hdc/READINESS.json"
+    blocked = {"real_hdc_task_success": hdc_reason}
     for area, reason in blocked.items():
         results.append(row(
             area,
@@ -498,7 +532,7 @@ def main() -> int:
             "fraction",
             "real" if area.startswith("real_hdc") else "public",
             "BLOCKED_EXTERNAL",
-            "RESOURCE_INVENTORY.json",
+            hdc_source if area == "real_hdc_task_success" else "RESOURCE_INVENTORY.json",
             reason,
         ))
 
@@ -559,15 +593,27 @@ def main() -> int:
     if locomo is not None:
         locomo_hng = locomo["summaries"]["hng"]["average"]
         locomo_strong = locomo["summaries"]["strong_structured"]["average"]
+        locomo_pair = locomo.get("paired_statistics", {}).get("hng_vs_strong_structured")
+        locomo_significance = None
+        if locomo_pair is not None:
+            locomo_significance = {
+                "test": "McNemar exact; official judge score > 0.5",
+                "p": locomo_pair["mcnemar_judge_positive"]["exact_two_sided_p"],
+                "paired_cases": locomo_pair["paired_cases"],
+                "mean_score_ci95": [
+                    locomo_pair["paired_bootstrap_mean_score"]["ci95_low"],
+                    locomo_pair["paired_bootstrap_mean_score"]["ci95_high"],
+                ],
+            }
         public_scoreboard_rows.append({
-            "area": "LoCoMo-Plus six-category pilot",
+            "area": f"LoCoMo-Plus stratified n={locomo['sample_count']}",
             "hng": locomo_hng,
             "baseline": locomo_strong,
             "delta": None if locomo_hng is None or locomo_strong is None else locomo_hng - locomo_strong,
-            "significance": None,
+            "significance": locomo_significance,
             "evidence_class": "public_noncanonical",
             "status": "EXECUTED_NONCANONICAL" if locomo["status"] == "complete" else "PARTIAL",
-            "notes": "Official data/templates, six-sample local reader/judge pilot; not comparable to leaderboard scores.",
+            "notes": f"Official data/templates, {locomo['sample_count']}-sample local reader/judge evaluation; not comparable to leaderboard scores.",
         })
     else:
         public_scoreboard_rows.append({
@@ -717,6 +763,20 @@ def main() -> int:
                     "exactly, but remains slower and establishes no HNG-specific advantage."
                 ),
             }]),
+            *([] if latency is None else [{
+                "area": "Tool-agent decision latency p95",
+                "hng": latency["arms"]["hng_advisory"]["across_repeat_bootstrap_95_ci_ms"]["p95"]["mean"],
+                "baseline": latency["arms"]["strong_structured_memory"]["across_repeat_bootstrap_95_ci_ms"]["p95"]["mean"],
+                "delta": (
+                    latency["arms"]["hng_advisory"]["across_repeat_bootstrap_95_ci_ms"]["p95"]["mean"]
+                    - latency["arms"]["strong_structured_memory"]["across_repeat_bootstrap_95_ci_ms"]["p95"]["mean"]
+                ),
+                "unit": "milliseconds",
+                "significance": None,
+                "evidence_class": "local_synthetic",
+                "status": "LOSS_LATENCY",
+                "notes": f"Mean per-run p95 over {latency['repeat_count']} independent-store repeats; both arms have identical behavior.",
+            }]),
             *([] if belief is None else [{
                 "area": "Synthetic belief revision",
                 "hng": belief["arms"]["hng_belief_store_authority"]["current_belief_accuracy"],
@@ -821,6 +881,18 @@ def main() -> int:
         "|---|---:|---:|---:|---|---|---|",
     ]
     for item in scoreboard["rows"]:
+        if item.get("unit") == "milliseconds":
+            hng = fmt(item["hng"], "milliseconds")
+            baseline_value = fmt(item["baseline"], "milliseconds")
+            delta = fmt(item["delta"], "milliseconds")
+            if item["delta"] is not None and float(item["delta"]) >= 0:
+                delta = "+" + delta
+            significance = fmt(None, "fraction")
+            markdown.append(
+                f"| {item['area']} | {hng} | {baseline_value} | {delta} | {significance} | "
+                f"{item['evidence_class']} | {item['status']}: {item['notes']} |"
+            )
+            continue
         hng = "—" if item["hng"] is None else f"{float(item['hng']) * 100:.1f}%"
         baseline_value = "—" if item["baseline"] is None else f"{float(item['baseline']) * 100:.1f}%"
         delta = "—" if item["delta"] is None else f"{float(item['delta']) * 100:+.1f} pp"

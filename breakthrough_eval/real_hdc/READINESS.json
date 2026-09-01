@@ -1,0 +1,116 @@
+{
+  "artifacts": {},
+  "claim_boundary": "Readiness verifies declared local artifacts and paired-design attestations only; it is not behavioral evidence and does not prove that declared traces are real.",
+  "created_at": "2026-09-01T06:06:17.156510+00:00",
+  "failure_count": 21,
+  "failures": [
+    {
+      "code": "manifest_not_supplied",
+      "detail": "No real-HDC experiment manifest was supplied."
+    },
+    {
+      "code": "evidence_class_not_real",
+      "detail": "Manifest must declare evidence_class=real."
+    },
+    {
+      "code": "synthetic_exclusion_unconfirmed",
+      "detail": "Manifest must explicitly declare synthetic_artifacts=false."
+    },
+    {
+      "code": "missing_interpreter",
+      "detail": "No path declared for interpreter."
+    },
+    {
+      "code": "missing_checkpoint",
+      "detail": "No path declared for checkpoint."
+    },
+    {
+      "code": "missing_action_library",
+      "detail": "No path declared for action_library."
+    },
+    {
+      "code": "missing_workload_traces",
+      "detail": "No path declared for workload_traces."
+    },
+    {
+      "code": "missing_hng_off_config",
+      "detail": "No path declared for hng_off_config."
+    },
+    {
+      "code": "missing_hng_on_config",
+      "detail": "No path declared for hng_on_config."
+    },
+    {
+      "code": "missing_preregistration",
+      "detail": "No path declared for preregistration."
+    },
+    {
+      "code": "missing_runner",
+      "detail": "No path declared for runner."
+    },
+    {
+      "code": "invariant_unconfirmed_same_interpreter",
+      "detail": "Paired invariant same_interpreter must be true."
+    },
+    {
+      "code": "invariant_unconfirmed_same_checkpoint",
+      "detail": "Paired invariant same_checkpoint must be true."
+    },
+    {
+      "code": "invariant_unconfirmed_same_action_library",
+      "detail": "Paired invariant same_action_library must be true."
+    },
+    {
+      "code": "invariant_unconfirmed_same_reasoning_policy",
+      "detail": "Paired invariant same_reasoning_policy must be true."
+    },
+    {
+      "code": "invariant_unconfirmed_same_tools",
+      "detail": "Paired invariant same_tools must be true."
+    },
+    {
+      "code": "invariant_unconfirmed_same_tasks",
+      "detail": "Paired invariant same_tasks must be true."
+    },
+    {
+      "code": "invariant_unconfirmed_same_retrieval_candidates",
+      "detail": "Paired invariant same_retrieval_candidates must be true."
+    },
+    {
+      "code": "invariant_unconfirmed_only_memory_governance_changes",
+      "detail": "Paired invariant only_memory_governance_changes must be true."
+    },
+    {
+      "code": "primary_metrics_missing",
+      "detail": "At least one preregistered primary metric is required."
+    },
+    {
+      "code": "minimum_sample_size_missing",
+      "detail": "A positive minimum_sample_size is required."
+    }
+  ],
+  "git_commit": "b474712225d9eab2fd55f61d299a146091ff72fb",
+  "manifest_path": null,
+  "required_artifacts": [
+    "interpreter",
+    "checkpoint",
+    "action_library",
+    "workload_traces",
+    "hng_off_config",
+    "hng_on_config",
+    "preregistration",
+    "runner"
+  ],
+  "required_paired_invariants": [
+    "same_interpreter",
+    "same_checkpoint",
+    "same_action_library",
+    "same_reasoning_policy",
+    "same_tools",
+    "same_tasks",
+    "same_retrieval_candidates",
+    "only_memory_governance_changes"
+  ],
+  "schema_version": 1,
+  "status": "BLOCKED_EXTERNAL"
+}

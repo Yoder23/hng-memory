@@ -4,10 +4,10 @@
   "warning": "Values are not accuracy scores and must not be used to claim capability superiority.",
   "axes": [
     {"capability": "working-state continuity", "evidence_maturity": 1, "status": "LOCAL_GAUNTLET", "source": "baseline_070"},
-    {"capability": "long-term factual memory", "evidence_maturity": 2, "status": "PUBLIC_NONCANONICAL_NEGATIVE", "source": "public/longmemeval_v2;public/locomo_plus"},
+    {"capability": "long-term factual memory", "evidence_maturity": 2, "status": "PUBLIC_NONCANONICAL_NEGATIVE", "source": "public/longmemeval_v2;public/locomo_plus_n30"},
     {"capability": "dynamic-state tracking", "evidence_maturity": 2, "status": "PUBLIC_NONCANONICAL_NEGATIVE", "source": "public/longmemeval_v2"},
-    {"capability": "temporal reasoning", "evidence_maturity": 2, "status": "PUBLIC_NONCANONICAL", "source": "public/longmemeval_v2;public/locomo_plus"},
-    {"capability": "episodic recall", "evidence_maturity": 2, "status": "PUBLIC_NONCANONICAL", "source": "public/locomo_plus"},
+    {"capability": "temporal reasoning", "evidence_maturity": 2, "status": "PUBLIC_NONCANONICAL", "source": "public/longmemeval_v2;public/locomo_plus_n30"},
+    {"capability": "episodic recall", "evidence_maturity": 2, "status": "PUBLIC_NONCANONICAL_LOSS_TO_FULL_CONTEXT", "source": "public/locomo_plus_n30"},
     {"capability": "action/outcome experience", "evidence_maturity": 1, "status": "SYNTHETIC_EXECUTING_PROBE", "source": "action_experience"},
     {"capability": "workflow knowledge", "evidence_maturity": 2, "status": "PUBLIC_NONCANONICAL_NEGATIVE", "source": "public/longmemeval_v2"},
     {"capability": "environment gotchas", "evidence_maturity": 2, "status": "PUBLIC_NONCANONICAL", "source": "public/longmemeval_v2"},
@@ -18,11 +18,11 @@
     {"capability": "authority awareness", "evidence_maturity": 1, "status": "SYNTHETIC", "source": "fixed_candidate"},
     {"capability": "document QA", "evidence_maturity": 2, "status": "PUBLIC_DATA_NONCANONICAL", "source": "baseline_070/raw/QMSUM_GOVERNED_20.json"},
     {"capability": "global corpus understanding", "evidence_maturity": 0, "status": "NOT_RUN", "source": null},
-    {"capability": "RAG governance", "evidence_maturity": 2, "status": "PUBLIC_NONCANONICAL_TIES", "source": "public/longmemeval_v2;public/locomo_plus"},
+    {"capability": "RAG governance", "evidence_maturity": 2, "status": "PUBLIC_NONCANONICAL_TIES_RETRIEVAL_ARMS_LOSES_FULL_CONTEXT", "source": "public/longmemeval_v2;public/locomo_plus_n30"},
     {"capability": "provenance", "evidence_maturity": 1, "status": "SYNTHETIC_BEHAVIORAL_ABLATION_TIE", "source": "provenance_ablation"},
     {"capability": "poison resistance", "evidence_maturity": 1, "status": "SYNTHETIC", "source": "fixed_candidate"},
     {"capability": "multi-user isolation", "evidence_maturity": 1, "status": "LOCAL_100K_PRINCIPAL_SCOPED_ZERO_LEAKAGE_WITH_RAW_API_BOUNDARY", "source": "reliability/MULTI_USER_100K_ISOLATION.json"},
     {"capability": "tool-agent assistance", "evidence_maturity": 1, "status": "SYNTHETIC_EXECUTING_CONTEXT_FIX_TIES_STRONG", "source": "tool_agent/RESULTS.json"},
-    {"capability": "efficiency", "evidence_maturity": 2, "status": "PUBLIC_NONCANONICAL_TOKEN_LATENCY", "source": "public/longmemeval_v2;public/locomo_plus"}
+    {"capability": "efficiency", "evidence_maturity": 2, "status": "PUBLIC_NONCANONICAL_TOKENS_AND_REPEATED_SYNTHETIC_LATENCY", "source": "public/longmemeval_v2;public/locomo_plus_n30;latency/RESULTS.json"}
   ]
 }

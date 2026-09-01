@@ -77,6 +77,18 @@
       },
       "empty_inputs": 0
     },
+    "expanded_local_holdout": {
+      "protocol": "five deterministic samples per each of six categories; 30 samples, four arms; NONCANONICAL",
+      "status": "COMPLETE_NONCANONICAL_LOSS",
+      "events": 120,
+      "evaluation_errors": 0,
+      "all_fixed_candidate_invariants_pass": true,
+      "scores": {"full_context": 18.5, "bm25": 9.0, "strong_structured": 9.0, "hng": 9.0},
+      "hng_vs_full_context_delta": -0.3166666666666667,
+      "hng_vs_full_context_bootstrap_95_ci": [-0.5333333333333334, -0.08333333333333337],
+      "hng_vs_full_context_mcnemar_p": 0.03515625,
+      "manifest": "public/locomo_plus_n30/MANIFEST.json"
+    },
     "canonical_protocol_available": false,
     "canonical_blockers": [
       "full 2,387-sample reader-plus-judge run exceeds the current local inference budget",

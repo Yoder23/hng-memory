@@ -37,11 +37,23 @@ C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py belief-revision
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py component-probes
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py scaled-isolation
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py tool-agent
+C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py real-hdc --manifest PATH
+C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py latency --repeats 20
 ```
 
 Omit `--execute-llm` to prepare and verify expensive experiments without invoking the local 27B
 model. Add `--dry-run` before the subcommand to print the exact commands. Public-memory execution
 requires the pinned external datasets described in `PUBLIC_RESOURCES.json`; they are ignored by Git.
+
+The real-HDC command is a fail-closed readiness gate, not a synthetic substitute and not an
+assistant evaluation. Without a manifest it records the exact missing contract. With a manifest it
+verifies artifact existence, full hashes, preregistered metrics/sample size, and paired-design
+attestations before a real assistant run can begin.
+
+The expanded LoCoMo-Plus evidence is preserved separately under `public/locomo_plus_n30`: 30
+deterministically selected samples, 120 complete arm events, paired statistics, and exact-input
+reuse provenance. The repeated latency command creates 20 fresh stores and refuses to overwrite
+existing evidence.
 
 The scaled-isolation command creates ignored SQLite runtime files, takes about seven minutes on the
 recorded host, and refuses to overwrite an earlier preserved run.

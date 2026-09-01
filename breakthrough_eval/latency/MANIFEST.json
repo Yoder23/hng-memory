@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-01",
+  "git_base_commit": "b474712225d9eab2fd55f61d299a146091ff72fb",
+  "status": "COMPLETE_LOCAL_SYNTHETIC",
+  "repeat_count": 20,
+  "raw_event_count": 8640,
+  "behavior_identical_across_repeats": true,
+  "behavior_sha256": "c2b58d5fc643ef79786803447c6258cbd16da9715c69167c0ab62ea39762254c",
+  "artifacts": {
+    "RESULTS.json": {"bytes": 19643, "sha256": "9dfaf8678711646cdf3f6d1f4d49b83dde89940759cc8bc66206192bf3d60dfa"},
+    "raw/events.jsonl": {"bytes": 16090336, "sha256": "0a1e5b8f4aa1a3058712302153c4d0105ac2b56728813b631bd37f90fbe33164"},
+    "../scripts/repeated_latency_probe.py": {"bytes": 4921, "sha256": "ceb88f13a9345328f605ac95ce676397fae0ed8fa25e98d03b1296d7d331b321"}
+  },
+  "claim_boundary": "Twenty independent fresh-store runs on one Windows host under a deterministic synthetic tool-agent workload; not deployment SLO or cross-host evidence."
+}

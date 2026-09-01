@@ -12,6 +12,7 @@ import argparse
 import collections
 import json
 import math
+import random
 import re
 import statistics
 import sys
@@ -44,8 +45,15 @@ from task_eval import llm_as_judge as official_judge  # noqa: E402
 from task_eval import utils as official_utils  # noqa: E402
 
 
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
 CATEGORIES = ("single-hop", "multi-hop", "temporal", "common-sense", "adversarial", "Cognitive")
+
+
+def protocol_label(per_category: int) -> str:
+    return (
+        f"LoCoMo-Plus six-category stratified local evaluation "
+        f"({per_category} per category); NONCANONICAL"
+    )
 
 
 def utc_now() -> str:
@@ -206,7 +214,7 @@ def prepare(args: argparse.Namespace) -> tuple[list[tuple[int, dict[str, Any]]],
     manifest = {
         "schema_version": SCHEMA_VERSION,
         "created_at": utc_now(),
-        "protocol": "LoCoMo-Plus six-category local pilot; NONCANONICAL",
+        "protocol": protocol_label(args.per_category),
         "selection": "SHA-256(seed,category,index,input-prompt-hash); answers/evidence excluded",
         "seed": SEED,
         "sample_count": len(selected),
@@ -217,7 +225,17 @@ def prepare(args: argparse.Namespace) -> tuple[list[tuple[int, dict[str, Any]]],
         },
         "samples": rows,
     }
-    write_json(args.output / "PREPARED.json", manifest)
+    prepared_path = args.output / "PREPARED.json"
+    if prepared_path.exists():
+        existing = json.loads(prepared_path.read_text(encoding="utf-8"))
+        comparable_keys = ("protocol", "selection", "seed", "sample_count", "parameters", "samples")
+        if stable_hash({key: existing.get(key) for key in comparable_keys}) != stable_hash(
+            {key: manifest.get(key) for key in comparable_keys}
+        ):
+            raise RuntimeError(f"refusing to overwrite incompatible prepared manifest: {prepared_path}")
+        manifest = existing
+    else:
+        write_json(prepared_path, manifest)
     return selected, candidates_by_index, manifest
 
 
@@ -235,6 +253,23 @@ def completed_keys(raw_path: Path) -> set[tuple[int, str]]:
     return result
 
 
+def reusable_predictions(raw_path: Path) -> dict[tuple[int, str, str], dict[str, Any]]:
+    result: dict[tuple[int, str, str], dict[str, Any]] = {}
+    if not raw_path.exists():
+        return result
+    with raw_path.open(encoding="utf-8") as handle:
+        for line in handle:
+            if not line.strip():
+                continue
+            row = json.loads(line)
+            required = ("prediction", "judge_score", "reader", "judge")
+            if row.get("event") != "prediction" or row.get("error") or not all(key in row for key in required):
+                continue
+            key = (int(row["source_index"]), str(row["prompt_sha256"]), str(row["model_digest"]))
+            result.setdefault(key, row)
+    return result
+
+
 def run(
     args: argparse.Namespace,
     selected: Sequence[tuple[int, dict[str, Any]]],
@@ -242,6 +277,7 @@ def run(
 ) -> dict[str, object]:
     raw_path = args.output / "raw" / "events.jsonl"
     completed = completed_keys(raw_path)
+    reusable = reusable_predictions(raw_path)
     arms = ("full_context", "bm25", "strong_structured", "hng")
     for index, sample in selected:
         memory, query, full = split_memory_and_query(sample)
@@ -280,7 +316,7 @@ def run(
                 "schema_version": SCHEMA_VERSION,
                 "event": "prediction",
                 "created_at": utc_now(),
-                "protocol": "locomo_plus_local_pilot_noncanonical",
+                "protocol": protocol_label(args.per_category),
                 "sample_id": f"locomo-plus-{index:04d}",
                 "source_index": index,
                 "category": category,
@@ -293,6 +329,22 @@ def run(
                 "governance_trace": trace,
                 "prompt_sha256": stable_hash(messages),
             }
+            reuse_key = (index, str(event["prompt_sha256"]), args.model_digest)
+            cached = reusable.get(reuse_key)
+            if cached is not None:
+                event.update({
+                    "prediction": cached["prediction"],
+                    "ground_truth": cached["ground_truth"],
+                    "oracle_judge_evidence": cached["oracle_judge_evidence"],
+                    "judge_score": cached["judge_score"],
+                    "reader": cached["reader"],
+                    "judge": cached["judge"],
+                    "evaluation_reused": True,
+                    "reused_from_arm": cached["arm"],
+                    "reuse_reason": "same sample, prompt SHA-256, model digest, reader options, and judge input",
+                })
+                append_jsonl(raw_path, event)
+                continue
             try:
                 prediction, reader = ollama_chat(
                     messages,
@@ -315,10 +367,13 @@ def run(
                     "judge_score": score,
                     "reader": reader,
                     "judge": judge,
+                    "evaluation_reused": False,
                 })
             except Exception as exc:
                 event["error"] = f"{type(exc).__name__}: {exc}"
             append_jsonl(raw_path, event)
+            if not event.get("error"):
+                reusable.setdefault(reuse_key, dict(event))
     return compile_results(args, selected, raw_path)
 
 
@@ -333,11 +388,58 @@ def percentile(values: Sequence[float], fraction: float) -> float | None:
     return ordered[low] * (high - position) + ordered[high] * (position - low)
 
 
+def paired_bootstrap_delta(
+    left: Sequence[float],
+    right: Sequence[float],
+    *,
+    samples: int = 10_000,
+    seed: int = SEED,
+) -> dict[str, float]:
+    if len(left) != len(right) or not left:
+        raise ValueError("paired non-empty inputs required")
+    rng = random.Random(seed)
+    count = len(left)
+    observed = statistics.mean(left) - statistics.mean(right)
+    draws = []
+    for _ in range(samples):
+        indexes = [rng.randrange(count) for _ in range(count)]
+        draws.append(
+            statistics.mean(left[index] for index in indexes)
+            - statistics.mean(right[index] for index in indexes)
+        )
+    return {
+        "delta": observed,
+        "ci95_low": float(percentile(draws, 0.025)),
+        "ci95_high": float(percentile(draws, 0.975)),
+    }
+
+
+def exact_binomial_two_sided(k: int, n: int) -> float:
+    if n == 0:
+        return 1.0
+    tail = min(k, n - k)
+    return min(1.0, 2.0 * sum(math.comb(n, i) for i in range(tail + 1)) / (2 ** n))
+
+
+def mcnemar(left: Sequence[bool], right: Sequence[bool]) -> dict[str, object]:
+    if len(left) != len(right):
+        raise ValueError("paired inputs required")
+    left_only = sum(a and not b for a, b in zip(left, right))
+    right_only = sum(b and not a for a, b in zip(left, right))
+    return {
+        "left_positive_right_negative": left_only,
+        "right_positive_left_negative": right_only,
+        "discordant": left_only + right_only,
+        "exact_two_sided_p": exact_binomial_two_sided(left_only, left_only + right_only),
+    }
+
+
 def compile_results(
     args: argparse.Namespace,
     selected: Sequence[tuple[int, Mapping[str, Any]]],
     raw_path: Path,
 ) -> dict[str, object]:
+    raw_path = raw_path.resolve()
     latest: dict[tuple[int, str], dict[str, Any]] = {}
     failures = []
     excluded_events = []
@@ -395,13 +497,33 @@ def compile_results(
                 "prompt_identical": len({row["prompt_sha256"] for row in rows}) == 1,
                 "model_digest_identical": len({row["model_digest"] for row in rows}) == 1,
             })
+    paired_statistics = {}
+    for other in ("full_context", "bm25", "strong_structured"):
+        common = sorted(
+            index for index, _sample in selected
+            if (index, "hng") in latest and (index, other) in latest
+        )
+        if not common:
+            paired_statistics[f"hng_vs_{other}"] = None
+            continue
+        hng_scores = [float(latest[(index, "hng")]["judge_score"]) for index in common]
+        other_scores = [float(latest[(index, other)]["judge_score"]) for index in common]
+        paired_statistics[f"hng_vs_{other}"] = {
+            "paired_cases": len(common),
+            "paired_bootstrap_mean_score": paired_bootstrap_delta(hng_scores, other_scores),
+            "mcnemar_judge_positive": mcnemar(
+                [score > 0.5 for score in hng_scores],
+                [score > 0.5 for score in other_scores],
+            ),
+            "positive_threshold": "official judge score > 0.5",
+        }
     result = {
         "schema_version": SCHEMA_VERSION,
         "created_at": utc_now(),
-        "protocol": "LoCoMo-Plus six-category local pilot; NONCANONICAL",
+        "protocol": protocol_label(args.per_category),
         "status": "complete" if all(value["count"] == len(selected) for value in summaries.values()) else "partial",
         "limitations": [
-            "six-category stratified subset rather than all 2,387 samples",
+            f"{len(selected)}-sample stratified subset rather than all 2,387 samples",
             "same local frozen 27B model used as reader and judge",
             "BM25 dialogue-turn retrieval is not an official LoCoMo-Plus baseline",
             "HNG receives only clean public dialogue turns with no trust/tenant/version distinctions",
@@ -413,6 +535,13 @@ def compile_results(
         "summaries": summaries,
         "by_category": by_category,
         "fixed_candidate_invariants": invariants,
+        "paired_statistics": paired_statistics,
+        "inference_reuse": {
+            "policy": "reuse only within one sample when prompt SHA-256, model digest, deterministic reader options, prediction, and judge input are identical",
+            "actual_inference_events": sum(not bool(row.get("evaluation_reused")) for row in latest.values()),
+            "exact_prompt_reuse_events": sum(bool(row.get("evaluation_reused")) for row in latest.values()),
+            "scientific_reason": "prevents repeat-call model nondeterminism from being attributed to memory when assistant inputs are byte-identical",
+        },
         "all_fixed_candidate_invariants_pass": bool(invariants) and all(
             all(row[key] for key in ("candidate_pool_identical", "selected_candidates_identical", "prompt_identical", "model_digest_identical"))
             for row in invariants

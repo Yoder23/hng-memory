@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-01",
+  "git_base_commit": "b474712225d9eab2fd55f61d299a146091ff72fb",
+  "status": "BLOCKED_EXTERNAL",
+  "failure_count": 21,
+  "artifacts": {
+    "READINESS.json": {"bytes": 3567, "sha256": "8f30385ae145bde32ce63a69bc6656f4d1bd502f6c497056b55e66515c7d82a8"},
+    "MANIFEST_TEMPLATE.json": {"bytes": 1057, "sha256": "7e900cef747b778e7d6cdaa83de5399705213a3213e09e19d23b21e7a8484964"},
+    "../scripts/real_hdc_readiness.py": {"bytes": 6731, "sha256": "4bb9117becff52c07cc3bc5da02a083054be6e20ba78a161e98eb9b99c146d4d"}
+  },
+  "claim_boundary": "Artifact readiness only; no real HDC assistant behavior was executed or inferred."
+}

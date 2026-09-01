@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-01",
+  "git_base_commit": "b474712225d9eab2fd55f61d299a146091ff72fb",
+  "protocol": "LoCoMo-Plus six-category stratified local evaluation, five samples per category; NONCANONICAL",
+  "status": "COMPLETE_NONCANONICAL_LOSS",
+  "events": 120,
+  "actual_inference_events": 70,
+  "exact_prompt_reuse_events": 50,
+  "evaluation_errors": 0,
+  "artifacts": {
+    "PREPARED.json": {"bytes": 249811, "sha256": "2bd1efba237476022d5a9dbca324d848b88402ddc73b459f66a4d6f357988762"},
+    "RESULTS.json": {"bytes": 12548, "sha256": "866a3664db31377012a356a31e2a78ecb14f9aba58ec98632b0024211f8ec31d"},
+    "raw/events.jsonl": {"bytes": 1122643, "sha256": "6e985e8e14fe26c3399aacf55075e064d1baea0c6d0089d713f18fe0e6d010ae"},
+    "../../scripts/locomo_plus_pilot.py": {"bytes": 24491, "sha256": "8bf1caaf71c4755541186c61c5d385315daf3dd11b582b95c35645b7c664b2aa"}
+  },
+  "preserved_setup_events": [
+    "planned interruption after 20 complete events to add exact-input reuse",
+    "first final compilation failed after all 120 events because a relative raw path was compared with an absolute root"
+  ],
+  "claim_boundary": "Official public data and templates with a noncanonical local reader, judge, subset, and BM25 turn retriever; not a leaderboard result."
+}

@@ -349,92 +349,92 @@
       "value": 0.19047619047619047
     },
     {
-      "area": "locomo_plus_six_category_pilot",
+      "area": "locomo_plus_stratified_n30",
       "evidence_class": "public_noncanonical",
       "metric": "judge_score_average",
-      "notes": "Official public data/templates; six-sample local reader/judge pilot, not a leaderboard score.",
-      "source": "public/locomo_plus/RESULTS.json",
+      "notes": "Official public data/templates; 30-sample local reader/judge evaluation, not a leaderboard score.",
+      "source": "public/locomo_plus_n30/RESULTS.json",
       "status": "EXECUTED",
       "system": "bm25",
       "unit": "fraction",
-      "value": 0.3333333333333333
+      "value": 0.3
     },
     {
-      "area": "locomo_plus_six_category_pilot",
+      "area": "locomo_plus_stratified_n30",
       "evidence_class": "public_noncanonical",
       "metric": "prompt_tokens_total",
       "notes": "",
-      "source": "public/locomo_plus/RESULTS.json",
+      "source": "public/locomo_plus_n30/RESULTS.json",
       "status": "EXECUTED",
       "system": "bm25",
       "unit": "count",
-      "value": 5920.0
+      "value": 31511.0
     },
     {
-      "area": "locomo_plus_six_category_pilot",
+      "area": "locomo_plus_stratified_n30",
       "evidence_class": "public_noncanonical",
       "metric": "judge_score_average",
-      "notes": "Official public data/templates; six-sample local reader/judge pilot, not a leaderboard score.",
-      "source": "public/locomo_plus/RESULTS.json",
+      "notes": "Official public data/templates; 30-sample local reader/judge evaluation, not a leaderboard score.",
+      "source": "public/locomo_plus_n30/RESULTS.json",
       "status": "EXECUTED",
       "system": "full_context",
       "unit": "fraction",
-      "value": 0.5
+      "value": 0.6166666666666667
     },
     {
-      "area": "locomo_plus_six_category_pilot",
+      "area": "locomo_plus_stratified_n30",
       "evidence_class": "public_noncanonical",
       "metric": "prompt_tokens_total",
       "notes": "",
-      "source": "public/locomo_plus/RESULTS.json",
+      "source": "public/locomo_plus_n30/RESULTS.json",
       "status": "EXECUTED",
       "system": "full_context",
       "unit": "count",
-      "value": 149139.0
+      "value": 686221.0
     },
     {
-      "area": "locomo_plus_six_category_pilot",
+      "area": "locomo_plus_stratified_n30",
       "evidence_class": "public_noncanonical",
       "metric": "judge_score_average",
-      "notes": "Official public data/templates; six-sample local reader/judge pilot, not a leaderboard score.",
-      "source": "public/locomo_plus/RESULTS.json",
+      "notes": "Official public data/templates; 30-sample local reader/judge evaluation, not a leaderboard score.",
+      "source": "public/locomo_plus_n30/RESULTS.json",
       "status": "EXECUTED",
       "system": "hng",
       "unit": "fraction",
-      "value": 0.3333333333333333
+      "value": 0.3
     },
     {
-      "area": "locomo_plus_six_category_pilot",
+      "area": "locomo_plus_stratified_n30",
       "evidence_class": "public_noncanonical",
       "metric": "prompt_tokens_total",
       "notes": "",
-      "source": "public/locomo_plus/RESULTS.json",
+      "source": "public/locomo_plus_n30/RESULTS.json",
       "status": "EXECUTED",
       "system": "hng",
       "unit": "count",
-      "value": 5920.0
+      "value": 31511.0
     },
     {
-      "area": "locomo_plus_six_category_pilot",
+      "area": "locomo_plus_stratified_n30",
       "evidence_class": "public_noncanonical",
       "metric": "judge_score_average",
-      "notes": "Official public data/templates; six-sample local reader/judge pilot, not a leaderboard score.",
-      "source": "public/locomo_plus/RESULTS.json",
+      "notes": "Official public data/templates; 30-sample local reader/judge evaluation, not a leaderboard score.",
+      "source": "public/locomo_plus_n30/RESULTS.json",
       "status": "EXECUTED",
       "system": "strong_structured",
       "unit": "fraction",
-      "value": 0.3333333333333333
+      "value": 0.3
     },
     {
-      "area": "locomo_plus_six_category_pilot",
+      "area": "locomo_plus_stratified_n30",
       "evidence_class": "public_noncanonical",
       "metric": "prompt_tokens_total",
       "notes": "",
-      "source": "public/locomo_plus/RESULTS.json",
+      "source": "public/locomo_plus_n30/RESULTS.json",
       "status": "EXECUTED",
       "system": "strong_structured",
       "unit": "count",
-      "value": 5920.0
+      "value": 31511.0
     },
     {
       "area": "personamem_v2_seven_stratum_pilot",
@@ -1064,6 +1064,182 @@
       "value": 0.015555002028122537
     },
     {
+      "area": "repeated_tool_agent_latency",
+      "evidence_class": "local_synthetic",
+      "metric": "decision_latency_mean_across_run_mean",
+      "notes": "95% bootstrap CI [0.018982, 0.020449] ms over 20 independent-store runs.",
+      "source": "latency/RESULTS.json",
+      "status": "EXECUTED",
+      "system": "agent_alone",
+      "unit": "milliseconds",
+      "value": 0.019687592457221063
+    },
+    {
+      "area": "repeated_tool_agent_latency",
+      "evidence_class": "local_synthetic",
+      "metric": "decision_latency_p50_across_run_mean",
+      "notes": "95% bootstrap CI [0.017192, 0.018150] ms over 20 independent-store runs.",
+      "source": "latency/RESULTS.json",
+      "status": "EXECUTED",
+      "system": "agent_alone",
+      "unit": "milliseconds",
+      "value": 0.017677497817203403
+    },
+    {
+      "area": "repeated_tool_agent_latency",
+      "evidence_class": "local_synthetic",
+      "metric": "decision_latency_p95_across_run_mean",
+      "notes": "95% bootstrap CI [0.030501, 0.035567] ms over 20 independent-store runs.",
+      "source": "latency/RESULTS.json",
+      "status": "EXECUTED",
+      "system": "agent_alone",
+      "unit": "milliseconds",
+      "value": 0.03300375028629785
+    },
+    {
+      "area": "repeated_tool_agent_latency",
+      "evidence_class": "local_synthetic",
+      "metric": "decision_latency_p99_across_run_mean",
+      "notes": "95% bootstrap CI [0.060750, 0.095628] ms over 20 independent-store runs.",
+      "source": "latency/RESULTS.json",
+      "status": "EXECUTED",
+      "system": "agent_alone",
+      "unit": "milliseconds",
+      "value": 0.07551705441437649
+    },
+    {
+      "area": "repeated_tool_agent_latency",
+      "evidence_class": "local_synthetic",
+      "metric": "decision_latency_mean_across_run_mean",
+      "notes": "95% bootstrap CI [1.335857, 1.367589] ms over 20 independent-store runs.",
+      "source": "latency/RESULTS.json",
+      "status": "EXECUTED",
+      "system": "hng_advisory",
+      "unit": "milliseconds",
+      "value": 1.3509591659250737
+    },
+    {
+      "area": "repeated_tool_agent_latency",
+      "evidence_class": "local_synthetic",
+      "metric": "decision_latency_p50_across_run_mean",
+      "notes": "95% bootstrap CI [1.378522, 1.435218] ms over 20 independent-store runs.",
+      "source": "latency/RESULTS.json",
+      "status": "EXECUTED",
+      "system": "hng_advisory",
+      "unit": "milliseconds",
+      "value": 1.4055699954042211
+    },
+    {
+      "area": "repeated_tool_agent_latency",
+      "evidence_class": "local_synthetic",
+      "metric": "decision_latency_p95_across_run_mean",
+      "notes": "95% bootstrap CI [1.936397, 2.016331] ms over 20 independent-store runs.",
+      "source": "latency/RESULTS.json",
+      "status": "EXECUTED",
+      "system": "hng_advisory",
+      "unit": "milliseconds",
+      "value": 1.9764925057825165
+    },
+    {
+      "area": "repeated_tool_agent_latency",
+      "evidence_class": "local_synthetic",
+      "metric": "decision_latency_p99_across_run_mean",
+      "notes": "95% bootstrap CI [2.195578, 2.389851] ms over 20 independent-store runs.",
+      "source": "latency/RESULTS.json",
+      "status": "EXECUTED",
+      "system": "hng_advisory",
+      "unit": "milliseconds",
+      "value": 2.2918712013924947
+    },
+    {
+      "area": "repeated_tool_agent_latency",
+      "evidence_class": "local_synthetic",
+      "metric": "decision_latency_mean_across_run_mean",
+      "notes": "95% bootstrap CI [0.028336, 0.030022] ms over 20 independent-store runs.",
+      "source": "latency/RESULTS.json",
+      "status": "EXECUTED",
+      "system": "ordinary_recent_memory",
+      "unit": "milliseconds",
+      "value": 0.029132917175216048
+    },
+    {
+      "area": "repeated_tool_agent_latency",
+      "evidence_class": "local_synthetic",
+      "metric": "decision_latency_p50_across_run_mean",
+      "notes": "95% bootstrap CI [0.026437, 0.027708] ms over 20 independent-store runs.",
+      "source": "latency/RESULTS.json",
+      "status": "EXECUTED",
+      "system": "ordinary_recent_memory",
+      "unit": "milliseconds",
+      "value": 0.02706000377656892
+    },
+    {
+      "area": "repeated_tool_agent_latency",
+      "evidence_class": "local_synthetic",
+      "metric": "decision_latency_p95_across_run_mean",
+      "notes": "95% bootstrap CI [0.047119, 0.054723] ms over 20 independent-store runs.",
+      "source": "latency/RESULTS.json",
+      "status": "EXECUTED",
+      "system": "ordinary_recent_memory",
+      "unit": "milliseconds",
+      "value": 0.05066025565611196
+    },
+    {
+      "area": "repeated_tool_agent_latency",
+      "evidence_class": "local_synthetic",
+      "metric": "decision_latency_p99_across_run_mean",
+      "notes": "95% bootstrap CI [0.082371, 0.111893] ms over 20 independent-store runs.",
+      "source": "latency/RESULTS.json",
+      "status": "EXECUTED",
+      "system": "ordinary_recent_memory",
+      "unit": "milliseconds",
+      "value": 0.09705304831732049
+    },
+    {
+      "area": "repeated_tool_agent_latency",
+      "evidence_class": "local_synthetic",
+      "metric": "decision_latency_mean_across_run_mean",
+      "notes": "95% bootstrap CI [0.010001, 0.010594] ms over 20 independent-store runs.",
+      "source": "latency/RESULTS.json",
+      "status": "EXECUTED",
+      "system": "strong_structured_memory",
+      "unit": "milliseconds",
+      "value": 0.010284259958468654
+    },
+    {
+      "area": "repeated_tool_agent_latency",
+      "evidence_class": "local_synthetic",
+      "metric": "decision_latency_p50_across_run_mean",
+      "notes": "95% bootstrap CI [0.009552, 0.009750] ms over 20 independent-store runs.",
+      "source": "latency/RESULTS.json",
+      "status": "EXECUTED",
+      "system": "strong_structured_memory",
+      "unit": "milliseconds",
+      "value": 0.00965000072028488
+    },
+    {
+      "area": "repeated_tool_agent_latency",
+      "evidence_class": "local_synthetic",
+      "metric": "decision_latency_p95_across_run_mean",
+      "notes": "95% bootstrap CI [0.015433, 0.017522] ms over 20 independent-store runs.",
+      "source": "latency/RESULTS.json",
+      "status": "EXECUTED",
+      "system": "strong_structured_memory",
+      "unit": "milliseconds",
+      "value": 0.01638350178836844
+    },
+    {
+      "area": "repeated_tool_agent_latency",
+      "evidence_class": "local_synthetic",
+      "metric": "decision_latency_p99_across_run_mean",
+      "notes": "95% bootstrap CI [0.026418, 0.039111] ms over 20 independent-store runs.",
+      "source": "latency/RESULTS.json",
+      "status": "EXECUTED",
+      "system": "strong_structured_memory",
+      "unit": "milliseconds",
+      "value": 0.032283251639455474
+    },
+    {
       "area": "release_070rc2",
       "evidence_class": "local",
       "metric": "wheel_install_no_deps",
@@ -1529,8 +1705,8 @@
       "area": "real_hdc_task_success",
       "evidence_class": "real",
       "metric": "primary_metric",
-      "notes": "Production HDC interpreter/checkpoint and real traces absent.",
-      "source": "RESOURCE_INVENTORY.json",
+      "notes": "Fail-closed readiness gate reports 21 unmet checks: manifest_not_supplied, evidence_class_not_real, synthetic_exclusion_unconfirmed, missing_interpreter, missing_checkpoint, missing_action_library, missing_workload_traces, missing_hng_off_config, missing_hng_on_config, missing_preregistration, missing_runner, invariant_unconfirmed_same_interpreter, invariant_unconfirmed_same_checkpoint, invariant_unconfirmed_same_action_library, invariant_unconfirmed_same_reasoning_policy, invariant_unconfirmed_same_tools, invariant_unconfirmed_same_tasks, invariant_unconfirmed_same_retrieval_candidates, invariant_unconfirmed_only_memory_governance_changes, primary_metrics_missing, minimum_sample_size_missing.",
+      "source": "real_hdc/READINESS.json",
       "status": "BLOCKED_EXTERNAL",
       "system": "hng",
       "unit": "fraction",

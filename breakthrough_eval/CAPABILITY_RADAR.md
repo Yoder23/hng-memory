@@ -11,10 +11,10 @@ subjective performance scores to unrun tracks.
 | Capability | Maturity | Current evidence |
 |---|---:|---|
 | working-state continuity | 1 | frozen local gauntlets |
-| long-term factual memory | 2 | LongMemEval-V2 and LoCoMo-Plus noncanonical negative results |
+| long-term factual memory | 2 | LongMemEval-V2 negative pilot; expanded LoCoMo-Plus ties retrieval arms and loses to full context |
 | dynamic-state tracking | 2 | completed LongMemEval-V2 pilot; all retrieval arms 0/6 |
 | temporal reasoning | 2 | completed public noncanonical pilots |
-| episodic recall | 2 | completed LoCoMo-Plus public-data pilot |
+| episodic recall | 2 | expanded 30-sample LoCoMo-Plus public-data loss to full context |
 | action/outcome experience | 1 | synthetic executing probe; HNG loses to nearest experience |
 | workflow knowledge | 2 | completed LongMemEval-V2 pilot; retrieval arms 1/6 |
 | environment gotchas | 2 | completed LongMemEval-V2 pilot; retrieval arms 2/3 |
@@ -30,6 +30,6 @@ subjective performance scores to unrun tracks.
 | poison resistance | 1 | synthetic fixed candidates |
 | multi-user isolation | 1 | local 100K-principal scoped probe; zero scoped leaks, raw APIs remain privileged/unscoped |
 | tool-agent assistance | 1 | executing synthetic context-fix study; HNG ties Strong after preserved pre-fix loss |
-| efficiency | 2 | public-pilot token and latency measurements |
+| efficiency | 2 | public token measurements plus 20-repeat synthetic decision-latency intervals |
 
 No axis currently reaches level 3. The machine-readable source is `CAPABILITY_RADAR.json`.

@@ -3,6 +3,29 @@
 This log is append-only in substance: later fixes may add resolution notes, but must not erase the
 original observation or raw artifact.
 
+## Expanded LoCoMo compiler integration failure
+
+The first compiler run after adding dynamic LoCoMo result selection failed before writing new
+aggregates because a Windows separator replacement became an unterminated Python string literal.
+No benchmark event was affected. The repair uses the platform-safe Path method for POSIX rendering,
+and the compiler then completed with 139 result rows and 15 scoreboard rows.
+
+## Expanded LoCoMo planned resume interruption
+
+The first 30-sample invocation was deliberately interrupted after 20 complete append-only events
+to add exact-prompt inference reuse. An in-flight judge request received KeyboardInterrupt and did
+not produce an event; the 20 completed events remain intact. The prepared manifest hash remained
+unchanged across the corrected resumable invocation. This is a setup/protocol-efficiency event,
+not a scored benchmark failure.
+
+## Expanded LoCoMo final serialization failure
+
+All 120 events completed with zero evaluation errors, but the first final compilation attempt then
+failed because a relative raw-log path was compared with the absolute repository root. The raw
+JSONL remained complete: 70 actual inference events and 50 exact-input reuse events. The serializer
+now resolves the raw path before making it repository-relative; the corrected invocation performs
+no new model calls because every sample/arm key is already complete.
+
 ## Provenance-ablation first execution failure
 
 The first provenance-ablation invocation failed because direct script execution did not place the

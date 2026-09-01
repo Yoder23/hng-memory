@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "evidence_class": "real",
+  "synthetic_artifacts": false,
+  "artifacts": {
+    "interpreter": {"path": "REPLACE", "sha256": "REPLACE_WITH_64_HEX"},
+    "checkpoint": {"path": "REPLACE", "sha256": "REPLACE_WITH_64_HEX"},
+    "action_library": {"path": "REPLACE", "sha256": "REPLACE_WITH_64_HEX"},
+    "workload_traces": {"path": "REPLACE", "sha256": "REPLACE_WITH_64_HEX"},
+    "hng_off_config": {"path": "REPLACE", "sha256": "REPLACE_WITH_64_HEX"},
+    "hng_on_config": {"path": "REPLACE", "sha256": "REPLACE_WITH_64_HEX"},
+    "preregistration": {"path": "REPLACE", "sha256": "REPLACE_WITH_64_HEX"},
+    "runner": {"path": "REPLACE", "sha256": "REPLACE_WITH_64_HEX"}
+  },
+  "paired_invariants": {
+    "same_interpreter": true,
+    "same_checkpoint": true,
+    "same_action_library": true,
+    "same_reasoning_policy": true,
+    "same_tools": true,
+    "same_tasks": true,
+    "same_retrieval_candidates": true,
+    "only_memory_governance_changes": true
+  },
+  "primary_metrics": ["task_success"],
+  "minimum_sample_size": 100
+}
