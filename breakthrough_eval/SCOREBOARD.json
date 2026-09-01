@@ -55,6 +55,23 @@
       "status": "LOSS_TIE"
     },
     {
+      "area": "Fixed-LLM cross-family governance vs ordinary candidates",
+      "baseline": 0.26666666666666666,
+      "delta": 0.6333333333333333,
+      "evidence_class": "synthetic",
+      "hng": 0.9,
+      "notes": "Preregistered Mistral-family primary passes, but HNG and Strong tie exactly, so HNG-specific superiority fails; fixed-case synthetic replication only.",
+      "significance": {
+        "ci95": [
+          0.4666666666666667,
+          0.8
+        ],
+        "p": 3.814697265625e-06,
+        "test": "McNemar exact plus paired bootstrap"
+      },
+      "status": "WIN_STRUCTURED_CONTEXT_SYNTHETIC"
+    },
+    {
       "area": "Bounded storage reliability",
       "baseline": null,
       "delta": null,

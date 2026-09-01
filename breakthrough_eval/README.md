@@ -77,6 +77,9 @@ The cross-family command reuses the exact 30 synthetic fixed-candidate holdout c
 ordinary/Strong/HNG context hashes with a pinned Mistral Small 3.1 reader. Execution is fail-closed:
 it requires the exact clean preregistration commit, full installed model digest, and 90 unique
 completed case/system events. This is a model-family replication, not a new or public benchmark.
+The pushed Mistral run completes 90/90 events with zero failures: HNG and Strong each score 27/30,
+ordinary context scores 8/30, and the preregistered HNG/ordinary interval excludes zero. The exact
+HNG/Strong tie is preserved as a failed HNG-specific attribution test.
 
 The scaled-isolation command creates ignored SQLite runtime files, takes about seven minutes on the
 recorded host, and refuses to overwrite an earlier preserved run.

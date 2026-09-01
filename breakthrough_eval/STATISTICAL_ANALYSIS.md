@@ -148,6 +148,23 @@ statistically established improvement on this holdout. K64 uses 116,800 prompt t
 680,824 for full context and trails it by 1.7 points (CI [-20.0, +16.7], p=1). HNG, Strong, and
 plain BM25 are exact fixed-candidate k64 ties: 13.5/30, delta 0, CI [0, 0], p=1.
 
+## Preregistered fixed-candidate cross-family reader replication
+
+The exact 30 synthetic holdout cases, ordered candidate pools, system-specific memory contexts,
+outer prompt hash, and scoring rule from the Qwen study were reused with pinned Mistral Small 3.1
+24B digest `b9aaf0c2586a8ed8105feab808c0f034bd4d346203822f048e2366165a13f4ea`.
+All 90 events completed with zero failures under the single pushed preregistration commit.
+
+HNG and Strong each score 27/30 (90.0%); ordinary RAG scores 8/30 (26.7%). The preregistered
+primary HNG-minus-ordinary delta is +63.3 percentage points with paired-bootstrap 95% CI
+[+46.7, +80.0]. All 19 discordant pairs favor HNG, giving exact two-sided McNemar
+p=0.0000038147. The reader-family-independent governed/structured-context rule therefore passes.
+
+The preregistered complexity control is an exact HNG/Strong tie: delta 0, CI [0, 0], zero
+discordant pairs, p=1. Both systems miss all three duplicate-attack cases. Accordingly, this run
+does not attribute the gain specifically to HNG. It reuses previously evaluated synthetic cases,
+so it is a model-family replication rather than an independent confirmatory sample.
+
 ## Multiplicity and claims
 
 No family-level significance tests are used; the ten family breakdowns are diagnostic. This avoids
@@ -156,9 +173,8 @@ local statistical comparison.
 
 ## Remaining statistical requirements
 
-- Repeat the LLM holdout with at least one genuinely different model family.
-- Add order randomization or counterbalancing and multiple inference seeds where stochasticity is
-  enabled.
+- Repeat the cross-family result on independently sampled cases with order randomization or
+  counterbalancing and multiple inference seeds where stochasticity is enabled.
 - Use public benchmark bootstrap units defined by official examples/users, not generated variants.
 - Extend repeated-run confidence intervals beyond the synthetic tool-agent decision path to every
   component and end-to-end deployment path.

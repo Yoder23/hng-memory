@@ -1,0 +1,254 @@
+{
+  "all_fixed_candidate_invariants_pass": true,
+  "benchmark": "fixed_candidate_cross_family_llm_holdout",
+  "candidate_pool_identity_verified": true,
+  "claim_boundary": "Synthetic fixed-candidate replication with a second reader family; not public or real-assistant evidence.",
+  "completed_events": 90,
+  "complexity_control": "hng_vs_strong_structured",
+  "created_at": "2026-09-01T14:26:57.058170+00:00",
+  "evidence_class": "synthetic",
+  "expected_completed_events": 90,
+  "failed_events": 0,
+  "fixed_candidate_invariants": {
+    "all_attempt_inputs_match_prepared": true,
+    "all_completed_outer_prompts_match_frozen": true,
+    "exact_expected_completed_keys": true,
+    "one_completed_event_per_key": true
+  },
+  "historical_failed_events": 0,
+  "model": "mistral-small3.1:24b-instruct-2503-q4_K_M",
+  "model_digest": "b9aaf0c2586a8ed8105feab808c0f034bd4d346203822f048e2366165a13f4ea",
+  "paired_statistics": {
+    "hng_vs_ordinary_rag": {
+      "mcnemar": {
+        "discordant": 19,
+        "exact_two_sided_p": 3.814697265625e-06,
+        "left_correct_right_wrong": 19,
+        "right_correct_left_wrong": 0
+      },
+      "paired_bootstrap_accuracy": {
+        "ci95_high": 0.8,
+        "ci95_low": 0.4666666666666667,
+        "delta": 0.6333333333333333
+      },
+      "paired_cases": 30
+    },
+    "hng_vs_strong_structured": {
+      "mcnemar": {
+        "discordant": 0,
+        "exact_two_sided_p": 1.0,
+        "left_correct_right_wrong": 0,
+        "right_correct_left_wrong": 0
+      },
+      "paired_bootstrap_accuracy": {
+        "ci95_high": 0.0,
+        "ci95_low": 0.0,
+        "delta": 0.0
+      },
+      "paired_cases": 30
+    }
+  },
+  "prepared_file_sha256": "eddfc96fc553dad7c5ac675222658bd8b374d9b85465383e48c3d864ad6b28c3",
+  "preregistered_commit": "37c55652d4862fd9c4c31d6aa5b571ac0f18698b",
+  "primary_comparison": "hng_vs_ordinary_rag",
+  "protocol": "fixed_candidate_cross_family_llm_holdout",
+  "raw_event_log": "raw/llm_events.jsonl",
+  "requested_cases": 30,
+  "schema_version": 1,
+  "status": "complete",
+  "systems": {
+    "hng": {
+      "accuracy": 0.9,
+      "by_family": {
+        "authority_mismatch": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "duplicate_attack": {
+          "accuracy": 0,
+          "correct": 0,
+          "total": 3
+        },
+        "irrelevant_state": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "sparse_verified": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "stale_environment": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "superseded": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "true_conflict": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "untrusted_poison": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "wrong_role": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "wrong_tenant": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        }
+      },
+      "correct": 27,
+      "generation_tokens_total": 246,
+      "latency_seconds": {
+        "p50": 1.372819949989207,
+        "p95": 2.6080325850169173,
+        "p99": 2.7158780820155517
+      },
+      "prompt_tokens_total": 18261,
+      "total": 30
+    },
+    "ordinary_rag": {
+      "accuracy": 0.26666666666666666,
+      "by_family": {
+        "authority_mismatch": {
+          "accuracy": 0,
+          "correct": 0,
+          "total": 3
+        },
+        "duplicate_attack": {
+          "accuracy": 0,
+          "correct": 0,
+          "total": 3
+        },
+        "irrelevant_state": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "sparse_verified": {
+          "accuracy": 0,
+          "correct": 0,
+          "total": 3
+        },
+        "stale_environment": {
+          "accuracy": 0.3333333333333333,
+          "correct": 1,
+          "total": 3
+        },
+        "superseded": {
+          "accuracy": 0.3333333333333333,
+          "correct": 1,
+          "total": 3
+        },
+        "true_conflict": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "untrusted_poison": {
+          "accuracy": 0,
+          "correct": 0,
+          "total": 3
+        },
+        "wrong_role": {
+          "accuracy": 0,
+          "correct": 0,
+          "total": 3
+        },
+        "wrong_tenant": {
+          "accuracy": 0,
+          "correct": 0,
+          "total": 3
+        }
+      },
+      "correct": 8,
+      "generation_tokens_total": 272,
+      "latency_seconds": {
+        "p50": 3.770991499972297,
+        "p95": 4.841427755029872,
+        "p99": 7.830695069016077
+      },
+      "prompt_tokens_total": 43785,
+      "total": 30
+    },
+    "strong_structured": {
+      "accuracy": 0.9,
+      "by_family": {
+        "authority_mismatch": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "duplicate_attack": {
+          "accuracy": 0,
+          "correct": 0,
+          "total": 3
+        },
+        "irrelevant_state": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "sparse_verified": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "stale_environment": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "superseded": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "true_conflict": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "untrusted_poison": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "wrong_role": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        },
+        "wrong_tenant": {
+          "accuracy": 1,
+          "correct": 3,
+          "total": 3
+        }
+      },
+      "correct": 27,
+      "generation_tokens_total": 246,
+      "latency_seconds": {
+        "p50": 1.779979250015458,
+        "p95": 2.7570147149730473,
+        "p99": 2.7804609279771104
+      },
+      "prompt_tokens_total": 17358,
+      "total": 30
+    }
+  },
+  "unique_completed_keys": 90
+}

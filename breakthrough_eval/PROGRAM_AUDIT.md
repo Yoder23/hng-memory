@@ -11,7 +11,7 @@ substitute is permitted; `NOT_RUN` means no qualifying evidence yet exists.
 
 | Section | Requirement | Status | Authoritative evidence or remaining gap |
 |---:|---|---|---|
-| 0 | Central evidence-governance hypothesis | PARTIAL | Fixed-candidate synthetic LLM study isolates governance, but HNG ties StrongStructuredBaseline. |
+| 0 | Central evidence-governance hypothesis | PARTIAL | Fixed-candidate synthetic LLM studies with pinned Qwen and Mistral readers isolate a large governed/structured-context gain over ordinary context, but HNG ties StrongStructuredBaseline in both families. |
 | 1 | Downstream breakthrough evidence | PARTIAL | LLM corrupted-evidence behavior improves; no real-assistant or qualifying public win. |
 | 2 | Exactly one final S/A/B/C/D verdict | NOT_RUN | Verdict is intentionally withheld until the completion audit closes. |
 | 3 | Research-integrity controls | PARTIAL | Frozen candidates/model/prompt, raw append-only logs, preserved losses, explicit evidence classes; broader tracks remain. |
@@ -19,7 +19,7 @@ substitute is permitted; `NOT_RUN` means no qualifying evidence yet exists.
 | 5 | Current prior art | PARTIAL | `PRIOR_ART_2026.md` covers all named areas and newer systems; not every unavailable system is reproduced. |
 | 6 | Universal experiment harness | PARTIAL | Standard specs/events and all requested local adapter classes exist; runnable external-system adapters remain unavailable. |
 | 7 | Real HDC assistant HNG off/on | BLOCKED_EXTERNAL | A machine-readable fail-closed readiness gate records 21 unmet artifact, digest, design, metric, and sample checks in `real_hdc/READINESS.json`. No trained production interpreter, frozen action library, real trace corpus, or integrated assistant is present; readiness is not behavioral evidence. |
-| 8 | Fixed LLM memory comparison | PARTIAL | Same frozen 27B model and same candidates run for ordinary/Strong/HNG; recent/full/summary/dense arms not all run. |
+| 8 | Fixed LLM memory comparison | PARTIAL | The same 30 cases/candidates/prompts run for ordinary/Strong/HNG with pinned Qwen 27B and Mistral 24B readers. Both show HNG=Strong; recent/full/summary/dense arms are not all run. |
 | 9 | Official LongMemEval-V2 | PARTIAL | Official pinned small text tier is validated and the 21-question noncanonical pilot completed 84/84 evaluations with zero failures. HNG, StrongStructuredBaseline, and BM25 tie at 4/21; visual/full official stack and contemporary-system comparison are absent. |
 | 10 | Official LoCoMo/LoCoMo-Plus | PARTIAL | The official 2,387-sample input is pinned. Four disjoint 30-sample windows now cover fixed, budget, dense/hybrid, and neural-reranker studies. The fourth completes 210/210 events with zero failures: full context 17.5/30, hybrid 15/30, reranked 14.5/30, dense 13.5/30, and BM25 12/30. Primary reranker/hybrid CI includes zero; HNG, Strong, and reranked exactly tie. Protocols remain noncanonical and contemporary-system comparison is absent. |
 | 11 | Public personalization | PARTIAL | Official PersonaMem-v2 text data are pinned and validated: 5,000 rows, all 1,998 32K files, 200 referenced histories, zero missing. The seven-stratum local pilot completes 49/49 qualified evaluations; HNG, BM25, Strong, and full history tie at 4/7. Dense and agentic baselines are absent. |
@@ -45,18 +45,18 @@ substitute is permitted; `NOT_RUN` means no qualifying evidence yet exists.
 | 31 | Strong structured competitors | NOT_RUN | Unavailable property-graph/learned managers remain undefeated. |
 | 32 | Full HNG ablation matrix | PARTIAL | Eight one-at-a-time counterfactual removals run on all 250 frozen scenarios. Outcome, perspective, provenance/trust, exact floors/contracts, temporal validity, supersession, and independence are ranked. Deterministic state carry and profile uncertainty are not isolatable here; consolidation and belief revision are separate component probes. |
 | 33 | Evidence-led iteration loop | PARTIAL | The untouched tool adapter loss is frozen; missing temporal/access outcome context is isolated, fixed generally, covered by a production regression, and rerun on an identical 108-episode stream. HNG recovers from 29.6% to 63.9% but only ties Strong. Broader loss/holdout iteration remains. |
-| 34 | Statistical standard | PARTIAL | Paired bootstrap and exact McNemar cover expanded, retrieval-budget, dense/hybrid, and neural-reranker 30-sample public-data studies; the three follow-ups were separately preregistered and disjoint. Twenty independent-store repeats provide latency intervals. Multiple model seeds/families and canonical public units remain missing. |
+| 34 | Statistical standard | PARTIAL | Paired bootstrap and exact McNemar cover the public-data follow-ups and the separately pushed 30-case Mistral-family fixed-candidate replication. A second reader family is now executed; multiple inference seeds, an independent cross-family case sample, and canonical public units remain missing. |
 | 35 | Automatic scoreboard | PARTIAL | Compiler produces Markdown/JSON scoreboard; required rows are incomplete until tracks run. |
 | 36 | Capability radar | PARTIAL | A complete machine-readable evidence-maturity radar covers every requested axis without converting maturity into subjective capability scores. No axis has canonical public or real paired evidence. |
 | 37 | Six minimum breakthrough gates | FAIL_OPEN | Gates 1, 2, 5, and 6 are unmet; Gate 3 passes only synthetically; Gate 4 passes frozen suites. |
 | 38 | Stretch gates | NOT_RUN | No stretch gate is currently proven. |
 | 39 | Failure-first development | PASS | New work is evaluation/harness/provenance work; no speculative HNG feature was added. |
-| 40 | Public reproduction commands | PARTIAL | The small `reproduce.py` command surface now covers core, adversarial, RAG governance, public memory, belief revision, component probes, scaled isolation, tool agent, and fail-closed real-HDC readiness. Fresh-clone proof and an installed `hng-eval` entry point remain missing. |
+| 40 | Public reproduction commands | PARTIAL | The small `reproduce.py` command surface covers core, adversarial, RAG governance, cross-family replication, public memory, belief revision, component probes, scaled isolation, tool agent, and fail-closed real-HDC readiness. Fresh-clone proof and an installed `hng-eval` entry point remain missing. |
 | 41 | Release artifacts | PASS | The backward-compatible 0.7.0rc2 tool-adapter fix ships as a smoke-tested wheel and sdist with SHA-256 manifest, changelog, migration guide, raw before/after benchmark evidence, environment, and statistical report. The incomplete first sdist is preserved and excluded. |
 | 42 | Required research documents | PARTIAL | 18 of 19 named narrative documents and all four core machine-readable outputs exist. `FINAL_BREAKTHROUGH_VERDICT.md` is intentionally withheld until active public runs and the completion audit finish. |
 | 43 | Final paper question | NOT_RUN | Paper claim cannot be supported before real/public gates. |
 | 44 | Ten explicit final-report questions | NOT_RUN | Must be answered in final verdict after evidence closure. |
-| 45 | Most-important same-retrieval A/B | PARTIAL | Controlled frozen LLM evidence and four public-data fixed-candidate comparisons preserve exact retrieval identity. HNG ties Strong and the underlying retriever for BM25 k16, BM25 k64, hybrid k64, and reranked k64 contexts. Neither better dense retrieval nor cross-encoder reranking reveals a governance gain. A real long-running task remains missing. |
+| 45 | Most-important same-retrieval A/B | PARTIAL | Controlled Qwen- and Mistral-family LLM evidence plus four public-data fixed-candidate comparisons preserve exact retrieval identity. The Mistral primary beats ordinary context by 63.3 points (CI excludes zero), but HNG ties Strong exactly in both reader families and across all public fixed-candidate arms. A real long-running task remains missing. |
 | 46 | Second-most-important real HDC A/B | BLOCKED_EXTERNAL | Same resource absence as Section 7. |
 | 47 | Combined-system success target | NOT_RUN | No evidence yet proves the full system-level claim. |
 | 48 | Architectural freedom from evidence | PASS | No result has been protected ideologically; simple baseline tie and BM25 QMSum win are preserved. |
@@ -69,9 +69,9 @@ substitute is permitted; `NOT_RUN` means no qualifying evidence yet exists.
 |---|---|---|
 | 1: real behavioral improvement | No real HDC or other real assistant A/B is available. | UNMET |
 | 2: public external validation | LongMemEval-V2, PersonaMem-v2, and all LoCoMo-Plus runs are noncanonical and lack contemporary-system comparisons. Dense retrieval is descriptively strongest on the third disjoint slice, but its interval versus BM25 includes zero; HNG exactly ties hybrid/Strong. | UNMET |
-| 3: fixed-candidate governance | +33.3 percentage points over ordinary context on 30 frozen local-LLM cases, but exact tie with StrongStructuredBaseline. | PARTIAL |
+| 3: fixed-candidate governance | Qwen: +33.3 points over ordinary; Mistral replication: +63.3 points, 95% CI [+46.7, +80.0], p=3.81e-6. HNG exactly ties Strong in both. | PARTIAL |
 | 4: robustness | 94/94, 64/64, 11/11, and 10/10 frozen suites pass; losses elsewhere are preserved. | MET |
-| 5: HDC and LLM model independence | LLM evidence exists; real HDC evidence does not. | UNMET |
+| 5: HDC and LLM model independence | The exact fixed cases now replicate across pinned Qwen and Mistral reader families; real HDC evidence remains absent. | UNMET overall (LLM-family subrequirement met) |
 | 6: strong simple baseline | StrongStructuredBaseline ties HNG and is faster/cheaper. | UNMET (HNG does not beat/extend it) |
 
 The ledger forbids an S or A claim on current evidence. It does not pre-commit the final verdict;

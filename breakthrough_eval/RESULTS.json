@@ -1,8 +1,8 @@
 {
   "integrity": {
     "candidate_pool_identity_verified": true,
-    "cross_family_candidate_invariants_verified": null,
-    "cross_family_failed_events": null,
+    "cross_family_candidate_invariants_verified": true,
+    "cross_family_failed_events": 0,
     "github_status": "CONNECTED_VERIFIED_PRIVATE_YODER23_HNG_MEMORY",
     "literature_mixed_with_local": false,
     "llm_failed_events": 0,
@@ -305,6 +305,72 @@
       "system": "strong_structured",
       "unit": "seconds",
       "value": 5.897988928985433
+    },
+    {
+      "area": "fixed_candidate_cross_family_llm_holdout",
+      "evidence_class": "synthetic",
+      "metric": "answer_accuracy",
+      "notes": "Pinned mistral-small3.1:24b-instruct-2503-q4_K_M digest b9aaf0c2586a8ed8105feab808c0f034bd4d346203822f048e2366165a13f4ea; fixed-case model-family replication only.",
+      "source": "fixed_candidate_cross_family/LLM_RESULTS.json",
+      "status": "EXECUTED",
+      "system": "hng",
+      "unit": "fraction",
+      "value": 0.9
+    },
+    {
+      "area": "fixed_candidate_cross_family_llm_holdout",
+      "evidence_class": "synthetic",
+      "metric": "prompt_tokens_total",
+      "notes": "",
+      "source": "fixed_candidate_cross_family/LLM_RESULTS.json",
+      "status": "EXECUTED",
+      "system": "hng",
+      "unit": "count",
+      "value": 18261.0
+    },
+    {
+      "area": "fixed_candidate_cross_family_llm_holdout",
+      "evidence_class": "synthetic",
+      "metric": "answer_accuracy",
+      "notes": "Pinned mistral-small3.1:24b-instruct-2503-q4_K_M digest b9aaf0c2586a8ed8105feab808c0f034bd4d346203822f048e2366165a13f4ea; fixed-case model-family replication only.",
+      "source": "fixed_candidate_cross_family/LLM_RESULTS.json",
+      "status": "EXECUTED",
+      "system": "ordinary_rag",
+      "unit": "fraction",
+      "value": 0.26666666666666666
+    },
+    {
+      "area": "fixed_candidate_cross_family_llm_holdout",
+      "evidence_class": "synthetic",
+      "metric": "prompt_tokens_total",
+      "notes": "",
+      "source": "fixed_candidate_cross_family/LLM_RESULTS.json",
+      "status": "EXECUTED",
+      "system": "ordinary_rag",
+      "unit": "count",
+      "value": 43785.0
+    },
+    {
+      "area": "fixed_candidate_cross_family_llm_holdout",
+      "evidence_class": "synthetic",
+      "metric": "answer_accuracy",
+      "notes": "Pinned mistral-small3.1:24b-instruct-2503-q4_K_M digest b9aaf0c2586a8ed8105feab808c0f034bd4d346203822f048e2366165a13f4ea; fixed-case model-family replication only.",
+      "source": "fixed_candidate_cross_family/LLM_RESULTS.json",
+      "status": "EXECUTED",
+      "system": "strong_structured",
+      "unit": "fraction",
+      "value": 0.9
+    },
+    {
+      "area": "fixed_candidate_cross_family_llm_holdout",
+      "evidence_class": "synthetic",
+      "metric": "prompt_tokens_total",
+      "notes": "",
+      "source": "fixed_candidate_cross_family/LLM_RESULTS.json",
+      "status": "EXECUTED",
+      "system": "strong_structured",
+      "unit": "count",
+      "value": 17358.0
     },
     {
       "area": "longmemeval_v2_text_pilot",

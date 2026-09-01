@@ -1,0 +1,52 @@
+{
+  "all_fixed_candidate_invariants_pass": true,
+  "artifact_sha256": {
+    "breakthrough_eval/BREAKTHROUGH_SCOREBOARD.md": "2fddff03f85d1f2d52c66f3d8dc53ec917028cf0db0133824c8d17540ea38107",
+    "breakthrough_eval/BREAKTHROUGH_THESIS.md": "a1c1cae5ad611e33f56437cd4dd839dbad028081046bdf7d2c1ea435a328e342",
+    "breakthrough_eval/FAILURES.md": "743c70b741c0babf6aa878c3b5e87575195fce30b5bdfed05408988197c23d58",
+    "breakthrough_eval/PROGRAM_AUDIT.md": "b56678c0c1580ffb53af9760f3c762ebc577b8dc0917710d747b810af43c83f6",
+    "breakthrough_eval/RESOURCE_INVENTORY.json": "cbd4d26eeccc03014c66aca0df150a377fb60f5d7b0c6f90766821dcd1d135ed",
+    "breakthrough_eval/RESULTS.json": "c59e6b4c954f2328911d595a516e59559938e38590d8d4dd62681716bb844850",
+    "breakthrough_eval/SCOREBOARD.json": "7c7c536176a1c47f30140bba03f55bf9d95c304e67fc17fbe44e6e301d534adc",
+    "breakthrough_eval/STATISTICAL_ANALYSIS.md": "e2201e007b02c3fc53e9d1017acb0ca19cf8b5d6f27cb1c844b183886c075488",
+    "breakthrough_eval/fixed_candidate_cross_family/LLM_RESULTS.json": "ee620fc71c16ecab06301aa29d1cf3d970a5b92e7a38b2fe3facd0337c18ca2d",
+    "breakthrough_eval/fixed_candidate_cross_family/MANIFEST.json": "41506a2a542803bfbab8af78241d214a3c7f739a5395d9eece216cab5548fbcd",
+    "breakthrough_eval/fixed_candidate_cross_family/MODEL_QUALIFICATION.json": "ea371f116428bc2c7928e393ec0fede65781d3da0feb5a0de55c2db06e581982",
+    "breakthrough_eval/fixed_candidate_cross_family/PREPARED.json": "eddfc96fc553dad7c5ac675222658bd8b374d9b85465383e48c3d864ad6b28c3",
+    "breakthrough_eval/fixed_candidate_cross_family/PROTOCOL.md": "3a123473c547bcab08ee41215326c846b041c476579b903a568fb0e4b2d8a365",
+    "breakthrough_eval/fixed_candidate_cross_family/raw/llm_events.jsonl": "20149687439f42b2be50f61562f8c0f9a2c0409c331f1c90938b648970842023",
+    "breakthrough_eval/scripts/compile_breakthrough.py": "3f908094f95f4667982ea4612d031bf72ee32cd8966c24bc187d397e265d92a0"
+  },
+  "completed_events": 90,
+  "complexity_control": {
+    "bootstrap_ci95": [0.0, 0.0],
+    "delta": 0.0,
+    "exact_mcnemar_p": 1.0,
+    "name": "hng_vs_strong_structured",
+    "passed": false
+  },
+  "evidence_class": "synthetic",
+  "github_preregistration_verified_before_execution": true,
+  "historical_failed_events": 0,
+  "hng_specific_superiority_supported": false,
+  "model": "mistral-small3.1:24b-instruct-2503-q4_K_M",
+  "model_digest": "b9aaf0c2586a8ed8105feab808c0f034bd4d346203822f048e2366165a13f4ea",
+  "model_family": "mistral3",
+  "preregistered_commit": "37c55652d4862fd9c4c31d6aa5b571ac0f18698b",
+  "primary_comparison": {
+    "bootstrap_ci95": [0.4666666666666667, 0.8],
+    "delta": 0.6333333333333333,
+    "exact_mcnemar_p": 0.000003814697265625,
+    "name": "hng_vs_ordinary_rag",
+    "passed": true
+  },
+  "protocol": "fixed_candidate_cross_family_llm_holdout",
+  "schema_version": 1,
+  "status": "COMPLETE",
+  "system_accuracy": {
+    "hng": 0.9,
+    "ordinary_rag": 0.26666666666666666,
+    "strong_structured": 0.9
+  },
+  "unique_case_system_keys": 90
+}

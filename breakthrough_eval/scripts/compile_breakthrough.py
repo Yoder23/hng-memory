@@ -679,8 +679,8 @@ def main() -> int:
                 "ci95": [cross_bootstrap["ci95_low"], cross_bootstrap["ci95_high"]],
             },
             "evidence_class": "synthetic",
-            "status": "WIN_SYNTHETIC_CROSS_FAMILY" if cross_success else "LOSS_OR_INCONCLUSIVE",
-            "notes": "Preregistered fixed-case Mistral-family replication; not an independent dataset, public result, or real-assistant result.",
+            "status": "WIN_STRUCTURED_CONTEXT_SYNTHETIC" if cross_success else "LOSS_OR_INCONCLUSIVE",
+            "notes": "Preregistered Mistral-family primary passes, but HNG and Strong tie exactly, so HNG-specific superiority fails; fixed-case synthetic replication only.",
         })
     if longmem is not None:
         public_hng = longmem["summaries"]["hng"]["accuracy"]

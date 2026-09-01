@@ -36,6 +36,15 @@ HNG, Strong, and plain reranked contexts are exact ties at 48.3%. Thus neither n
 governance supplies a demonstrated gain on this slice; prompt-efficient retrieval remains useful,
 but its best recipe varies across disjoint windows.
 
+A separately pushed preregistration repeats the exact 30 synthetic fixed-candidate cases with a
+pinned 24B Mistral-family reader. HNG and Strong each score 27/30 (90.0%) while ordinary context
+scores 8/30 (26.7%). The primary HNG-minus-ordinary delta is +63.3 points with 95% CI
+[+46.7, +80.0] and exact McNemar p=3.81e-6, so the governed/structured-context effect survives a
+genuinely different reader family. HNG versus Strong is again an exact tie (CI [0, 0], p=1), and
+both fail every duplicate-attack case. This strengthens reader-family robustness while reinforcing
+the simpler-baseline attribution failure; it is fixed-case synthetic replication, not independent
+public or real evidence.
+
 The stronger breakthrough claim remains unproven because:
 
 - no real HDC assistant is available for HNG-off/on testing;

@@ -274,3 +274,13 @@ zero event errors, and one preregistration commit across the complete log.
    PowerShell, and Python quoting layers, producing a Python syntax error during test collection.
    No inference ran. The path normalization now uses an unambiguous character code and the focused
    suite passes before preregistration.
+
+## Cross-family reader replication surviving failure
+
+The pushed Mistral-family replication completes 90/90 events with zero runtime failures and passes
+the preregistered HNG-versus-ordinary rule (27/30 versus 8/30; +63.3 points; CI excludes zero).
+It nevertheless reproduces the central attribution failure: HNG and StrongStructuredBaseline are
+an exact 27/30 tie with CI [0, 0] and p=1, and both miss all three duplicate-attack cases. HNG also
+uses 18,261 prompt tokens versus Strong's 17,358. This is evidence for structured/governed context,
+not an HNG-specific breakthrough, and the fixed-case synthetic design supplies no public or real
+assistant claim.
