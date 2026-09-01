@@ -515,3 +515,24 @@ two shared conditions, with positive synchronized growth in every shared child.
 Those values cannot satisfy the invalid run's decision. They justify a new
 protocol with an independent sampler thread and an explicit replicated
 lower-bound rule.
+
+## Shared-SQLite handle-matrix v2 valid localization
+
+The independently sampled follow-up ran from commit
+`245090724cfbb1552388b44a4d17a939321b6fe8`. All 48 fresh children exited zero,
+reported without errors, and produced 90 or 91 samples against the frozen
+minimum of 80. Readers observed zero missing or malformed records. Median
+handle slopes were 0.667 handles/minute in both the 12-process idle and
+12-process isolated-SQLite controls, versus 41.792 and 49.206 in two independent
+shared-SQLite/WAL replications. Every shared child exceeded the frozen
+10-handles/minute lower bound, while every control remained below the frozen
+5-handles/minute ceiling. The exact outcome is
+`SUPPORTS_SHARED_SQLITE_CAUSE`.
+
+This validly localizes the reproduced growth to concurrent shared-database
+activity under the tested workload and rules out process count, isolated SQLite
+use, and the independent sampler at the frozen thresholds. It does not yet
+identify the leaking Windows handle type or allocating call path, and it does
+not reverse sustained v2's failed qualification. A new sustained protocol is
+not justified until a bounded mechanism diagnostic identifies what is being
+allocated and an intervention can be tested directly.

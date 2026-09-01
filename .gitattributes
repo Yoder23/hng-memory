@@ -1,4 +1,6 @@
 * text=auto
+breakthrough_eval/reliability/**/*.json text eol=lf
+breakthrough_eval/reliability/**/*.jsonl text eol=lf
 *.whl binary
 *.zip binary
 *.gz binary

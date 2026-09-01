@@ -62,9 +62,16 @@ That follow-up ultimately completed validly in
 caused zero net handle growth across idle, event-poll, isolated SQLite-read, and
 isolated SQLite-write children, producing the frozen outcome
 `REFUTES_OBSERVER_EFFECT_AT_THRESHOLD`. The observer-effect hypothesis is
-therefore not the working explanation. The diagnostic did not reproduce v2's
-12-process shared-database workload, so v2's handle failure remains unexplained
-and failed rather than reclassified.
+therefore not the working explanation. The observer diagnostic did not
+reproduce v2's 12-process shared-database workload. A separate independently
+sampled four-condition matrix subsequently did so in
+`../shared_sqlite_handle_diagnostic_v2/RESULTS.json`: idle and isolated-SQLite
+controls had median slopes of 0.667 handles/minute, while two shared-SQLite/WAL
+replications had medians of 41.792 and 49.206 and every shared child exceeded
+the frozen lower bound. Its exact outcome, `SUPPORTS_SHARED_SQLITE_CAUSE`,
+localizes the reproduced growth to concurrent shared-database activity under
+this workload. It does not identify the exact handle type or allocation path,
+and v2 remains failed rather than reclassified.
 
 The authoritative machine postmortem is `FAILURE_ANALYSIS.json`; the original
 `RESULTS.json` and fsynced `events.jsonl` are unchanged.

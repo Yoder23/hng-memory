@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from pathlib import Path
 
@@ -128,6 +129,42 @@ def test_v2_replicated_lower_bound_rule() -> None:
 
     assert matrix_v2.classify_v2(results, args) == (
         "SUPPORTS_SHARED_SQLITE_CAUSE"
+    )
+
+
+def test_terminal_v2_matrix_is_content_addressed_and_supports_shared_sqlite() -> None:
+    output = matrix.ROOT / (
+        "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic_v2"
+    )
+    result_path = output / "RESULTS.json"
+    events_path = output / "events.jsonl"
+    result = json.loads(result_path.read_text(encoding="utf-8"))
+
+    assert hashlib.sha256(result_path.read_bytes()).hexdigest() == (
+        "d8d061fd4e2807565fb595714d76e342347925b565b26e4351e7f630934f5e1d"
+    )
+    assert hashlib.sha256(events_path.read_bytes()).hexdigest() == (
+        "902d2af03484d98154a9c8e3cf9f6a00e02840dae1bb4d4dd65ebba1ca55f75e"
+    )
+    assert result["status"] == "PASS"
+    assert result["outcome"] == "SUPPORTS_SHARED_SQLITE_CAUSE"
+    assert result["preregistered_commit"] == (
+        "245090724cfbb1552388b44a4d17a939321b6fe8"
+    )
+    assert all(item["valid"] for item in result["conditions"].values())
+    assert all(
+        min(child["samples"] for child in item["per_child"]) >= 80
+        for item in result["conditions"].values()
+    )
+    assert max(
+        result["conditions"][name]["maximum_slope_handles_per_minute"]
+        for name in ("idle_12", "isolated_sqlite_12")
+    ) < 5.0
+    assert all(
+        min(child["slope_handles_per_minute"] for child in item["per_child"])
+        >= 10.0
+        for name, item in result["conditions"].items()
+        if name.startswith("shared_sqlite")
     )
 
 

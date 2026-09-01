@@ -168,13 +168,23 @@ event-poll, isolated SQLite-read, and isolated SQLite-write children. Its frozen
 outcome refutes that narrow observer-effect hypothesis at threshold; it does not
 explain or reverse the shared-database v2 reliability failure.
 
+The first shared-SQLite/process-count matrix is preserved as invalid because
+workload-coupled sampling missed its frozen minimum. Its independently sampled
+v2 follow-up completed all controls: the idle and isolated-SQLite medians were
+0.667 handles/minute, while two shared-SQLite/WAL replications measured 41.792
+and 49.206 handles/minute with every shared child above the frozen lower bound.
+The preregistered outcome `SUPPORTS_SHARED_SQLITE_CAUSE` localizes the reproduced
+growth to concurrent shared-database activity under this workload. It is
+diagnostic evidence, not a reliability qualification or a specific handle-type
+mechanism.
+
 The current local release candidate is 0.7.0rc3 under `releases/0.7.0rc3/qualified_dist`. Its
 manifest distinguishes the qualifying exact-commit artifacts from two preserved earlier build
 pairs. A brand-new private-repository clone installed the wheel and used `hng-eval` to pass 58
 dependency-free tests, execute the isolated 250-case deterministic study, and recompile the result
 corpus. The four external LoCoMo test modules remain explicit exclusions from this dependency-free
 proof. The configured suite passed 94 tests at rc3 qualification and the breakthrough suite passes
-132 after adding sustained-reliability evidence and root-cause diagnostic tests.
+133 after adding sustained-reliability evidence and root-cause diagnostic tests.
 
 ## Current resource boundary
 
