@@ -147,3 +147,18 @@ events and ignored runtime files are content-addressed in
 `INTERRUPTED_FAIL`: zero backup/restore cycles completed, the two-hour
 duration was not reached, and no soak pass is claimed. This protocol must not
 be retried or overwritten.
+
+## Failure-driven v2 prepared, not executed
+
+V2 is frozen separately under
+`reliability/sustained_2h_v2/PROTOCOL.md` and `PREPARED.json`. It tests the
+general recovery correction suggested by v1: writers acknowledge a pause only
+after their current transaction, scoped readers stay live, backup/restore runs
+in a dedicated child with a 180-second timeout, and the parent continues
+resource and disk-floor checks. All writer resumes must also be acknowledged.
+
+The eight-process development smoke passes multiple pause/backup/restore
+cycles and final logical identity. Status remains `PREPARED_NOT_EXECUTED`;
+the smoke validates the harness but is not two-hour reliability evidence. A
+future v2 pass would establish only write-quiesced/read-live recovery and would
+not erase the uninterrupted-write v1 failure.

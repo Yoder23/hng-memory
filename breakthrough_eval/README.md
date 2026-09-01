@@ -38,6 +38,8 @@ C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py million-write --p
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py million-write --preregistered-commit COMMIT
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py sustained-reliability --prepare-only
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py sustained-reliability --preregistered-commit COMMIT
+C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py sustained-reliability-v2 --prepare-only
+C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py sustained-reliability-v2 --preregistered-commit COMMIT
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py rag-governance --execute-llm
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py public-memory --execute-llm
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py belief-revision
@@ -136,12 +138,19 @@ online backup starved under sustained writes, no backup completed, the
 A safety interrupt stopped all workers; the wrapper emitted no result, so the
 content-addressed external postmortem is explicitly `INTERRUPTED_FAIL`.
 
+The separate sustained-reliability-v2 command is the failure-driven follow-up,
+not a v1 retry. It pauses writers only after their current transaction, keeps
+scoped readers live, runs backup/restore in a monitored child with a hard
+timeout, and keeps parent-side resource/disk enforcement active. Its claim is
+therefore limited to a write-quiesced/read-live recovery contract. V2 is
+currently `PREPARED_NOT_EXECUTED` and supplies no behavioral evidence.
+
 The current local release candidate is 0.7.0rc3 under `releases/0.7.0rc3/qualified_dist`. Its
 manifest distinguishes the qualifying exact-commit artifacts from two preserved earlier build
 pairs. A brand-new private-repository clone installed the wheel and used `hng-eval` to pass 58
 dependency-free tests, execute the isolated 250-case deterministic study, and recompile the result
 corpus. The four external LoCoMo test modules remain explicit exclusions from this dependency-free
-proof. The configured suite passed 94 tests at rc3 qualification and passes 103 after adding the
+proof. The configured suite passed 94 tests at rc3 qualification and passes 110 after adding the
 sustained-reliability protocol tests.
 
 ## Current resource boundary

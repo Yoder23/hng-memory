@@ -17,7 +17,8 @@ verified through fresh-clone source commit 27e4a8ee0012f7eef1a9b3655fb8d454aa14c
   migration guide, and installed `hng-eval` proof from a brand-new exact-commit clone. The proof
   passes 58 dependency-free tests, deterministic 250, and compiler regeneration; its four external
   LoCoMo exclusions are explicit. The configured suite passed 94 tests at rc3 qualification and
-  passes 103 after the sustained-reliability harness was added.
+  passes 110 after the sustained-reliability and v2 recovery harnesses were
+  added.
 - Ollama with fixed strong local reader qwen3.8:27b-q4_K_M, digest
   25b843619e944cd0ae6069f94ff4e5e26a16e109ccbc0a66a0f05979ed70098e,
   27.3B parameters, Q4_K_M, 262,144-token declared context.
@@ -58,6 +59,11 @@ verified through fresh-clone source commit 27e4a8ee0012f7eef1a9b3655fb8d454aa14c
   completed, the 15-minute rotation was missed, and safety interruption
   stopped all workers. Machine postmortem:
   `reliability/sustained_2h/INTERRUPTED.json`.
+- Failure-driven v2 recovery protocol is frozen but not executed under
+  `reliability/sustained_2h_v2/PROTOCOL.md` and `PREPARED.json`. It tests
+  transaction-boundary writer quiescence, live readers, a timeout-bounded
+  backup child, and continuous parent resource/disk monitoring; preparation
+  is not behavioral evidence.
 
 ## Unavailable or not yet installed
 

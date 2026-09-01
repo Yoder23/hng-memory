@@ -124,6 +124,31 @@ def commands_for(args: argparse.Namespace) -> list[Command]:
                 "sampling."
             ),
         )]
+    if args.command == "sustained-reliability-v2":
+        argv = [
+            sys.executable,
+            str(SCRIPTS / "sustained_reliability_v2.py"),
+        ]
+        if args.prepare_only:
+            argv.append("--prepare-only")
+        else:
+            if not args.preregistered_commit:
+                raise ValueError(
+                    "sustained-reliability-v2 execution requires "
+                    "--preregistered-commit"
+                )
+            argv.extend([
+                "--preregistered-commit", args.preregistered_commit,
+            ])
+        return [Command(
+            "sustained_write_quiesced_recovery_v2",
+            tuple(argv),
+            (
+                "Failure-driven two-hour recovery run with transaction-"
+                "boundary writer pause, live readers, monitored backup child, "
+                "and hard resource/disk/time limits."
+            ),
+        )]
     if args.command == "rag-governance":
         result = [deterministic]
         if args.execute_llm:
@@ -331,6 +356,12 @@ def parse_args() -> argparse.Namespace:
     )
     sustained.add_argument("--prepare-only", action="store_true")
     sustained.add_argument("--preregistered-commit")
+    sustained_v2 = subparsers.add_parser(
+        "sustained-reliability-v2",
+        help="Prepare or run the failure-driven two-hour recovery v2.",
+    )
+    sustained_v2.add_argument("--prepare-only", action="store_true")
+    sustained_v2.add_argument("--preregistered-commit")
     rag = subparsers.add_parser("rag-governance", help="Reproduce fixed-candidate governance results.")
     rag.add_argument("--execute-llm", action="store_true", help="Run the costly local 27B holdout.")
     rag.add_argument("--llm-limit", type=int, default=30)

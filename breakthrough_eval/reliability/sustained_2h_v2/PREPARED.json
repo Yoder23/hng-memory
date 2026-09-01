@@ -1,0 +1,56 @@
+{
+  "claim_boundary": "Preparation only. V2 tests write-quiesced/read-live recovery, not uninterrupted-write backup, crash, power-loss, actual disk-full, or production deployment behavior.",
+  "config": {
+    "backup_contract": "writers_paused_at_transaction_boundary_readers_live",
+    "backup_interval_seconds": 600.0,
+    "backup_timeout_seconds": 180.0,
+    "database": "breakthrough_eval/reliability/sustained_2h_v2/run_data/sustained_v2.sqlite",
+    "duration_seconds": 7200.0,
+    "events": "breakthrough_eval/reliability/sustained_2h_v2/events.jsonl",
+    "journal_mode": "WAL",
+    "maximum_handles_per_process": 1024,
+    "maximum_rss_per_process_bytes": 1500000000,
+    "minimum_backup_cycles": 12,
+    "minimum_free_bytes": 40000000000,
+    "minimum_reads": 100000,
+    "minimum_resource_samples": 100,
+    "minimum_worker_epochs": 8,
+    "minimum_writes": 100000,
+    "multiprocessing_start_method": "spawn",
+    "reader_workers": 8,
+    "result": "breakthrough_eval/reliability/sustained_2h_v2/RESULTS.json",
+    "rotation_seconds": 900.0,
+    "runtime_free_floor_bytes": 30000000000,
+    "sample_interval_seconds": 60.0,
+    "seed_records": 1000,
+    "synchronous": "FULL",
+    "tenants": 100,
+    "writer_pause_timeout_seconds": 30.0,
+    "writer_workers": 4
+  },
+  "created_at": "2026-09-01T17:55:07.690094+00:00",
+  "environment": {
+    "cpu_count": 20,
+    "platform": "Windows-10-10.0.26200-SP0",
+    "psutil": "7.0.0",
+    "python": "3.10.0 (tags/v3.10.0:b494f59, Oct  4 2021, 19:00:18) [MSC v.1929 64 bit (AMD64)]",
+    "sqlite": "3.35.5"
+  },
+  "hypothesis": "Bounded write quiescence plus a monitored timeout-bounded backup child prevents v1 online-backup starvation while scoped readers remain live.",
+  "predecessor_failure": "breakthrough_eval/reliability/sustained_2h/INTERRUPTED.json",
+  "qualifying_command": [
+    "C:\\Python310\\python.exe",
+    "breakthrough_eval/scripts/sustained_reliability_v2.py",
+    "--preregistered-commit",
+    "COMMIT"
+  ],
+  "schema_version": 1,
+  "source_sha256": {
+    "baseline_source/hng-frontier-0.5.1a1/src/hngfrontier/storage_v2.py": "1c1dca999d39276708c3bf1116f95f7d9f6faaa85ff696e04194ac4004c99f9f",
+    "breakthrough_eval/reliability/sustained_2h_v2/PROTOCOL.md": "262d8a390df0820a0310c0e85ed15a9fb42a69155089f8dfbb32c5fb2f683f2d",
+    "breakthrough_eval/scripts/storage_reliability_probe.py": "3a38c01edcfa125c0ac8d354bf8311ca311050367f4e58fa72772193fe8a45d7",
+    "breakthrough_eval/scripts/sustained_reliability.py": "68b0cd075d0f373391ee4bb1b16d2f16a5450cddccf4c4f26ab71829444baacb",
+    "breakthrough_eval/scripts/sustained_reliability_v2.py": "d9c58846e3483820ab6765394e0eba7de11ce866e848e517f6de864d4f20fa72"
+  },
+  "status": "PREPARED_NOT_EXECUTED"
+}
