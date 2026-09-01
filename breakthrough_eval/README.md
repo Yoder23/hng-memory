@@ -41,6 +41,7 @@ C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py real-hdc --manife
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py latency --repeats 20
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py retrieval-budget --execute-llm
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py hybrid-holdout --execute-llm
+C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py reranker-holdout --execute-llm
 ```
 
 Omit `--execute-llm` to prepare and verify expensive experiments without invoking the local 27B
@@ -64,6 +65,11 @@ to verify and preserve its preparation without invoking the local model.
 The hybrid-holdout command uses a third disjoint LoCoMo-Plus window and a pinned Qwen3 embedding
 model to compare BM25, dense, and reciprocal-rank-fused k64 retrieval. Its Strong/HNG arms receive
 the identical frozen hybrid candidates and prompt.
+
+The reranker-holdout command uses a fourth disjoint LoCoMo-Plus window. It applies the official
+Qwen3-Reranker-0.6B interface to the union of BM25-top-128 and dense-top-128, freezes the resulting
+top 64, and compares BM25, dense, RRF hybrid, cross-encoder reranked, full context, Strong, and HNG.
+Preparation requires the pinned model revision and weight SHA recorded in the protocol.
 
 The scaled-isolation command creates ignored SQLite runtime files, takes about seven minutes on the
 recorded host, and refuses to overwrite an earlier preserved run.

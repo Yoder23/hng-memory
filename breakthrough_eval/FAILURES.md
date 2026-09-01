@@ -245,3 +245,17 @@ zero event errors, and one preregistration commit across the complete log.
    `verl`, `flash_attn`, and `tensordict`. No experiment or result artifact changed. The owned
    breakthrough suite passed 51/51 and the production package suite passed 100/100 from its
    package root.
+
+## Neural-reranker holdout setup failures
+
+1. The first pinned Hugging Face snapshot download populated blobs but failed when the Windows
+   cache attempted to create a symlink without the required OS privilege (`WinError 1314`). No
+   benchmark artifact or model inference changed. The identical repository revision was restored
+   into an explicit temporary directory using real files; its 1,191,588,280-byte safetensors file
+   hashes to the preregistered SHA-256.
+2. The first inline smoke command was rejected by the local shell helper while parsing nested
+   quotes; Python never launched. The official yes/no-logit scoring path was moved into a tested
+   repository module instead of weakening the command parser.
+3. The first direct smoke-script invocation failed before model load because its module search path
+   omitted the repository root. The entry point now uses the same root bootstrap as the other
+   evaluation scripts. The corrected smoke ranks the relevant passage 0.9897 versus 0.0250.

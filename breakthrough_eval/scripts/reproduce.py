@@ -168,6 +168,18 @@ def commands_for(args: argparse.Namespace) -> list[Command]:
             ),
             compile_results,
         ]
+    if args.command == "reranker-holdout":
+        argv = [sys.executable, str(SCRIPTS / "locomo_reranker_holdout.py")]
+        if not args.execute_llm:
+            argv.append("--prepare-only")
+        return [
+            Command(
+                "locomo_disjoint_neural_reranker_holdout",
+                tuple(argv),
+                "Fourth disjoint public-data window with BM25, dense, RRF, and a pinned Qwen3 cross-encoder reranker.",
+            ),
+            compile_results,
+        ]
     raise AssertionError(f"unknown command: {args.command}")
 
 
@@ -218,6 +230,8 @@ def parse_args() -> argparse.Namespace:
     budget.add_argument("--execute-llm", action="store_true", help="Run the costly local reader/judge calls.")
     hybrid = subparsers.add_parser("hybrid-holdout", help="Prepare or run the disjoint LoCoMo dense/hybrid holdout.")
     hybrid.add_argument("--execute-llm", action="store_true", help="Run the costly local reader/judge calls.")
+    reranker = subparsers.add_parser("reranker-holdout", help="Prepare or run the disjoint LoCoMo neural-reranker holdout.")
+    reranker.add_argument("--execute-llm", action="store_true", help="Run the costly local reader/judge calls.")
     return parser.parse_args()
 
 

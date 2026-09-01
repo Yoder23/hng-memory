@@ -7,7 +7,7 @@
     "account": "Yoder23",
     "repository": "https://github.com/Yoder23/hng-memory",
     "remote": "https://github.com/Yoder23/hng-memory.git",
-    "verified_commit": "aaa5c8db0a567b779d377c9d2edb7972e1abf499",
+    "verified_commit": "41a3317f87dc5c80b6ee84a6f4f2411baa111ea8",
     "viewer_permission": "ADMIN"
   },
   "release_artifacts": {
@@ -60,6 +60,16 @@
       "declared_context_tokens": 32768,
       "embedding_dimensions": 1024,
       "status": "AVAILABLE_FIXED_DENSE_RETRIEVER"
+    },
+    {
+      "runtime": "transformers_cuda",
+      "name": "Qwen/Qwen3-Reranker-0.6B",
+      "repository_revision": "e61197ed45024b0ed8a2d74b80b4d909f1255473",
+      "weight_sha256": "27cd75a405b9c1b46b59abfd88aaa209e6fed2a1972cde9b70e7659537c5e65b",
+      "parameters": "0.6B",
+      "dtype": "float16",
+      "declared_context_tokens": 32768,
+      "status": "AVAILABLE_PINNED_NEURAL_RERANKER"
     }
   ],
   "datasets": [

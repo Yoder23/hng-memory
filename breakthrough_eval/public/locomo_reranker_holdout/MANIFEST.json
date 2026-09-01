@@ -1,0 +1,27 @@
+{
+  "base_commit": "41a3317f87dc5c80b6ee84a6f4f2411baa111ea8",
+  "created_at": "2026-09-01T11:37:12.922474+00:00",
+  "execution_started": false,
+  "files": {
+    "breakthrough_eval/ENVIRONMENT.json": "bea785a7d0241ccdd5d5695b842bd22cd8c425b7becc7ba0f1cb38414d08a3e5",
+    "breakthrough_eval/FAILURES.md": "a325f47e6045cd8b4340ee14b7d9994446f1b1fd39081b9f1278a48f6d02849c",
+    "breakthrough_eval/README.md": "c0c70fc8250794835202ded699670cb9459e9df94ec455989225b3f9e389b14b",
+    "breakthrough_eval/RESOURCE_INVENTORY.json": "91c9b1a0a958b4bee17729baf7985bd10fdde10718f3a238c5b2d8f79ca5d254",
+    "breakthrough_eval/RESOURCE_INVENTORY.md": "1af2199f6d0898e15340bf940738333aa02ab2b14764646f44f18ad58bcf2dbd",
+    "breakthrough_eval/public/locomo_reranker_holdout/PREPARED.json": "2f55581a2e99eba823697d60acebf79c11ac0e965615ad82a28c5a08d1a0fcd8",
+    "breakthrough_eval/public/locomo_reranker_holdout/PROTOCOL.md": "7e38cc27368523c0499fcc6c49a840d861664728b4bfb553cea5b419c833dd99",
+    "breakthrough_eval/reranking.py": "0188377ac7fcd4bb41b69c6e6b7eb812ffe9d29bb4e8c3d0def84fe90f12894b",
+    "breakthrough_eval/scripts/locomo_reranker_holdout.py": "0f20129caa8eec5eac8e1f69af061a1bf8dcc1d8a17300b873c4b046b0749a0d",
+    "breakthrough_eval/scripts/qwen3_reranker_smoke.py": "8516aeb14c0af682ad201163dc6725f40ed1b83174d46644ba668042fb6ca644",
+    "breakthrough_eval/scripts/reproduce.py": "2865bd49a04969ad71aa344b0e4d332c59572007f1e3997e9c573842f0dd6893",
+    "breakthrough_eval/tests/test_locomo_reranker_holdout.py": "96cdc62363be94099bfb7e55bdba0ffd2fc277acc439c6ab9f3eaaee4b4c1d8c",
+    "breakthrough_eval/tests/test_reranking.py": "30690164bb7e879ec07a77b55dc410ebc6991b76df64a5654fbff39468b0ac38"
+  },
+  "protocol": "LoCoMo-Plus disjoint neural-reranker retrieval holdout; NONCANONICAL",
+  "reader_model_digest": "25b843619e944cd0ae6069f94ff4e5e26a16e109ccbc0a66a0f05979ed70098e",
+  "reranker_model_revision": "e61197ed45024b0ed8a2d74b80b4d909f1255473",
+  "reranker_weight_sha256": "27cd75a405b9c1b46b59abfd88aaa209e6fed2a1972cde9b70e7659537c5e65b",
+  "retrieval_model_digest": "ac6da0dfba84a81fdbfbaf330198c33cd77c4cdfc53e8bc50eb581914a15621d",
+  "schema_version": 1,
+  "status": "FROZEN_BEFORE_EXECUTION"
+}
