@@ -283,6 +283,36 @@ def test_terminal_v2_matrix_is_content_addressed_and_supports_shared_sqlite() ->
     )
 
 
+def test_typed_v2_queue_failure_is_content_addressed_and_invalid() -> None:
+    result_path = typed_v2.RESULT
+    events_path = typed_v2.EVENTS
+    result = json.loads(result_path.read_text(encoding="utf-8"))
+
+    assert hashlib.sha256(result_path.read_bytes()).hexdigest() == (
+        "760c97c46802f4474f71eb26956af695f6eb4aeb32604f22da85dcf3012c4704"
+    )
+    assert hashlib.sha256(events_path.read_bytes()).hexdigest() == (
+        "5f62a7c5cab0aa5e5b65202ba2b7e770991452f1cba865b418d51dc60141a6b7"
+    )
+    assert result["status"] == "ERROR"
+    assert result["outcome"] == "INVALID"
+    assert result["dominant_handle_type"] == "Section"
+    assert all(
+        len(item["reports"]) == 9 and not item["valid"]
+        for item in result["conditions"].values()
+    )
+    assert all(
+        not item["validity"]["all_children_reported"]
+        and not item["validity"]["all_child_exitcodes_zero"]
+        and item["validity"]["handle_type_snapshots_complete"]
+        for item in result["conditions"].values()
+    )
+    for name in ("shared_sqlite_12_a", "shared_sqlite_12_b"):
+        analysis = result["handle_type_analysis"][name]
+        assert analysis["dominant_type"] == "Section"
+        assert analysis["dominance_fraction_of_positive_median_delta"] > 0.9
+
+
 @pytest.mark.skipif(
     matrix.sustained.psutil is None
     or not hasattr(matrix.sustained.psutil.Process(), "num_handles"),

@@ -182,13 +182,21 @@ growth to concurrent shared-database activity under this workload. It is
 diagnostic evidence, not a reliability qualification or a specific handle-type
 mechanism.
 
+The first handle-type invocation is preserved as a fail-closed commit-hash
+transcription error. Its corrected v2 run is also preserved as invalid: the
+parent joined children before draining enlarged type-histogram queue reports,
+so only 9/12 reports arrived in every condition. The available shared reports
+descriptively implicated Windows `Section` objects, but that pattern is not an
+admitted result until a separately versioned queue-safe replication satisfies
+all frozen controls.
+
 The current local release candidate is 0.7.0rc3 under `releases/0.7.0rc3/qualified_dist`. Its
 manifest distinguishes the qualifying exact-commit artifacts from two preserved earlier build
 pairs. A brand-new private-repository clone installed the wheel and used `hng-eval` to pass 58
 dependency-free tests, execute the isolated 250-case deterministic study, and recompile the result
 corpus. The four external LoCoMo test modules remain explicit exclusions from this dependency-free
 proof. The configured suite passed 94 tests at rc3 qualification and the breakthrough suite passes
-140 after adding sustained-reliability evidence and root-cause diagnostic tests.
+141 after adding sustained-reliability evidence and root-cause diagnostic tests.
 
 ## Current resource boundary
 

@@ -546,3 +546,23 @@ closed, wrote `status=ERROR`, and exited 1 before creating an event ledger,
 worker processes, or run data. It provides no mechanism evidence. The artifact
 and output namespace are preserved; a separately versioned v2 protocol is
 required for the corrected full-hash invocation.
+
+## Handle-type diagnostic v2 queue-drain validity failure
+
+The corrected exact-commit run from
+`e43112503899cb11f3808ec6e731f2ab48c9a945` completed all workload windows, but
+the frozen parent joined children before draining their enlarged type-histogram
+queue reports. In every condition, 9/12 reports arrived and three children were
+terminated after their queue feeders blocked. All available reports had no
+workload, reader-integrity, or handle-query errors and all sample minimums
+passed, but the all-reports and zero-exit controls failed. The exact outcome is
+`ERROR/INVALID` and is not retried.
+
+Descriptively only, idle and isolated medians were about 1.017 total
+handles/minute, versus 38.634 and 47.795 in the two shared replications. The
+nine available reports per shared condition agreed that Windows `Section`
+objects dominated, with median deltas of 38 and 47 and 92.7% and 94.0% shares
+of positive median type growth; controls had zero median `Section` growth.
+These values are inadmissible for the invalid decision. A distinct follow-up
+must drain reports concurrently with child exit while retaining the frozen
+mechanism thresholds.
