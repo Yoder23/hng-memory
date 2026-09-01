@@ -142,16 +142,22 @@ The separate sustained-reliability-v2 command is the failure-driven follow-up,
 not a v1 retry. It pauses writers only after their current transaction, keeps
 scoped readers live, runs backup/restore in a monitored child with a hard
 timeout, and keeps parent-side resource/disk enforcement active. Its claim is
-therefore limited to a write-quiesced/read-live recovery contract. V2 is
-currently `PREPARED_NOT_EXECUTED` and supplies no behavioral evidence.
+therefore limited to a write-quiesced/read-live recovery contract. The one
+exact run from commit `d446a45` terminated at 4,020.09 seconds when child
+process handles exceeded the frozen 1,024 cap. Before termination, 6/6
+completed recovery cycles and 4/4 completed worker epochs passed, with 908,830
+reported writes, 802,305 reported scoped reads, and zero missing or malformed
+reads. The two-hour gate remains failed. `sustained_2h_v2/RESULTS.json`, its
+fsynced event ledger, and `FAILURE_ANALYSIS.json` preserve the negative result;
+an observer-effect explanation is explicitly only an unproven hypothesis.
 
 The current local release candidate is 0.7.0rc3 under `releases/0.7.0rc3/qualified_dist`. Its
 manifest distinguishes the qualifying exact-commit artifacts from two preserved earlier build
 pairs. A brand-new private-repository clone installed the wheel and used `hng-eval` to pass 58
 dependency-free tests, execute the isolated 250-case deterministic study, and recompile the result
 corpus. The four external LoCoMo test modules remain explicit exclusions from this dependency-free
-proof. The configured suite passed 94 tests at rc3 qualification and passes 110 after adding the
-sustained-reliability protocol tests.
+proof. The configured suite passed 94 tests at rc3 qualification and the breakthrough suite passes
+111 after adding the sustained-reliability protocol and terminal-evidence tests.
 
 ## Current resource boundary
 

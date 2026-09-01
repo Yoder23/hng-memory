@@ -1,0 +1,16 @@
+{
+  "benchmark": "sustained_2h_v2_write_quiesced_read_live_recovery",
+  "command": [
+    "C:\\Python310\\python.exe",
+    "breakthrough_eval\\scripts\\sustained_reliability_v2.py",
+    "--preregistered-commit",
+    "d446a455f9695cf05ffeba955720f5556c916d36"
+  ],
+  "created_at": "2026-09-01T19:05:41.962425+00:00",
+  "error": "RuntimeError: runtime handle cap exceeded",
+  "partial_events": "breakthrough_eval/reliability/sustained_2h_v2/events.jsonl",
+  "preregistered_commit": "d446a455f9695cf05ffeba955720f5556c916d36",
+  "schema_version": 1,
+  "status": "ERROR",
+  "traceback": "Traceback (most recent call last):\n  File \"C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\breakthrough_eval\\scripts\\sustained_reliability_v2.py\", line 1065, in main\n    result = execute(args)\n  File \"C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\breakthrough_eval\\scripts\\sustained_reliability_v2.py\", line 956, in execute\n    result = run_soak(args)\n  File \"C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\breakthrough_eval\\scripts\\sustained_reliability_v2.py\", line 642, in run_soak\n    next_sample = maybe_sample(\n  File \"C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\breakthrough_eval\\scripts\\sustained_reliability_v2.py\", line 436, in maybe_sample\n    enforce_runtime_safety(sample, args)\n  File \"C:\\Python310\\hng-frontier-0.5.1a1-release\\hng-frontier-0.5.1a1-release\\breakthrough_eval\\scripts\\sustained_reliability_v2.py\", line 345, in enforce_runtime_safety\n    raise RuntimeError(\"runtime handle cap exceeded\")\nRuntimeError: runtime handle cap exceeded\n"
+}

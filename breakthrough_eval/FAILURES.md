@@ -416,3 +416,36 @@ and no RESULTS.json. The external machine postmortem is therefore labeled
 hash-reporting expression also contained an empty pipeline element and failed
 before reading a file; an explicit result-array command then hashed all four
 preserved artifacts successfully.
+
+## Sustained-reliability v2 qualifying failure
+
+The failure-driven v2 protocol was frozen and pushed at commit
+`d446a455f9695cf05ffeba955720f5556c916d36`. Its one exact execution fixed the
+v1 backup-starvation mechanism: 6/6 completed write-quiesced/read-live
+backup/restore cycles passed, and 4/4 completed 15-minute worker epochs returned
+all reports with zero exit failures. Complete-epoch reports contain 908,830
+durable writes, 802,305 scoped reads, and zero missing or malformed reads.
+
+At 4,020.086 seconds the fsynced resource sample measured 1,059 handles in each
+writer process and 1,049 in each reader process, exceeding the frozen
+1,024-per-process cap. The coordinator raised `RuntimeError`, stopped all active
+workers, wrote `RESULTS.json` with `status=ERROR`, and exited code 1. Only 4/8
+required epochs, 6/12 required recovery cycles, and 68/100 required samples had
+completed. The protocol is not retried or called a partial pass.
+
+Post-stop read-only inspection found no live worker PID, SQLite
+`quick_check=ok`, exact row/generation equality at 1,008,409, and a stable
+logical ledger hash. Those checks are recovery evidence, not a substitute for
+the final qualifying check the protocol never reached. Original stdout,
+`RESULTS.json`, and `events.jsonl` are unchanged; the derived machine
+postmortem is `reliability/sustained_2h_v2/FAILURE_ANALYSIS.json`.
+
+## Sustained-reliability v2 observer-effect hypothesis
+
+The coordinator stayed at 268 handles while readers and writers rose almost in
+lockstep and rotations initially reset child counts. Epoch 4 then showed a
+large synchronized increase during an interval with unusually heavy external
+orchestration and repository inspection. This correlation motivates a separate
+controlled diagnostic but does not establish causation, relax the frozen cap,
+or change v2's failure. The hypothesis is recorded as `UNPROVEN` and cannot be
+used as qualification evidence.

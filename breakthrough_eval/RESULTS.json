@@ -1530,6 +1530,72 @@
       "value": 10237227712.0
     },
     {
+      "area": "sustained_storage_reliability_v2_attempt",
+      "evidence_class": "local",
+      "metric": "observed_runtime_seconds",
+      "notes": "Negative operational evidence from the one exact preregistered v2 run. Six write-quiesced/read-live backup and restore cycles and four complete worker epochs passed, but the process-handle safety cap terminated the run at 4,020 seconds. The two-hour duration, eight epochs, twelve recovery cycles, one hundred resource samples, and final qualifying ledger were not completed. This is not a qualifying soak pass.",
+      "source": "reliability/sustained_2h_v2/FAILURE_ANALYSIS.json",
+      "status": "ERROR_SAFETY_CAP",
+      "system": "sqlite_evidence_store",
+      "unit": "seconds",
+      "value": 4020.086492799979
+    },
+    {
+      "area": "sustained_storage_reliability_v2_attempt",
+      "evidence_class": "local",
+      "metric": "completed_backup_restore_cycles",
+      "notes": "All completed cycles passed, but the frozen minimum was 12.",
+      "source": "reliability/sustained_2h_v2/FAILURE_ANALYSIS.json",
+      "status": "ERROR_SAFETY_CAP",
+      "system": "write_quiesced_read_live_recovery",
+      "unit": "count",
+      "value": 6.0
+    },
+    {
+      "area": "sustained_storage_reliability_v2_attempt",
+      "evidence_class": "local",
+      "metric": "completed_worker_epochs",
+      "notes": "All completed epochs passed, but the frozen minimum was 8.",
+      "source": "reliability/sustained_2h_v2/FAILURE_ANALYSIS.json",
+      "status": "ERROR_SAFETY_CAP",
+      "system": "multiprocess_worker_rotation",
+      "unit": "count",
+      "value": 4.0
+    },
+    {
+      "area": "sustained_storage_reliability_v2_attempt",
+      "evidence_class": "local",
+      "metric": "maximum_process_handles",
+      "notes": "The frozen per-process cap was 1,024; the harness terminated at 1,059.",
+      "source": "reliability/sustained_2h_v2/FAILURE_ANALYSIS.json",
+      "status": "ERROR_SAFETY_CAP",
+      "system": "multiprocess_resource_observation",
+      "unit": "count",
+      "value": 1059.0
+    },
+    {
+      "area": "sustained_storage_reliability_v2_attempt",
+      "evidence_class": "local",
+      "metric": "maximum_observed_wal_bytes",
+      "notes": "Maximum fsynced WAL observation before the safety termination.",
+      "source": "reliability/sustained_2h_v2/FAILURE_ANALYSIS.json",
+      "status": "ERROR_SAFETY_CAP",
+      "system": "sqlite_wal",
+      "unit": "bytes",
+      "value": 14192518352.0
+    },
+    {
+      "area": "sustained_storage_reliability_v2_attempt",
+      "evidence_class": "local",
+      "metric": "post_stop_quick_check",
+      "notes": "Post-stop recovery observation; not the unexecuted final qualifying ledger check.",
+      "source": "reliability/sustained_2h_v2/FAILURE_ANALYSIS.json",
+      "status": "ERROR_SAFETY_CAP",
+      "system": "sqlite_evidence_store",
+      "unit": "fraction",
+      "value": 1.0
+    },
+    {
       "area": "bounded_multitenant_storage",
       "evidence_class": "local",
       "metric": "records_preserved_after_backup",

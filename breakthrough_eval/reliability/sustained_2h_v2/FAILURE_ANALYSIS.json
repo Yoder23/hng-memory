@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "benchmark": "sustained_2h_v2_write_quiesced_read_live_recovery",
+  "status": "ERROR_SAFETY_CAP",
+  "qualifying_result_exists": false,
+  "created_at": "2026-09-01T19:10:12.144290+00:00",
+  "claim_boundary": "Negative operational evidence from the one exact preregistered v2 run. Six write-quiesced/read-live backup and restore cycles and four complete worker epochs passed, but the process-handle safety cap terminated the run at 4,020 seconds. The two-hour duration, eight epochs, twelve recovery cycles, one hundred resource samples, and final qualifying ledger were not completed. This is not a qualifying soak pass.",
+  "preregistered_commit": "d446a455f9695cf05ffeba955720f5556c916d36",
+  "command": [
+    "C:\\Python310\\python.exe",
+    "breakthrough_eval\\scripts\\sustained_reliability_v2.py",
+    "--preregistered-commit",
+    "d446a455f9695cf05ffeba955720f5556c916d36"
+  ],
+  "execution": {
+    "started_at_utc": "2026-09-01T17:58:40.403015+00:00",
+    "terminated_at_utc": "2026-09-01T19:05:41.962425+00:00",
+    "last_fsynced_event_at_utc": "2026-09-01T19:05:40.489482+00:00",
+    "last_fsynced_elapsed_seconds": 4020.086492799979,
+    "exit_code": 1,
+    "result_json_written": true,
+    "result_status": "ERROR",
+    "result_error": "RuntimeError: runtime handle cap exceeded",
+    "event_count": 102,
+    "last_event": "resource_sample",
+    "worker_epochs_started": 5,
+    "worker_epochs_completed": 4,
+    "worker_epochs_passed": 4,
+    "completed_worker_reports": 48,
+    "workers_live_after_termination": 0
+  },
+  "completed_work": {
+    "reported_durable_writes_from_complete_epochs": 908830,
+    "reported_scoped_reads_from_complete_epochs": 802305,
+    "reported_missing_reads": 0,
+    "reported_malformed_reads": 0,
+    "backup_restore_cycles_completed": 6,
+    "backup_restore_cycles_passed": 6,
+    "backup_duration_seconds": [
+      7.004509599995799,
+      11.19351040001493,
+      19.949815600004513,
+      24.165255899948534,
+      44.374532699992415,
+      51.362972200033255
+    ],
+    "writer_pause_total_seconds": [
+      7.943329000030644,
+      12.527879300003406,
+      21.834566099976655,
+      26.327120800036937,
+      47.104455399967264,
+      54.606953700014856
+    ],
+    "all_completed_backup_file_hashes_matched_restore": true,
+    "all_completed_backup_logical_digests_matched_restore": true,
+    "all_completed_backup_sentinels_present": true
+  },
+  "failure": {
+    "kind": "runtime_handle_cap_exceeded",
+    "maximum_handles_per_process": 1024,
+    "observed_maximum_process_handles": 1059,
+    "last_sample": {
+      "elapsed_seconds": 4020.086492799979,
+      "process_count": 13,
+      "parent_handles": 268,
+      "writer_handles": [1059, 1059, 1059, 1059],
+      "reader_handles": [1049, 1049, 1049, 1049, 1049, 1049, 1049, 1049],
+      "maximum_process_rss_bytes": 69947392,
+      "total_rss_bytes": 777134080,
+      "database_bytes": 1656930304,
+      "wal_bytes": 14192518352,
+      "free_bytes": 70028767232
+    },
+    "maximum_observed_wal_bytes": 14192518352,
+    "minimum_observed_free_bytes": 70028767232,
+    "maximum_observed_process_rss_bytes": 69947392,
+    "safety_action": "The frozen harness raised immediately after fsyncing the violating sample, stopped the active workers, wrote an exclusive ERROR result, and exited code 1.",
+    "retry_policy": "Do not retry or overwrite this v2 protocol. Any diagnostic or corrected experiment requires a distinct protocol, preparation artifact, commit, and output directory."
+  },
+  "post_stop_database": {
+    "path": "breakthrough_eval/reliability/sustained_2h_v2/run_data/sustained_v2.sqlite",
+    "bytes": 1657040896,
+    "file_sha256": "b192410dc777f53d7b5a12677896061f8be63a62c530778e8f75f4637ec9ccbe",
+    "quick_check": "ok",
+    "evidence_count": 1008409,
+    "generation": 1008409,
+    "logical_sha256": "472bd66bced56a11abf095b63569e5aa4ba1b205db0777abe3e64eae5558794e",
+    "tracked": false,
+    "note": "This is a post-stop recovery observation, not the frozen protocol's unexecuted final qualifying ledger check."
+  },
+  "observer_effect_hypothesis": {
+    "status": "UNPROVEN",
+    "observations": [
+      "The coordinator remained stable at 268 handles after its initial samples.",
+      "All four writers and all eight readers rose nearly synchronously within each epoch even though their storage operations differ.",
+      "Worker rotation reset child handle counts during the first four epochs.",
+      "Epoch 4 began near 209 to 219 handles for most children and reached 851 to 861 at the next sample; this interval coincided with unusually heavy external orchestration and repository-inspection activity.",
+      "The handle cap still applied exactly as frozen, regardless of cause."
+    ],
+    "inference": "The process-handle trajectory may include observer or sandbox-orchestration effects rather than only application-owned resource growth. This is a diagnostic hypothesis, not an excuse, pass, or causal finding.",
+    "required_test": "A separately preregistered diagnostic must compare an isolated no-external-command interval with a controlled external-command interval while child processes self-sample handles."
+  },
+  "preserved_artifacts": [
+    {
+      "path": "breakthrough_eval/reliability/sustained_2h_v2/events.jsonl",
+      "bytes": 97440,
+      "sha256": "219b65c10ebb9ed32bb368935a9660c76c291bb73b171b3cd5efdeeb5f261be4",
+      "tracked": true
+    },
+    {
+      "path": "breakthrough_eval/reliability/sustained_2h_v2/RESULTS.json",
+      "bytes": 1699,
+      "sha256": "ca758a4e47d953cf922cade9d73d2f9e643cc434553527bd11c3adeb6c97fdca",
+      "tracked": true
+    },
+    {
+      "path": "breakthrough_eval/reliability/sustained_2h_v2/run_data/sustained_v2.sqlite",
+      "bytes": 1657040896,
+      "sha256": "b192410dc777f53d7b5a12677896061f8be63a62c530778e8f75f4637ec9ccbe",
+      "tracked": false
+    }
+  ],
+  "unmet_frozen_criteria": [
+    "duration_reached",
+    "minimum_worker_epochs_reached",
+    "minimum_backup_cycles_reached",
+    "minimum_resource_samples_reached",
+    "handle_cap_respected",
+    "final_record_count_exact",
+    "final_generation_exact",
+    "final_backup_matches_live_ledger"
+  ],
+  "criteria_that_had_passed_before_termination": [
+    "minimum_reported_writes_reached",
+    "minimum_reported_reads_reached",
+    "all_completed_worker_epochs_passed",
+    "all_completed_backup_restore_cycles_passed",
+    "all_reported_reads_well_formed",
+    "rss_cap_respected",
+    "runtime_disk_floor_respected"
+  ]
+}

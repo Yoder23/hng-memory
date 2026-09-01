@@ -93,6 +93,14 @@ def main() -> int:
         if sustained_interrupted_path.exists()
         else None
     )
+    sustained_v2_failure_path = (
+        EVAL / "reliability" / "sustained_2h_v2" / "FAILURE_ANALYSIS.json"
+    )
+    sustained_v2_failure = (
+        load(sustained_v2_failure_path)
+        if sustained_v2_failure_path.exists()
+        else None
+    )
     multitenant_path = EVAL / "reliability" / "MULTITENANT_100K_1K.json"
     multitenant = load(multitenant_path) if multitenant_path.exists() else None
     isolation_path = EVAL / "reliability" / "MULTI_USER_100K_ISOLATION.json"
@@ -479,6 +487,83 @@ def main() -> int:
                 sustained_interrupted["status"],
                 sustained_source,
                 "WAL growth while coordinator was blocked in online backup.",
+            ),
+        ])
+
+    if sustained_v2_failure is not None:
+        sustained_v2_source = (
+            "reliability/sustained_2h_v2/FAILURE_ANALYSIS.json"
+        )
+        execution = sustained_v2_failure["execution"]
+        completed = sustained_v2_failure["completed_work"]
+        failure = sustained_v2_failure["failure"]
+        post_stop = sustained_v2_failure["post_stop_database"]
+        results.extend([
+            row(
+                "sustained_storage_reliability_v2_attempt",
+                "sqlite_evidence_store",
+                "observed_runtime_seconds",
+                float(execution["last_fsynced_elapsed_seconds"]),
+                "seconds",
+                "local",
+                sustained_v2_failure["status"],
+                sustained_v2_source,
+                sustained_v2_failure["claim_boundary"],
+            ),
+            row(
+                "sustained_storage_reliability_v2_attempt",
+                "write_quiesced_read_live_recovery",
+                "completed_backup_restore_cycles",
+                float(completed["backup_restore_cycles_completed"]),
+                "count",
+                "local",
+                sustained_v2_failure["status"],
+                sustained_v2_source,
+                "All completed cycles passed, but the frozen minimum was 12.",
+            ),
+            row(
+                "sustained_storage_reliability_v2_attempt",
+                "multiprocess_worker_rotation",
+                "completed_worker_epochs",
+                float(execution["worker_epochs_completed"]),
+                "count",
+                "local",
+                sustained_v2_failure["status"],
+                sustained_v2_source,
+                "All completed epochs passed, but the frozen minimum was 8.",
+            ),
+            row(
+                "sustained_storage_reliability_v2_attempt",
+                "multiprocess_resource_observation",
+                "maximum_process_handles",
+                float(failure["observed_maximum_process_handles"]),
+                "count",
+                "local",
+                sustained_v2_failure["status"],
+                sustained_v2_source,
+                "The frozen per-process cap was 1,024; the harness terminated at 1,059.",
+            ),
+            row(
+                "sustained_storage_reliability_v2_attempt",
+                "sqlite_wal",
+                "maximum_observed_wal_bytes",
+                float(failure["maximum_observed_wal_bytes"]),
+                "bytes",
+                "local",
+                sustained_v2_failure["status"],
+                sustained_v2_source,
+                "Maximum fsynced WAL observation before the safety termination.",
+            ),
+            row(
+                "sustained_storage_reliability_v2_attempt",
+                "sqlite_evidence_store",
+                "post_stop_quick_check",
+                1.0 if post_stop["quick_check"] == "ok" else 0.0,
+                "fraction",
+                "local",
+                sustained_v2_failure["status"],
+                sustained_v2_source,
+                "Post-stop recovery observation; not the unexecuted final qualifying ledger check.",
             ),
         ])
 
@@ -1148,6 +1233,28 @@ def main() -> int:
                     "rotation was missed, WAL reached 10.24 GB, and worker "
                     "handles reached 815. Zero backup cycles completed; no "
                     "qualifying RESULTS.json exists."
+                ),
+            }]),
+            *([] if sustained_v2_failure is None else [{
+                "area": "Sustained multiprocess reliability v2 attempt",
+                "hng": 0.0,
+                "baseline": None,
+                "delta": None,
+                "significance": None,
+                "evidence_class": "local",
+                "status": sustained_v2_failure["status"],
+                "notes": (
+                    f"Exact preregistered v2 run terminated at "
+                    f"{sustained_v2_failure['execution']['last_fsynced_elapsed_seconds']:.1f}s "
+                    f"after process handles reached "
+                    f"{sustained_v2_failure['failure']['observed_maximum_process_handles']} "
+                    f"over the 1,024 cap. "
+                    f"{sustained_v2_failure['completed_work']['backup_restore_cycles_passed']}/"
+                    f"{sustained_v2_failure['completed_work']['backup_restore_cycles_completed']} "
+                    f"completed recovery cycles and "
+                    f"{sustained_v2_failure['execution']['worker_epochs_passed']}/"
+                    f"{sustained_v2_failure['execution']['worker_epochs_completed']} "
+                    "completed epochs passed, but the two-hour qualification did not."
                 ),
             }]),
             *([] if multitenant is None else [{

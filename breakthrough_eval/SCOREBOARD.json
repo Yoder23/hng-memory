@@ -136,6 +136,16 @@
       "status": "INTERRUPTED_FAIL"
     },
     {
+      "area": "Sustained multiprocess reliability v2 attempt",
+      "baseline": null,
+      "delta": null,
+      "evidence_class": "local",
+      "hng": 0.0,
+      "notes": "Exact preregistered v2 run terminated at 4020.1s after process handles reached 1059 over the 1,024 cap. 6/6 completed recovery cycles and 4/4 completed epochs passed, but the two-hour qualification did not.",
+      "significance": null,
+      "status": "ERROR_SAFETY_CAP"
+    },
+    {
       "area": "Bounded 100K-record / 1K-tenant storage",
       "baseline": null,
       "delta": null,

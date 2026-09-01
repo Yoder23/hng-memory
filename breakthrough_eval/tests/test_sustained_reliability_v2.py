@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import copy
+import hashlib
 import json
 from pathlib import Path
 
@@ -72,6 +73,34 @@ def test_frozen_v2_preparation_matches_current_sources() -> None:
     payload = json.loads(v2.PREPARED.read_text(encoding="utf-8"))
 
     v2.verify_prepared(payload, qualifying_args())
+
+
+def test_terminal_v2_failure_is_content_addressed_and_fail_closed() -> None:
+    result = json.loads(v2.RESULT.read_text(encoding="utf-8"))
+    analysis_path = v2.OUTPUT_DIR / "FAILURE_ANALYSIS.json"
+    analysis = json.loads(analysis_path.read_text(encoding="utf-8"))
+
+    assert result["status"] == "ERROR"
+    assert result["error"] == "RuntimeError: runtime handle cap exceeded"
+    assert analysis["status"] == "ERROR_SAFETY_CAP"
+    assert analysis["qualifying_result_exists"] is False
+    assert analysis["execution"]["exit_code"] == 1
+    assert analysis["execution"]["workers_live_after_termination"] == 0
+    assert analysis["completed_work"]["backup_restore_cycles_passed"] == 6
+    assert analysis["execution"]["worker_epochs_passed"] == 4
+    assert analysis["failure"]["observed_maximum_process_handles"] == 1059
+    assert "duration_reached" in analysis["unmet_frozen_criteria"]
+    assert analysis["observer_effect_hypothesis"]["status"] == "UNPROVEN"
+
+    tracked = {
+        item["path"]: item
+        for item in analysis["preserved_artifacts"]
+        if item["tracked"]
+    }
+    for relative, item in tracked.items():
+        path = v2.ROOT / relative
+        assert path.stat().st_size == item["bytes"]
+        assert hashlib.sha256(path.read_bytes()).hexdigest() == item["sha256"]
 
 
 def test_runtime_safety_rejects_each_cap() -> None:
