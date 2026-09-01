@@ -472,6 +472,43 @@ def test_typed_v3_result_is_content_addressed_and_identifies_sections() -> None:
         ] == 0.0
 
 
+def test_wal_index_result_is_content_addressed_and_exactly_matches_sections() -> None:
+    result_path = wal_index.RESULT
+    events_path = wal_index.EVENTS
+    result = json.loads(result_path.read_text(encoding="utf-8"))
+
+    assert hashlib.sha256(result_path.read_bytes()).hexdigest() == (
+        "6a9f8e438ab4f97be867e547749814699f3a3472fcd811613bae8fb7eed0a498"
+    )
+    assert hashlib.sha256(events_path.read_bytes()).hexdigest() == (
+        "9b922ce6c7cb2dcd45a5aaf4524e595ef27ae38f3f9720ca3617f996a9bc108e"
+    )
+    assert result["status"] == "PASS"
+    assert result["outcome"] == "IDENTIFIES_WAL_INDEX_SECTION_MAPPING"
+    assert result["dominant_handle_type"] == "Section"
+    assert all(
+        item["valid"] and len(item["reports"]) == 12
+        and item["exitcodes"] == [0] * 12
+        for item in result["conditions"].values()
+    )
+    expected = {
+        "shared_sqlite_12_a": 34.0,
+        "shared_sqlite_12_b": 48.0,
+    }
+    for name, delta in expected.items():
+        analysis = result["mapping_analysis"][name]
+        assert analysis["median_section_delta"] == delta
+        assert analysis["median_shm_unit_delta"] == delta
+        assert analysis["maximum_absolute_delta_error"] == 0
+        assert all(
+            row["section_delta"] == row["shm_unit_delta"]
+            for row in analysis["per_child"]
+        )
+    isolated = result["mapping_analysis"]["isolated_sqlite_12"]
+    assert isolated["median_section_delta"] == 0.0
+    assert isolated["median_shm_unit_delta"] == 0.0
+
+
 @pytest.mark.skipif(
     matrix.sustained.psutil is None
     or not hasattr(matrix.sustained.psutil.Process(), "num_handles"),

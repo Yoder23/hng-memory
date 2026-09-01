@@ -81,5 +81,15 @@ the mechanism to Windows memory-mapping objects created during concurrent
 shared SQLite/WAL activity. The mapped file and exact allocation call path are
 still unproven, and the sustained failure remains unchanged.
 
+The next exact diagnostic resolved that remaining uncertainty. In two shared
+replications, every client gained one Section handle for every new 32-KiB unit
+of the database's `-shm` WAL-index: 34/34 in the first run and 48/48 in the
+second, with zero mismatch across all 24 clients. Isolated controls had zero
+SHM-unit and Section growth. The corresponding WAL files reached 589.6 MB and
+818.9 MB in 60 seconds. The safety failure is explained by uncontrolled
+WAL/WAL-index growth under shared concurrency, multiplied across clients as
+one memory-mapping Section per new WAL-index unit. A safe WAL-bounding treatment
+still requires separate evidence before sustained qualification is attempted.
+
 The authoritative machine postmortem is `FAILURE_ANALYSIS.json`; the original
 `RESULTS.json` and fsynced `events.jsonl` are unchanged.

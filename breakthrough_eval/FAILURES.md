@@ -583,3 +583,23 @@ in both controls. The exact frozen outcome is
 `IDENTIFIES_DOMINANT_HANDLE_TYPE`. This validly identifies the kernel object
 type but not yet the mapped file or SQLite allocation path. Sustained v2 remains
 failed; the mechanism result is not reliability qualification evidence.
+
+## WAL-index Section-mapping mechanism identified
+
+The exact follow-up from commit
+`0221dd8fd076103a15c8dd58dd8aa5ef57b64ad0` passed all 48 child and integrity
+controls. In the first shared replication, the `-shm` WAL-index grew by 34
+32-KiB units and every client gained exactly 34 Section handles. In the second,
+the WAL-index grew by 48 units and every client gained exactly 48 Section
+handles. The maximum mismatch across all 24 shared children was zero. Isolated
+clients stayed at one SHM unit and gained zero Sections; idle controls also
+gained zero Sections. The frozen outcome is
+`IDENTIFIES_WAL_INDEX_SECTION_MAPPING`.
+
+The shared WALs reached 589,584,392 and 818,891,232 bytes in 60 seconds. The
+root mechanism is therefore uncontrolled shared WAL/WAL-index growth, with each
+client mapping every new 32-KiB WAL-index unit into a Windows Section handle.
+This explains the synchronized per-process growth and the sustained safety-cap
+failure. It does not itself prove an intervention; sustained v2 remains failed
+until a separately preregistered WAL-bounding treatment and full reliability
+run pass.

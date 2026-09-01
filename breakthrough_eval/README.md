@@ -203,13 +203,24 @@ The frozen outcome `IDENTIFIES_DOMINANT_HANDLE_TYPE` identifies the object type,
 not yet its mapped file or exact SQLite call path, and does not reverse the
 failed sustained reliability gate.
 
+The subsequent WAL-index diagnostic completed the mechanism chain. In two
+shared replications, the database's 32-KiB `-shm` WAL-index grew by 34 and 48
+units; every one of the 12 clients in each replication gained exactly 34 and 48
+Section handles, respectively. All 24 per-client differences were zero, while
+isolated controls had zero WAL-index-unit and Section growth. The shared WALs
+reached 589.6 MB and 818.9 MB in 60 seconds. The frozen outcome
+`IDENTIFIES_WAL_INDEX_SECTION_MAPPING` identifies uncontrolled shared
+WAL/WAL-index growth and per-client mapping of each new unit as the handle-cap
+mechanism. A WAL-bounding intervention remains to be proven before another
+sustained qualification run.
+
 The current local release candidate is 0.7.0rc3 under `releases/0.7.0rc3/qualified_dist`. Its
 manifest distinguishes the qualifying exact-commit artifacts from two preserved earlier build
 pairs. A brand-new private-repository clone installed the wheel and used `hng-eval` to pass 58
 dependency-free tests, execute the isolated 250-case deterministic study, and recompile the result
 corpus. The four external LoCoMo test modules remain explicit exclusions from this dependency-free
 proof. The configured suite passed 94 tests at rc3 qualification and the breakthrough suite passes
-149 after adding sustained-reliability evidence and root-cause diagnostic tests.
+150 after adding sustained-reliability evidence and root-cause diagnostic tests.
 
 ## Current resource boundary
 
