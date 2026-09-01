@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from pathlib import Path
 import threading
@@ -136,6 +137,27 @@ def test_v3_freezes_wider_external_window_and_distinct_outputs() -> None:
     finally:
         for name, value in original.items():
             setattr(diagnostic, name, value)
+
+
+def test_v3_terminal_result_is_valid_refutation_and_content_addressed() -> None:
+    result = json.loads(diagnostic_v3.RESULT.read_text(encoding="utf-8"))
+
+    assert result["status"] == "PASS"
+    assert result["analysis"]["valid"] is True
+    assert result["analysis"]["outcome"] == (
+        "REFUTES_OBSERVER_EFFECT_AT_THRESHOLD"
+    )
+    assert result["analysis"]["pulse_count"] == 20
+    assert all(result["analysis"]["validity"].values())
+    assert result["analysis"]["median_external_net_handles"] == 0.0
+    assert result["exitcodes"] == [0, 0, 0, 0]
+
+    for relative, expected in result["artifacts"].items():
+        path = diagnostic.ROOT / relative
+        assert path.stat().st_size == expected["bytes"]
+        assert hashlib.sha256(path.read_bytes()).hexdigest() == (
+            expected["sha256"]
+        )
 
 
 def test_phase_boundaries_are_exact() -> None:

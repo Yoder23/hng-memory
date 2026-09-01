@@ -481,3 +481,20 @@ The four child variants again had zero measured external-phase handle growth.
 That repeated descriptive observation remains inadmissible for the frozen
 decision because timing validity failed. A follow-up must use a wider external
 window plus no intentional inter-pulse delay, under a new protocol and commit.
+
+## Child-handle diagnostic v3 valid refutation
+
+The timing-robust follow-up from commit
+`7bed722e642ca9c89663cf53d3fa6457c3082956` widened the external window to 180
+seconds and removed intentional pulse delay. All 20 ordinals landed in the
+frozen window; all child reports, exits, errors, and sample minimum controls
+passed. Idle, event-poll, isolated SQLite-read, and isolated SQLite-write
+children each showed zero net handle growth during both the external phase and
+recovery. The exact frozen outcome is
+`REFUTES_OBSERVER_EFFECT_AT_THRESHOLD`.
+
+This rules out the narrow external-pulse hypothesis at the preregistered
+thresholds for those isolated variants. It does not reproduce the failed v2
+12-process shared-database workload or make v2 pass. Reliability root-cause
+work must now isolate process count, shared SQLite/WAL activity, and workload
+operations rather than attributing the breach to progress-report tool calls.

@@ -157,13 +157,20 @@ reads. The two-hour gate remains failed. `sustained_2h_v2/RESULTS.json`, its
 fsynced event ledger, and `FAILURE_ANALYSIS.json` preserve the negative result;
 an observer-effect explanation is explicitly only an unproven hypothesis.
 
+The separately versioned child-handle diagnostic required two preserved invalid
+timing attempts before v3 completed all controls. In the valid v3 run, 20
+separate external pulse commands produced zero handle growth in idle,
+event-poll, isolated SQLite-read, and isolated SQLite-write children. Its frozen
+outcome refutes that narrow observer-effect hypothesis at threshold; it does not
+explain or reverse the shared-database v2 reliability failure.
+
 The current local release candidate is 0.7.0rc3 under `releases/0.7.0rc3/qualified_dist`. Its
 manifest distinguishes the qualifying exact-commit artifacts from two preserved earlier build
 pairs. A brand-new private-repository clone installed the wheel and used `hng-eval` to pass 58
 dependency-free tests, execute the isolated 250-case deterministic study, and recompile the result
 corpus. The four external LoCoMo test modules remain explicit exclusions from this dependency-free
 proof. The configured suite passed 94 tests at rc3 qualification and the breakthrough suite passes
-122 after adding sustained-reliability evidence and observer-diagnostic tests.
+123 after adding sustained-reliability evidence and observer-diagnostic tests.
 
 ## Current resource boundary
 

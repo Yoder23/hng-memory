@@ -1,0 +1,237 @@
+{
+  "analysis": {
+    "median_external_net_handles": 0.0,
+    "median_slope_handles_per_minute": {
+      "baseline": -1.0042369620142817,
+      "external": 0.0,
+      "recovery": 0.0
+    },
+    "outcome": "REFUTES_OBSERVER_EFFECT_AT_THRESHOLD",
+    "per_variant": {
+      "event_poll": {
+        "baseline": {
+          "elapsed_seconds": 119.98969629999999,
+          "first_handles": 228,
+          "last_handles": 226,
+          "net_handles": -2,
+          "samples": 121,
+          "slope_handles_per_minute": -1.000085871539955
+        },
+        "external": {
+          "elapsed_seconds": 179.00191200000003,
+          "first_handles": 226,
+          "last_handles": 226,
+          "net_handles": 0,
+          "samples": 180,
+          "slope_handles_per_minute": 0.0
+        },
+        "recovery": {
+          "elapsed_seconds": 117.98579469999999,
+          "first_handles": 226,
+          "last_handles": 226,
+          "net_handles": 0,
+          "samples": 119,
+          "slope_handles_per_minute": 0.0
+        }
+      },
+      "idle": {
+        "baseline": {
+          "elapsed_seconds": 119.98969629999999,
+          "first_handles": 228,
+          "last_handles": 226,
+          "net_handles": -2,
+          "samples": 121,
+          "slope_handles_per_minute": -1.000085871539955
+        },
+        "external": {
+          "elapsed_seconds": 179.00191200000003,
+          "first_handles": 226,
+          "last_handles": 226,
+          "net_handles": 0,
+          "samples": 180,
+          "slope_handles_per_minute": 0.0
+        },
+        "recovery": {
+          "elapsed_seconds": 118.99005269999998,
+          "first_handles": 226,
+          "last_handles": 226,
+          "net_handles": 0,
+          "samples": 120,
+          "slope_handles_per_minute": 0.0
+        }
+      },
+      "sqlite_read": {
+        "baseline": {
+          "elapsed_seconds": 118.00763199999999,
+          "first_handles": 229,
+          "last_handles": 227,
+          "net_handles": -2,
+          "samples": 119,
+          "slope_handles_per_minute": -1.0168833825934243
+        },
+        "external": {
+          "elapsed_seconds": 179.98635930000003,
+          "first_handles": 227,
+          "last_handles": 227,
+          "net_handles": 0,
+          "samples": 181,
+          "slope_handles_per_minute": 0.0
+        },
+        "recovery": {
+          "elapsed_seconds": 119.00665670000001,
+          "first_handles": 227,
+          "last_handles": 227,
+          "net_handles": 0,
+          "samples": 120,
+          "slope_handles_per_minute": 0.0
+        }
+      },
+      "sqlite_write": {
+        "baseline": {
+          "elapsed_seconds": 119.00180659999998,
+          "first_handles": 229,
+          "last_handles": 227,
+          "net_handles": -2,
+          "samples": 118,
+          "slope_handles_per_minute": -1.0083880524886084
+        },
+        "external": {
+          "elapsed_seconds": 179.99315470000002,
+          "first_handles": 227,
+          "last_handles": 227,
+          "net_handles": 0,
+          "samples": 177,
+          "slope_handles_per_minute": 0.0
+        },
+        "recovery": {
+          "elapsed_seconds": 118.18975019999999,
+          "first_handles": 227,
+          "last_handles": 227,
+          "net_handles": 0,
+          "samples": 118,
+          "slope_handles_per_minute": 0.0
+        }
+      }
+    },
+    "pulse_count": 20,
+    "pulse_ordinals": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "valid": true,
+    "validity": {
+      "all_child_exitcodes_zero": true,
+      "all_children_reported": true,
+      "all_pulses_in_external_phase": true,
+      "exact_pulse_ordinals": true,
+      "minimum_samples_each_phase": true,
+      "no_child_errors": true
+    }
+  },
+  "artifacts": {
+    "breakthrough_eval/reliability/handle_observer_diagnostic_v3/events.jsonl": {
+      "bytes": 827,
+      "sha256": "18299b26a7fc94a0a3f4d6ee67fb7fc9040f3c9e4d24fffbebd8bc647434013e"
+    },
+    "breakthrough_eval/reliability/handle_observer_diagnostic_v3/pulses.jsonl": {
+      "bytes": 3787,
+      "sha256": "f2f6a65b026a517e29d4bc7f1a11f37dce66c79079d7392be24ec3d4bdd369ac"
+    },
+    "breakthrough_eval/reliability/handle_observer_diagnostic_v3/run_data/event_poll.jsonl": {
+      "bytes": 90678,
+      "sha256": "7d2ed3aca8ba270baeb0f0d858cb811235afab8121acc51ca119e5738d2a8278"
+    },
+    "breakthrough_eval/reliability/handle_observer_diagnostic_v3/run_data/idle.jsonl": {
+      "bytes": 88174,
+      "sha256": "511e089e265b58b9456c3b13494a093038b2a748221a2e2022a6b286a2322ae8"
+    },
+    "breakthrough_eval/reliability/handle_observer_diagnostic_v3/run_data/sqlite_read.jsonl": {
+      "bytes": 92944,
+      "sha256": "eb8868fb3001b95ec0d490d210bd0f444c728d6987c1681fb1698de79511c604"
+    },
+    "breakthrough_eval/reliability/handle_observer_diagnostic_v3/run_data/sqlite_write.jsonl": {
+      "bytes": 91626,
+      "sha256": "67a63b2e9004b21dbf343b5413d095c76160ca7272236318d2b6e01de7cd10d7"
+    }
+  },
+  "benchmark": "child_handle_observer_effect_diagnostic",
+  "claim_boundary": "Environment attribution diagnostic only; never storage, HNG, recovery, production, or v2 qualification evidence.",
+  "config": {
+    "baseline_seconds": 120.0,
+    "expected_pulses": 20,
+    "external_seconds": 180.0,
+    "minimum_samples_per_phase": 100,
+    "multiprocessing_start_method": "spawn",
+    "recovery_seconds": 120.0,
+    "refute_maximum_external_net_handles": 20,
+    "refute_slope_tolerance_handles_per_minute": 5.0,
+    "sample_interval_seconds": 1.0,
+    "support_minimum_external_net_handles": 50,
+    "support_slope_margin_handles_per_minute": 20.0,
+    "variants": [
+      "idle",
+      "event_poll",
+      "sqlite_read",
+      "sqlite_write"
+    ],
+    "warmup_seconds": 30.0
+  },
+  "created_at": "2026-09-01T19:59:55.909263+00:00",
+  "exitcodes": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "preregistered_commit": "7bed722e642ca9c89663cf53d3fa6457c3082956",
+  "reports": [
+    {
+      "error": null,
+      "operations": 0,
+      "pid": 25136,
+      "samples": 450,
+      "variant": "event_poll"
+    },
+    {
+      "error": null,
+      "operations": 25288,
+      "pid": 32356,
+      "samples": 451,
+      "variant": "sqlite_read"
+    },
+    {
+      "error": null,
+      "operations": 16262,
+      "pid": 31440,
+      "samples": 443,
+      "variant": "sqlite_write"
+    },
+    {
+      "error": null,
+      "operations": 0,
+      "pid": 26200,
+      "samples": 451,
+      "variant": "idle"
+    }
+  ],
+  "schema_version": 1,
+  "status": "PASS"
+}

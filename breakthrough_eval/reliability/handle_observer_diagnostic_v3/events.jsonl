@@ -1,0 +1,4 @@
+{"created_at": "2026-09-01T19:52:25.709814+00:00", "event": "run_started", "pids": [26200, 25136, 32356, 31440]}
+{"created_at": "2026-09-01T19:54:55.742547+00:00", "elapsed_seconds": 150.0327331, "event": "external_phase_ready"}
+{"created_at": "2026-09-01T19:57:55.717513+00:00", "elapsed_seconds": 330.0076987, "event": "recovery_phase_started"}
+{"created_at": "2026-09-01T19:59:55.769668+00:00", "event": "workers_stopped", "exitcodes": [0, 0, 0, 0], "reports": [{"error": null, "operations": 0, "pid": 25136, "samples": 450, "variant": "event_poll"}, {"error": null, "operations": 25288, "pid": 32356, "samples": 451, "variant": "sqlite_read"}, {"error": null, "operations": 16262, "pid": 31440, "samples": 443, "variant": "sqlite_write"}, {"error": null, "operations": 0, "pid": 26200, "samples": 451, "variant": "idle"}]}

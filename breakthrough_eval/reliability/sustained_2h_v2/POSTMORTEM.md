@@ -57,5 +57,14 @@ failure. It motivates a separate, frozen diagnostic comparing a quiet interval
 with a controlled external-command interval while children self-sample handle
 counts. V2 itself remains failed regardless of the diagnostic outcome.
 
+That follow-up ultimately completed validly in
+`../handle_observer_diagnostic_v3/RESULTS.json`. Twenty separate pulse commands
+caused zero net handle growth across idle, event-poll, isolated SQLite-read, and
+isolated SQLite-write children, producing the frozen outcome
+`REFUTES_OBSERVER_EFFECT_AT_THRESHOLD`. The observer-effect hypothesis is
+therefore not the working explanation. The diagnostic did not reproduce v2's
+12-process shared-database workload, so v2's handle failure remains unexplained
+and failed rather than reclassified.
+
 The authoritative machine postmortem is `FAILURE_ANALYSIS.json`; the original
 `RESULTS.json` and fsynced `events.jsonl` are unchanged.
