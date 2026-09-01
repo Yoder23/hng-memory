@@ -729,6 +729,7 @@ def run_llm(
     limit: int,
     protocol: str = "fixed_candidate_llm_holdout",
     preregistered_commit: str | None = None,
+    system_orders: Mapping[str, Sequence[str]] | None = None,
 ) -> dict[str, object]:
     selected_cases = [case for case in scenarios if case.split == "holdout"][:limit]
     event_path = output / "raw" / "llm_events.jsonl"
@@ -741,13 +742,22 @@ def run_llm(
             if row.get("status") == "completed":
                 completed.add((str(row["case_id"]), str(row["system"])))
     systems = ("ordinary_rag", "strong_structured", "hng")
+    orders = {
+        scenario.case_id: tuple(
+            system_orders.get(scenario.case_id, systems) if system_orders is not None else systems
+        )
+        for scenario in selected_cases
+    }
+    for case_id, order in orders.items():
+        if len(order) != len(systems) or set(order) != set(systems):
+            raise ValueError(f"invalid system order for {case_id}: {order}")
     for scenario in selected_cases:
         decisions = {
             "ordinary_rag": raw_majority_decide(scenario),
             "strong_structured": strong_structured_decide(scenario),
             "hng": hng_decide(scenario),
         }
-        for system in systems:
+        for order_index, system in enumerate(orders[scenario.case_id]):
             if (scenario.case_id, system) in completed:
                 continue
             context = context_for(system, scenario, decisions[system])
@@ -761,6 +771,8 @@ def run_llm(
                 "family": scenario.family,
                 "split": scenario.split,
                 "system": system,
+                "system_order": list(orders[scenario.case_id]),
+                "execution_order_index": order_index,
                 "candidate_ids": list(scenario.candidate_ids),
                 "candidate_pool_sha256": scenario.candidate_pool_sha256,
                 "candidate_count": len(scenario.candidates),
@@ -817,6 +829,7 @@ def run_llm(
         "model": model,
         "model_digest": model_digest,
         "requested_cases": len(selected_cases),
+        "counterbalanced_system_order": system_orders is not None,
         "candidate_pool_identity_verified": all(
             len({
                 row["candidate_pool_sha256"]
