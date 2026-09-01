@@ -1,0 +1,36 @@
+{
+  "claim_boundary": "Preparation only; no database or behavioral result exists.",
+  "config": {
+    "backup": "breakthrough_eval/reliability/million_write/run_data/million_write_backup.sqlite",
+    "database": "breakthrough_eval/reliability/million_write/run_data/million_write.sqlite",
+    "journal_mode": "WAL",
+    "lifecycle_records": 100,
+    "minimum_free_bytes": 8000000000,
+    "records": 1000000,
+    "restart_every": 100000,
+    "result": "breakthrough_eval/reliability/million_write/RESULTS.json",
+    "synchronous": "FULL",
+    "tenants": 100
+  },
+  "created_at": "2026-09-01T15:47:52.471948+00:00",
+  "environment": {
+    "cpu_count": 20,
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.10.0 (tags/v3.10.0:b494f59, Oct  4 2021, 19:00:18) [MSC v.1929 64 bit (AMD64)]",
+    "sqlite": "3.35.5"
+  },
+  "qualifying_command": [
+    "C:\\Python310\\python.exe",
+    "breakthrough_eval\\scripts\\million_write_reliability.py",
+    "--preregistered-commit",
+    "COMMIT"
+  ],
+  "schema_version": 1,
+  "source_sha256": {
+    "baseline_source/hng-frontier-0.5.1a1/src/hngfrontier/storage_v2.py": "1c1dca999d39276708c3bf1116f95f7d9f6faaa85ff696e04194ac4004c99f9f",
+    "breakthrough_eval/reliability/million_write/PROTOCOL.md": "e8c062f2968027e66283d05b6a37101b7e64336f6a40450964e36c14c8e8441d",
+    "breakthrough_eval/scripts/million_write_reliability.py": "978e8eba24aeed06af7ec3eff2e4983504bb630216cf9e6dad79393d287576a5",
+    "breakthrough_eval/scripts/storage_reliability_probe.py": "3a38c01edcfa125c0ac8d354bf8311ca311050367f4e58fa72772193fe8a45d7"
+  },
+  "status": "PREPARED_NOT_EXECUTED"
+}

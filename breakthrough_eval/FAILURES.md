@@ -341,3 +341,11 @@ The first direct policy-search invocation failed before generating a result beca
 the script directory, rather than the repository root, on its module path. The import-based unit
 tests passed, which exposed the entry-point-specific gap. The script now inserts its resolved
 repository root explicitly before importing the shared benchmark policy code.
+
+## Million-write preregistration setup failure
+
+The first focused preregistration test used an incorrect hard-coded SHA-256 fixture value; the
+streaming hash implementation returned the correct digest and no reliability execution had begun.
+Review also caught that free-space preflight targeted the intentionally absent runtime directory.
+The expected digest is corrected and disk capacity is now checked on the existing protocol
+directory before the probe creates runtime files.

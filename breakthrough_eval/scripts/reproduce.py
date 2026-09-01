@@ -89,6 +89,19 @@ def commands_for(args: argparse.Namespace) -> list[Command]:
             ),
             compile_results,
         ]
+    if args.command == "million-write":
+        argv = [sys.executable, str(SCRIPTS / "million_write_reliability.py")]
+        if args.prepare_only:
+            argv.append("--prepare-only")
+        else:
+            if not args.preregistered_commit:
+                raise ValueError("million-write execution requires --preregistered-commit")
+            argv.extend(["--preregistered-commit", args.preregistered_commit])
+        return [Command(
+            "million_write_storage_reliability",
+            tuple(argv),
+            "Fail-closed 1,000,000-write production SQLite store, restart, lifecycle, and backup/restore probe.",
+        )]
     if args.command == "rag-governance":
         result = [deterministic]
         if args.execute_llm:
@@ -287,6 +300,9 @@ def parse_args() -> argparse.Namespace:
     subparsers.add_parser("fresh-clone-core", help="Run the dependency-free owned core from a clean checkout.")
     subparsers.add_parser("identifiability", help="Audit whether preserved Strong/HNG reader pairs had distinct inputs.")
     subparsers.add_parser("policy-differential", help="Run the unlabeled HNG/Strong development policy grid.")
+    million = subparsers.add_parser("million-write", help="Prepare or run the preregistered million-write reliability probe.")
+    million.add_argument("--prepare-only", action="store_true")
+    million.add_argument("--preregistered-commit")
     rag = subparsers.add_parser("rag-governance", help="Reproduce fixed-candidate governance results.")
     rag.add_argument("--execute-llm", action="store_true", help="Run the costly local 27B holdout.")
     rag.add_argument("--llm-limit", type=int, default=30)

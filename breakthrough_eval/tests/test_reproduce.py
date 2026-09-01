@@ -59,3 +59,22 @@ def test_policy_differential_command_does_not_invoke_reader() -> None:
         "compile_results",
     ]
     assert commands[0].argv[-1].endswith("policy_differential_search.py")
+
+
+def test_million_write_execution_requires_preregistered_commit() -> None:
+    with __import__("pytest").raises(ValueError, match="preregistered-commit"):
+        reproduce.commands_for(argparse.Namespace(
+            command="million-write",
+            prepare_only=False,
+            preregistered_commit=None,
+        ))
+
+
+def test_million_write_routes_exact_commit() -> None:
+    command = reproduce.commands_for(argparse.Namespace(
+        command="million-write",
+        prepare_only=False,
+        preregistered_commit="abc123",
+    ))[0]
+
+    assert command.argv[-2:] == ("--preregistered-commit", "abc123")

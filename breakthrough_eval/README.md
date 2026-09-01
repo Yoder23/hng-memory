@@ -34,6 +34,8 @@ C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py adversarial
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py fresh-clone-core
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py identifiability
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py policy-differential
+C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py million-write --prepare-only
+C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py million-write --preregistered-commit COMMIT
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py rag-governance --execute-llm
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py public-memory --execute-llm
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py belief-revision
@@ -119,7 +121,7 @@ manifest distinguishes the qualifying exact-commit artifacts from two preserved 
 pairs. A brand-new private-repository clone installed the wheel and used `hng-eval` to pass 58
 dependency-free tests, execute the isolated 250-case deterministic study, and recompile the result
 corpus. The four external LoCoMo test modules remain explicit exclusions from this dependency-free
-proof and continue to run in the configured 88-test breakthrough suite.
+proof and continue to run in the configured 94-test breakthrough suite.
 
 ## Current resource boundary
 
