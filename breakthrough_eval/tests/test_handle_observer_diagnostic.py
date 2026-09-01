@@ -9,6 +9,7 @@ import time
 import pytest
 
 from breakthrough_eval.scripts import handle_observer_diagnostic as diagnostic
+from breakthrough_eval.scripts import handle_observer_diagnostic_v2 as diagnostic_v2
 
 
 def qualifying_args() -> argparse.Namespace:
@@ -77,6 +78,32 @@ def test_frozen_preparation_matches_current_sources() -> None:
     payload = json.loads(diagnostic.PREPARED.read_text(encoding="utf-8"))
 
     diagnostic.verify_prepared(payload, qualifying_args())
+
+
+def test_v2_timing_correction_has_distinct_frozen_outputs() -> None:
+    names = (
+        "OUTPUT_DIR", "PROTOCOL", "PREPARED", "RESULT", "EVENTS",
+        "PULSES", "STATE", "RUN_DATA", "WRAPPER", "V2_FAILURE",
+        "SOURCE_FILES",
+    )
+    original = {name: getattr(diagnostic, name) for name in names}
+    try:
+        diagnostic_v2.configure()
+        payload = json.loads(
+            diagnostic_v2.PREPARED.read_text(encoding="utf-8")
+        )
+        diagnostic.verify_prepared(payload, qualifying_args())
+        assert diagnostic.OUTPUT_DIR == diagnostic_v2.OUTPUT_DIR
+        assert diagnostic.OUTPUT_DIR != original["OUTPUT_DIR"]
+        assert set(payload["source_sha256"]) == {
+            "breakthrough_eval/reliability/handle_observer_diagnostic/RESULTS.json",
+            "breakthrough_eval/reliability/handle_observer_diagnostic_v2/PROTOCOL.md",
+            "breakthrough_eval/scripts/handle_observer_diagnostic.py",
+            "breakthrough_eval/scripts/handle_observer_diagnostic_v2.py",
+        }
+    finally:
+        for name, value in original.items():
+            setattr(diagnostic, name, value)
 
 
 def test_phase_boundaries_are_exact() -> None:

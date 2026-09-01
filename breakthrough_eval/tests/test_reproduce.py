@@ -130,3 +130,15 @@ def test_handle_observer_diagnostic_routes_exact_commit() -> None:
     assert command.argv[-2:] == ("--preregistered-commit", "observer123")
     assert command.name == "child_handle_observer_effect_diagnostic"
     assert "cannot qualify HNG" in command.note
+
+
+def test_handle_observer_diagnostic_v2_routes_exact_commit() -> None:
+    command = reproduce.commands_for(argparse.Namespace(
+        command="handle-observer-diagnostic-v2",
+        prepare_only=False,
+        preregistered_commit="observer456",
+    ))[0]
+
+    assert command.argv[-2:] == ("--preregistered-commit", "observer456")
+    assert command.name == "child_handle_observer_effect_diagnostic_v2"
+    assert "attribution-only" in command.note

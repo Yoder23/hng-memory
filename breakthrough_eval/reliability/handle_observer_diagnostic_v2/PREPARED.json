@@ -1,0 +1,50 @@
+{
+  "claim_boundary": "Environment attribution diagnostic only. It cannot qualify HNG, storage, recovery, production reliability, or the failed v2 run.",
+  "commands": {
+    "main": [
+      "C:\\Python310\\python.exe",
+      "breakthrough_eval/scripts/handle_observer_diagnostic_v2.py",
+      "--preregistered-commit",
+      "COMMIT"
+    ],
+    "pulse": [
+      "C:\\Python310\\python.exe",
+      "breakthrough_eval/scripts/handle_observer_diagnostic_v2.py",
+      "--pulse-ordinal",
+      "N",
+      "--preregistered-commit",
+      "COMMIT"
+    ]
+  },
+  "config": {
+    "baseline_seconds": 120.0,
+    "expected_pulses": 20,
+    "external_seconds": 120.0,
+    "minimum_samples_per_phase": 100,
+    "multiprocessing_start_method": "spawn",
+    "recovery_seconds": 120.0,
+    "refute_maximum_external_net_handles": 20,
+    "refute_slope_tolerance_handles_per_minute": 5.0,
+    "sample_interval_seconds": 1.0,
+    "support_minimum_external_net_handles": 50,
+    "support_slope_margin_handles_per_minute": 20.0,
+    "variants": [
+      "idle",
+      "event_poll",
+      "sqlite_read",
+      "sqlite_write"
+    ],
+    "warmup_seconds": 30.0
+  },
+  "created_at": "2026-09-01T19:36:21.567807+00:00",
+  "hypothesis_status_before_execution": "UNPROVEN",
+  "motivation": "breakthrough_eval/reliability/handle_observer_diagnostic/RESULTS.json",
+  "schema_version": 1,
+  "source_sha256": {
+    "breakthrough_eval/reliability/handle_observer_diagnostic/RESULTS.json": "caf2b16e1440023c32b928a723ab598959888ce1244d73905653f39a6ad98e3a",
+    "breakthrough_eval/reliability/handle_observer_diagnostic_v2/PROTOCOL.md": "fc4065b34a5d069f92f5165db2c389a148079cde794ea50461df3686c022856d",
+    "breakthrough_eval/scripts/handle_observer_diagnostic.py": "4553011f3a8d2f4900b8e08b7f60cd5e0acb92eb4be31ed94fabad9a2af1c0ca",
+    "breakthrough_eval/scripts/handle_observer_diagnostic_v2.py": "4a1e7c33e251b0a90ec5ea0c4bad1be1f3d3ed64cd532b4846a6d532c82ab252"
+  },
+  "status": "PREPARED_NOT_EXECUTED"
+}
