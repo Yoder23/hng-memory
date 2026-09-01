@@ -22,7 +22,7 @@
     {"capability": "provenance", "evidence_maturity": 1, "status": "SYNTHETIC_BEHAVIORAL_ABLATION_TIE", "source": "provenance_ablation"},
     {"capability": "poison resistance", "evidence_maturity": 1, "status": "SYNTHETIC", "source": "fixed_candidate"},
     {"capability": "multi-user isolation", "evidence_maturity": 1, "status": "LOCAL_100K_PRINCIPAL_SCOPED_ZERO_LEAKAGE_WITH_RAW_API_BOUNDARY", "source": "reliability/MULTI_USER_100K_ISOLATION.json"},
-    {"capability": "tool-agent assistance", "evidence_maturity": 0, "status": "NOT_RUN", "source": null},
+    {"capability": "tool-agent assistance", "evidence_maturity": 1, "status": "SYNTHETIC_EXECUTING_CONTEXT_FIX_TIES_STRONG", "source": "tool_agent/RESULTS.json"},
     {"capability": "efficiency", "evidence_maturity": 2, "status": "PUBLIC_NONCANONICAL_TOKEN_LATENCY", "source": "public/longmemeval_v2;public/locomo_plus"}
   ]
 }

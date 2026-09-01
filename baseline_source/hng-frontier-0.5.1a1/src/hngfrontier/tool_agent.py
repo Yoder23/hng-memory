@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from typing import Callable, Mapping
 
 from .control import HNGMemory
-from .governance import Decision, EvidenceProvenance, GovernedMemoryFrame
+from .governance import Decision, EvidenceProvenance, GovernedMemoryFrame, TemporalValidity
 from .semantic import SemanticState, SemanticValue
 from .shadow_v2 import GovernedShadowEvaluator
 
@@ -42,7 +42,11 @@ class ToolAgentAdapter:
 
     def execute(self, proposal: ToolAction, *, conversation_id: str, state: SemanticState,
                 executor: Callable[[str, Mapping[str, object]], object],
-                outcome_semantics: Callable[[object], SemanticValue], provenance: EvidenceProvenance) -> object | None:
+                outcome_semantics: Callable[[object], SemanticValue], provenance: EvidenceProvenance,
+                validity: TemporalValidity | None = None, tenant_id: str = "", user_id: str = "",
+                scope: str = "global", role: str = "", authority_level: int | None = None,
+                abstraction_level: int | None = None,
+                profile_revision: int | None = None) -> object | None:
         assessment = self.assess(proposal, conversation_id=conversation_id, state=state)
         if assessment.blocked:
             self.rollout.log(assessment.frame, assistant_action=f"{proposal.tool}:{proposal.action}",
@@ -55,7 +59,10 @@ class ToolAgentAdapter:
             conversation_id=conversation_id, state=state, action=proposal.semantic_action, next_state=next_state,
             outcome=str(result), outcome_score=1.0 if success else -1.0, provenance=provenance,
             content=f"tool={proposal.tool} action={proposal.action} outcome={result}",
-            metadata={"tool": proposal.tool, "action": proposal.action, "arguments": dict(proposal.arguments)})
+            metadata={"tool": proposal.tool, "action": proposal.action, "arguments": dict(proposal.arguments)},
+            validity=validity, tenant_id=tenant_id, user_id=user_id, scope=scope, role=role,
+            authority_level=authority_level, abstraction_level=abstraction_level,
+            profile_revision=profile_revision)
         self.rollout.log(assessment.frame, assistant_action=f"{proposal.tool}:{proposal.action}",
                          outcome={"executed": True, "success": success, "result": str(result)})
         return result

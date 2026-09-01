@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "benchmark": "synthetic_executing_tool_agent_advisory_probe",
+  "qualified_stream_identity_verified": true,
+  "candidate_pool_identity_verified": true,
+  "event_count_per_qualified_run": 432,
+  "artifacts": [
+    {
+      "path": "tool_agent/raw/before_events.jsonl",
+      "sha256": "9cb6fbc396c91928c4387750d83e4cf741410aad90ec2c101e748c1cbefd4d7d",
+      "status": "EXCLUDED_RESULT_SERIALIZATION_FAILURE",
+      "reason": "All events were written, but relative-path normalization failed before the result summary was saved."
+    },
+    {
+      "path": "tool_agent/raw/before_events_retry2.jsonl",
+      "sha256": "49830732dce9164b4e02fbc99447d5763dab53bb0706b10d2a5c3eecde95dc24",
+      "status": "QUALIFIED_UNTOUCHED_ADAPTER",
+      "result": "tool_agent/BEFORE_RESULTS.json"
+    },
+    {
+      "path": "tool_agent/BEFORE_RESULTS.json",
+      "sha256": "7010975486d56b83cc6f2481117ca8f7512fc33a803827dfc58bb5f3fb115f21",
+      "status": "QUALIFIED_UNTOUCHED_ADAPTER"
+    },
+    {
+      "path": "tool_agent/raw/after_events.jsonl",
+      "sha256": "d00f930ea646c819034a7e30de81b3a3b2757c51320a44b9983f5931fc2880dd",
+      "status": "QUALIFIED_CONTEXTUAL_ADAPTER",
+      "result": "tool_agent/RESULTS.json"
+    },
+    {
+      "path": "tool_agent/RESULTS.json",
+      "sha256": "265d7dc4d0caa2d214ef8076a4ac699f4293e84a7136a018ac78728719861889",
+      "status": "QUALIFIED_CONTEXTUAL_ADAPTER"
+    }
+  ],
+  "before_after_controls": {
+    "same_task_stream": true,
+    "same_non_hng_events_except_timing_and_protocol_label": true,
+    "same_candidate_pool_hashes": true,
+    "same_tool_environment": true,
+    "same_mandatory_guard": true,
+    "only_production_change": "ToolAgentAdapter outcome temporal/access/perspective context forwarding"
+  }
+}

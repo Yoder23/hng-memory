@@ -2,7 +2,7 @@
 
 HNG is an evidence-governed memory and control layer for intelligent assistants. It maintains durable working state and episodic experience, evaluates whether retrieved memories are current, independent, trustworthy, and actor-appropriate, and exposes structured evidence to HDC-native or LLM-based reasoning systems.
 
-Version: **0.7.0rc1**
+Version: **0.7.0rc2**
 
 The project no longer treats a custom ANN or document segmenter as its central contribution. FAISS, BM25, dense retrieval, and hybrid RAG are providers. HNG owns the control-plane decisions those systems do not make:
 
@@ -19,6 +19,11 @@ The project no longer treats a custom ANN or document segmenter as its central c
 - bounded memory frames for HDC and LLM assistants.
 
 ## Status
+
+Version 0.7.0rc2 is a backward-compatible integration fix over the frozen rc1 baseline. It adds
+versioned and scoped ToolAgentAdapter outcome forwarding after an executing benchmark showed that
+unversioned global outcomes made HNG worse than agent alone. The frozen rc1 evidence remains
+unchanged under breakthrough_eval/baseline_070.
 
 The inherited 0.5.1 release remains preserved in the release artifacts and `research_eval/`. Its independent verdict was **C - Valuable specialized system**.
 
@@ -128,6 +133,8 @@ This is experiment infrastructure, not a claim that real-user improvement has al
 - [Next architecture](../../NEXT_ARCHITECTURE.md)
 - [Evidence governance](../../EVIDENCE_GOVERNANCE.md)
 - [Migration from 0.5.1](../../MIGRATION_FROM_051.md)
+- [Migration from 0.7.0rc1](MIGRATION_070RC2.md)
+- [Package changelog](CHANGELOG.md)
 - [Adversarial report](../../ADVERSARIAL_REPORT.md)
 - [Benchmarks](../../BENCHMARKS.md)
 - [HDC assistant guide](../../ASSISTANT_HDC_GUIDE.md)
@@ -146,7 +153,7 @@ This is experiment infrastructure, not a claim that real-user improvement has al
 
 ## Source layout
 
-The release-candidate package is under `baseline_source/hng-frontier-0.5.1a1/`; the directory name is retained only to preserve the frozen release extraction path. Package metadata and runtime version are 0.7.0rc1. Original source ZIP/wheel artifacts remain unchanged at repository root.
+The release-candidate package is under `baseline_source/hng-frontier-0.5.1a1/`; the directory name is retained only to preserve the frozen release extraction path. Package metadata and runtime version are 0.7.0rc2. Original source ZIP/wheel artifacts and the frozen rc1 baseline remain unchanged.
 
 `research_eval/` contains the independent baseline. `next_eval/` contains new scripts and raw outputs. Large corpora, vector slabs, runtime databases, and vendored binary dependencies are intentionally excluded from Git, not deleted locally.
 

@@ -34,6 +34,11 @@ harness and cannot be substituted for the missing production HDC assistant/check
 The broader frozen suite still shows governance of stale environments, wrong actors, untrusted
 outcomes, supersession, conflict, sparse verified evidence, and authority mismatch.
 
+The separate executing advisory study in TOOL_AGENT.md uses the production ToolAgentAdapter and
+adds state mutation, irreversible effects, API versions, conflicting observations, and an
+independent safety guard. After a preserved integration defect is fixed, HNG ties the strong
+structured policy and remains slower; it does not overturn the action-experience loss.
+
 A qualifying public benchmark must freeze an action library and environment, expose semantically
 close actions with version/user/role-specific outcomes, accumulate attempts without weight updates,
 and compare semantic routing, nearest-neighbor experience, weighted vectors, structured SQL, graph

@@ -82,6 +82,12 @@ def main() -> int:
     consolidation = load(consolidation_path) if consolidation_path.exists() else None
     ablation_path = EVAL / "ablation_matrix" / "RESULTS.json"
     ablation = load(ablation_path) if ablation_path.exists() else None
+    tool_before_path = EVAL / "tool_agent" / "BEFORE_RESULTS.json"
+    tool_before = load(tool_before_path) if tool_before_path.exists() else None
+    tool_after_path = EVAL / "tool_agent" / "RESULTS.json"
+    tool_after = load(tool_after_path) if tool_after_path.exists() else None
+    release_path = EVAL / "releases" / "0.7.0rc2" / "RELEASE_MANIFEST.json"
+    release = load(release_path) if release_path.exists() else None
     results: list[dict[str, object]] = []
 
     for name, payload in deterministic["systems"].items():
@@ -340,6 +346,60 @@ def main() -> int:
                 "Bounded overlap with concurrent scoped readers; not an hours-long load test.",
             ),
         ])
+
+    for phase, tool_result, source in (
+        ("before_context_fix", tool_before, "tool_agent/BEFORE_RESULTS.json"),
+        ("after_context_fix", tool_after, "tool_agent/RESULTS.json"),
+    ):
+        if tool_result is None:
+            continue
+        for name, summary in tool_result["summaries"].items():
+            for metric, unit in (
+                ("task_success_rate", "fraction"),
+                ("repeated_tool_failures", "count"),
+                ("irreversible_mistakes", "count"),
+            ):
+                results.append(row(
+                    f"synthetic_tool_agent_{phase}",
+                    name,
+                    metric,
+                    float(summary[metric]),
+                    unit,
+                    "synthetic",
+                    "EXECUTED",
+                    source,
+                    tool_result["claim_boundary"],
+                ))
+            results.append(row(
+                f"synthetic_tool_agent_{phase}",
+                name,
+                "decision_latency_p95",
+                float(summary["decision_latency_ms"]["p95"]),
+                "milliseconds",
+                "synthetic",
+                "EXECUTED",
+                source,
+                tool_result["claim_boundary"],
+            ))
+
+    if release is not None:
+        for metric in (
+            "wheel_install_no_deps",
+            "versioned_outcome_smoke",
+            "sdist_contains_changelog",
+            "sdist_contains_migration_guide",
+        ):
+            results.append(row(
+                "release_070rc2",
+                "hng_frontier_package",
+                metric,
+                1.0 if release["checks"][metric] else 0.0,
+                "fraction",
+                "local",
+                release["status"],
+                "releases/0.7.0rc2/RELEASE_MANIFEST.json",
+                "Local release qualification; not a package-index publication.",
+            ))
 
     if belief is not None:
         for name, payload in belief["arms"].items():
@@ -637,6 +697,26 @@ def main() -> int:
                     "Raw get/get_many remain privileged and unscoped; external authentication was not tested."
                 ),
             }]),
+            *([] if tool_after is None else [{
+                "area": "Synthetic tool-agent advisory",
+                "hng": tool_after["summaries"]["hng_advisory"]["task_success_rate"],
+                "baseline": tool_after["summaries"]["strong_structured_memory"]["task_success_rate"],
+                "delta": (
+                    tool_after["summaries"]["hng_advisory"]["task_success_rate"]
+                    - tool_after["summaries"]["strong_structured_memory"]["task_success_rate"]
+                ),
+                "significance": {
+                    "test": "McNemar exact",
+                    "p": tool_after["paired_statistics"]["hng_vs_strong"]["mcnemar"]["exact_two_sided_p"],
+                },
+                "evidence_class": "synthetic",
+                "status": "LOSS_TIE",
+                "notes": (
+                    "Context forwarding fixes the preserved 29.6% pre-change HNG loss: HNG reaches "
+                    "63.9%, eliminates 18 irreversible mistakes, and ties StrongStructuredBaseline "
+                    "exactly, but remains slower and establishes no HNG-specific advantage."
+                ),
+            }]),
             *([] if belief is None else [{
                 "area": "Synthetic belief revision",
                 "hng": belief["arms"]["hng_belief_store_authority"]["current_belief_accuracy"],
@@ -724,6 +804,7 @@ def main() -> int:
         "current_hardware": resource_inventory["hardware"],
         "current_models": resource_inventory["models"],
         "github": resource_inventory["github"],
+        "current_release_artifacts": resource_inventory.get("release_artifacts"),
         "public_resources": public_resources,
     }
     (EVAL / "ENVIRONMENT.json").write_text(

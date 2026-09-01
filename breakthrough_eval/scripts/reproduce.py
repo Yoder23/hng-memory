@@ -116,6 +116,16 @@ def commands_for(args: argparse.Namespace) -> list[Command]:
             tests,
             compile_results,
         ]
+    if args.command == "tool-agent":
+        return [
+            Command(
+                "tool_agent_advisory",
+                py(str(SCRIPTS / "tool_agent_advisory_probe.py"), "--protocol-label", "reproduction"),
+                "Executing synthetic advisory benchmark; existing evidence receives a timestamped revision.",
+            ),
+            tests,
+            compile_results,
+        ]
     raise AssertionError(f"unknown command: {args.command}")
 
 
@@ -157,6 +167,7 @@ def parse_args() -> argparse.Namespace:
     subparsers.add_parser("belief-revision", help="Reproduce the synthetic belief-revision component study.")
     subparsers.add_parser("component-probes", help="Reproduce all packaged synthetic component studies.")
     subparsers.add_parser("scaled-isolation", help="Run the 100,000-principal scoped isolation probe.")
+    subparsers.add_parser("tool-agent", help="Run the executing synthetic tool-agent advisory study.")
     return parser.parse_args()
 
 

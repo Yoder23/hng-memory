@@ -10,7 +10,7 @@ from hngfrontier import (
     Belief, Commitment, DeploymentMode, DocumentChunk, EvidenceKind, EvidenceProvenance,
     GovernedProfile, GovernedShadowEvaluator, HDCAssistantAdapter, HNGMemory,
     LLMAssistantAdapter, PerspectiveField, ProfileOverride, SemanticState, SemanticValue,
-    StaticIdentityVerifier, ToolAction, ToolAgentAdapter, WorkingCorrection,
+    StaticIdentityVerifier, TemporalValidity, ToolAction, ToolAgentAdapter, WorkingCorrection,
 )
 
 
@@ -216,3 +216,42 @@ def test_tool_agent_preflight_logs_and_feeds_outcome_back(tmp_path):
                                  outcome_semantics=lambda result: hv(20), provenance=trusted())
         assert result["success"] and rollout.summarize()["records"] == 1
         assert any(record.kind is EvidenceKind.OUTCOME for record in mem.store.all())
+
+
+def test_tool_agent_outcome_context_excludes_stale_environment(tmp_path):
+    log = tmp_path / "tool-versioned.jsonl"
+    with HNGMemory(tmp_path / "memory-versioned", semantic_backend="reference-hng") as mem:
+        mem.set_profile(profile(role="ic", authority=1))
+        mem.activate_profile("c", "u")
+        rollout = GovernedShadowEvaluator(log, mode=DeploymentMode.ADVISORY_CHALLENGE)
+        adapter = ToolAgentAdapter(mem, rollout)
+        proposal = ToolAction("deploy", "restart", hv(10), {"service": "api"})
+        state_v1 = action_state().merged({
+            "environment_version": SemanticValue.structured("v1"),
+            "policy_version": SemanticValue.structured("p1"),
+        })
+        result = adapter.execute(
+            proposal,
+            conversation_id="c",
+            state=state_v1,
+            executor=lambda action, args: {"success": True, "action": action},
+            outcome_semantics=lambda outcome: hv(20),
+            provenance=trusted(),
+            validity=TemporalValidity(environment_version="v1", policy_version="p1"),
+            tenant_id="t",
+            user_id="u",
+            scope="private",
+            role="ic",
+            authority_level=1,
+        )
+        assert result["success"]
+        record = mem.store.all()[0]
+        assert record.validity.environment_version == "v1"
+        assert record.tenant_id == "t" and record.user_id == "u"
+        assert record.scope == "private" and record.role == "ic"
+
+        assert adapter.assess(proposal, conversation_id="c", state=state_v1).frame.assessment.decision.value == "support"
+        state_v2 = state_v1.merged({"environment_version": SemanticValue.structured("v2")})
+        stale = adapter.assess(proposal, conversation_id="c", state=state_v2).frame
+        assert stale.assessment.decision.value != "support"
+        assert any(item.reason == "environment_version_mismatch" for item in stale.assessment.excluded)

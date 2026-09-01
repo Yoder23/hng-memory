@@ -71,6 +71,22 @@ The experimental unit is the scenario. The 30 cases are balanced as three varian
 which limits ecological prevalence claims. The exact same generator template across variants also
 means the interval reflects template variation, not a broad natural-task distribution.
 
+## Executing synthetic tool-agent study
+
+The untouched adapter's HNG arm scores 32/108 (29.6%), versus 36/108 for agent alone, 50/108 for
+ordinary recent memory, and 69/108 for StrongStructuredBaseline. After temporal/access/perspective
+outcome context is forwarded, the identical HNG stream scores 69/108 (63.9%), with irreversible
+mistakes falling from 18 to zero and repeated failures from 38 to 2.
+
+| Post-change comparison | Delta | Paired bootstrap 95% CI | Discordant HNG-only / other-only | Exact p |
+|---|---:|---:|---:|---:|
+| HNG vs ordinary recent memory | +17.6 pp | [+5.6, +29.6] pp | 33 / 14 | 0.007943 |
+| HNG vs StrongStructuredBaseline | 0.0 pp | [0.0, 0.0] pp | 0 / 0 | 1.0 |
+
+The experimental unit is a deterministic synthetic episode. The significant ordinary-memory
+comparison does not establish public or real-agent generality. The exact Strong tie is the
+complexity control and prevents an HNG-specific superiority claim.
+
 ## Multiplicity and claims
 
 No family-level significance tests are used; the ten family breakdowns are diagnostic. This avoids

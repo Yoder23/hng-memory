@@ -1,0 +1,3 @@
+include README.md
+include CHANGELOG.md
+include MIGRATION_070RC2.md

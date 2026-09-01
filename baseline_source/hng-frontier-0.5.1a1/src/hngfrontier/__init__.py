@@ -41,7 +41,7 @@ from .provenance import CallableProvenanceVerifier, CallerAssertionVerifier, Pro
 from .tool_agent import ToolAction, ToolAgentAdapter, ToolAssessment
 from .working_v2 import Commitment, DeterministicWorkingState, ExactTurn, WorkingCorrection
 
-__version__ = "0.7.0rc1"
+__version__ = "0.7.0rc2"
 
 __all__ = [
     "ActionAssessment", "ActionRecommendation", "ActionExpectation", "ActionGateResult", "AssistantContext", "AssistantReadinessEvaluator", "CaseResult", "ContextExpectation", "ContinuityExpectation", "AssistantMemory", "AssistantSemanticAdapter",

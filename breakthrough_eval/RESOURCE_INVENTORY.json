@@ -7,8 +7,17 @@
     "account": "Yoder23",
     "repository": "https://github.com/Yoder23/hng-memory",
     "remote": "https://github.com/Yoder23/hng-memory.git",
-    "verified_commit": "20ffd01f210baff2ebbf7cb02c123a98922353fc",
+    "verified_commit": "aaa5c8db0a567b779d377c9d2edb7972e1abf499",
     "viewer_permission": "ADMIN"
+  },
+  "release_artifacts": {
+    "current_version": "0.7.0rc2",
+    "status": "QUALIFIED_LOCAL_RELEASE_CANDIDATE",
+    "manifest": "breakthrough_eval/releases/0.7.0rc2/RELEASE_MANIFEST.json",
+    "wheel_sha256": "01872906189b519a77ab96ef346d0c8294ee02f3e5c1c5e87ce302f9c062639c",
+    "sdist_sha256": "11c0988896b94e23f17ce3db7a85fd382855175293f96d7f23499144e561af63",
+    "wheel_smoke_passed": true,
+    "sdist_required_docs_present": true
   },
   "hardware": {
     "cpu": "Intel Core i9-12900H",

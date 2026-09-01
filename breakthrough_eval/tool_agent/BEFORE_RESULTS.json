@@ -1,0 +1,176 @@
+{
+  "adapter_outcome_context_mode": "legacy_unscoped_unversioned",
+  "arms": [
+    "agent_alone",
+    "ordinary_recent_memory",
+    "strong_structured_memory",
+    "hng_advisory"
+  ],
+  "benchmark": "synthetic_executing_tool_agent_advisory_probe",
+  "claim_boundary": "Executing deterministic synthetic tool environment and synthetic HDC vectors; production ToolAgentAdapter/HNGMemory path; not a public workload, real agent, security authority, or real-HDC result.",
+  "episodes": 108,
+  "event_count": 432,
+  "invariants": {
+    "candidate_pool_identical_across_arms": true,
+    "hard_gate_disabled": true,
+    "mandatory_guard_shared": true,
+    "same_episode_count_per_arm": true,
+    "weights_changed": false
+  },
+  "paired_statistics": {
+    "hng_vs_alone": {
+      "accuracy_delta": -0.037037037037037035,
+      "left": "hng_advisory",
+      "mcnemar": {
+        "exact_two_sided_p": 0.6654658120766186,
+        "left_only": 22,
+        "right_only": 26
+      },
+      "paired_bootstrap_95_ci": [
+        -0.15740740740740744,
+        0.08333333333333337
+      ],
+      "right": "agent_alone"
+    },
+    "hng_vs_ordinary": {
+      "accuracy_delta": -0.16666666666666669,
+      "left": "hng_advisory",
+      "mcnemar": {
+        "exact_two_sided_p": 0.0002771615982055664,
+        "left_only": 3,
+        "right_only": 21
+      },
+      "paired_bootstrap_95_ci": [
+        -0.25,
+        -0.08333333333333334
+      ],
+      "right": "ordinary_recent_memory"
+    },
+    "hng_vs_strong": {
+      "accuracy_delta": -0.34259259259259256,
+      "left": "hng_advisory",
+      "mcnemar": {
+        "exact_two_sided_p": 7.839844329282641e-10,
+        "left_only": 2,
+        "right_only": 39
+      },
+      "paired_bootstrap_95_ci": [
+        -0.43518518518518523,
+        -0.24999999999999994
+      ],
+      "right": "strong_structured_memory"
+    }
+  },
+  "protocol_label": "untouched_adapter_v1",
+  "raw_log": "breakthrough_eval/tool_agent/raw/before_events_retry2.jsonl",
+  "schema_version": 1,
+  "seed": 20260901,
+  "status": "complete",
+  "summaries": {
+    "agent_alone": {
+      "advisory_warnings": 0,
+      "conflicting_observations": 6,
+      "decision_latency_ms": {
+        "mean": 0.025236110862654943,
+        "p50": 0.025500019546598196,
+        "p95": 0.03886000486090779,
+        "p99": 0.055042015737853875
+      },
+      "episodes": 108,
+      "ignored_challenges": 0,
+      "incorrect_challenges": 0,
+      "irreversible_mistakes": 0,
+      "mandatory_guard_blocks": 0,
+      "recoveries": 0,
+      "recovery_opportunities": 48,
+      "recovery_rate": 0.0,
+      "repeated_tool_failures": 48,
+      "task_success_rate": 0.3333333333333333,
+      "task_successes": 36,
+      "useful_interventions": 0,
+      "wrong_action_rate": 0.6666666666666666
+    },
+    "hng_advisory": {
+      "advisory_warnings": 74,
+      "conflicting_observations": 11,
+      "decision_latency_ms": {
+        "mean": 9.380545371742402,
+        "p50": 10.250749997794628,
+        "p95": 14.02540999406483,
+        "p99": 14.54179698252119
+      },
+      "episodes": 108,
+      "ignored_challenges": 17,
+      "incorrect_challenges": 26,
+      "irreversible_mistakes": 18,
+      "mandatory_guard_blocks": 11,
+      "recoveries": 11,
+      "recovery_opportunities": 56,
+      "recovery_rate": 0.19642857142857142,
+      "repeated_tool_failures": 38,
+      "task_success_rate": 0.2962962962962963,
+      "task_successes": 32,
+      "useful_interventions": 48,
+      "wrong_action_rate": 0.7037037037037037
+    },
+    "ordinary_recent_memory": {
+      "advisory_warnings": 90,
+      "conflicting_observations": 7,
+      "decision_latency_ms": {
+        "mean": 0.024713886280854542,
+        "p50": 0.022249994799494743,
+        "p95": 0.03451002994552253,
+        "p99": 0.053687009494751574
+      },
+      "episodes": 108,
+      "ignored_challenges": 33,
+      "incorrect_challenges": 27,
+      "irreversible_mistakes": 30,
+      "mandatory_guard_blocks": 10,
+      "recoveries": 15,
+      "recovery_opportunities": 44,
+      "recovery_rate": 0.3409090909090909,
+      "repeated_tool_failures": 25,
+      "task_success_rate": 0.46296296296296297,
+      "task_successes": 50,
+      "useful_interventions": 63,
+      "wrong_action_rate": 0.5370370370370371
+    },
+    "strong_structured_memory": {
+      "advisory_warnings": 50,
+      "conflicting_observations": 8,
+      "decision_latency_ms": {
+        "mean": 0.008522221900488215,
+        "p50": 0.008300004992634058,
+        "p95": 0.012729980517178772,
+        "p99": 0.014792996225878596
+      },
+      "episodes": 108,
+      "ignored_challenges": 2,
+      "incorrect_challenges": 2,
+      "irreversible_mistakes": 0,
+      "mandatory_guard_blocks": 2,
+      "recoveries": 23,
+      "recovery_opportunities": 37,
+      "recovery_rate": 0.6216216216216216,
+      "repeated_tool_failures": 2,
+      "task_success_rate": 0.6388888888888888,
+      "task_successes": 69,
+      "useful_interventions": 48,
+      "wrong_action_rate": 0.3611111111111111
+    }
+  },
+  "task_features": {
+    "api_version_changes": [
+      "v1",
+      "v2",
+      "v3"
+    ],
+    "conflicting_observations": true,
+    "irreversible_effects": true,
+    "mandatory_non_memory_guard": true,
+    "recoverable_failures": true,
+    "role_specific_outcomes": true,
+    "state_mutation": true
+  }
+}

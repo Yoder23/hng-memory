@@ -142,6 +142,32 @@ arms are rerun.
 These are setup/transport failures, not result evidence. The official benchmark validates at 5,000
 rows, 200 uniquely referenced 32K histories, and zero missing history references.
 
+## Tool-agent adapter loss and harness setup failures
+
+The untouched ToolAgentAdapter failed the executing synthetic tool-agent study: HNG scored 29.6%,
+below agent alone at 33.3%, ordinary memory at 46.3%, and StrongStructuredBaseline at 63.9%. It made
+18 irreversible mistakes because recorded outcomes lacked temporal validity and access/perspective
+context; a v1 success remained globally SUPPORT in v2. The loss is preserved in BEFORE_RESULTS.
+
+The first full invocation failed before execution because its default 120 episodes violated the
+phase-alignment requirement of a multiple of 36. No event was emitted. The corrected default is
+108. The next invocation executed and wrote all 432 raw events but failed while normalizing a
+relative raw-log path against the absolute repository root. That raw stream remains preserved and
+excluded. Path normalization was corrected, and the qualified untouched run used a new raw file.
+
+After the general context-forwarding fix, HNG reaches 63.9%, eliminates the 18 irreversible
+mistakes, and exactly ties StrongStructuredBaseline while remaining slower. This is a recovered
+defect and preserved tie, not a breakthrough win.
+
+## 0.7.0rc2 packaging correction
+
+The first rc2 wheel and sdist built successfully, but inspection showed that the sdist omitted the
+new changelog and rc1-to-rc2 migration guide. Both initial artifacts and hashes remain preserved
+under releases/0.7.0rc2/dist and are excluded from release qualification. MANIFEST.in was added and
+a separate final_dist build includes both documents. Its wheel installs in an isolated target,
+reports runtime version 0.7.0rc2, exposes the contextual adapter parameters, and persists a
+versioned outcome in the smoke test.
+
 ## Scaled isolation setup failure and security boundary
 
 The first attempt to add the 100,000-principal probe failed inside the patch-command wrapper because

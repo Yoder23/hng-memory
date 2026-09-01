@@ -32,7 +32,7 @@ substitute is permitted; `NOT_RUN` means no qualifying evidence yet exists.
 | 18 | Matched HDC versus dense heads | NOT_RUN | No real matched downstream study; synthetic vectors cannot satisfy the HDC gate. |
 | 19 | Retrieval infrastructure | PARTIAL | BinaryFlat/IVF/HNSW/provider evidence at 100K/1M/10M exists; USearch and matched recall are not complete at every scale. |
 | 20 | Governed-memory scaling | PARTIAL | 10K-10M retrieval/provider evidence exists; full governance breakdown, updates/rebuilds, and 100M are absent. |
-| 21 | Tool-agent advisory evaluation | NOT_RUN | No qualifying agent/tool environment comparison. |
+| 21 | Tool-agent advisory evaluation | PARTIAL | A 108-episode executing synthetic environment compares agent alone, ordinary recent memory, StrongStructuredBaseline, and production HNG advisory under mutation, failures, irreversible effects, API changes, conflicting observations, and roles. A failure-driven context fix moves HNG from 29.6% with 18 irreversible mistakes to 63.9% with zero, exactly tying Strong at higher latency. No public or real agent is tested. |
 | 22 | Multi-user/multi-tenant scale | PARTIAL | A production-store probe now covers 100,000 tenant/user principals with identical semantic states: 300,000 exhaustive scoped identity queries, 200,000 role/authority attacks, 10,000 concurrent read checks, and 800 writes yield zero scoped or actor-policy leakage; restart and a 100,800-record backup ledger pass. It assumes authenticated server-derived identities, raw get/get_many are unscoped, and no hours-long client load was run. |
 | 23 | Persistent operational perspective | PARTIAL | Frozen perspective gauntlet passes; public profile drift/uncertainty study is missing. |
 | 24 | Automated memory poisoning | PARTIAL | Poison/duplicate/tenant/role attacks exist in synthetic 250; CI-scale realistic document attacks are missing. |
@@ -44,7 +44,7 @@ substitute is permitted; `NOT_RUN` means no qualifying evidence yet exists.
 | 30 | StrongStructuredBaseline challenge | PASS | Independent typed/filter/dedup baseline ties HNG 90% and is faster; the HNG loss is explicitly preserved. |
 | 31 | Strong structured competitors | NOT_RUN | Unavailable property-graph/learned managers remain undefeated. |
 | 32 | Full HNG ablation matrix | PARTIAL | Eight one-at-a-time counterfactual removals run on all 250 frozen scenarios. Outcome, perspective, provenance/trust, exact floors/contracts, temporal validity, supersession, and independence are ranked. Deterministic state carry and profile uncertainty are not isolatable here; consolidation and belief revision are separate component probes. |
-| 33 | Evidence-led iteration loop | PARTIAL | Duplicate-boundary loss is identified and preserved; no fix was made without holdout evidence. Broader loop remains. |
+| 33 | Evidence-led iteration loop | PARTIAL | The untouched tool adapter loss is frozen; missing temporal/access outcome context is isolated, fixed generally, covered by a production regression, and rerun on an identical 108-episode stream. HNG recovers from 29.6% to 63.9% but only ties Strong. Broader loss/holdout iteration remains. |
 | 34 | Statistical standard | PARTIAL | Paired bootstrap, McNemar, confidence intervals, and effect sizes are present for fixed-candidate studies; multiple seeds are missing. |
 | 35 | Automatic scoreboard | PARTIAL | Compiler produces Markdown/JSON scoreboard; required rows are incomplete until tracks run. |
 | 36 | Capability radar | PARTIAL | A complete machine-readable evidence-maturity radar covers every requested axis without converting maturity into subjective capability scores. No axis has canonical public or real paired evidence. |
@@ -52,7 +52,7 @@ substitute is permitted; `NOT_RUN` means no qualifying evidence yet exists.
 | 38 | Stretch gates | NOT_RUN | No stretch gate is currently proven. |
 | 39 | Failure-first development | PASS | New work is evaluation/harness/provenance work; no speculative HNG feature was added. |
 | 40 | Public reproduction commands | PARTIAL | Baseline and benchmark scripts exist; unified `hng-eval` commands and fresh-clone proof are missing. |
-| 41 | Release artifacts | PARTIAL | Frozen wheel/sdist and hashes exist for 0.7.0rc1; no new breakthrough milestone release bundle yet. |
+| 41 | Release artifacts | PASS | The backward-compatible 0.7.0rc2 tool-adapter fix ships as a smoke-tested wheel and sdist with SHA-256 manifest, changelog, migration guide, raw before/after benchmark evidence, environment, and statistical report. The incomplete first sdist is preserved and excluded. |
 | 42 | Required research documents | PARTIAL | 18 of 19 named narrative documents and all four core machine-readable outputs exist. `FINAL_BREAKTHROUGH_VERDICT.md` is intentionally withheld until active public runs and the completion audit finish. |
 | 43 | Final paper question | NOT_RUN | Paper claim cannot be supported before real/public gates. |
 | 44 | Ten explicit final-report questions | NOT_RUN | Must be answered in final verdict after evidence closure. |

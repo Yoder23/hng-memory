@@ -36,6 +36,7 @@ C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py public-memory --e
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py belief-revision
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py component-probes
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py scaled-isolation
+C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py tool-agent
 ```
 
 Omit `--execute-llm` to prepare and verify expensive experiments without invoking the local 27B
@@ -44,6 +45,10 @@ requires the pinned external datasets described in `PUBLIC_RESOURCES.json`; they
 
 The scaled-isolation command creates ignored SQLite runtime files, takes about seven minutes on the
 recorded host, and refuses to overwrite an earlier preserved run.
+
+The failure-driven ToolAgentAdapter context fix is packaged as 0.7.0rc2 under
+releases/0.7.0rc2/final_dist. RELEASE_MANIFEST.json distinguishes the qualifying artifacts from the
+preserved first build whose sdist omitted required release documentation.
 
 ## Current resource boundary
 

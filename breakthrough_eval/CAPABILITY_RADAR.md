@@ -29,7 +29,7 @@ subjective performance scores to unrun tracks.
 | provenance | 1 | synthetic behavioral ablation; HNG ties Strong |
 | poison resistance | 1 | synthetic fixed candidates |
 | multi-user isolation | 1 | local 100K-principal scoped probe; zero scoped leaks, raw APIs remain privileged/unscoped |
-| tool-agent assistance | 0 | not run |
+| tool-agent assistance | 1 | executing synthetic context-fix study; HNG ties Strong after preserved pre-fix loss |
 | efficiency | 2 | public-pilot token and latency measurements |
 
 No axis currently reaches level 3. The machine-readable source is `CAPABILITY_RADAR.json`.

@@ -85,6 +85,19 @@
       "status": "PASS_WITH_BOUNDARY"
     },
     {
+      "area": "Synthetic tool-agent advisory",
+      "baseline": 0.6388888888888888,
+      "delta": 0.0,
+      "evidence_class": "synthetic",
+      "hng": 0.6388888888888888,
+      "notes": "Context forwarding fixes the preserved 29.6% pre-change HNG loss: HNG reaches 63.9%, eliminates 18 irreversible mistakes, and ties StrongStructuredBaseline exactly, but remains slower and establishes no HNG-specific advantage.",
+      "significance": {
+        "p": 1.0,
+        "test": "McNemar exact"
+      },
+      "status": "LOSS_TIE"
+    },
+    {
       "area": "Synthetic belief revision",
       "baseline": 1.0,
       "delta": 0.0,
