@@ -1,0 +1,51 @@
+{
+  "claim_boundary": "Root-cause diagnostic only. It cannot qualify HNG, storage, recovery, production reliability, or the failed sustained run.",
+  "config": {
+    "condition_seconds": 60.0,
+    "conditions": [
+      "idle_12",
+      "isolated_sqlite_12",
+      "shared_sqlite_12_a",
+      "shared_sqlite_12_b"
+    ],
+    "control_maximum_slope_handles_per_minute": 5.0,
+    "control_maximum_type_delta": 2,
+    "handle_type_snapshot_method": "NtQuerySystemInformation(SystemExtendedHandleInformation) plus NtQueryObject(ObjectTypeInformation)",
+    "maximum_section_to_shm_unit_delta_error": 1,
+    "minimum_dominance_fraction": 0.8,
+    "minimum_dominant_type_delta": 10.0,
+    "minimum_samples_per_child": 50,
+    "multiprocessing_start_method": "spawn",
+    "process_count_support_slope_handles_per_minute": 20.0,
+    "reader_workers": 8,
+    "sample_interval_seconds": 1.0,
+    "seed_records": 1000,
+    "shared_replication_tolerance_handles_per_minute": 15.0,
+    "shared_support_slope_handles_per_minute": 10.0,
+    "tenants": 100,
+    "wal_index_unit_bytes": 32768,
+    "writer_workers": 4
+  },
+  "created_at": "2026-09-01T21:39:12.865866+00:00",
+  "observer_control": "breakthrough_eval/reliability/shared_sqlite_handle_type_diagnostic_v3/RESULTS.json",
+  "predecessor_failure": "breakthrough_eval/reliability/shared_sqlite_handle_type_diagnostic_v3/RESULTS.json",
+  "qualifying_command": [
+    "C:\\Python310\\python.exe",
+    "breakthrough_eval/scripts/shared_sqlite_wal_index_diagnostic.py",
+    "--preregistered-commit",
+    "COMMIT"
+  ],
+  "schema_version": 1,
+  "source_sha256": {
+    "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic_v2/RESULTS.json": "d8d061fd4e2807565fb595714d76e342347925b565b26e4351e7f630934f5e1d",
+    "breakthrough_eval/reliability/shared_sqlite_handle_type_diagnostic_v3/RESULTS.json": "8c8ae43b0600bd338d8e692b355090a89a4aa19570a6b4e1201a5c8a54382cd2",
+    "breakthrough_eval/reliability/shared_sqlite_wal_index_diagnostic/MECHANISM_BASIS.md": "23f17c2f15b231777d16015a788f2e52d908cde5685779f943433bfbbaac7e91",
+    "breakthrough_eval/reliability/shared_sqlite_wal_index_diagnostic/PROTOCOL.md": "994c2713183fd6665fb689a66e4539bddbbd15d0abba754e5b44e5389babc9a5",
+    "breakthrough_eval/scripts/shared_sqlite_handle_diagnostic.py": "eb607c2d30e4f9ed0ed6852d3b412ff012b0e8c5c2ab02530620cc22a42c3ed3",
+    "breakthrough_eval/scripts/shared_sqlite_handle_type_diagnostic.py": "4ed645cf27af8abfc53e771e852029c0229d0ed08fc97d559b68b9475ad9a319",
+    "breakthrough_eval/scripts/shared_sqlite_handle_type_diagnostic_v3.py": "89d7850b690916ed56be23b9bb1ad525e97bc0a22fb0a5c51438e08e659aa59a",
+    "breakthrough_eval/scripts/shared_sqlite_wal_index_diagnostic.py": "89531ef24814f050c67c1bde44240c74caee47650e7e4e483286b061ebd3140f",
+    "breakthrough_eval/scripts/windows_handle_snapshot.py": "8b45dce4d90b3070f556ddeb14a1ddc272f5528b0fa6a367279d525ad052fae0"
+  },
+  "status": "PREPARED_NOT_EXECUTED"
+}

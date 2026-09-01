@@ -214,3 +214,15 @@ def test_shared_sqlite_handle_type_diagnostic_v3_routes_exact_commit() -> None:
     assert command.argv[-2:] == ("--preregistered-commit", "typed-v3")
     assert command.name == "shared_sqlite_child_handle_type_diagnostic_v3"
     assert "Queue-safe handle-type" in command.note
+
+
+def test_shared_sqlite_wal_index_diagnostic_routes_exact_commit() -> None:
+    command = reproduce.commands_for(argparse.Namespace(
+        command="shared-sqlite-wal-index-diagnostic",
+        prepare_only=False,
+        preregistered_commit="wal-index",
+    ))[0]
+
+    assert command.argv[-2:] == ("--preregistered-commit", "wal-index")
+    assert command.name == "shared_sqlite_wal_index_section_mapping_diagnostic"
+    assert "WAL-index mapping" in command.note

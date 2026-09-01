@@ -12,6 +12,7 @@ from breakthrough_eval.scripts import shared_sqlite_handle_diagnostic as matrix
 from breakthrough_eval.scripts import shared_sqlite_handle_type_diagnostic as typed
 from breakthrough_eval.scripts import shared_sqlite_handle_type_diagnostic_v2 as typed_v2
 from breakthrough_eval.scripts import shared_sqlite_handle_type_diagnostic_v3 as typed_v3
+from breakthrough_eval.scripts import shared_sqlite_wal_index_diagnostic as wal_index
 from breakthrough_eval.scripts import shared_sqlite_handle_diagnostic_v2 as matrix_v2
 from breakthrough_eval.scripts import windows_handle_snapshot
 
@@ -174,6 +175,38 @@ def test_typed_v3_preparation_pins_queue_failure_and_drain_fix() -> None:
             setattr(matrix, name, value)
 
 
+def test_wal_index_preparation_pins_primary_basis_and_unit_rule() -> None:
+    names = (
+        "OUTPUT_DIR", "PROTOCOL", "PREPARED", "RESULT", "EVENTS",
+        "RUN_DATA", "WRAPPER", "V2_FAILURE", "OBSERVER_RESULT",
+        "SOURCE_FILES", "frozen_config", "matrix_worker", "run_condition",
+        "classify", "run_matrix",
+    )
+    original = {name: getattr(matrix, name) for name in names}
+    args = qualifying_args()
+    args.condition_seconds = 60.0
+    args.minimum_samples_per_child = 50
+    args.shared_support_slope_handles_per_minute = 10.0
+    try:
+        wal_index.configure()
+        payload = json.loads(wal_index.PREPARED.read_text(encoding="utf-8"))
+        matrix.verify_prepared(payload, args)
+        assert payload["config"]["wal_index_unit_bytes"] == 32768
+        assert payload["config"][
+            "maximum_section_to_shm_unit_delta_error"
+        ] == 1
+        assert payload["source_sha256"][
+            "breakthrough_eval/reliability/shared_sqlite_handle_type_diagnostic_v3/RESULTS.json"
+        ] == "8c8ae43b0600bd338d8e692b355090a89a4aa19570a6b4e1201a5c8a54382cd2"
+        assert (
+            "breakthrough_eval/reliability/shared_sqlite_wal_index_diagnostic/MECHANISM_BASIS.md"
+            in payload["source_sha256"]
+        )
+    finally:
+        for name, value in original.items():
+            setattr(matrix, name, value)
+
+
 def condition(slope: float, valid: bool = True) -> dict[str, object]:
     return {"valid": valid, "median_slope_handles_per_minute": slope}
 
@@ -261,6 +294,70 @@ def test_typed_diagnostic_identifies_replicated_dominant_type() -> None:
     assert typed.summarize_types(results)["shared_sqlite_12_a"][
         "dominant_type"
     ] == "Event"
+
+
+def mapping_condition(
+    slope: float,
+    maximum: float,
+    section_delta: int,
+    shm_unit_delta: int | None,
+) -> dict[str, object]:
+    reports = []
+    for index in range(12):
+        if shm_unit_delta is None:
+            start = end = {
+                "database_bytes": None,
+                "shm_bytes": None,
+                "shm_units": None,
+                "wal_bytes": None,
+            }
+        else:
+            start = {
+                "database_bytes": 1,
+                "shm_bytes": 32768,
+                "shm_units": 1,
+                "wal_bytes": 0,
+            }
+            end = {
+                "database_bytes": 1,
+                "shm_bytes": (1 + shm_unit_delta) * 32768,
+                "shm_units": 1 + shm_unit_delta,
+                "wal_bytes": 1,
+            }
+        reports.append({
+            "worker_index": index,
+            "role": "writer" if index < 4 else "reader",
+            "handle_type_delta": {"Section": section_delta},
+            "file_state_start": start,
+            "file_state_end": end,
+        })
+    return {
+        "valid": True,
+        "median_slope_handles_per_minute": slope,
+        "maximum_slope_handles_per_minute": maximum,
+        "per_child": [
+            {"slope_handles_per_minute": slope} for _ in range(12)
+        ],
+        "reports": reports,
+    }
+
+
+def test_wal_index_rule_matches_section_and_shm_unit_growth() -> None:
+    args = qualifying_args()
+    args.shared_support_slope_handles_per_minute = 10.0
+    results = {
+        "idle_12": mapping_condition(0.5, 1.0, 0, None),
+        "isolated_sqlite_12": mapping_condition(0.7, 1.0, 0, 0),
+        "shared_sqlite_12_a": mapping_condition(30.0, 31.0, 30, 30),
+        "shared_sqlite_12_b": mapping_condition(32.0, 33.0, 32, 32),
+    }
+
+    assert wal_index.classify_mapping(results, args) == (
+        "IDENTIFIES_WAL_INDEX_SECTION_MAPPING"
+    )
+    assert wal_index.mapping_analysis(results)["shared_sqlite_12_a"][
+        "maximum_absolute_delta_error"
+    ] == 0
 
 
 @pytest.mark.skipif(
@@ -539,6 +636,56 @@ def test_typed_v3_drains_twelve_reports_before_join(tmp_path: Path) -> None:
         assert len(result["reports"]) == 12
         assert result["exitcodes"] == [0] * 12
         assert result["validity"]["handle_type_snapshots_complete"]
+    finally:
+        for name, value in original.items():
+            setattr(matrix, name, value)
+
+
+@pytest.mark.skipif(
+    matrix.sustained.psutil is None
+    or not hasattr(matrix.sustained.psutil.Process(), "num_handles"),
+    reason="Windows psutil num_handles is required",
+)
+def test_wal_index_worker_reports_live_shm_units(tmp_path: Path) -> None:
+    names = (
+        "OUTPUT_DIR", "PROTOCOL", "PREPARED", "RESULT", "EVENTS",
+        "RUN_DATA", "WRAPPER", "V2_FAILURE", "OBSERVER_RESULT",
+        "SOURCE_FILES", "frozen_config", "matrix_worker", "run_condition",
+        "classify", "run_matrix",
+    )
+    original = {name: getattr(matrix, name) for name in names}
+    output = tmp_path / "wal-index"
+    args = qualifying_args()
+    args.condition_seconds = 2.0
+    args.sample_interval_seconds = 0.2
+    args.writer_workers = 4
+    args.reader_workers = 8
+    args.seed_records = 20
+    args.tenants = 2
+    args.minimum_samples_per_child = 5
+    args.shared_support_slope_handles_per_minute = 10.0
+    try:
+        wal_index.configure()
+        matrix.RUN_DATA = output / "run_data"
+        matrix.RUN_DATA.mkdir(parents=True)
+        events_path = output / "events.jsonl"
+        with events_path.open("x", encoding="utf-8", newline="\n") as events:
+            result = typed_v3.queue_safe_run_condition(
+                mp.get_context("spawn"),
+                "shared_sqlite_12_a",
+                0,
+                args,
+                events,
+            )
+
+        assert result["valid"]
+        assert len(result["reports"]) == 12
+        analysis = wal_index.mapping_analysis({"shared": result})["shared"]
+        assert analysis["median_shm_unit_delta"] is not None
+        assert all(
+            report["file_state_end"]["shm_bytes"] % 32768 == 0
+            for report in result["reports"]
+        )
     finally:
         for name, value in original.items():
             setattr(matrix, name, value)

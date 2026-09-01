@@ -320,6 +320,27 @@ def commands_for(args: argparse.Namespace) -> list[Command]:
             tuple(argv),
             "Queue-safe handle-type mechanism diagnostic; no qualification claim.",
         )]
+    if args.command == "shared-sqlite-wal-index-diagnostic":
+        argv = [
+            sys.executable,
+            str(SCRIPTS / "shared_sqlite_wal_index_diagnostic.py"),
+        ]
+        if args.prepare_only:
+            argv.append("--prepare-only")
+        else:
+            if not args.preregistered_commit:
+                raise ValueError(
+                    "shared-sqlite-wal-index-diagnostic execution requires "
+                    "--preregistered-commit"
+                )
+            argv.extend([
+                "--preregistered-commit", args.preregistered_commit,
+            ])
+        return [Command(
+            "shared_sqlite_wal_index_section_mapping_diagnostic",
+            tuple(argv),
+            "WAL-index mapping mechanism diagnostic; no qualification claim.",
+        )]
     if args.command == "rag-governance":
         result = [deterministic]
         if args.execute_llm:
@@ -581,6 +602,12 @@ def parse_args() -> argparse.Namespace:
     )
     shared_handle_type_v3.add_argument("--prepare-only", action="store_true")
     shared_handle_type_v3.add_argument("--preregistered-commit")
+    wal_index = subparsers.add_parser(
+        "shared-sqlite-wal-index-diagnostic",
+        help="Prepare or run the WAL-index Section-mapping diagnostic.",
+    )
+    wal_index.add_argument("--prepare-only", action="store_true")
+    wal_index.add_argument("--preregistered-commit")
     rag = subparsers.add_parser("rag-governance", help="Reproduce fixed-candidate governance results.")
     rag.add_argument("--execute-llm", action="store_true", help="Run the costly local 27B holdout.")
     rag.add_argument("--llm-limit", type=int, default=30)
