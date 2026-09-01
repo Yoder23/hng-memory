@@ -71,6 +71,15 @@ def commands_for(args: argparse.Namespace) -> list[Command]:
         return [deterministic, tests, compile_results]
     if args.command == "fresh-clone-core":
         return [fresh_clone_tests, fresh_clone_deterministic, compile_results]
+    if args.command == "identifiability":
+        return [
+            Command(
+                "strong_hng_identifiability_audit",
+                py(str(SCRIPTS / "identifiability_audit.py")),
+                "Read-only hash audit of whether preserved Strong/HNG reader arms received distinct inputs.",
+            ),
+            compile_results,
+        ]
     if args.command == "rag-governance":
         result = [deterministic]
         if args.execute_llm:
@@ -267,6 +276,7 @@ def parse_args() -> argparse.Namespace:
     subparsers.add_parser("core", help="Run breakthrough tests, deterministic 250, and compile results.")
     subparsers.add_parser("adversarial", help="Run the 250-scenario suite, tests, and compile results.")
     subparsers.add_parser("fresh-clone-core", help="Run the dependency-free owned core from a clean checkout.")
+    subparsers.add_parser("identifiability", help="Audit whether preserved Strong/HNG reader pairs had distinct inputs.")
     rag = subparsers.add_parser("rag-governance", help="Reproduce fixed-candidate governance results.")
     rag.add_argument("--execute-llm", action="store_true", help="Run the costly local 27B holdout.")
     rag.add_argument("--llm-limit", type=int, default=30)

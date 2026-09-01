@@ -327,3 +327,10 @@ public, canonical, or real-assistant evidence.
    evidence but exposed an incorrect reproduction target. `fresh-clone-core` now writes the same
    deterministic study to a new ignored `.hng-eval-proof/fixed_candidate` directory; normal
    evidence paths and compiler inputs are unchanged.
+
+## Identifiability audit setup failure
+
+The first two unit fixtures failed because the audit attempted to render every input path relative
+to the repository evidence directory, while pytest correctly created fixtures in the operating
+system temporary directory. No preserved evidence was read incorrectly and the main audit still
+completed. Path display now falls back to an absolute fixture path; comparison logic is unchanged.

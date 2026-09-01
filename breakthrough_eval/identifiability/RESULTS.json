@@ -1,0 +1,776 @@
+{
+  "claim_boundary": "This audit measures experimental identifiability from preserved hashes and logs; it does not rescore benchmark answers or create new behavioral evidence.",
+  "conclusion": "An HNG-versus-Strong score tie cannot be treated as independent downstream evidence when both arms reuse the exact reader prompt. Synthetic fixed-candidate studies render distinct contexts, but their observed ties still do not establish HNG-specific superiority.",
+  "schema_version": 1,
+  "status": "COMPLETE",
+  "studies": {
+    "cross_reader_mistral": {
+      "comparisons": {
+        "candidate_pool_sha256": {
+          "equal": 30
+        },
+        "challenge_score": {
+          "unavailable": 30
+        },
+        "correct": {
+          "equal": 30
+        },
+        "decision": {
+          "unavailable": 30
+        },
+        "included_ids": {
+          "unavailable": 30
+        },
+        "judge_score": {
+          "unavailable": 30
+        },
+        "memory_context_sha256": {
+          "different": 24,
+          "equal": 6
+        },
+        "observed": {
+          "equal": 30
+        },
+        "prediction": {
+          "unavailable": 30
+        },
+        "prompt_sha256": {
+          "different": 24,
+          "equal": 6
+        },
+        "selected_candidate_ids": {
+          "unavailable": 30
+        },
+        "support_score": {
+          "unavailable": 30
+        }
+      },
+      "evidence_class": "synthetic",
+      "exact_prompt_reuse_for_all_pairs": false,
+      "hash_coverage": {
+        "memory_context_pairs": 30,
+        "prompt_pairs": 30
+      },
+      "hng_arm": "hng",
+      "hng_effect_identifiable_from_reader_outputs": true,
+      "hng_evaluation_reused_count": 0,
+      "observed_arms": [
+        "hng",
+        "ordinary_rag",
+        "strong_structured"
+      ],
+      "paired_units": 30,
+      "path": "fixed_candidate_cross_reader_holdout/readers/mistral/raw/llm_events.jsonl",
+      "policy_decision_distinguishing_units": 0,
+      "policy_score_distinguishing_values": 0,
+      "reader_input_distinguishing_units": 24,
+      "status": "PAIRED",
+      "strong_arm": "strong_structured"
+    },
+    "cross_reader_qwen": {
+      "comparisons": {
+        "candidate_pool_sha256": {
+          "equal": 30
+        },
+        "challenge_score": {
+          "unavailable": 30
+        },
+        "correct": {
+          "equal": 30
+        },
+        "decision": {
+          "unavailable": 30
+        },
+        "included_ids": {
+          "unavailable": 30
+        },
+        "judge_score": {
+          "unavailable": 30
+        },
+        "memory_context_sha256": {
+          "different": 24,
+          "equal": 6
+        },
+        "observed": {
+          "equal": 30
+        },
+        "prediction": {
+          "unavailable": 30
+        },
+        "prompt_sha256": {
+          "different": 24,
+          "equal": 6
+        },
+        "selected_candidate_ids": {
+          "unavailable": 30
+        },
+        "support_score": {
+          "unavailable": 30
+        }
+      },
+      "evidence_class": "synthetic",
+      "exact_prompt_reuse_for_all_pairs": false,
+      "hash_coverage": {
+        "memory_context_pairs": 30,
+        "prompt_pairs": 30
+      },
+      "hng_arm": "hng",
+      "hng_effect_identifiable_from_reader_outputs": true,
+      "hng_evaluation_reused_count": 0,
+      "observed_arms": [
+        "hng",
+        "ordinary_rag",
+        "strong_structured"
+      ],
+      "paired_units": 30,
+      "path": "fixed_candidate_cross_reader_holdout/readers/qwen/raw/llm_events.jsonl",
+      "policy_decision_distinguishing_units": 0,
+      "policy_score_distinguishing_values": 0,
+      "reader_input_distinguishing_units": 24,
+      "status": "PAIRED",
+      "strong_arm": "strong_structured"
+    },
+    "fixed_candidate_deterministic": {
+      "comparisons": {
+        "candidate_pool_sha256": {
+          "equal": 250
+        },
+        "challenge_score": {
+          "equal": 250
+        },
+        "correct": {
+          "equal": 250
+        },
+        "decision": {
+          "unavailable": 250
+        },
+        "included_ids": {
+          "different": 40,
+          "equal": 210
+        },
+        "judge_score": {
+          "unavailable": 250
+        },
+        "memory_context_sha256": {
+          "unavailable": 250
+        },
+        "observed": {
+          "equal": 250
+        },
+        "prediction": {
+          "unavailable": 250
+        },
+        "prompt_sha256": {
+          "unavailable": 250
+        },
+        "selected_candidate_ids": {
+          "unavailable": 250
+        },
+        "support_score": {
+          "equal": 250
+        }
+      },
+      "evidence_class": "synthetic",
+      "exact_prompt_reuse_for_all_pairs": false,
+      "hash_coverage": {
+        "memory_context_pairs": 0,
+        "prompt_pairs": 0
+      },
+      "hng_arm": "hng",
+      "hng_effect_identifiable_from_reader_outputs": false,
+      "hng_evaluation_reused_count": 0,
+      "observed_arms": [
+        "hng",
+        "ordinary_raw_majority",
+        "strong_structured"
+      ],
+      "paired_units": 250,
+      "path": "fixed_candidate/raw/deterministic_events.jsonl",
+      "policy_decision_distinguishing_units": 0,
+      "policy_score_distinguishing_values": 0,
+      "reader_input_distinguishing_units": 0,
+      "status": "PAIRED",
+      "strong_arm": "strong_structured"
+    },
+    "fixed_candidate_mistral": {
+      "comparisons": {
+        "candidate_pool_sha256": {
+          "equal": 30
+        },
+        "challenge_score": {
+          "unavailable": 30
+        },
+        "correct": {
+          "equal": 30
+        },
+        "decision": {
+          "unavailable": 30
+        },
+        "included_ids": {
+          "unavailable": 30
+        },
+        "judge_score": {
+          "unavailable": 30
+        },
+        "memory_context_sha256": {
+          "different": 24,
+          "equal": 6
+        },
+        "observed": {
+          "equal": 30
+        },
+        "prediction": {
+          "unavailable": 30
+        },
+        "prompt_sha256": {
+          "different": 24,
+          "equal": 6
+        },
+        "selected_candidate_ids": {
+          "unavailable": 30
+        },
+        "support_score": {
+          "unavailable": 30
+        }
+      },
+      "evidence_class": "synthetic",
+      "exact_prompt_reuse_for_all_pairs": false,
+      "hash_coverage": {
+        "memory_context_pairs": 30,
+        "prompt_pairs": 30
+      },
+      "hng_arm": "hng",
+      "hng_effect_identifiable_from_reader_outputs": true,
+      "hng_evaluation_reused_count": 0,
+      "observed_arms": [
+        "hng",
+        "ordinary_rag",
+        "strong_structured"
+      ],
+      "paired_units": 30,
+      "path": "fixed_candidate_cross_family/raw/llm_events.jsonl",
+      "policy_decision_distinguishing_units": 0,
+      "policy_score_distinguishing_values": 0,
+      "reader_input_distinguishing_units": 24,
+      "status": "PAIRED",
+      "strong_arm": "strong_structured"
+    },
+    "fixed_candidate_qwen": {
+      "comparisons": {
+        "candidate_pool_sha256": {
+          "equal": 30
+        },
+        "challenge_score": {
+          "unavailable": 30
+        },
+        "correct": {
+          "equal": 30
+        },
+        "decision": {
+          "unavailable": 30
+        },
+        "included_ids": {
+          "unavailable": 30
+        },
+        "judge_score": {
+          "unavailable": 30
+        },
+        "memory_context_sha256": {
+          "different": 24,
+          "equal": 6
+        },
+        "observed": {
+          "equal": 30
+        },
+        "prediction": {
+          "unavailable": 30
+        },
+        "prompt_sha256": {
+          "different": 24,
+          "equal": 6
+        },
+        "selected_candidate_ids": {
+          "unavailable": 30
+        },
+        "support_score": {
+          "unavailable": 30
+        }
+      },
+      "evidence_class": "synthetic",
+      "exact_prompt_reuse_for_all_pairs": false,
+      "hash_coverage": {
+        "memory_context_pairs": 30,
+        "prompt_pairs": 30
+      },
+      "hng_arm": "hng",
+      "hng_effect_identifiable_from_reader_outputs": true,
+      "hng_evaluation_reused_count": 0,
+      "observed_arms": [
+        "hng",
+        "ordinary_rag",
+        "strong_structured"
+      ],
+      "paired_units": 30,
+      "path": "fixed_candidate/raw/llm_events.jsonl",
+      "policy_decision_distinguishing_units": 0,
+      "policy_score_distinguishing_values": 0,
+      "reader_input_distinguishing_units": 24,
+      "status": "PAIRED",
+      "strong_arm": "strong_structured"
+    },
+    "locomo_hybrid": {
+      "comparisons": {
+        "candidate_pool_sha256": {
+          "equal": 30
+        },
+        "challenge_score": {
+          "unavailable": 30
+        },
+        "correct": {
+          "unavailable": 30
+        },
+        "decision": {
+          "unavailable": 30
+        },
+        "included_ids": {
+          "unavailable": 30
+        },
+        "judge_score": {
+          "equal": 30
+        },
+        "memory_context_sha256": {
+          "unavailable": 30
+        },
+        "observed": {
+          "unavailable": 30
+        },
+        "prediction": {
+          "equal": 30
+        },
+        "prompt_sha256": {
+          "equal": 30
+        },
+        "selected_candidate_ids": {
+          "equal": 30
+        },
+        "support_score": {
+          "unavailable": 30
+        }
+      },
+      "evidence_class": "public_noncanonical",
+      "exact_prompt_reuse_for_all_pairs": true,
+      "hash_coverage": {
+        "memory_context_pairs": 0,
+        "prompt_pairs": 30
+      },
+      "hng_arm": "hng_hybrid_k64",
+      "hng_effect_identifiable_from_reader_outputs": false,
+      "hng_evaluation_reused_count": 30,
+      "observed_arms": [
+        "bm25_k64",
+        "dense_k64",
+        "full_context",
+        "hng_hybrid_k64",
+        "hybrid_k64",
+        "strong_hybrid_k64"
+      ],
+      "paired_units": 30,
+      "path": "public/locomo_hybrid_holdout/raw/events.jsonl",
+      "policy_decision_distinguishing_units": 0,
+      "policy_score_distinguishing_values": 0,
+      "reader_input_distinguishing_units": 0,
+      "status": "PAIRED",
+      "strong_arm": "strong_hybrid_k64"
+    },
+    "locomo_plus": {
+      "comparisons": {
+        "candidate_pool_sha256": {
+          "equal": 6
+        },
+        "challenge_score": {
+          "unavailable": 6
+        },
+        "correct": {
+          "unavailable": 6
+        },
+        "decision": {
+          "unavailable": 6
+        },
+        "included_ids": {
+          "unavailable": 6
+        },
+        "judge_score": {
+          "equal": 6
+        },
+        "memory_context_sha256": {
+          "unavailable": 6
+        },
+        "observed": {
+          "unavailable": 6
+        },
+        "prediction": {
+          "equal": 6
+        },
+        "prompt_sha256": {
+          "equal": 6
+        },
+        "selected_candidate_ids": {
+          "equal": 6
+        },
+        "support_score": {
+          "unavailable": 6
+        }
+      },
+      "evidence_class": "public_noncanonical",
+      "exact_prompt_reuse_for_all_pairs": true,
+      "hash_coverage": {
+        "memory_context_pairs": 0,
+        "prompt_pairs": 6
+      },
+      "hng_arm": "hng",
+      "hng_effect_identifiable_from_reader_outputs": false,
+      "hng_evaluation_reused_count": 0,
+      "observed_arms": [
+        "bm25",
+        "full_context",
+        "hng",
+        "strong_structured"
+      ],
+      "paired_units": 6,
+      "path": "public/locomo_plus/raw/events.jsonl",
+      "policy_decision_distinguishing_units": 0,
+      "policy_score_distinguishing_values": 0,
+      "reader_input_distinguishing_units": 0,
+      "status": "PAIRED",
+      "strong_arm": "strong_structured"
+    },
+    "locomo_plus_n30": {
+      "comparisons": {
+        "candidate_pool_sha256": {
+          "equal": 30
+        },
+        "challenge_score": {
+          "unavailable": 30
+        },
+        "correct": {
+          "unavailable": 30
+        },
+        "decision": {
+          "unavailable": 30
+        },
+        "included_ids": {
+          "unavailable": 30
+        },
+        "judge_score": {
+          "equal": 30
+        },
+        "memory_context_sha256": {
+          "unavailable": 30
+        },
+        "observed": {
+          "unavailable": 30
+        },
+        "prediction": {
+          "equal": 30
+        },
+        "prompt_sha256": {
+          "equal": 30
+        },
+        "selected_candidate_ids": {
+          "equal": 30
+        },
+        "support_score": {
+          "unavailable": 30
+        }
+      },
+      "evidence_class": "public_noncanonical",
+      "exact_prompt_reuse_for_all_pairs": true,
+      "hash_coverage": {
+        "memory_context_pairs": 0,
+        "prompt_pairs": 30
+      },
+      "hng_arm": "hng",
+      "hng_effect_identifiable_from_reader_outputs": false,
+      "hng_evaluation_reused_count": 25,
+      "observed_arms": [
+        "bm25",
+        "full_context",
+        "hng",
+        "strong_structured"
+      ],
+      "paired_units": 30,
+      "path": "public/locomo_plus_n30/raw/events.jsonl",
+      "policy_decision_distinguishing_units": 0,
+      "policy_score_distinguishing_values": 0,
+      "reader_input_distinguishing_units": 0,
+      "status": "PAIRED",
+      "strong_arm": "strong_structured"
+    },
+    "locomo_reranker": {
+      "comparisons": {
+        "candidate_pool_sha256": {
+          "equal": 30
+        },
+        "challenge_score": {
+          "unavailable": 30
+        },
+        "correct": {
+          "unavailable": 30
+        },
+        "decision": {
+          "unavailable": 30
+        },
+        "included_ids": {
+          "unavailable": 30
+        },
+        "judge_score": {
+          "equal": 30
+        },
+        "memory_context_sha256": {
+          "unavailable": 30
+        },
+        "observed": {
+          "unavailable": 30
+        },
+        "prediction": {
+          "equal": 30
+        },
+        "prompt_sha256": {
+          "equal": 30
+        },
+        "selected_candidate_ids": {
+          "equal": 30
+        },
+        "support_score": {
+          "unavailable": 30
+        }
+      },
+      "evidence_class": "public_noncanonical",
+      "exact_prompt_reuse_for_all_pairs": true,
+      "hash_coverage": {
+        "memory_context_pairs": 0,
+        "prompt_pairs": 30
+      },
+      "hng_arm": "hng_reranked_k64",
+      "hng_effect_identifiable_from_reader_outputs": false,
+      "hng_evaluation_reused_count": 30,
+      "observed_arms": [
+        "bm25_k64",
+        "dense_k64",
+        "full_context",
+        "hng_reranked_k64",
+        "hybrid_k64",
+        "reranked_k64",
+        "strong_reranked_k64"
+      ],
+      "paired_units": 30,
+      "path": "public/locomo_reranker_holdout/raw/events.jsonl",
+      "policy_decision_distinguishing_units": 0,
+      "policy_score_distinguishing_values": 0,
+      "reader_input_distinguishing_units": 0,
+      "status": "PAIRED",
+      "strong_arm": "strong_reranked_k64"
+    },
+    "locomo_retrieval_budget": {
+      "comparisons": {
+        "candidate_pool_sha256": {
+          "equal": 30
+        },
+        "challenge_score": {
+          "unavailable": 30
+        },
+        "correct": {
+          "unavailable": 30
+        },
+        "decision": {
+          "unavailable": 30
+        },
+        "included_ids": {
+          "unavailable": 30
+        },
+        "judge_score": {
+          "equal": 30
+        },
+        "memory_context_sha256": {
+          "unavailable": 30
+        },
+        "observed": {
+          "unavailable": 30
+        },
+        "prediction": {
+          "equal": 30
+        },
+        "prompt_sha256": {
+          "equal": 30
+        },
+        "selected_candidate_ids": {
+          "equal": 30
+        },
+        "support_score": {
+          "unavailable": 30
+        }
+      },
+      "evidence_class": "public_noncanonical",
+      "exact_prompt_reuse_for_all_pairs": true,
+      "hash_coverage": {
+        "memory_context_pairs": 0,
+        "prompt_pairs": 30
+      },
+      "hng_arm": "hng_k64",
+      "hng_effect_identifiable_from_reader_outputs": false,
+      "hng_evaluation_reused_count": 30,
+      "observed_arms": [
+        "bm25_k16",
+        "bm25_k32",
+        "bm25_k64",
+        "full_context",
+        "hng_k64",
+        "strong_k64"
+      ],
+      "paired_units": 30,
+      "path": "public/locomo_retrieval_budget_holdout/raw/events.jsonl",
+      "policy_decision_distinguishing_units": 0,
+      "policy_score_distinguishing_values": 0,
+      "reader_input_distinguishing_units": 0,
+      "status": "PAIRED",
+      "strong_arm": "strong_k64"
+    },
+    "longmemeval_v2": {
+      "comparisons": {
+        "candidate_pool_sha256": {
+          "equal": 21
+        },
+        "challenge_score": {
+          "unavailable": 21
+        },
+        "correct": {
+          "equal": 21
+        },
+        "decision": {
+          "unavailable": 21
+        },
+        "included_ids": {
+          "unavailable": 21
+        },
+        "judge_score": {
+          "unavailable": 21
+        },
+        "memory_context_sha256": {
+          "unavailable": 21
+        },
+        "observed": {
+          "unavailable": 21
+        },
+        "prediction": {
+          "equal": 21
+        },
+        "prompt_sha256": {
+          "equal": 21
+        },
+        "selected_candidate_ids": {
+          "equal": 21
+        },
+        "support_score": {
+          "unavailable": 21
+        }
+      },
+      "evidence_class": "public_noncanonical",
+      "exact_prompt_reuse_for_all_pairs": true,
+      "hash_coverage": {
+        "memory_context_pairs": 0,
+        "prompt_pairs": 21
+      },
+      "hng_arm": "hng",
+      "hng_effect_identifiable_from_reader_outputs": false,
+      "hng_evaluation_reused_count": 0,
+      "observed_arms": [
+        "bm25",
+        "hng",
+        "no_retrieval",
+        "strong_structured"
+      ],
+      "paired_units": 21,
+      "path": "public/longmemeval_v2/raw/events.jsonl",
+      "policy_decision_distinguishing_units": 0,
+      "policy_score_distinguishing_values": 0,
+      "reader_input_distinguishing_units": 0,
+      "status": "PAIRED",
+      "strong_arm": "strong_structured"
+    },
+    "personamem_v2": {
+      "comparisons": {
+        "candidate_pool_sha256": {
+          "equal": 7
+        },
+        "challenge_score": {
+          "unavailable": 7
+        },
+        "correct": {
+          "equal": 7
+        },
+        "decision": {
+          "unavailable": 7
+        },
+        "included_ids": {
+          "unavailable": 7
+        },
+        "judge_score": {
+          "unavailable": 7
+        },
+        "memory_context_sha256": {
+          "unavailable": 7
+        },
+        "observed": {
+          "unavailable": 7
+        },
+        "prediction": {
+          "equal": 7
+        },
+        "prompt_sha256": {
+          "equal": 7
+        },
+        "selected_candidate_ids": {
+          "equal": 7
+        },
+        "support_score": {
+          "unavailable": 7
+        }
+      },
+      "evidence_class": "public_noncanonical",
+      "exact_prompt_reuse_for_all_pairs": true,
+      "hash_coverage": {
+        "memory_context_pairs": 0,
+        "prompt_pairs": 7
+      },
+      "hng_arm": "hng",
+      "hng_effect_identifiable_from_reader_outputs": false,
+      "hng_evaluation_reused_count": 0,
+      "observed_arms": [
+        "bm25",
+        "expanded_profile",
+        "full_history",
+        "hng",
+        "no_memory",
+        "short_profile",
+        "strong_structured"
+      ],
+      "paired_units": 7,
+      "path": "public/personamem_v2/raw/events.jsonl",
+      "policy_decision_distinguishing_units": 0,
+      "policy_score_distinguishing_values": 0,
+      "reader_input_distinguishing_units": 0,
+      "status": "PAIRED",
+      "strong_arm": "strong_structured"
+    }
+  },
+  "summary": {
+    "deterministic_policy_decision_difference_count": 0,
+    "deterministic_policy_paired_unit_count": 250,
+    "deterministic_policy_score_difference_count": 0,
+    "paired_study_count": 12,
+    "public_exact_prompt_reuse_study_count": 7,
+    "public_paired_study_count": 7,
+    "public_reader_input_identifiable_study_count": 0,
+    "study_count": 12
+  }
+}

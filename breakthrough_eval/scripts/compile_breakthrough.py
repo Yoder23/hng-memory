@@ -103,6 +103,8 @@ def main() -> int:
     tool_after = load(tool_after_path) if tool_after_path.exists() else None
     release_path = EVAL / "releases" / "0.7.0rc3" / "RELEASE_MANIFEST.json"
     release = load(release_path) if release_path.exists() else None
+    identifiability_path = EVAL / "identifiability" / "RESULTS.json"
+    identifiability = load(identifiability_path) if identifiability_path.exists() else None
     real_hdc_path = EVAL / "real_hdc" / "READINESS.json"
     real_hdc = load(real_hdc_path) if real_hdc_path.exists() else None
     latency_path = EVAL / "latency" / "RESULTS.json"
@@ -545,6 +547,38 @@ def main() -> int:
                 release["status"],
                 "releases/0.7.0rc3/RELEASE_MANIFEST.json",
                 "Exact-commit fresh-clone local release qualification; not a package-index publication.",
+            ))
+
+    if identifiability is not None:
+        summary = identifiability["summary"]
+        for metric in (
+            "public_paired_study_count",
+            "public_exact_prompt_reuse_study_count",
+            "public_reader_input_identifiable_study_count",
+            "deterministic_policy_paired_unit_count",
+            "deterministic_policy_decision_difference_count",
+            "deterministic_policy_score_difference_count",
+        ):
+            metric_unit = {
+                "deterministic_policy_paired_unit_count": "paired_units",
+                "deterministic_policy_decision_difference_count": "paired_units",
+                "deterministic_policy_score_difference_count": "score_values",
+            }.get(metric, "studies")
+            comparison_system = (
+                "deterministic_hng_vs_strong"
+                if metric.startswith("deterministic_")
+                else "public_hng_vs_strong"
+            )
+            results.append(row(
+                "experimental_identifiability",
+                comparison_system,
+                metric,
+                float(summary[metric]),
+                metric_unit,
+                "audit",
+                identifiability["status"],
+                "identifiability/RESULTS.json",
+                "Hash audit of preserved candidate selections and reader inputs; no answer rescoring.",
             ))
 
     if belief is not None:

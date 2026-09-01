@@ -2157,6 +2157,72 @@
       "value": 1.0
     },
     {
+      "area": "experimental_identifiability",
+      "evidence_class": "audit",
+      "metric": "public_paired_study_count",
+      "notes": "Hash audit of preserved candidate selections and reader inputs; no answer rescoring.",
+      "source": "identifiability/RESULTS.json",
+      "status": "COMPLETE",
+      "system": "public_hng_vs_strong",
+      "unit": "studies",
+      "value": 7.0
+    },
+    {
+      "area": "experimental_identifiability",
+      "evidence_class": "audit",
+      "metric": "public_exact_prompt_reuse_study_count",
+      "notes": "Hash audit of preserved candidate selections and reader inputs; no answer rescoring.",
+      "source": "identifiability/RESULTS.json",
+      "status": "COMPLETE",
+      "system": "public_hng_vs_strong",
+      "unit": "studies",
+      "value": 7.0
+    },
+    {
+      "area": "experimental_identifiability",
+      "evidence_class": "audit",
+      "metric": "public_reader_input_identifiable_study_count",
+      "notes": "Hash audit of preserved candidate selections and reader inputs; no answer rescoring.",
+      "source": "identifiability/RESULTS.json",
+      "status": "COMPLETE",
+      "system": "public_hng_vs_strong",
+      "unit": "studies",
+      "value": 0.0
+    },
+    {
+      "area": "experimental_identifiability",
+      "evidence_class": "audit",
+      "metric": "deterministic_policy_paired_unit_count",
+      "notes": "Hash audit of preserved candidate selections and reader inputs; no answer rescoring.",
+      "source": "identifiability/RESULTS.json",
+      "status": "COMPLETE",
+      "system": "deterministic_hng_vs_strong",
+      "unit": "paired_units",
+      "value": 250.0
+    },
+    {
+      "area": "experimental_identifiability",
+      "evidence_class": "audit",
+      "metric": "deterministic_policy_decision_difference_count",
+      "notes": "Hash audit of preserved candidate selections and reader inputs; no answer rescoring.",
+      "source": "identifiability/RESULTS.json",
+      "status": "COMPLETE",
+      "system": "deterministic_hng_vs_strong",
+      "unit": "paired_units",
+      "value": 0.0
+    },
+    {
+      "area": "experimental_identifiability",
+      "evidence_class": "audit",
+      "metric": "deterministic_policy_score_difference_count",
+      "notes": "Hash audit of preserved candidate selections and reader inputs; no answer rescoring.",
+      "source": "identifiability/RESULTS.json",
+      "status": "COMPLETE",
+      "system": "deterministic_hng_vs_strong",
+      "unit": "score_values",
+      "value": 0.0
+    },
+    {
       "area": "synthetic_belief_revision",
       "evidence_class": "synthetic",
       "metric": "current_belief_accuracy",

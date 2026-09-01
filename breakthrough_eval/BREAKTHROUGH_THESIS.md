@@ -54,6 +54,16 @@ ties and both systems again fail every duplicate-attack case. Thus structured/go
 replicates across both reader families and an independent generated-case window, but HNG-specific,
 public, and real-assistant claims remain unsupported.
 
+A cross-study identifiability audit sharpens that limitation. Across all seven public-data studies,
+every Strong/HNG pair has the same selected candidates and exact reader prompt (154/154 pairs);
+several later studies explicitly reuse the model output. Those ties are policy no-op checks and
+cannot identify an HNG-specific reader effect. The four synthetic Qwen/Mistral studies do render
+distinct Strong/HNG inputs on 24/30 units each, yet the reader outputs remain equal on all 120
+pairs. Public retrieval-arm comparisons remain valid, but public Strong/HNG replication was weaker
+than the score tables alone suggested. At the policy level, HNG and the independent Strong baseline
+also emit identical decisions and support/challenge scores on all 250 deterministic scenarios. A
+further reader run over the same regime would repeat a treatment with no policy-level contrast.
+
 The stronger breakthrough claim remains unproven because:
 
 - no real HDC assistant is available for HNG-off/on testing;

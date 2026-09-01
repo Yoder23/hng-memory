@@ -35,3 +35,15 @@ def test_fresh_clone_core_keeps_external_exclusions_explicit() -> None:
         "--ignore=breakthrough_eval/tests/test_locomo_reranker_holdout.py",
         "--ignore=breakthrough_eval/tests/test_locomo_retrieval_budget_holdout.py",
     ]
+
+
+def test_identifiability_command_runs_audit_then_compiler() -> None:
+    commands = reproduce.commands_for(
+        argparse.Namespace(command="identifiability")
+    )
+
+    assert [command.name for command in commands] == [
+        "strong_hng_identifiability_audit",
+        "compile_results",
+    ]
+    assert commands[0].argv[-1].endswith("identifiability_audit.py")
