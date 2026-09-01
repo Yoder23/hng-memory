@@ -8,7 +8,9 @@ from pathlib import Path
 import pytest
 
 from breakthrough_eval.scripts import shared_sqlite_handle_diagnostic as matrix
+from breakthrough_eval.scripts import shared_sqlite_handle_type_diagnostic as typed
 from breakthrough_eval.scripts import shared_sqlite_handle_diagnostic_v2 as matrix_v2
+from breakthrough_eval.scripts import windows_handle_snapshot
 
 
 def qualifying_args() -> argparse.Namespace:
@@ -81,6 +83,37 @@ def test_v2_preparation_freezes_independent_sampler_and_lower_bound() -> None:
             setattr(matrix, name, value)
 
 
+def test_typed_preparation_freezes_handle_enumerator_and_thresholds() -> None:
+    names = (
+        "OUTPUT_DIR", "PROTOCOL", "PREPARED", "RESULT", "EVENTS",
+        "RUN_DATA", "WRAPPER", "V2_FAILURE", "OBSERVER_RESULT",
+        "SOURCE_FILES", "frozen_config", "matrix_worker", "run_condition",
+        "classify", "run_matrix",
+    )
+    original = {name: getattr(matrix, name) for name in names}
+    args = qualifying_args()
+    args.condition_seconds = 60.0
+    args.minimum_samples_per_child = 50
+    args.shared_support_slope_handles_per_minute = 10.0
+    try:
+        typed.configure()
+        payload = json.loads(typed.PREPARED.read_text(encoding="utf-8"))
+        matrix.verify_prepared(payload, args)
+        assert payload["config"]["minimum_dominance_fraction"] == 0.8
+        assert payload["config"]["minimum_dominant_type_delta"] == 10.0
+        assert payload["config"]["control_maximum_type_delta"] == 2
+        assert set(payload["source_sha256"]) == {
+            "breakthrough_eval/reliability/shared_sqlite_handle_diagnostic_v2/RESULTS.json",
+            "breakthrough_eval/reliability/shared_sqlite_handle_type_diagnostic/PROTOCOL.md",
+            "breakthrough_eval/scripts/shared_sqlite_handle_diagnostic.py",
+            "breakthrough_eval/scripts/shared_sqlite_handle_type_diagnostic.py",
+            "breakthrough_eval/scripts/windows_handle_snapshot.py",
+        }
+    finally:
+        for name, value in original.items():
+            setattr(matrix, name, value)
+
+
 def condition(slope: float, valid: bool = True) -> dict[str, object]:
     return {"valid": valid, "median_slope_handles_per_minute": slope}
 
@@ -130,6 +163,59 @@ def test_v2_replicated_lower_bound_rule() -> None:
     assert matrix_v2.classify_v2(results, args) == (
         "SUPPORTS_SHARED_SQLITE_CAUSE"
     )
+
+
+def typed_condition(
+    slope: float, maximum: float, event_delta: int,
+) -> dict[str, object]:
+    reports = [
+        {
+            "handle_type_delta": {"Event": event_delta, "File": 0},
+        }
+        for _ in range(12)
+    ]
+    return {
+        "valid": True,
+        "median_slope_handles_per_minute": slope,
+        "maximum_slope_handles_per_minute": maximum,
+        "per_child": [
+            {"slope_handles_per_minute": slope} for _ in range(12)
+        ],
+        "reports": reports,
+    }
+
+
+def test_typed_diagnostic_identifies_replicated_dominant_type() -> None:
+    args = qualifying_args()
+    args.shared_support_slope_handles_per_minute = 10.0
+    results = {
+        "idle_12": typed_condition(0.5, 1.0, 0),
+        "isolated_sqlite_12": typed_condition(0.7, 1.0, 1),
+        "shared_sqlite_12_a": typed_condition(30.0, 31.0, 25),
+        "shared_sqlite_12_b": typed_condition(32.0, 33.0, 27),
+    }
+
+    assert typed.classify_typed(results, args) == (
+        "IDENTIFIES_DOMINANT_HANDLE_TYPE"
+    )
+    assert typed.summarize_types(results)["shared_sqlite_12_a"][
+        "dominant_type"
+    ] == "Event"
+
+
+@pytest.mark.skipif(
+    matrix.sustained.psutil is None
+    or not hasattr(matrix.sustained.psutil.Process(), "num_handles"),
+    reason="Windows psutil num_handles is required",
+)
+def test_windows_handle_type_snapshot_accounts_for_handle_total() -> None:
+    process = matrix.sustained.psutil.Process()
+    before = process.num_handles()
+    histogram = windows_handle_snapshot.current_process_handle_types()
+    after = process.num_handles()
+
+    assert "<query-error>" not in histogram
+    assert min(before, after) - 2 <= sum(histogram.values()) <= max(before, after) + 2
 
 
 def test_terminal_v2_matrix_is_content_addressed_and_supports_shared_sqlite() -> None:
@@ -239,6 +325,55 @@ def test_v2_independent_sampler_multiprocess_smoke(tmp_path: Path) -> None:
         assert all(
             item["exitcodes"] == [0, 0]
             for item in result["conditions"].values()
+        )
+    finally:
+        for name, value in original.items():
+            setattr(matrix, name, value)
+
+
+@pytest.mark.skipif(
+    matrix.sustained.psutil is None
+    or not hasattr(matrix.sustained.psutil.Process(), "num_handles"),
+    reason="Windows psutil num_handles is required",
+)
+def test_typed_snapshot_multiprocess_smoke(tmp_path: Path) -> None:
+    names = (
+        "OUTPUT_DIR", "PROTOCOL", "PREPARED", "RESULT", "EVENTS",
+        "RUN_DATA", "WRAPPER", "V2_FAILURE", "OBSERVER_RESULT",
+        "SOURCE_FILES", "frozen_config", "matrix_worker", "run_condition",
+        "classify", "run_matrix",
+    )
+    original = {name: getattr(matrix, name) for name in names}
+    output = tmp_path / "matrix-typed"
+    args = qualifying_args()
+    args.condition_seconds = 2.0
+    args.sample_interval_seconds = 0.2
+    args.writer_workers = 1
+    args.reader_workers = 1
+    args.seed_records = 20
+    args.tenants = 2
+    args.minimum_samples_per_child = 5
+    args.shared_support_slope_handles_per_minute = 10.0
+    try:
+        typed.configure()
+        matrix.OUTPUT_DIR = output
+        matrix.RESULT = output / "RESULTS.json"
+        matrix.EVENTS = output / "events.jsonl"
+        matrix.RUN_DATA = output / "run_data"
+        result = matrix.run_matrix(args)
+
+        assert result["status"] == "PASS"
+        assert result["benchmark"] == (
+            "shared_sqlite_child_handle_type_diagnostic"
+        )
+        assert all(
+            item["validity"]["handle_type_snapshots_complete"]
+            for item in result["conditions"].values()
+        )
+        assert all(
+            "handle_type_delta" in report
+            for item in result["conditions"].values()
+            for report in item["reports"]
         )
     finally:
         for name, value in original.items():

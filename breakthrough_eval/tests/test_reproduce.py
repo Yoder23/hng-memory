@@ -178,3 +178,15 @@ def test_shared_sqlite_handle_diagnostic_v2_routes_exact_commit() -> None:
     assert command.argv[-2:] == ("--preregistered-commit", "shared456")
     assert command.name == "shared_sqlite_child_handle_root_cause_matrix_v2"
     assert "Independent-sampler" in command.note
+
+
+def test_shared_sqlite_handle_type_diagnostic_routes_exact_commit() -> None:
+    command = reproduce.commands_for(argparse.Namespace(
+        command="shared-sqlite-handle-type-diagnostic",
+        prepare_only=False,
+        preregistered_commit="typed789",
+    ))[0]
+
+    assert command.argv[-2:] == ("--preregistered-commit", "typed789")
+    assert command.name == "shared_sqlite_child_handle_type_diagnostic"
+    assert "handle-type mechanism" in command.note

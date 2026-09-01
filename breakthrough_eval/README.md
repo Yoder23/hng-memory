@@ -46,6 +46,8 @@ C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py handle-observer-d
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py handle-observer-diagnostic-v2 --preregistered-commit COMMIT
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py handle-observer-diagnostic-v3 --prepare-only
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py handle-observer-diagnostic-v3 --preregistered-commit COMMIT
+C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py shared-sqlite-handle-type-diagnostic --prepare-only
+C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py shared-sqlite-handle-type-diagnostic --preregistered-commit COMMIT
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py shared-sqlite-handle-diagnostic --prepare-only
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py shared-sqlite-handle-diagnostic --preregistered-commit COMMIT
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py shared-sqlite-handle-diagnostic-v2 --prepare-only
