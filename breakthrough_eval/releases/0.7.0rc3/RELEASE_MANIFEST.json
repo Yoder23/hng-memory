@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "release": "0.7.0rc3",
+  "status": "PASS",
+  "built_from_parent_commit": "27e4a8ee0012f7eef1a9b3655fb8d454aa14c3ab",
+  "source": "baseline_source/hng-frontier-0.5.1a1",
+  "baseline_preserved": {
+    "version": "0.7.0rc1",
+    "commit": "e57db1b1e92329e9b8f2b173be9a506d2b898da8",
+    "mutated": false
+  },
+  "qualifying_artifacts": [
+    {
+      "path": "releases/0.7.0rc3/qualified_dist/hng_frontier-0.7.0rc3-py3-none-any.whl",
+      "sha256": "dc92ac38b08441739c55e0427d197d194a83c94823cea48c9f5fa79566bdab9b",
+      "bytes": 103212,
+      "kind": "wheel"
+    },
+    {
+      "path": "releases/0.7.0rc3/qualified_dist/hng_frontier-0.7.0rc3.tar.gz",
+      "sha256": "7512cd742a3ce5c326b7b94ea029dec797b57505c46658e22f6b7167ccba37ad",
+      "bytes": 107885,
+      "kind": "sdist"
+    }
+  ],
+  "excluded_artifacts": [
+    {
+      "path": "releases/0.7.0rc3/dist/hng_frontier-0.7.0rc3-py3-none-any.whl",
+      "sha256": "b1cc5641db052315ed04d2392dc582ed04d26a534f02f0a9e6b5c0dcd0db2666",
+      "reason": "Pre-checkpoint build; preserved but not used for exact-commit qualification."
+    },
+    {
+      "path": "releases/0.7.0rc3/dist/hng_frontier-0.7.0rc3.tar.gz",
+      "sha256": "d12000b15956b90d3aac49ef0f68b85ad19139e9dcfdeaead0b0737eba30fc4e",
+      "reason": "Pre-checkpoint build; preserved but not used for exact-commit qualification."
+    },
+    {
+      "path": "releases/0.7.0rc3/final_dist/hng_frontier-0.7.0rc3-py3-none-any.whl",
+      "sha256": "1e8c5f093126c9638c848870f0e28d8cdb5f16dd83967c9597eb6818830b14bb",
+      "reason": "Checkpoint 83c32a0 artifact; fresh-clone testing later exposed optional-import validation failure."
+    },
+    {
+      "path": "releases/0.7.0rc3/final_dist/hng_frontier-0.7.0rc3.tar.gz",
+      "sha256": "cfb8a44d9fd241caa9df9d4fbeee790a841164a0574c16399a0ff7152ff26955",
+      "reason": "Checkpoint 83c32a0 artifact; fresh-clone testing later exposed optional-import validation failure."
+    }
+  ],
+  "checks": {
+    "wheel_install_clean_venv": true,
+    "runtime_version_matches": true,
+    "installed_hng_eval_entry": true,
+    "installed_hng_eval_dry_run": true,
+    "fresh_clone_core": true,
+    "fresh_clone_dependency_free_tests": true,
+    "deterministic_250": true,
+    "compiler_completion": true,
+    "sdist_contains_changelog": true,
+    "sdist_contains_migration_guide": true,
+    "database_schema_changed": false,
+    "memory_behavior_changed": false
+  },
+  "supporting_artifacts": {
+    "protocol": "fresh_clone_reproduction/PROTOCOL.md",
+    "failures": "fresh_clone_reproduction/BEFORE.json",
+    "result": "fresh_clone_reproduction/RESULTS.json",
+    "changelog": "baseline_source/hng-frontier-0.5.1a1/CHANGELOG.md",
+    "migration": "baseline_source/hng-frontier-0.5.1a1/MIGRATION_070RC3.md",
+    "release_notes": "releases/0.7.0rc3/RELEASE_NOTES.md",
+    "environment": "ENVIRONMENT.json"
+  },
+  "claim_boundary": "Qualified local release candidate and fresh-clone reproduction surface; not a package-index publication and not evidence of an HNG-specific research breakthrough."
+}

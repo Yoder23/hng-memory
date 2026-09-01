@@ -4,15 +4,19 @@ Audit date: 2026-09-01. Machine-readable source: RESOURCE_INVENTORY.json.
 
 GitHub is connected to the user-confirmed account Yoder23. The only remote is the private
 repository at https://github.com/Yoder23/hng-memory.git; local main, origin/main, and GitHub were
-verified at commit 9a47a3e412d643f640dafcab93ecdbdecf5c72e4 on 2026-09-01.
+verified through fresh-clone source commit 27e4a8ee0012f7eef1a9b3655fb8d454aa14c3ab on
+2026-09-01.
 
 ## Available
 
 - Frozen release worktree at C:\\tmp\\hng-breakthrough-baseline-e57, exact commit
   e57db1b1e92329e9b8f2b173be9a506d2b898da8.
 - Production HNG 0.7 package source and tests in baseline_source/hng-frontier-0.5.1a1/.
-- Qualified HNG 0.7.0rc2 wheel and sdist under breakthrough_eval/releases/0.7.0rc2/final_dist,
-  with SHA-256 manifest, isolated wheel smoke test, changelog, and rc1-to-rc2 migration guide.
+- Qualified HNG 0.7.0rc3 wheel and sdist under
+  breakthrough_eval/releases/0.7.0rc3/qualified_dist, with SHA-256 manifest, changelog, rc3
+  migration guide, and installed `hng-eval` proof from a brand-new exact-commit clone. The proof
+  passes 58 dependency-free tests, deterministic 250, and compiler regeneration; its four external
+  LoCoMo exclusions are explicit, while the configured suite passes all 81 tests.
 - Ollama with fixed strong local reader qwen3.8:27b-q4_K_M, digest
   25b843619e944cd0ae6069f94ff4e5e26a16e109ccbc0a66a0f05979ed70098e,
   27.3B parameters, Q4_K_M, 262,144-token declared context.

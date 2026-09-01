@@ -101,7 +101,7 @@ def main() -> int:
     tool_before = load(tool_before_path) if tool_before_path.exists() else None
     tool_after_path = EVAL / "tool_agent" / "RESULTS.json"
     tool_after = load(tool_after_path) if tool_after_path.exists() else None
-    release_path = EVAL / "releases" / "0.7.0rc2" / "RELEASE_MANIFEST.json"
+    release_path = EVAL / "releases" / "0.7.0rc3" / "RELEASE_MANIFEST.json"
     release = load(release_path) if release_path.exists() else None
     real_hdc_path = EVAL / "real_hdc" / "READINESS.json"
     real_hdc = load(real_hdc_path) if real_hdc_path.exists() else None
@@ -526,21 +526,25 @@ def main() -> int:
 
     if release is not None:
         for metric in (
-            "wheel_install_no_deps",
-            "versioned_outcome_smoke",
+            "wheel_install_clean_venv",
+            "installed_hng_eval_entry",
+            "installed_hng_eval_dry_run",
+            "fresh_clone_core",
+            "deterministic_250",
+            "compiler_completion",
             "sdist_contains_changelog",
             "sdist_contains_migration_guide",
         ):
             results.append(row(
-                "release_070rc2",
+                "release_070rc3",
                 "hng_frontier_package",
                 metric,
                 1.0 if release["checks"][metric] else 0.0,
                 "fraction",
                 "local",
                 release["status"],
-                "releases/0.7.0rc2/RELEASE_MANIFEST.json",
-                "Local release qualification; not a package-index publication.",
+                "releases/0.7.0rc3/RELEASE_MANIFEST.json",
+                "Exact-commit fresh-clone local release qualification; not a package-index publication.",
             ))
 
     if belief is not None:

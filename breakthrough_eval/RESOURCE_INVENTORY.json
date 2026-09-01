@@ -7,17 +7,20 @@
     "account": "Yoder23",
     "repository": "https://github.com/Yoder23/hng-memory",
     "remote": "https://github.com/Yoder23/hng-memory.git",
-    "verified_commit": "9a47a3e412d643f640dafcab93ecdbdecf5c72e4",
+    "verified_commit": "27e4a8ee0012f7eef1a9b3655fb8d454aa14c3ab",
     "viewer_permission": "ADMIN"
   },
   "release_artifacts": {
-    "current_version": "0.7.0rc2",
+    "current_version": "0.7.0rc3",
     "status": "QUALIFIED_LOCAL_RELEASE_CANDIDATE",
-    "manifest": "breakthrough_eval/releases/0.7.0rc2/RELEASE_MANIFEST.json",
-    "wheel_sha256": "01872906189b519a77ab96ef346d0c8294ee02f3e5c1c5e87ce302f9c062639c",
-    "sdist_sha256": "11c0988896b94e23f17ce3db7a85fd382855175293f96d7f23499144e561af63",
+    "manifest": "breakthrough_eval/releases/0.7.0rc3/RELEASE_MANIFEST.json",
+    "wheel_sha256": "dc92ac38b08441739c55e0427d197d194a83c94823cea48c9f5fa79566bdab9b",
+    "sdist_sha256": "7512cd742a3ce5c326b7b94ea029dec797b57505c46658e22f6b7167ccba37ad",
     "wheel_smoke_passed": true,
-    "sdist_required_docs_present": true
+    "sdist_required_docs_present": true,
+    "installed_hng_eval_entry": true,
+    "fresh_clone_proof": "breakthrough_eval/fresh_clone_reproduction/RESULTS.json",
+    "fresh_clone_core_passed": true
   },
   "hardware": {
     "cpu": "Intel Core i9-12900H",

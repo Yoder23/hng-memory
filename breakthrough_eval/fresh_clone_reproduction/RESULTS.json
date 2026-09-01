@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "proof_date": "2026-09-01",
+  "repository": "https://github.com/Yoder23/hng-memory",
+  "checkout": {
+    "commit": "27e4a8ee0012f7eef1a9b3655fb8d454aa14c3ab",
+    "path": "C:/tmp/hng-fresh-proof-27e4a8e",
+    "new_clone": true,
+    "detached_exact_commit": true,
+    "tracked_changes_after_execution": [],
+    "untracked_after_execution": ["qualified_dist/"]
+  },
+  "build": {
+    "source": "baseline_source/hng-frontier-0.5.1a1",
+    "package_version": "0.7.0rc3",
+    "wheel": {
+      "filename": "hng_frontier-0.7.0rc3-py3-none-any.whl",
+      "bytes": 103212,
+      "sha256": "dc92ac38b08441739c55e0427d197d194a83c94823cea48c9f5fa79566bdab9b",
+      "console_entry": "hng-eval = hngfrontier.eval_cli:main"
+    },
+    "sdist": {
+      "filename": "hng_frontier-0.7.0rc3.tar.gz",
+      "bytes": 107885,
+      "sha256": "7512cd742a3ce5c326b7b94ea029dec797b57505c46658e22f6b7167ccba37ad",
+      "contains_changelog": true,
+      "contains_rc3_migration_guide": true
+    }
+  },
+  "installed_entry": {
+    "new_virtual_environment": true,
+    "wheel_install_succeeded": true,
+    "executable_exists": true,
+    "version_stdout": "hng-eval 0.7.0rc3",
+    "version_returncode": 0,
+    "dry_run_returncode": 0,
+    "dry_run_commands": [
+      "breakthrough_tests_dependency_free",
+      "adversarial_250_isolated",
+      "compile_results"
+    ]
+  },
+  "execution": {
+    "command": "hng-eval --repo-root C:/tmp/hng-fresh-proof-27e4a8e fresh-clone-core",
+    "returncode": 0,
+    "status_stdout": "complete",
+    "completed_commands": 3,
+    "dependency_free_tests": {
+      "passed": 58,
+      "failed": 0,
+      "excluded_external_modules": [
+        "test_locomo_hybrid_holdout.py",
+        "test_locomo_plus_pilot.py",
+        "test_locomo_reranker_holdout.py",
+        "test_locomo_retrieval_budget_holdout.py"
+      ]
+    },
+    "deterministic_250": {
+      "output": ".hng-eval-proof/fixed_candidate/DETERMINISTIC_RESULTS.json",
+      "raw_log": ".hng-eval-proof/fixed_candidate/raw/deterministic_events.jsonl",
+      "scenario_count": 250,
+      "raw_event_count": 750,
+      "candidate_pool_identity_verified": true,
+      "hng_accuracy": 0.9,
+      "strong_structured_accuracy": 0.9,
+      "ordinary_raw_majority_accuracy": 0.1
+    },
+    "compiler": {
+      "completed": true,
+      "results": 230,
+      "scoreboard_rows": 22
+    }
+  },
+  "immutability": {
+    "frozen_evidence_overwritten": false,
+    "proof_output_ignored": true,
+    "source_worktree_mutated": false
+  },
+  "claim_boundary": "This proves a clean installed reproduction path for the owned dependency-free core. It does not make the four external LoCoMo modules package dependencies and does not upgrade synthetic evidence to public canonical or real-assistant evidence."
+}

@@ -101,9 +101,12 @@ HNG-specific attribution control.
 The scaled-isolation command creates ignored SQLite runtime files, takes about seven minutes on the
 recorded host, and refuses to overwrite an earlier preserved run.
 
-The failure-driven ToolAgentAdapter context fix is packaged as 0.7.0rc2 under
-releases/0.7.0rc2/final_dist. RELEASE_MANIFEST.json distinguishes the qualifying artifacts from the
-preserved first build whose sdist omitted required release documentation.
+The current local release candidate is 0.7.0rc3 under `releases/0.7.0rc3/qualified_dist`. Its
+manifest distinguishes the qualifying exact-commit artifacts from two preserved earlier build
+pairs. A brand-new private-repository clone installed the wheel and used `hng-eval` to pass 58
+dependency-free tests, execute the isolated 250-case deterministic study, and recompile the result
+corpus. The four external LoCoMo test modules remain explicit exclusions from this dependency-free
+proof and continue to run in the configured 81-test breakthrough suite.
 
 ## Current resource boundary
 
