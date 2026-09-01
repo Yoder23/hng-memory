@@ -449,3 +449,20 @@ orchestration and repository inspection. This correlation motivates a separate
 controlled diagnostic but does not establish causation, relax the frozen cap,
 or change v2's failure. The hypothesis is recorded as `UNPROVEN` and cannot be
 used as qualification evidence.
+
+## Child-handle diagnostic timing-control failure
+
+The first separately preregistered observer diagnostic ran from commit
+`d9ff16b7257446af53d19eed873f34670e03e0aa`. All four children completed with
+zero errors, every phase met its sample minimum, and pulse ordinals 1 through 20
+were unique and complete. The external pulse launcher began later than expected
+and its per-command overhead accumulated: pulse 19 landed at 271.357 seconds
+and pulse 20 at 276.805 seconds, outside the frozen `[150,270)` external phase.
+The fail-closed analyzer returned `status=ERROR`, `valid=false`, and
+`outcome=INVALID`; the run is not retried or used to resolve the hypothesis.
+
+The children recorded zero net external-phase handle growth across idle, event,
+SQLite-read, and SQLite-write variants, but that descriptive observation cannot
+satisfy the preregistered decision because two pulse-timing controls failed. A
+follow-up requires a new protocol/output directory and a cadence that leaves a
+larger timing margin.
