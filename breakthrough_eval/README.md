@@ -192,13 +192,22 @@ descriptively implicated Windows `Section` objects, but that pattern is not an
 admitted result until a separately versioned queue-safe replication satisfies
 all frozen controls.
 
+That queue-safe v3 replication passed all controls. All 48 children reported
+and exited zero. Idle and isolated-SQLite median slopes were about 1.017
+handles/minute, versus 48.810 and 49.814 in two shared replications. Windows
+`Section` objects contributed a median 48 handles and 94.1% of positive median
+type growth in each shared run, with zero median `Section` growth in controls.
+The frozen outcome `IDENTIFIES_DOMINANT_HANDLE_TYPE` identifies the object type,
+not yet its mapped file or exact SQLite call path, and does not reverse the
+failed sustained reliability gate.
+
 The current local release candidate is 0.7.0rc3 under `releases/0.7.0rc3/qualified_dist`. Its
 manifest distinguishes the qualifying exact-commit artifacts from two preserved earlier build
 pairs. A brand-new private-repository clone installed the wheel and used `hng-eval` to pass 58
 dependency-free tests, execute the isolated 250-case deterministic study, and recompile the result
 corpus. The four external LoCoMo test modules remain explicit exclusions from this dependency-free
 proof. The configured suite passed 94 tests at rc3 qualification and the breakthrough suite passes
-144 after adding sustained-reliability evidence and root-cause diagnostic tests.
+145 after adding sustained-reliability evidence and root-cause diagnostic tests.
 
 ## Current resource boundary
 

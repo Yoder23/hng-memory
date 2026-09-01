@@ -344,6 +344,37 @@ def test_typed_v2_queue_failure_is_content_addressed_and_invalid() -> None:
         assert analysis["dominance_fraction_of_positive_median_delta"] > 0.9
 
 
+def test_typed_v3_result_is_content_addressed_and_identifies_sections() -> None:
+    result_path = typed_v3.RESULT
+    events_path = typed_v3.EVENTS
+    result = json.loads(result_path.read_text(encoding="utf-8"))
+
+    assert hashlib.sha256(result_path.read_bytes()).hexdigest() == (
+        "8c8ae43b0600bd338d8e692b355090a89a4aa19570a6b4e1201a5c8a54382cd2"
+    )
+    assert hashlib.sha256(events_path.read_bytes()).hexdigest() == (
+        "c73439e68864cb3d6ebda4a5c43c6c990a04466f8db83abed3b9b18e6cef9c62"
+    )
+    assert result["status"] == "PASS"
+    assert result["outcome"] == "IDENTIFIES_DOMINANT_HANDLE_TYPE"
+    assert result["dominant_handle_type"] == "Section"
+    assert all(
+        item["valid"] and len(item["reports"]) == 12
+        and item["exitcodes"] == [0] * 12
+        and item["report_drain_order"] == "concurrent_before_join"
+        for item in result["conditions"].values()
+    )
+    for name in ("shared_sqlite_12_a", "shared_sqlite_12_b"):
+        analysis = result["handle_type_analysis"][name]
+        assert analysis["dominant_type"] == "Section"
+        assert analysis["dominant_type_median_delta"] == 48.0
+        assert analysis["dominance_fraction_of_positive_median_delta"] > 0.94
+    for name in ("idle_12", "isolated_sqlite_12"):
+        assert result["handle_type_analysis"][name]["median_delta_by_type"][
+            "Section"
+        ] == 0.0
+
+
 @pytest.mark.skipif(
     matrix.sustained.psutil is None
     or not hasattr(matrix.sustained.psutil.Process(), "num_handles"),

@@ -73,5 +73,13 @@ localizes the reproduced growth to concurrent shared-database activity under
 this workload. It does not identify the exact handle type or allocation path,
 and v2 remains failed rather than reclassified.
 
+A queue-safe Windows object-type follow-up later identified the growing handles
+as `Section` objects. Two valid shared-database replications each had a median
+`Section` delta of 48, representing 94.1% of positive median type growth, while
+idle and isolated-SQLite controls had zero median `Section` growth. This narrows
+the mechanism to Windows memory-mapping objects created during concurrent
+shared SQLite/WAL activity. The mapped file and exact allocation call path are
+still unproven, and the sustained failure remains unchanged.
+
 The authoritative machine postmortem is `FAILURE_ANALYSIS.json`; the original
 `RESULTS.json` and fsynced `events.jsonl` are unchanged.

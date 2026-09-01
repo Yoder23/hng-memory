@@ -566,3 +566,20 @@ of positive median type growth; controls had zero median `Section` growth.
 These values are inadmissible for the invalid decision. A distinct follow-up
 must drain reports concurrently with child exit while retaining the frozen
 mechanism thresholds.
+
+## Handle-type diagnostic v3 valid identification
+
+The queue-safe follow-up from commit
+`53e3602689e59255c2152fbd4a02ce500b87fa67` drained reports before joining
+children. All 48 children reported, exited zero, met their sample minimums, had
+zero handle-query errors, and produced zero missing or malformed reader checks.
+Idle and isolated-SQLite median slopes were both about 1.017 handles/minute;
+the two shared replications measured 48.810 and 49.814. Every shared child
+exceeded the frozen lower bound.
+
+Windows `Section` objects had median deltas of 48 in both shared replications,
+accounted for 94.1% of positive median type growth, and had zero median growth
+in both controls. The exact frozen outcome is
+`IDENTIFIES_DOMINANT_HANDLE_TYPE`. This validly identifies the kernel object
+type but not yet the mapped file or SQLite allocation path. Sustained v2 remains
+failed; the mechanism result is not reliability qualification evidence.
