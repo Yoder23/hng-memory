@@ -317,3 +317,8 @@ public, canonical, or real-assistant evidence.
    clone intentionally lacks the uncommitted external `task_eval` checkout. The failure is
    preserved in `fresh_clone_reproduction/BEFORE.json`. A separate dependency-free command now
    declares those four exclusions while the configured-environment suite continues to run them.
+3. The first exact-commit run of `fresh-clone-core` passed 54 tests but failed two configuration
+   tests because `Qwen3Reranker` imported optional `torch` before rejecting invalid dimensions.
+   The new virtual environment correctly did not contain the heavyweight reranker runtime. The
+   failure is preserved in `fresh_clone_reproduction/BEFORE.json`; validation now occurs before
+   optional imports, without changing any valid reranker inference path.

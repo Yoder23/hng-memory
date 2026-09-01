@@ -43,11 +43,12 @@ class Qwen3Reranker:
     suffix = "<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n"
 
     def __init__(self, config: RerankerConfig) -> None:
+        if config.max_length <= 0 or config.batch_size <= 0:
+            raise ValueError("max_length and batch_size must be positive")
+
         import torch
         from transformers import AutoModelForCausalLM, AutoTokenizer
 
-        if config.max_length <= 0 or config.batch_size <= 0:
-            raise ValueError("max_length and batch_size must be positive")
         if not config.model_dir.is_dir():
             raise FileNotFoundError(config.model_dir)
         if config.device == "cuda" and not torch.cuda.is_available():

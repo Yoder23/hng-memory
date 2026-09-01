@@ -25,5 +25,22 @@
       "test_locomo_retrieval_budget_holdout.py"
     ]
   },
+  "rc3_checkpoint_fresh_clone": {
+    "checkout_commit": "83c32a039838f792c61ecce19ff48e54014e2d28",
+    "checkout_path": "C:/tmp/hng-fresh-proof-83c32a0",
+    "package_version": "0.7.0rc3",
+    "hng_eval_entry_exists": true,
+    "hng_eval_version": "hng-eval 0.7.0rc3",
+    "fresh_clone_core_returncode": 1,
+    "status": "FAILED_OPTIONAL_IMPORT_BEFORE_VALIDATION",
+    "tests_passed": 54,
+    "tests_failed": 2,
+    "failed_tests": [
+      "test_invalid_dimensions_are_rejected_before_model_load[0-1]",
+      "test_invalid_dimensions_are_rejected_before_model_load[1-0]"
+    ],
+    "observed_error": "ModuleNotFoundError: No module named 'torch'",
+    "root_cause": "Qwen3Reranker imported optional torch/transformers before validating invalid max_length or batch_size."
+  },
   "claim_boundary": "The external LoCoMo-Plus task_eval checkout is intentionally not committed. This failure does not imply production-package or fixed-candidate test failure."
 }
