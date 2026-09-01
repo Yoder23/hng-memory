@@ -142,6 +142,19 @@ arms are rerun.
 These are setup/transport failures, not result evidence. The official benchmark validates at 5,000
 rows, 200 uniquely referenced 32K histories, and zero missing history references.
 
+## Scaled isolation setup failure and security boundary
+
+The first attempt to add the 100,000-principal probe failed inside the patch-command wrapper because
+literal documentation delimiters terminated its JavaScript template before apply_patch ran. No
+repository file or benchmark artifact changed. The patch was resubmitted without that wrapper
+ambiguity; the small regression passed before the full run.
+
+The full probe also records a deployment limitation rather than hiding it: scoped eligible-ID
+queries and ActorPolicy produce zero observed cross-user, cross-tenant, role, or authority leakage,
+but raw get/get_many are privileged unscoped primitives. Possession of a private record identifier
+is sufficient for direct raw lookup. The result therefore does not claim authentication-system or
+request-boundary security; deployments must keep raw access behind server-side authorization.
+
 ## HNG-ablation harness corrections
 
 1. The first matrix invocation imported `EvidenceAggregator` from the governance convenience module,

@@ -75,6 +75,16 @@
       "status": "PASS"
     },
     {
+      "area": "100K-principal scoped isolation",
+      "baseline": null,
+      "delta": null,
+      "evidence_class": "local",
+      "hng": 1.0,
+      "notes": "100000 tenant/user principals; 100000 exhaustive scoped checks; 10000 concurrent read checks and 800 writes; zero scoped or actor-policy leakage. Raw get/get_many remain privileged and unscoped; external authentication was not tested.",
+      "significance": null,
+      "status": "PASS_WITH_BOUNDARY"
+    },
+    {
       "area": "Synthetic belief revision",
       "baseline": 1.0,
       "delta": 0.0,

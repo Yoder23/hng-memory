@@ -56,6 +56,26 @@ Machine evidence is `reliability/MULTITENANT_100K_1K.json`; its runtime database
 Git. This is 100,000 records and 1,000 tenant partitions, not 100,000 users and not a concurrency
 load test.
 
+A third bounded probe uses 100,000 tenant/user principals with identical semantic state, then
+overlaps 10,000 scoped reader checks with 800 durable global writes:
+
+| Measure | Result |
+|---|---:|
+| Total duration | 390.445 s |
+| Append p50 / p95 / p99 | 3.739 / 4.486 / 8.484 ms |
+| Verified restarts | 3/3 |
+| Exhaustive authorized / wrong-tenant / wrong-user checks | 100,000 / 100,000 / 100,000 |
+| Scoped cross-tenant / cross-user leaks | 0 / 0 |
+| Matching / wrong-role / below-authority policy checks | 100,000 / 100,000 / 100,000 |
+| Role / authority leaks | 0 / 0 |
+| Concurrent read checks / completed writes | 10,000 / 800 |
+| Pre/post-backup records | 100,800 / 100,800 |
+| Pre/post logical ledger SHA-256 | identical (924dcf...2d503) |
+
+Machine evidence is reliability/MULTI_USER_100K_ISOLATION.json. The result is explicitly bounded:
+it assumes trusted tenant/user context on scoped queries, and raw get/get_many primitives are
+unscoped. It is neither an authentication test nor an hours-long load result.
+
 ## What is not a soak result
 
 Passing bounded fault tests and 10,000/100,000-write durability probes is not equivalent to an hours- or

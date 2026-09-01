@@ -70,6 +70,8 @@ def main() -> int:
     reliability = load(reliability_path) if reliability_path.exists() else None
     multitenant_path = EVAL / "reliability" / "MULTITENANT_100K_1K.json"
     multitenant = load(multitenant_path) if multitenant_path.exists() else None
+    isolation_path = EVAL / "reliability" / "MULTI_USER_100K_ISOLATION.json"
+    isolation = load(isolation_path) if isolation_path.exists() else None
     belief_path = EVAL / "belief_revision" / "RESULTS.json"
     belief = load(belief_path) if belief_path.exists() else None
     provenance_path = EVAL / "provenance_ablation" / "RESULTS.json"
@@ -264,6 +266,78 @@ def main() -> int:
                 multitenant["status"],
                 "reliability/MULTITENANT_100K_1K.json",
                 "Exact per-tenant eligible-ID counts; no concurrent user workload was exercised.",
+            ),
+        ])
+
+    if isolation is not None:
+        exhaustive = isolation["exhaustive_scoped_queries"]
+        actor = isolation["actor_policy"]
+        results.extend([
+            row(
+                "scaled_multi_user_isolation",
+                "sqlite_scoped_query_actor_policy",
+                "synthetic_user_principals",
+                float(isolation["config"]["synthetic_user_principals"]),
+                "count",
+                "local",
+                isolation["status"],
+                "reliability/MULTI_USER_100K_ISOLATION.json",
+                isolation["claim_boundary"],
+            ),
+            row(
+                "scaled_multi_user_isolation",
+                "sqlite_scoped_query_actor_policy",
+                "scoped_cross_tenant_leakage_rate",
+                float(exhaustive["cross_tenant_leaks"]) / float(exhaustive["checks"]),
+                "fraction",
+                "local",
+                isolation["status"],
+                "reliability/MULTI_USER_100K_ISOLATION.json",
+                isolation["claim_boundary"],
+            ),
+            row(
+                "scaled_multi_user_isolation",
+                "sqlite_scoped_query_actor_policy",
+                "scoped_cross_user_leakage_rate",
+                float(exhaustive["cross_user_leaks"]) / float(exhaustive["checks"]),
+                "fraction",
+                "local",
+                isolation["status"],
+                "reliability/MULTI_USER_100K_ISOLATION.json",
+                isolation["claim_boundary"],
+            ),
+            row(
+                "scaled_multi_user_isolation",
+                "actor_policy",
+                "role_authority_leakage_rate",
+                float(actor["role_leaks"] + actor["authority_leaks"]) / float(actor["checks"] * 2),
+                "fraction",
+                "local",
+                isolation["status"],
+                "reliability/MULTI_USER_100K_ISOLATION.json",
+                "Role and authority eligibility only; not an identity-provider test.",
+            ),
+            row(
+                "scaled_multi_user_isolation",
+                "sqlite_scoped_query",
+                "authorized_query_latency_p95",
+                float(exhaustive["query_latency_ms"]["p95"]),
+                "milliseconds",
+                "local",
+                isolation["status"],
+                "reliability/MULTI_USER_100K_ISOLATION.json",
+                isolation["claim_boundary"],
+            ),
+            row(
+                "scaled_multi_user_isolation",
+                "sqlite_evidence_store",
+                "concurrent_writes_completed",
+                float(isolation["concurrent_global_writes"]["completed"]),
+                "count",
+                "local",
+                isolation["status"],
+                "reliability/MULTI_USER_100K_ISOLATION.json",
+                "Bounded overlap with concurrent scoped readers; not an hours-long load test.",
             ),
         ])
 
@@ -545,6 +619,22 @@ def main() -> int:
                     f"{multitenant['ledger']['after_count']} records; exact 100-per-tenant counts; "
                     f"backup ledger identical; p95 append {multitenant['append_latency_ms']['p95']:.3f} ms. "
                     "Not a 100K-user or concurrent load test."
+                ),
+            }]),
+            *([] if isolation is None else [{
+                "area": "100K-principal scoped isolation",
+                "hng": 1.0 if isolation["scoped_zero_leakage"] else 0.0,
+                "baseline": None,
+                "delta": None,
+                "significance": None,
+                "evidence_class": "local",
+                "status": isolation["status"],
+                "notes": (
+                    f"{isolation['config']['synthetic_user_principals']} tenant/user principals; "
+                    f"{isolation['exhaustive_scoped_queries']['checks']} exhaustive scoped checks; "
+                    f"{isolation['concurrent_read_queries']['checks']} concurrent read checks and "
+                    f"{isolation['concurrent_global_writes']['completed']} writes; zero scoped or actor-policy leakage. "
+                    "Raw get/get_many remain privileged and unscoped; external authentication was not tested."
                 ),
             }]),
             *([] if belief is None else [{

@@ -106,6 +106,16 @@ def commands_for(args: argparse.Namespace) -> list[Command]:
             tests,
             compile_results,
         ]
+    if args.command == "scaled-isolation":
+        return [
+            Command(
+                "multi_user_100k_isolation",
+                py(str(SCRIPTS / "multi_user_isolation_probe.py")),
+                "100,000-principal scoped storage and actor-policy isolation probe; approximately seven minutes on the recorded host.",
+            ),
+            tests,
+            compile_results,
+        ]
     raise AssertionError(f"unknown command: {args.command}")
 
 
@@ -146,6 +156,7 @@ def parse_args() -> argparse.Namespace:
     public.add_argument("--execute-llm", action="store_true", help="Run all local reader/judge calls.")
     subparsers.add_parser("belief-revision", help="Reproduce the synthetic belief-revision component study.")
     subparsers.add_parser("component-probes", help="Reproduce all packaged synthetic component studies.")
+    subparsers.add_parser("scaled-isolation", help="Run the 100,000-principal scoped isolation probe.")
     return parser.parse_args()
 
 

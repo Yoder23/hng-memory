@@ -1,0 +1,132 @@
+{
+  "actor_policy": {
+    "authority_leaks": 0,
+    "checks": 100000,
+    "matching_failures": 0,
+    "role_leaks": 0
+  },
+  "append_latency_ms": {
+    "mean": 3.6665160268906036,
+    "p50": 3.738949977559969,
+    "p95": 4.485505042248404,
+    "p99": 8.483809989411379,
+    "stdev": 2.7448206788804925
+  },
+  "backup": "breakthrough_eval/reliability/run_data/multi_user_100k_backup.sqlite",
+  "backup_bytes": 161529856,
+  "benchmark": "production_store_100k_principal_isolation_probe",
+  "claim_boundary": "Proves zero leakage only for scoped eligible_ids/query_structured-style access with trusted tenant/user context plus ActorPolicy role/authority eligibility. It is not an authentication test; privileged get/get_many remain deliberately unscoped.",
+  "command": [
+    "C:\\Python310\\python.exe",
+    "breakthrough_eval\\scripts\\multi_user_isolation_probe.py"
+  ],
+  "concurrent_global_writes": {
+    "attempted": 800,
+    "completed": 800,
+    "latency_ms": {
+      "mean": 16.571948748460272,
+      "p50": 16.003950004233047,
+      "p95": 27.337819986860264,
+      "p99": 36.51620296877809,
+      "stdev": 5.370067315843511
+    }
+  },
+  "concurrent_read_queries": {
+    "authorized_misses": 0,
+    "checks": 10000,
+    "cross_tenant_leaks": 0,
+    "cross_user_leaks": 0
+  },
+  "config": {
+    "concurrent_read_checks": 10000,
+    "concurrent_writes": 800,
+    "journal_mode": "WAL",
+    "lifecycle_records": 100,
+    "local_users_per_tenant": 100,
+    "reader_workers": 8,
+    "records": 100000,
+    "restart_every": 25000,
+    "roles": [
+      "novice",
+      "specialist",
+      "senior_ic",
+      "manager",
+      "executive"
+    ],
+    "semantic_state": "identical across all private records",
+    "synchronous": "FULL",
+    "synthetic_user_principals": 100000,
+    "tenants": 1000,
+    "writer_workers": 4
+  },
+  "database": "breakthrough_eval/reliability/run_data/multi_user_100k.sqlite",
+  "database_bytes": 161529856,
+  "duration_seconds": 390.4449658000376,
+  "exhaustive_scoped_queries": {
+    "attack_query_latency_ms": {
+      "mean": 0.010369099039235153,
+      "p50": 0.009400013368576765,
+      "p95": 0.016099947970360518,
+      "p99": 0.026800029445439577,
+      "stdev": 0.00882846508831206
+    },
+    "authorized_misses": 0,
+    "checks": 100000,
+    "cross_tenant_leaks": 0,
+    "cross_user_leaks": 0,
+    "examples": [],
+    "query_latency_ms": {
+      "mean": 0.007612081057741307,
+      "p50": 0.006999995093792677,
+      "p95": 0.008600007276982069,
+      "p99": 0.018199963960796595,
+      "stdev": 0.006527163326328554
+    }
+  },
+  "generation_before_backup": 100901,
+  "ledger": {
+    "after_count": 100800,
+    "after_sha256": "924dcf0fb3dfeb63cb59ef5903a579528abe42597d6ff10935cb4ec2d732d503",
+    "before_count": 100800,
+    "before_sha256": "924dcf0fb3dfeb63cb59ef5903a579528abe42597d6ff10935cb4ec2d732d503",
+    "identical": true
+  },
+  "lifecycle_passed": true,
+  "privileged_raw_access": {
+    "deployment_requirement": "Keep raw primitives behind a trusted service boundary and derive tenant_id/user_id from authenticated server-side context.",
+    "direct_get_returns_private_record_by_id": true,
+    "get_is_access_controlled": false,
+    "get_many_is_access_controlled": false
+  },
+  "restart_checks": [
+    {
+      "expected_generation": 25000,
+      "generation": 25000,
+      "passed": true,
+      "records_written": 25000,
+      "reopen_ms": 2.9973000055179,
+      "sentinel_present": true
+    },
+    {
+      "expected_generation": 50000,
+      "generation": 50000,
+      "passed": true,
+      "records_written": 50000,
+      "reopen_ms": 2.2283000289462507,
+      "sentinel_present": true
+    },
+    {
+      "expected_generation": 75000,
+      "generation": 75000,
+      "passed": true,
+      "records_written": 75000,
+      "reopen_ms": 1.871699991170317,
+      "sentinel_present": true
+    }
+  ],
+  "restored_generation": 100901,
+  "schema_version": 1,
+  "scoped_zero_leakage": true,
+  "seed": 20260901,
+  "status": "PASS_WITH_BOUNDARY"
+}

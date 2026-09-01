@@ -646,6 +646,72 @@
       "value": 1.0
     },
     {
+      "area": "scaled_multi_user_isolation",
+      "evidence_class": "local",
+      "metric": "synthetic_user_principals",
+      "notes": "Proves zero leakage only for scoped eligible_ids/query_structured-style access with trusted tenant/user context plus ActorPolicy role/authority eligibility. It is not an authentication test; privileged get/get_many remain deliberately unscoped.",
+      "source": "reliability/MULTI_USER_100K_ISOLATION.json",
+      "status": "PASS_WITH_BOUNDARY",
+      "system": "sqlite_scoped_query_actor_policy",
+      "unit": "count",
+      "value": 100000.0
+    },
+    {
+      "area": "scaled_multi_user_isolation",
+      "evidence_class": "local",
+      "metric": "scoped_cross_tenant_leakage_rate",
+      "notes": "Proves zero leakage only for scoped eligible_ids/query_structured-style access with trusted tenant/user context plus ActorPolicy role/authority eligibility. It is not an authentication test; privileged get/get_many remain deliberately unscoped.",
+      "source": "reliability/MULTI_USER_100K_ISOLATION.json",
+      "status": "PASS_WITH_BOUNDARY",
+      "system": "sqlite_scoped_query_actor_policy",
+      "unit": "fraction",
+      "value": 0.0
+    },
+    {
+      "area": "scaled_multi_user_isolation",
+      "evidence_class": "local",
+      "metric": "scoped_cross_user_leakage_rate",
+      "notes": "Proves zero leakage only for scoped eligible_ids/query_structured-style access with trusted tenant/user context plus ActorPolicy role/authority eligibility. It is not an authentication test; privileged get/get_many remain deliberately unscoped.",
+      "source": "reliability/MULTI_USER_100K_ISOLATION.json",
+      "status": "PASS_WITH_BOUNDARY",
+      "system": "sqlite_scoped_query_actor_policy",
+      "unit": "fraction",
+      "value": 0.0
+    },
+    {
+      "area": "scaled_multi_user_isolation",
+      "evidence_class": "local",
+      "metric": "role_authority_leakage_rate",
+      "notes": "Role and authority eligibility only; not an identity-provider test.",
+      "source": "reliability/MULTI_USER_100K_ISOLATION.json",
+      "status": "PASS_WITH_BOUNDARY",
+      "system": "actor_policy",
+      "unit": "fraction",
+      "value": 0.0
+    },
+    {
+      "area": "scaled_multi_user_isolation",
+      "evidence_class": "local",
+      "metric": "authorized_query_latency_p95",
+      "notes": "Proves zero leakage only for scoped eligible_ids/query_structured-style access with trusted tenant/user context plus ActorPolicy role/authority eligibility. It is not an authentication test; privileged get/get_many remain deliberately unscoped.",
+      "source": "reliability/MULTI_USER_100K_ISOLATION.json",
+      "status": "PASS_WITH_BOUNDARY",
+      "system": "sqlite_scoped_query",
+      "unit": "milliseconds",
+      "value": 0.008600007276982069
+    },
+    {
+      "area": "scaled_multi_user_isolation",
+      "evidence_class": "local",
+      "metric": "concurrent_writes_completed",
+      "notes": "Bounded overlap with concurrent scoped readers; not an hours-long load test.",
+      "source": "reliability/MULTI_USER_100K_ISOLATION.json",
+      "status": "PASS_WITH_BOUNDARY",
+      "system": "sqlite_evidence_store",
+      "unit": "count",
+      "value": 800.0
+    },
+    {
       "area": "synthetic_belief_revision",
       "evidence_class": "synthetic",
       "metric": "current_belief_accuracy",

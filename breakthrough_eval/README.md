@@ -35,11 +35,15 @@ C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py rag-governance --
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py public-memory --execute-llm
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py belief-revision
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py component-probes
+C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py scaled-isolation
 ```
 
 Omit `--execute-llm` to prepare and verify expensive experiments without invoking the local 27B
 model. Add `--dry-run` before the subcommand to print the exact commands. Public-memory execution
 requires the pinned external datasets described in `PUBLIC_RESOURCES.json`; they are ignored by Git.
+
+The scaled-isolation command creates ignored SQLite runtime files, takes about seven minutes on the
+recorded host, and refuses to overwrite an earlier preserved run.
 
 ## Current resource boundary
 
