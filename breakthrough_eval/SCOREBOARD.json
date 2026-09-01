@@ -126,6 +126,16 @@
       "status": "PASS"
     },
     {
+      "area": "Sustained multiprocess reliability attempt",
+      "baseline": null,
+      "delta": null,
+      "evidence_class": "local",
+      "hng": 0.0,
+      "notes": "Exact preregistered run was safety-interrupted after the first online backup starved, the 15-minute worker rotation was missed, WAL reached 10.24 GB, and worker handles reached 815. Zero backup cycles completed; no qualifying RESULTS.json exists.",
+      "significance": null,
+      "status": "INTERRUPTED_FAIL"
+    },
+    {
       "area": "Bounded 100K-record / 1K-tenant storage",
       "baseline": null,
       "delta": null,

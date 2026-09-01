@@ -67,6 +67,30 @@ def test_frozen_preparation_matches_current_sources() -> None:
     sustained.verify_prepared(payload, qualifying_args())
 
 
+def test_interrupted_run_is_preserved_as_failure_not_result() -> None:
+    interrupted = json.loads(
+        (
+            sustained.OUTPUT_DIR / "INTERRUPTED.json"
+        ).read_text(encoding="utf-8")
+    )
+    events = sustained.EVENTS.read_bytes()
+
+    assert interrupted["status"] == "INTERRUPTED_FAIL"
+    assert interrupted["qualifying_result_exists"] is False
+    assert interrupted["execution"]["result_json_written"] is False
+    assert interrupted["failure"]["backup_completion_event_present"] is False
+    assert interrupted["failure"]["rotation_event_present"] is False
+    assert interrupted["unmet_frozen_criteria"]
+    assert sustained.RESULT.exists() is False
+    event_artifact = next(
+        item for item in interrupted["preserved_artifacts"]
+        if item["path"].endswith("events.jsonl")
+    )
+    assert event_artifact["sha256"] == sustained.hashlib.sha256(
+        events
+    ).hexdigest()
+
+
 def test_latency_histograms_merge_without_retaining_samples() -> None:
     first = sustained.histogram()
     second = sustained.histogram()

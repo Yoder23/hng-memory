@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "benchmark": "sustained_2h_multiprocess_sqlite_evidence_store_reliability",
+  "status": "INTERRUPTED_FAIL",
+  "qualifying_result_exists": false,
+  "claim_boundary": "Negative operational evidence from the exact preregistered run. The two-hour duration, worker rotations, backup/restore cycles, final ledger, and resource-sampling minimums were not completed. This is not a qualifying soak result.",
+  "preregistered_commit": "d3cef83d1f4d86ab4efe1bcbaa8cf77f4b8b2ccf",
+  "command": [
+    "C:\\Python310\\python.exe",
+    "breakthrough_eval\\scripts\\sustained_reliability.py",
+    "--preregistered-commit",
+    "d3cef83d1f4d86ab4efe1bcbaa8cf77f4b8b2ccf"
+  ],
+  "preflight_observed": {
+    "local_origin_github_api_equal": true,
+    "worktree_clean": true,
+    "authenticated_github_viewer": "Yoder23",
+    "free_bytes_before_external_audit": 96805257216,
+    "minimum_free_bytes": 40000000000
+  },
+  "execution": {
+    "started_at_utc": "2026-09-01T17:24:29.659493+00:00",
+    "interrupted_at_utc": "2026-09-01T17:40:06.4865812Z",
+    "observed_runtime_seconds_minimum": 900,
+    "exit_code": 1,
+    "stdout": "",
+    "result_json_written": false,
+    "event_count": 13,
+    "last_event": "resource_sample",
+    "last_fsynced_event_elapsed_seconds": 600.0882994999993,
+    "workers_started": 12,
+    "workers_live_after_interrupt": 0
+  },
+  "failure": {
+    "kind": "online_backup_starvation_under_sustained_writes",
+    "first_backup_due_elapsed_seconds": 600,
+    "backup_completion_event_present": false,
+    "scheduled_rotation_elapsed_seconds": 900,
+    "rotation_event_present": false,
+    "external_observation_at_rotation": {
+      "live_workers": 12,
+      "maximum_worker_handles": 815,
+      "maximum_worker_working_set_bytes": 59813888,
+      "free_bytes": 85879586816,
+      "database_bytes": 252477440,
+      "wal_bytes": 10237227712,
+      "backup_bytes": 0
+    },
+    "safety_intervention": "A single Ctrl-C was sent after the missed 15-minute rotation because the coordinator was blocked inside the first online backup, WAL and handle counts continued growing, and the wrapper could not enforce its frozen resource caps while blocked.",
+    "retry_policy": "Do not retry this protocol or overwrite these artifacts. Any corrected experiment requires a new protocol, preparation artifact, commit, and output directory."
+  },
+  "wrapper_failure": {
+    "kind": "interrupt_result_not_serialized",
+    "expected": "The top-level BaseException handler would write an exclusive ERROR result.",
+    "observed": "The unified process exited code 1 with no stdout and no RESULTS.json.",
+    "consequence": "INTERRUPTED.json is an external machine postmortem, not a wrapper-generated qualifying result."
+  },
+  "last_fsynced_resource_sample": {
+    "elapsed_seconds": 600.0882994999993,
+    "process_count": 13,
+    "maximum_process_rss_bytes": 52748288,
+    "maximum_process_handles": 605,
+    "total_rss_bytes": 657752064,
+    "database_bytes": 252477440,
+    "wal_bytes": 6691539232
+  },
+  "preserved_artifacts": [
+    {
+      "path": "breakthrough_eval/reliability/sustained_2h/events.jsonl",
+      "bytes": 12972,
+      "sha256": "8d5ab3f2878956f9c54ca2c85d47769f5d44d3d4bb4ed70cbf6de63af9853401",
+      "tracked": true
+    },
+    {
+      "path": "breakthrough_eval/reliability/sustained_2h/run_data/sustained.sqlite",
+      "bytes": 387391488,
+      "sha256": "d39bc1f6c286b4fcca58859a33308730856da03f993cc2aa8fc91657116fe79c",
+      "tracked": false
+    },
+    {
+      "path": "breakthrough_eval/reliability/sustained_2h/run_data/sustained.sqlite-wal",
+      "bytes": 10318008552,
+      "sha256": "5bcdf84e57c70308c00ac0ca4b544520e5cc727a35aa3b2ddfb046d9818eeccb",
+      "tracked": false
+    },
+    {
+      "path": "breakthrough_eval/reliability/sustained_2h/run_data/backup-01.sqlite",
+      "bytes": 33554432,
+      "sha256": "1fa6fe485163dea6c035d72eabdb5fc0375f031dcd1de766c6db9833951a4ec3",
+      "tracked": false
+    }
+  ],
+  "unmet_frozen_criteria": [
+    "duration_reached",
+    "all_worker_epochs_passed",
+    "minimum_backup_cycles_reached",
+    "all_backup_restore_cycles_passed",
+    "final_record_count_exact",
+    "final_generation_exact",
+    "minimum_resource_samples_reached"
+  ]
+}

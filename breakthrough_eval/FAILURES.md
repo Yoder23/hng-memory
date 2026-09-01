@@ -381,6 +381,38 @@ it remains preserved rather than silently normalized.
 4. The first focused-test tool call was rejected by the orchestration parser
    before Python launched. The same command then ran through a parser-safe
    variable and passed all 13 focused tests.
+5. Two attempts to add the SQLite journal-sidecar ignore rule were rejected
+   before applying (one parser failure and one sandbox refresh failure). The
+   same one-line patch then succeeded; no runtime artifact was changed.
 
 None of these setup failures generated a preparation artifact or qualifying
 behavioral event.
+
+## Sustained-reliability qualifying failure
+
+The exact clean pushed command at commit
+`d3cef83d1f4d86ab4efe1bcbaa8cf77f4b8b2ccf` started all four writers and
+eight readers. At 600 seconds the coordinator entered the first online SQLite
+backup. Under uninterrupted writes the backup did not complete and emitted no
+event; because the coordinator was blocked, the 900-second worker rotation
+also did not occur. At the missed rotation boundary all 12 workers were still
+live, the backup remained zero bytes, WAL was 10,237,227,712 bytes, maximum
+worker handles were 815, and 85,879,586,816 bytes remained free.
+
+Continuing unchanged would have bypassed the coordinator's resource sampling
+and rotation while WAL/handles kept growing. One safety Ctrl-C stopped the
+process with exit code 1 and all workers terminated. The protocol is not
+retried. Thirteen fsynced events and byte hashes for the event ledger, live
+database, 10.318 GB WAL, and partial backup are preserved in
+`reliability/sustained_2h/INTERRUPTED.json`. Zero backup cycles completed and
+no qualifying soak result exists.
+
+## Sustained-reliability interrupt serialization failure
+
+The top-level wrapper was intended to catch BaseException and write an
+exclusive ERROR result. The unified Ctrl-C path instead exited with no stdout
+and no RESULTS.json. The external machine postmortem is therefore labeled
+`INTERRUPTED_FAIL`, not presented as wrapper output. The first PowerShell
+hash-reporting expression also contained an empty pipeline element and failed
+before reading a file; an explicit result-array command then hashed all four
+preserved artifacts successfully.

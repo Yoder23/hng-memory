@@ -130,14 +130,18 @@ four independent writer processes, eight scoped-reader processes, 15-minute
 worker rotation, online backup/restore every ten minutes, and one-minute
 cross-process resource sampling. Preparation and execution are separate; the
 execution command requires the exact clean pushed commit that contains the
-frozen hashes. A prepared protocol is not counted as behavioral evidence.
+frozen hashes. The exact run from commit `d3cef83` did not qualify: its first
+online backup starved under sustained writes, no backup completed, the
+15-minute rotation was missed, WAL reached 10.24 GB, and handles reached 815.
+A safety interrupt stopped all workers; the wrapper emitted no result, so the
+content-addressed external postmortem is explicitly `INTERRUPTED_FAIL`.
 
 The current local release candidate is 0.7.0rc3 under `releases/0.7.0rc3/qualified_dist`. Its
 manifest distinguishes the qualifying exact-commit artifacts from two preserved earlier build
 pairs. A brand-new private-repository clone installed the wheel and used `hng-eval` to pass 58
 dependency-free tests, execute the isolated 250-case deterministic study, and recompile the result
 corpus. The four external LoCoMo test modules remain explicit exclusions from this dependency-free
-proof. The configured suite passed 94 tests at rc3 qualification and passes 102 after adding the
+proof. The configured suite passed 94 tests at rc3 qualification and passes 103 after adding the
 sustained-reliability protocol tests.
 
 ## Current resource boundary

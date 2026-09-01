@@ -85,6 +85,14 @@ def main() -> int:
     reliability = load(reliability_path) if reliability_path.exists() else None
     million_write_path = EVAL / "reliability" / "million_write" / "RESULTS.json"
     million_write = load(million_write_path) if million_write_path.exists() else None
+    sustained_interrupted_path = (
+        EVAL / "reliability" / "sustained_2h" / "INTERRUPTED.json"
+    )
+    sustained_interrupted = (
+        load(sustained_interrupted_path)
+        if sustained_interrupted_path.exists()
+        else None
+    )
     multitenant_path = EVAL / "reliability" / "MULTITENANT_100K_1K.json"
     multitenant = load(multitenant_path) if multitenant_path.exists() else None
     isolation_path = EVAL / "reliability" / "MULTI_USER_100K_ISOLATION.json"
@@ -417,6 +425,60 @@ def main() -> int:
                 million_write["status"],
                 million_source,
                 "Full logical-ledger SHA-256 equality after one SQLite backup/restore cycle.",
+            ),
+        ])
+
+    if sustained_interrupted is not None:
+        sustained_source = "reliability/sustained_2h/INTERRUPTED.json"
+        rotation = sustained_interrupted["failure"][
+            "external_observation_at_rotation"
+        ]
+        results.extend([
+            row(
+                "sustained_storage_reliability_attempt",
+                "sqlite_evidence_store",
+                "observed_runtime_seconds_minimum",
+                float(sustained_interrupted["execution"][
+                    "observed_runtime_seconds_minimum"
+                ]),
+                "seconds",
+                "local",
+                sustained_interrupted["status"],
+                sustained_source,
+                sustained_interrupted["claim_boundary"],
+            ),
+            row(
+                "sustained_storage_reliability_attempt",
+                "sqlite_online_backup",
+                "completed_backup_restore_cycles",
+                0.0,
+                "count",
+                "local",
+                sustained_interrupted["status"],
+                sustained_source,
+                "First online backup starved; no completion event exists.",
+            ),
+            row(
+                "sustained_storage_reliability_attempt",
+                "multiprocess_resource_observation",
+                "maximum_worker_handles_at_rotation",
+                float(rotation["maximum_worker_handles"]),
+                "count",
+                "local",
+                sustained_interrupted["status"],
+                sustained_source,
+                "External read-only observation at the missed rotation boundary.",
+            ),
+            row(
+                "sustained_storage_reliability_attempt",
+                "sqlite_wal",
+                "wal_bytes_at_rotation",
+                float(rotation["wal_bytes"]),
+                "bytes",
+                "local",
+                sustained_interrupted["status"],
+                sustained_source,
+                "WAL growth while coordinator was blocked in online backup.",
             ),
         ])
 
@@ -1070,6 +1132,22 @@ def main() -> int:
                     f"{len(million_write['restart_checks'])} restart checks; backup ledger identical; "
                     f"p95 append {million_write['append_latency_ms']['p95']:.3f} ms. "
                     + million_write["claim_boundary"]
+                ),
+            }]),
+            *([] if sustained_interrupted is None else [{
+                "area": "Sustained multiprocess reliability attempt",
+                "hng": 0.0,
+                "baseline": None,
+                "delta": None,
+                "significance": None,
+                "evidence_class": "local",
+                "status": sustained_interrupted["status"],
+                "notes": (
+                    "Exact preregistered run was safety-interrupted after "
+                    "the first online backup starved, the 15-minute worker "
+                    "rotation was missed, WAL reached 10.24 GB, and worker "
+                    "handles reached 815. Zero backup cycles completed; no "
+                    "qualifying RESULTS.json exists."
                 ),
             }]),
             *([] if multitenant is None else [{

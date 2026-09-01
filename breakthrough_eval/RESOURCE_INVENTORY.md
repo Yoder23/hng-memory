@@ -17,7 +17,7 @@ verified through fresh-clone source commit 27e4a8ee0012f7eef1a9b3655fb8d454aa14c
   migration guide, and installed `hng-eval` proof from a brand-new exact-commit clone. The proof
   passes 58 dependency-free tests, deterministic 250, and compiler regeneration; its four external
   LoCoMo exclusions are explicit. The configured suite passed 94 tests at rc3 qualification and
-  passes 102 after the sustained-reliability harness was added.
+  passes 103 after the sustained-reliability harness was added.
 - Ollama with fixed strong local reader qwen3.8:27b-q4_K_M, digest
   25b843619e944cd0ae6069f94ff4e5e26a16e109ccbc0a66a0f05979ed70098e,
   27.3B parameters, Q4_K_M, 262,144-token declared context.
@@ -52,6 +52,12 @@ verified through fresh-clone source commit 27e4a8ee0012f7eef1a9b3655fb8d454aa14c
   restart checks, exact 100-tenant isolation, lifecycle checks, and full-ledger backup/restore
   identity pass. Runtime files are Git-ignored; their independently verified SHA-256 values and
   byte sizes are retained in `reliability/million_write/RESULTS.json`.
+- Exact sustained 12-process attempt at commit
+  d3cef83d1f4d86ab4efe1bcbaa8cf77f4b8b2ccf is preserved as
+  `INTERRUPTED_FAIL`: the first online backup starved, zero backup cycles
+  completed, the 15-minute rotation was missed, and safety interruption
+  stopped all workers. Machine postmortem:
+  `reliability/sustained_2h/INTERRUPTED.json`.
 
 ## Unavailable or not yet installed
 

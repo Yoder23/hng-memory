@@ -1486,6 +1486,50 @@
       "value": 1.0
     },
     {
+      "area": "sustained_storage_reliability_attempt",
+      "evidence_class": "local",
+      "metric": "observed_runtime_seconds_minimum",
+      "notes": "Negative operational evidence from the exact preregistered run. The two-hour duration, worker rotations, backup/restore cycles, final ledger, and resource-sampling minimums were not completed. This is not a qualifying soak result.",
+      "source": "reliability/sustained_2h/INTERRUPTED.json",
+      "status": "INTERRUPTED_FAIL",
+      "system": "sqlite_evidence_store",
+      "unit": "seconds",
+      "value": 900.0
+    },
+    {
+      "area": "sustained_storage_reliability_attempt",
+      "evidence_class": "local",
+      "metric": "completed_backup_restore_cycles",
+      "notes": "First online backup starved; no completion event exists.",
+      "source": "reliability/sustained_2h/INTERRUPTED.json",
+      "status": "INTERRUPTED_FAIL",
+      "system": "sqlite_online_backup",
+      "unit": "count",
+      "value": 0.0
+    },
+    {
+      "area": "sustained_storage_reliability_attempt",
+      "evidence_class": "local",
+      "metric": "maximum_worker_handles_at_rotation",
+      "notes": "External read-only observation at the missed rotation boundary.",
+      "source": "reliability/sustained_2h/INTERRUPTED.json",
+      "status": "INTERRUPTED_FAIL",
+      "system": "multiprocess_resource_observation",
+      "unit": "count",
+      "value": 815.0
+    },
+    {
+      "area": "sustained_storage_reliability_attempt",
+      "evidence_class": "local",
+      "metric": "wal_bytes_at_rotation",
+      "notes": "WAL growth while coordinator was blocked in online backup.",
+      "source": "reliability/sustained_2h/INTERRUPTED.json",
+      "status": "INTERRUPTED_FAIL",
+      "system": "sqlite_wal",
+      "unit": "bytes",
+      "value": 10237227712.0
+    },
+    {
       "area": "bounded_multitenant_storage",
       "evidence_class": "local",
       "metric": "records_preserved_after_backup",

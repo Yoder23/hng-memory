@@ -122,16 +122,28 @@ ledger after every recovery, sample RSS/file descriptors/database bytes, and ret
 log. Disk-full testing must use a disposable bounded volume. Backup/restore must compare the full
 evidence/provenance/supersession graph, not only row counts.
 
-## Sustained reliability protocol prepared, not executed
+## Sustained reliability attempt: interrupted failure
 
-The next locally admissible run is frozen under
-`reliability/sustained_2h/PROTOCOL.md` and `PREPARED.json`. It requires an
+The attempted run is frozen under `reliability/sustained_2h/PROTOCOL.md` and
+`PREPARED.json`. It required an
 exact clean pushed commit, at least 7,200 seconds, four writer processes, eight
 scoped-reader processes, graceful 15-minute worker rotation, at least 12 online
 backup/restore cycles, and at least 100 one-minute cross-process resource
 samples. Its development smoke passed with four writers, four readers, two
 worker generations, and four backup/restore cycles.
 
-Status is `PREPARED_NOT_EXECUTED`. The smoke is harness validation, not soak
-evidence, and graceful rotation is not crash recovery. No Section 29 status
-change is admitted until the exact frozen command completes.
+The exact command ran from clean pushed commit
+`d3cef83d1f4d86ab4efe1bcbaa8cf77f4b8b2ccf` and failed before qualification.
+At ten minutes, the coordinator entered the first online SQLite backup while
+writers continued. The backup did not complete, no backup event was recorded,
+and the coordinator could not perform the scheduled 15-minute worker rotation.
+At that boundary all 12 workers remained live, WAL was 10,237,227,712 bytes,
+and maximum worker handles were 815. A single safety interrupt stopped all
+workers before the frozen handle cap or disk floor was breached.
+
+The wrapper exited code 1 without serializing RESULTS.json. The 13 fsynced
+events and ignored runtime files are content-addressed in
+`reliability/sustained_2h/INTERRUPTED.json`. Status is
+`INTERRUPTED_FAIL`: zero backup/restore cycles completed, the two-hour
+duration was not reached, and no soak pass is claimed. This protocol must not
+be retried or overwritten.

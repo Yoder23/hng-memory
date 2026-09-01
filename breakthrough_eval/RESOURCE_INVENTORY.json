@@ -37,6 +37,18 @@
       "backup_sha256": "d0af0e97695d0cb37687d007870c751129e02dd557c9dfde8816f1adb5b1706e",
       "hashes_independently_verified": true,
       "claim_boundary": "Bounded local probe; not OS-crash, disk-full, power-loss, repeated-backup, or hours/days-long concurrent soak evidence."
+    },
+    "sustained_2h_attempt": {
+      "status": "INTERRUPTED_FAIL",
+      "postmortem": "breakthrough_eval/reliability/sustained_2h/INTERRUPTED.json",
+      "preregistered_commit": "d3cef83d1f4d86ab4efe1bcbaa8cf77f4b8b2ccf",
+      "qualifying_result_exists": false,
+      "completed_backup_restore_cycles": 0,
+      "observed_runtime_seconds_minimum": 900,
+      "failure": "Online backup starved under sustained writes; scheduled worker rotation was missed.",
+      "wal_bytes_at_rotation": 10237227712,
+      "maximum_worker_handles_at_rotation": 815,
+      "claim_boundary": "Negative operational evidence, not a qualifying two-hour soak result."
     }
   },
   "hardware": {

@@ -25,6 +25,7 @@ breakthrough_eval/.venv*/
 *.sqlite
 *.sqlite-wal
 *.sqlite-shm
+*.sqlite-journal
 *.npy
 *.npz
 *.usearch
