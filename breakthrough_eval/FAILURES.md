@@ -366,3 +366,21 @@ field. The authoritative JSON was not rewritten. Its frozen protocol/preparation
 preregistered commit, one-million-record configuration, command, source hashes, and exclusive
 artifact path identify the qualifying run. This label defect does not change a pass criterion, but
 it remains preserved rather than silently normalized.
+
+## Sustained-reliability harness setup failures
+
+1. The first large file-add patch exceeded the Windows command-line length
+   limit and was rejected before applying. The harness was then added through
+   bounded patch chunks; no reliability process had started.
+2. One direct patch call hit a transient sandbox setup-refresh error before
+   modifying the file. The identical bounded patch succeeded through the
+   approved patch wrapper.
+3. The first protocol patch embedded Markdown backticks in an orchestration
+   template literal and failed at JavaScript parse time. The parser-safe patch
+   preserved the same protocol content.
+4. The first focused-test tool call was rejected by the orchestration parser
+   before Python launched. The same command then ran through a parser-safe
+   variable and passed all 13 focused tests.
+
+None of these setup failures generated a preparation artifact or qualifying
+behavioral event.

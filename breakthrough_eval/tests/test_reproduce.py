@@ -78,3 +78,23 @@ def test_million_write_routes_exact_commit() -> None:
     ))[0]
 
     assert command.argv[-2:] == ("--preregistered-commit", "abc123")
+
+
+def test_sustained_reliability_execution_requires_preregistered_commit() -> None:
+    with __import__("pytest").raises(ValueError, match="preregistered-commit"):
+        reproduce.commands_for(argparse.Namespace(
+            command="sustained-reliability",
+            prepare_only=False,
+            preregistered_commit=None,
+        ))
+
+
+def test_sustained_reliability_routes_exact_commit() -> None:
+    command = reproduce.commands_for(argparse.Namespace(
+        command="sustained-reliability",
+        prepare_only=False,
+        preregistered_commit="def456",
+    ))[0]
+
+    assert command.argv[-2:] == ("--preregistered-commit", "def456")
+    assert command.name == "sustained_multiprocess_storage_reliability"

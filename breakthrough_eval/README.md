@@ -36,6 +36,8 @@ C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py identifiability
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py policy-differential
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py million-write --prepare-only
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py million-write --preregistered-commit COMMIT
+C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py sustained-reliability --prepare-only
+C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py sustained-reliability --preregistered-commit COMMIT
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py rag-governance --execute-llm
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py public-memory --execute-llm
 C:\Python310\python.exe breakthrough_eval\scripts\reproduce.py belief-revision
@@ -123,12 +125,20 @@ backup/restore all pass. The database and backup SHA-256 values were independent
 match the machine result. This remains a bounded 69.4-minute local probe, not OS-crash, disk-full,
 power-loss, repeated-backup, or hours/days-long concurrent-soak evidence.
 
+The sustained-reliability command is a separate fail-closed two-hour protocol:
+four independent writer processes, eight scoped-reader processes, 15-minute
+worker rotation, online backup/restore every ten minutes, and one-minute
+cross-process resource sampling. Preparation and execution are separate; the
+execution command requires the exact clean pushed commit that contains the
+frozen hashes. A prepared protocol is not counted as behavioral evidence.
+
 The current local release candidate is 0.7.0rc3 under `releases/0.7.0rc3/qualified_dist`. Its
 manifest distinguishes the qualifying exact-commit artifacts from two preserved earlier build
 pairs. A brand-new private-repository clone installed the wheel and used `hng-eval` to pass 58
 dependency-free tests, execute the isolated 250-case deterministic study, and recompile the result
 corpus. The four external LoCoMo test modules remain explicit exclusions from this dependency-free
-proof and continue to run in the configured 94-test breakthrough suite.
+proof. The configured suite passed 94 tests at rc3 qualification and passes 102 after adding the
+sustained-reliability protocol tests.
 
 ## Current resource boundary
 

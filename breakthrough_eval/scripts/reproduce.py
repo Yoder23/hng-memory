@@ -102,6 +102,28 @@ def commands_for(args: argparse.Namespace) -> list[Command]:
             tuple(argv),
             "Fail-closed 1,000,000-write production SQLite store, restart, lifecycle, and backup/restore probe.",
         )]
+    if args.command == "sustained-reliability":
+        argv = [sys.executable, str(SCRIPTS / "sustained_reliability.py")]
+        if args.prepare_only:
+            argv.append("--prepare-only")
+        else:
+            if not args.preregistered_commit:
+                raise ValueError(
+                    "sustained-reliability execution requires "
+                    "--preregistered-commit"
+                )
+            argv.extend([
+                "--preregistered-commit", args.preregistered_commit,
+            ])
+        return [Command(
+            "sustained_multiprocess_storage_reliability",
+            tuple(argv),
+            (
+                "Fail-closed two-hour multi-process production-store run "
+                "with worker rotation, repeated backup/restore, and resource "
+                "sampling."
+            ),
+        )]
     if args.command == "rag-governance":
         result = [deterministic]
         if args.execute_llm:
@@ -303,6 +325,12 @@ def parse_args() -> argparse.Namespace:
     million = subparsers.add_parser("million-write", help="Prepare or run the preregistered million-write reliability probe.")
     million.add_argument("--prepare-only", action="store_true")
     million.add_argument("--preregistered-commit")
+    sustained = subparsers.add_parser(
+        "sustained-reliability",
+        help="Prepare or run the preregistered two-hour reliability probe.",
+    )
+    sustained.add_argument("--prepare-only", action="store_true")
+    sustained.add_argument("--preregistered-commit")
     rag = subparsers.add_parser("rag-governance", help="Reproduce fixed-candidate governance results.")
     rag.add_argument("--execute-llm", action="store_true", help="Run the costly local 27B holdout.")
     rag.add_argument("--llm-limit", type=int, default=30)
