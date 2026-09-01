@@ -19,6 +19,7 @@ next_eval/run_data/
 next_eval/wheel_install/
 breakthrough_eval/external/
 breakthrough_eval/.venv*/
+.hng-eval-proof/
 
 # Runtime persistence and vector-index files.
 *.sqlite

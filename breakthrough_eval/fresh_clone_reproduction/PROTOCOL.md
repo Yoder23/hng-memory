@@ -12,4 +12,6 @@ resources as package dependencies.
 Passing requires the installed `hng-eval` executable, a matching rc3 version, a successful dry-run,
 dependency-free owned tests, the 250-case deterministic benchmark, compiler completion, exact clone
 commit, raw logs, and artifact hashes. The disposable clone may mutate its own generated evidence;
-the authoritative source worktree and frozen rc1 baseline must remain unchanged.
+the authoritative source worktree and frozen rc1 baseline must remain unchanged. The deterministic
+proof output is therefore written once to `.hng-eval-proof/fixed_candidate`, which is ignored and
+separate from committed evidence; an existing proof log remains a fail-closed condition.

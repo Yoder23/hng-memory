@@ -39,7 +39,15 @@ def commands_for(args: argparse.Namespace) -> list[Command]:
     deterministic = Command(
         "adversarial_250",
         py(str(SCRIPTS / "fixed_candidate_governance.py")),
-        "Exactly 250 frozen synthetic governance scenarios; appends raw events.",
+        "Exactly 250 frozen synthetic governance scenarios; refuses to overwrite an existing raw log.",
+    )
+    fresh_clone_deterministic = Command(
+        "adversarial_250_isolated",
+        py(
+            str(SCRIPTS / "fixed_candidate_governance.py"),
+            "--output", str(ROOT / ".hng-eval-proof" / "fixed_candidate"),
+        ),
+        "Exactly 250 frozen synthetic governance scenarios in a new ignored proof directory; frozen evidence remains immutable.",
     )
     compile_results = Command(
         "compile_results",
@@ -62,7 +70,7 @@ def commands_for(args: argparse.Namespace) -> list[Command]:
     if args.command == "adversarial":
         return [deterministic, tests, compile_results]
     if args.command == "fresh-clone-core":
-        return [fresh_clone_tests, deterministic, compile_results]
+        return [fresh_clone_tests, fresh_clone_deterministic, compile_results]
     if args.command == "rag-governance":
         result = [deterministic]
         if args.execute_llm:

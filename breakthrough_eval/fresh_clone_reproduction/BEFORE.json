@@ -42,5 +42,18 @@
     "observed_error": "ModuleNotFoundError: No module named 'torch'",
     "root_cause": "Qwen3Reranker imported optional torch/transformers before validating invalid max_length or batch_size."
   },
-  "claim_boundary": "The external LoCoMo-Plus task_eval checkout is intentionally not committed. This failure does not imply production-package or fixed-candidate test failure."
+  "rc3_validation_fix_fresh_clone": {
+    "checkout_commit": "5e595a76042396b81d8179dcb907afbea0649cba",
+    "checkout_path": "C:/tmp/hng-fresh-proof-5e595a7",
+    "package_version": "0.7.0rc3",
+    "hng_eval_version": "hng-eval 0.7.0rc3",
+    "dry_run_succeeded": true,
+    "fresh_clone_tests_passed": 56,
+    "fresh_clone_core_returncode": 1,
+    "status": "FAILED_FROZEN_RAW_LOG_COLLISION",
+    "failed_stage": "adversarial_250",
+    "observed_error": "FileExistsError: refusing to overwrite breakthrough_eval/fixed_candidate/raw/deterministic_events.jsonl",
+    "root_cause": "The fresh-clone reproduction command targeted the committed frozen evidence directory instead of a new isolated proof directory."
+  },
+  "claim_boundary": "All observed fresh-clone failures are preserved. External LoCoMo tests remain an explicit dependency boundary, optional ML runtimes are not package requirements, and frozen evidence must not be overwritten by reproduction."
 }

@@ -322,3 +322,8 @@ public, canonical, or real-assistant evidence.
    The new virtual environment correctly did not contain the heavyweight reranker runtime. The
    failure is preserved in `fresh_clone_reproduction/BEFORE.json`; validation now occurs before
    optional imports, without changing any valid reranker inference path.
+4. The next new-clone run passed all 56 dependency-free tests, then the 250-case stage failed
+   closed because its default output was the committed frozen raw log. This preserved immutable
+   evidence but exposed an incorrect reproduction target. `fresh-clone-core` now writes the same
+   deterministic study to a new ignored `.hng-eval-proof/fixed_candidate` directory; normal
+   evidence paths and compiler inputs are unchanged.
