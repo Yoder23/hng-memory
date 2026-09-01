@@ -341,6 +341,27 @@ def commands_for(args: argparse.Namespace) -> list[Command]:
             tuple(argv),
             "WAL-index mapping mechanism diagnostic; no qualification claim.",
         )]
+    if args.command == "wal-checkpoint-rotation-diagnostic":
+        argv = [
+            sys.executable,
+            str(SCRIPTS / "wal_checkpoint_rotation_diagnostic.py"),
+        ]
+        if args.prepare_only:
+            argv.append("--prepare-only")
+        else:
+            if not args.preregistered_commit:
+                raise ValueError(
+                    "wal-checkpoint-rotation-diagnostic execution requires "
+                    "--preregistered-commit"
+                )
+            argv.extend([
+                "--preregistered-commit", args.preregistered_commit,
+            ])
+        return [Command(
+            "wal_checkpoint_rotation_intervention_diagnostic",
+            tuple(argv),
+            "Bounded WAL intervention diagnostic; no qualification claim.",
+        )]
     if args.command == "rag-governance":
         result = [deterministic]
         if args.execute_llm:
@@ -608,6 +629,12 @@ def parse_args() -> argparse.Namespace:
     )
     wal_index.add_argument("--prepare-only", action="store_true")
     wal_index.add_argument("--preregistered-commit")
+    rotation = subparsers.add_parser(
+        "wal-checkpoint-rotation-diagnostic",
+        help="Prepare or run the checkpoint/connection-rotation treatment.",
+    )
+    rotation.add_argument("--prepare-only", action="store_true")
+    rotation.add_argument("--preregistered-commit")
     rag = subparsers.add_parser("rag-governance", help="Reproduce fixed-candidate governance results.")
     rag.add_argument("--execute-llm", action="store_true", help="Run the costly local 27B holdout.")
     rag.add_argument("--llm-limit", type=int, default=30)

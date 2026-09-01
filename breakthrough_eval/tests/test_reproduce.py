@@ -226,3 +226,15 @@ def test_shared_sqlite_wal_index_diagnostic_routes_exact_commit() -> None:
     assert command.argv[-2:] == ("--preregistered-commit", "wal-index")
     assert command.name == "shared_sqlite_wal_index_section_mapping_diagnostic"
     assert "WAL-index mapping" in command.note
+
+
+def test_wal_checkpoint_rotation_diagnostic_routes_exact_commit() -> None:
+    command = reproduce.commands_for(argparse.Namespace(
+        command="wal-checkpoint-rotation-diagnostic",
+        prepare_only=False,
+        preregistered_commit="rotation",
+    ))[0]
+
+    assert command.argv[-2:] == ("--preregistered-commit", "rotation")
+    assert command.name == "wal_checkpoint_rotation_intervention_diagnostic"
+    assert "Bounded WAL intervention" in command.note

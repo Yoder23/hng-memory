@@ -1,0 +1,42 @@
+{
+  "claim_boundary": "Bounded reliability-intervention evidence only. It cannot make the failed sustained run pass or qualify HNG or production use.",
+  "config": {
+    "baseline_minimum_maximum_process_handles": 300,
+    "baseline_minimum_samples_per_child": 100,
+    "baseline_minimum_shm_unit_delta": 60,
+    "baseline_seconds": 120.0,
+    "checkpoint_mode": "TRUNCATE",
+    "maximum_post_checkpoint_wal_bytes": 32768,
+    "minimum_treatment_throughput_ratio": 0.5,
+    "multiprocessing_start_method": "spawn",
+    "reader_workers": 8,
+    "sample_interval_seconds": 1.0,
+    "seed_records": 1000,
+    "tenants": 100,
+    "treatment_epoch_seconds": 30.0,
+    "treatment_epochs": 4,
+    "treatment_maximum_process_handles": 300,
+    "treatment_maximum_section_delta_per_epoch": 40,
+    "treatment_minimum_samples_per_child": 25,
+    "treatment_replications": 2,
+    "writer_workers": 4
+  },
+  "created_at": "2026-09-01T21:56:31.314373+00:00",
+  "predecessor_result": "breakthrough_eval/reliability/shared_sqlite_wal_index_diagnostic/RESULTS.json",
+  "qualifying_command": [
+    "C:\\Python310\\python.exe",
+    "breakthrough_eval/scripts/wal_checkpoint_rotation_diagnostic.py",
+    "--preregistered-commit",
+    "COMMIT"
+  ],
+  "schema_version": 1,
+  "source_sha256": {
+    "baseline_source/hng-frontier-0.5.1a1/src/hngfrontier/storage_v2.py": "1c1dca999d39276708c3bf1116f95f7d9f6faaa85ff696e04194ac4004c99f9f",
+    "breakthrough_eval/reliability/shared_sqlite_wal_index_diagnostic/RESULTS.json": "6a9f8e438ab4f97be867e547749814699f3a3472fcd811613bae8fb7eed0a498",
+    "breakthrough_eval/reliability/wal_checkpoint_rotation_diagnostic/PROTOCOL.md": "3d6a9f7dbadc071e9daa8d674f4dc2f1b6fbbc6ea53ff90472fdced9b9e72de1",
+    "breakthrough_eval/scripts/shared_sqlite_handle_type_diagnostic_v3.py": "89d7850b690916ed56be23b9bb1ad525e97bc0a22fb0a5c51438e08e659aa59a",
+    "breakthrough_eval/scripts/shared_sqlite_wal_index_diagnostic.py": "89531ef24814f050c67c1bde44240c74caee47650e7e4e483286b061ebd3140f",
+    "breakthrough_eval/scripts/wal_checkpoint_rotation_diagnostic.py": "f78fae80a22e1a72ebd397a28342778ba5dc9a29e326c667563c27e34b08b71f"
+  },
+  "status": "PREPARED_NOT_EXECUTED"
+}
